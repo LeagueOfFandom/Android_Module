@@ -20,8 +20,12 @@ object Dependencies {
     object AndroidX {
         val paging = Paging
 
-        val core by lazy { "androidx.core:core-ktx:1.6.0" }
-        val appCompat by lazy { "androidx.appcompat:appcompat:1.3.0" }
+        val core by lazy { "androidx.core:core-ktx:1.8.0" }
+        val appCompat by lazy { "androidx.appcompat:appcompat:1.4.2" }
+        val material by lazy { "com.google.android.material:material:1.6.1" }
+        val constraintLayout by lazy { "androidx.constraintlayout:constraintlayout:2.1.4" }
+        val activity by lazy { "androidx.activity:activity-ktx:1.5.0" }
+        val fragment by lazy { "androidx.fragment:fragment-ktx:1.5.0" }
 
         object Paging {
             val runtime by lazy { "androidx.paging:paging-runtime-ktx:${Versions.paging}" }
@@ -33,7 +37,6 @@ object Dependencies {
 
         val lifecycle = Lifecycle
         object Lifecycle {
-            val runtime by lazy { "androidx.lifecycle:lifecycle-runtime-ktx:${Versions.lifecycleRuntime}" }
             val viewModel by lazy { "androidx.lifecycle:lifecycle-viewmodel-ktx:${Versions.lifecycle}" }
             val liveData by lazy { "androidx.lifecycle:lifecycle-livedata-ktx:${Versions.lifecycle}" }
         }

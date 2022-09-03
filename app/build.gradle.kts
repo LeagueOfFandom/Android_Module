@@ -3,18 +3,17 @@ plugins {
     kotlin("android")
     kotlin("kapt")
     id("dagger.hilt.android.plugin")
-    id("com.google.gms.google-services")
 }
 
 android {
     compileSdk = 32
 
     defaultConfig {
-        applicationId = "com.soma.lof"
-        minSdk = 23
-        targetSdk = 32
-        versionCode = 1
-        versionName = "1.0"
+        applicationId = ConfigData.applicationId
+        minSdk = ConfigData.minSdkVersion
+        targetSdk = ConfigData.targetSdkVersion
+        versionCode = ConfigData.versionCode
+        versionName = ConfigData.versionName
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
     }
 
@@ -41,7 +40,13 @@ android {
 
 dependencies {
 
+    implementation(project(":feature-splash"))
+    implementation(Dependencies.androidX.core)
     implementation(Dependencies.androidX.appCompat)
+    implementation(Dependencies.androidX.material)
+    implementation(Dependencies.androidX.constraintLayout)
+
+
     implementation(Dependencies.test.junit)
     testImplementation(Dependencies.test.mockito)
     testImplementation(Dependencies.test.coroutine)
