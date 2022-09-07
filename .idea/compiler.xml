@@ -7,6 +7,7 @@
       <module name="LoF.core-common-ui" target="11" />
       <module name="LoF.core-network" target="11" />
       <module name="LoF.feature-splash" target="11" />
+      <module name="LoF.foundation" target="11" />
       <module name="LoF_Module.buildSrc" target="11" />
       <module name="LoF_Module.buildSrc.main" target="11" />
       <module name="LoF_Module.buildSrc.test" target="11" />
