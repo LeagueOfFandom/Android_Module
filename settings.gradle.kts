@@ -14,8 +14,7 @@ dependencyResolutionManagement {
 }
 rootProject.name = "LoF"
 include(":app")
-include(":core-model")
-include(":core-common")
-include(":core-network")
-include(":feature-splash")
+include(":common")
+include(":login")
 include(":foundation")
+include(":common-ui")

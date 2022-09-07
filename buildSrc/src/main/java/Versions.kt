@@ -6,7 +6,7 @@ object Versions {
     const val coroutineAndroid = "1.6.1"
     const val gson = "2.8.6"
     const val retrofit = "2.9.0"
-    const val glide = "4.13.0"
+    const val glide = "4.13.2"
     const val navigation = "2.5.0"
     const val lifecycle = "2.5.0"
     const val lifecycleRuntime = "2.4.0-alpha02"

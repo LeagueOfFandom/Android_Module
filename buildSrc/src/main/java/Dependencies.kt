@@ -6,7 +6,7 @@ object Dependencies {
     val okHttp = OkHttp()
     val test = Test
     val androidTest = AndroidTest
-    val glide = Glide()
+    val glide = Glide
 
     object Kotlin {
         val coroutine by lazy { "org.jetbrains.kotlinx:kotlinx-coroutines-core:${Versions.coroutineCore}" }
@@ -86,7 +86,8 @@ object Dependencies {
         val fragment by lazy { "androidx.fragment:fragment-testing:1.4.1" }
     }
 
-    class Glide(
-        private val name: String = "com.github.bumptech.glide:glide:${Versions.glide}",
-    )
+    object Glide {
+        val android by lazy { "com.github.bumptech.glide:glide:${Versions.glide}" }
+        val annotationProcessor by lazy { "com.github.bumptech.glide:compiler:${Versions.glide}" }
+    }
 }
