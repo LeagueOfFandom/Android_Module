@@ -37,7 +37,8 @@ android {
 
 dependencies {
 
-    implementation(project(":foundation"))
+    api(project(":foundation"))
+
 //    implementation("com.github.bumptech.glide:glide:4.13.2")
     implementation(Dependencies.glide.android)
     implementation(Dependencies.glide.annotationProcessor)

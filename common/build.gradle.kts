@@ -35,6 +35,8 @@ android {
 
 dependencies {
 
+    api(project(path= ":foundation"))
+
     implementation(Dependencies.androidX.core)
     implementation(Dependencies.androidX.appCompat)
     implementation(Dependencies.androidX.material)

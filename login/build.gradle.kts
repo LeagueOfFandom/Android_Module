@@ -36,6 +36,7 @@ android {
 }
 
 dependencies {
+    api(project(":common"))
     implementation(project(":common-ui"))
 
     implementation(Dependencies.androidX.core)

@@ -1,8 +1,6 @@
 plugins {
     id("com.android.application")
     kotlin("android")
-    kotlin("kapt")
-    id("dagger.hilt.android.plugin")
 }
 
 android {
@@ -39,8 +37,6 @@ android {
 }
 
 dependencies {
-
-    implementation(project(":common-ui"))
     implementation(project(":login"))
     implementation(Dependencies.androidX.core)
     implementation(Dependencies.androidX.appCompat)
@@ -59,10 +55,4 @@ dependencies {
     androidTestImplementation(Dependencies.androidTest.espressoContribute)
     androidTestImplementation(Dependencies.androidTest.mockito)
     debugImplementation(Dependencies.androidTest.fragment)
-    androidTestImplementation(Dependencies.androidTest.hilt)
-    kaptAndroidTest(Dependencies.hilt.compiler)
-
-    implementation(Dependencies.hilt.android)
-    kapt(Dependencies.hilt.compiler)
-
 }
