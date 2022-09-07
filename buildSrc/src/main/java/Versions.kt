@@ -14,5 +14,6 @@ object Versions {
     const val mpAndroidChart = "v3.1.0"
     const val paging = "3.1.1"
     const val okHttp = "3.12.1"
-    const val googleService = "4.3.10"
+    const val googleService = "4.3.13"
+    const val googleServiceAuth = "20.3.0"
 }

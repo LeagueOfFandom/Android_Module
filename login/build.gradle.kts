@@ -36,6 +36,7 @@ android {
 }
 
 dependencies {
+    implementation(project(":common"))
     implementation(project(":common-ui"))
 
     implementation(Dependencies.androidX.core)
@@ -44,6 +45,8 @@ dependencies {
     implementation(Dependencies.androidX.constraintLayout)
     implementation(Dependencies.hilt.android)
     kapt(Dependencies.hilt.compiler)
+
+    implementation(Dependencies.google.auth)
 
     testImplementation(Dependencies.Test.junit)
     androidTestImplementation(Dependencies.androidX.junit)

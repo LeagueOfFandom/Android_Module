@@ -7,6 +7,7 @@ object Dependencies {
     val test = Test
     val androidTest = AndroidTest
     val glide = Glide
+    val google = Google
 
     object Kotlin {
         val coroutine by lazy { "org.jetbrains.kotlinx:kotlinx-coroutines-core:${Versions.coroutineCore}" }
@@ -89,5 +90,9 @@ object Dependencies {
     object Glide {
         val android by lazy { "com.github.bumptech.glide:glide:${Versions.glide}" }
         val annotationProcessor by lazy { "com.github.bumptech.glide:compiler:${Versions.glide}" }
+    }
+
+    object Google {
+        val auth by lazy { "com.google.android.gms:play-services-auth:${Versions.googleServiceAuth}" }
     }
 }
