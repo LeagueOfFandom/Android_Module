@@ -1,6 +1,8 @@
 plugins {
     id("com.android.library")
     id("org.jetbrains.kotlin.android")
+    id("com.google.gms.google-services")
+
 }
 
 android {
@@ -43,4 +45,11 @@ dependencies {
     testImplementation(Dependencies.Test.junit)
     androidTestImplementation(Dependencies.androidX.junit)
     androidTestImplementation(Dependencies.AndroidTest.espressoCore)
+
+    //Firebase
+    api(Dependencies.firebase.analytics)
+    api(Dependencies.firebase.cloudMessaging)
+
+    //EventBus
+    api(Dependencies.library.eventBus)
 }
