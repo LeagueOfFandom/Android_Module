@@ -5,6 +5,7 @@ plugins {
     id("org.jetbrains.kotlin.android") version "1.6.10" apply false
     id("com.google.dagger.hilt.android") version Versions.hilt apply false
     id("org.jetbrains.kotlin.jvm") version "1.6.10" apply false
+    id("com.google.gms.google-services") version Versions.googleService apply false
 }
 
 tasks.register("clean",Delete::class){

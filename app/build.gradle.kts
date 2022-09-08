@@ -3,6 +3,7 @@ plugins {
     kotlin("android")
     kotlin("kapt")
     id("dagger.hilt.android.plugin")
+    id("com.google.gms.google-services")
 }
 
 android {
@@ -59,10 +60,12 @@ dependencies {
     androidTestImplementation(Dependencies.androidTest.espressoContribute)
     androidTestImplementation(Dependencies.androidTest.mockito)
     debugImplementation(Dependencies.androidTest.fragment)
+
+    // Hilt
     androidTestImplementation(Dependencies.androidTest.hilt)
     kaptAndroidTest(Dependencies.hilt.compiler)
-
     implementation(Dependencies.hilt.android)
     kapt(Dependencies.hilt.compiler)
+
 
 }

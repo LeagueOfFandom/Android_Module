@@ -7,6 +7,8 @@ object Dependencies {
     val test = Test
     val androidTest = AndroidTest
     val glide = Glide
+    val firebase = Firebase
+    val library = Etc
 
     object Kotlin {
         val coroutine by lazy { "org.jetbrains.kotlinx:kotlinx-coroutines-core:${Versions.coroutineCore}" }
@@ -89,5 +91,16 @@ object Dependencies {
     object Glide {
         val android by lazy { "com.github.bumptech.glide:glide:${Versions.glide}" }
         val annotationProcessor by lazy { "com.github.bumptech.glide:compiler:${Versions.glide}" }
+    }
+
+    object Firebase {
+//        val bom by lazy { "com.google.firebase:firebase-bom:30.3.1" }
+        val analytics by lazy { "com.google.firebase:firebase-analytics-ktx:21.1.0" }
+        val cloudMessaging by lazy { "com.google.firebase:firebase-messaging-ktx:23.0.7" }
+        val crashlytics by lazy { "com.google.firebase:firebase-crashlytics-ktx" }
+    }
+
+    object Etc {
+        val eventBus by lazy { "org.greenrobot:eventbus:3.3.1" }
     }
 }
