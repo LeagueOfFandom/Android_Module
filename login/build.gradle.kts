@@ -49,4 +49,6 @@ dependencies {
     testImplementation(Dependencies.Test.junit)
     androidTestImplementation(Dependencies.androidX.junit)
     androidTestImplementation(Dependencies.AndroidTest.espressoCore)
+
+    implementation(Dependencies.google.auth)
 }

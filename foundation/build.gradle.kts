@@ -35,7 +35,7 @@ android {
 dependencies {
     implementation(Dependencies.okHttp.loggingInterceptor)
     implementation(Dependencies.okHttp)
-    implementation(Dependencies.retrofit)
+    api(Dependencies.retrofit)
     implementation(Dependencies.retrofit.gsonConverter)
     implementation(Dependencies.test.junit)
     androidTestImplementation(Dependencies.androidTest.junit)

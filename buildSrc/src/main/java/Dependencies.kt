@@ -7,6 +7,7 @@ object Dependencies {
     val test = Test
     val androidTest = AndroidTest
     val glide = Glide
+    val google = Google
     val firebase = Firebase
     val library = Etc
 
@@ -98,6 +99,10 @@ object Dependencies {
         val analytics by lazy { "com.google.firebase:firebase-analytics-ktx:21.1.0" }
         val cloudMessaging by lazy { "com.google.firebase:firebase-messaging-ktx:23.0.7" }
         val crashlytics by lazy { "com.google.firebase:firebase-crashlytics-ktx" }
+    }
+
+    object Google {
+        val auth by lazy { "com.google.android.gms:play-services-auth:${Versions.googleServiceAuth}" }
     }
 
     object Etc {

@@ -37,11 +37,7 @@ android {
 
 dependencies {
 
-    implementation(Dependencies.androidX.core)
-    implementation(Dependencies.androidX.appCompat)
-    implementation(Dependencies.androidX.material)
-    implementation(Dependencies.androidX.constraintLayout)
-
+    api(project(":foundation"))
     testImplementation(Dependencies.Test.junit)
     androidTestImplementation(Dependencies.androidX.junit)
     androidTestImplementation(Dependencies.AndroidTest.espressoCore)

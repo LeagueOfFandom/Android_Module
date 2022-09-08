@@ -38,7 +38,9 @@ android {
 dependencies {
 
     implementation(project(":foundation"))
-//    implementation("com.github.bumptech.glide:glide:4.13.2")
+
+    api(Dependencies.kotlin.coroutine)
+    api(Dependencies.androidX.lifecycle.viewModel)
     implementation(Dependencies.glide.android)
     implementation(Dependencies.glide.annotationProcessor)
     implementation(Dependencies.androidX.core)
