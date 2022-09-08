@@ -43,6 +43,8 @@ dependencies {
     implementation(Dependencies.androidX.appCompat)
     implementation(Dependencies.androidX.material)
     implementation(Dependencies.androidX.constraintLayout)
+    implementation(Dependencies.androidX.fragment)
+
     implementation(Dependencies.hilt.android)
     kapt(Dependencies.hilt.compiler)
 
