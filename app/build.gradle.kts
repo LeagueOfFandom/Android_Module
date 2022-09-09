@@ -7,7 +7,7 @@ plugins {
 }
 
 android {
-    compileSdk = 32
+    compileSdk = ConfigData.compileSdkVersion
 
     defaultConfig {
         applicationId = ConfigData.applicationId
