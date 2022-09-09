@@ -38,7 +38,12 @@ android {
 dependencies {
 
     implementation(project(":foundation"))
-//    implementation("com.github.bumptech.glide:glide:4.13.2")
+
+    api(Dependencies.kotlin.coroutine)
+    implementation(Dependencies.androidX.core)
+    implementation(Dependencies.androidX.material)
+    implementation(Dependencies.androidX.constraintLayout)
+    implementation(Dependencies.androidX.appCompat)
     implementation(Dependencies.glide.android)
     implementation(Dependencies.glide.annotationProcessor)
     implementation(Dependencies.androidX.core)

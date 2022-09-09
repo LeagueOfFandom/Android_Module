@@ -2,6 +2,8 @@ plugins {
     id("com.android.application")
     kotlin("android")
     id("com.google.gms.google-services")
+    kotlin("kapt")
+    id("dagger.hilt.android.plugin")
 }
 
 android {
@@ -46,7 +48,6 @@ dependencies {
     implementation(Dependencies.androidX.material)
     implementation(Dependencies.androidX.constraintLayout)
 
-
     implementation(Dependencies.test.junit)
     testImplementation(Dependencies.test.mockito)
     testImplementation(Dependencies.test.coroutine)
@@ -58,4 +59,14 @@ dependencies {
     androidTestImplementation(Dependencies.androidTest.espressoContribute)
     androidTestImplementation(Dependencies.androidTest.mockito)
     debugImplementation(Dependencies.androidTest.fragment)
+
+    //Firebase
+    implementation(Dependencies.firebase.analytics)
+    implementation(Dependencies.firebase.cloudMessaging)
+
+    // Hilt
+    androidTestImplementation(Dependencies.androidTest.hilt)
+    kaptAndroidTest(Dependencies.hilt.compiler)
+    implementation(Dependencies.hilt.android)
+    kapt(Dependencies.hilt.compiler)
 }

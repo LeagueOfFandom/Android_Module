@@ -7,6 +7,7 @@ object Dependencies {
     val test = Test
     val androidTest = AndroidTest
     val glide = Glide
+    val google = Google
     val firebase = Firebase
     val library = Etc
 
@@ -28,6 +29,7 @@ object Dependencies {
         val constraintLayout by lazy { "androidx.constraintlayout:constraintlayout:2.1.4" }
         val activity by lazy { "androidx.activity:activity-ktx:1.5.0" }
         val fragment by lazy { "androidx.fragment:fragment-ktx:1.5.0" }
+        val dataStore by lazy { "androidx.datastore:datastore-preferences:1.0.0" }
 
         object Paging {
             val runtime by lazy { "androidx.paging:paging-runtime-ktx:${Versions.paging}" }
@@ -98,6 +100,10 @@ object Dependencies {
         val analytics by lazy { "com.google.firebase:firebase-analytics-ktx:21.1.0" }
         val cloudMessaging by lazy { "com.google.firebase:firebase-messaging-ktx:23.0.7" }
         val crashlytics by lazy { "com.google.firebase:firebase-crashlytics-ktx" }
+    }
+
+    object Google {
+        val auth by lazy { "com.google.android.gms:play-services-auth:${Versions.googleServiceAuth}" }
     }
 
     object Etc {

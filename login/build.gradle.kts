@@ -36,17 +36,30 @@ android {
 }
 
 dependencies {
-    api(project(":common"))
+    implementation(project(":common"))
     implementation(project(":common-ui"))
+    implementation(project(":foundation"))
 
     implementation(Dependencies.androidX.core)
     implementation(Dependencies.androidX.appCompat)
     implementation(Dependencies.androidX.material)
     implementation(Dependencies.androidX.constraintLayout)
-    implementation(Dependencies.hilt.android)
-    kapt(Dependencies.hilt.compiler)
+    implementation(Dependencies.androidX.fragment)
+    implementation(Dependencies.androidX.lifecycle.viewModel)
 
     testImplementation(Dependencies.Test.junit)
     androidTestImplementation(Dependencies.androidX.junit)
     androidTestImplementation(Dependencies.AndroidTest.espressoCore)
+
+    implementation(Dependencies.google.auth)
+
+    //Firebase
+    implementation(Dependencies.firebase.analytics)
+    implementation(Dependencies.firebase.cloudMessaging)
+
+    // Hilt
+    androidTestImplementation(Dependencies.androidTest.hilt)
+    kaptAndroidTest(Dependencies.hilt.compiler)
+    implementation(Dependencies.hilt.android)
+    kapt(Dependencies.hilt.compiler)
 }

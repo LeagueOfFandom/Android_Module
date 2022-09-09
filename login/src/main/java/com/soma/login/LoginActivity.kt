@@ -14,7 +14,12 @@ import com.google.android.gms.auth.api.signin.GoogleSignIn
 import com.google.android.gms.common.api.ApiException
 import com.soma.common.util.HOME_ACTIVITY_CLASS
 import com.soma.login.databinding.ActivityLoginBinding
+import dagger.hilt.android.AndroidEntryPoint
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
 
+@AndroidEntryPoint
 class LoginActivity : AppCompatActivity() {
     private lateinit var binding: ActivityLoginBinding
     private val viewModel by viewModels<LoginViewModel>()
@@ -40,13 +45,18 @@ class LoginActivity : AppCompatActivity() {
         startGoogleLoginForResult =
             registerForActivityResult(ActivityResultContracts.StartActivityForResult()) { result: ActivityResult ->
                 if (result.resultCode == RESULT_OK) {
-                    Log.e(TAG, "initGoogleLogin: result ok")
                     result.data?.let { data ->
                         val task = GoogleSignIn.getSignedInAccountFromIntent(data)
                         try {
                             val account = task.getResult(ApiException::class.java)
-                            Log.e(TAG, "googleLoginToken: ${account.idToken}")
-                            // TODO Server Api 연결해야함.
+                            Log.d(TAG, "googleLoginToken: ${account.idToken}")
+
+                            if (account.idToken != null) {
+                                Log.d(TAG, "viewModel 호출")
+                                viewModel.getUserTokenInfo(account.idToken!!)
+                            } else {
+                                Toast.makeText(this, "Login Failed", Toast.LENGTH_SHORT).show()
+                            }
                         } catch (e: ApiException) {
                             Log.e(TAG, "Google Result Error $result")
                         }
