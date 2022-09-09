@@ -14,3 +14,4 @@
 .externalNativeBuild
 .cxx
 local.properties
+/login/src/main/java/com/soma/login/Constants.kt

@@ -29,6 +29,7 @@ object Dependencies {
         val constraintLayout by lazy { "androidx.constraintlayout:constraintlayout:2.1.4" }
         val activity by lazy { "androidx.activity:activity-ktx:1.5.0" }
         val fragment by lazy { "androidx.fragment:fragment-ktx:1.5.0" }
+        val dataStore by lazy { "androidx.datastore:datastore-preferences:1.0.0" }
 
         object Paging {
             val runtime by lazy { "androidx.paging:paging-runtime-ktx:${Versions.paging}" }

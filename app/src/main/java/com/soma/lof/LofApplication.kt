@@ -25,7 +25,6 @@ class LofApplication : Application() {
     }
 
     private fun createNotificationChannel() {
-        Log.e("LoFApplication", "createNotificationChannel")
         val notificationManager = getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
 
         //Oreo(26) 이상 버전에는 channel 필요

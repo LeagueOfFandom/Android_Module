@@ -8,7 +8,6 @@ import androidx.core.app.NotificationCompat
 import androidx.core.app.NotificationManagerCompat
 import com.google.firebase.messaging.FirebaseMessagingService
 import com.google.firebase.messaging.RemoteMessage
-import org.greenrobot.eventbus.EventBus
 
 class LofFirebaseMessagingService: FirebaseMessagingService() {
 

@@ -1,4 +1,4 @@
-package com.soma.common.result
+package com.soma.lof.foundation.result
 
 sealed class UiState<out T> {
     object Loading: UiState<Nothing>()

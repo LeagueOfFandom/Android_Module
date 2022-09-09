@@ -30,9 +30,18 @@ android {
     kotlinOptions {
         jvmTarget = "1.8"
     }
+    dataBinding {
+        isEnabled = true
+    }
 }
 
 dependencies {
+
+    implementation(Dependencies.androidX.core)
+    implementation(Dependencies.androidX.material)
+    implementation(Dependencies.androidX.constraintLayout)
+    implementation(Dependencies.androidX.appCompat)
+
     implementation(Dependencies.okHttp.loggingInterceptor)
     implementation(Dependencies.okHttp)
     api(Dependencies.retrofit)
@@ -43,6 +52,6 @@ dependencies {
     // Hilt
     androidTestImplementation(Dependencies.androidTest.hilt)
     kaptAndroidTest(Dependencies.hilt.compiler)
-    api(Dependencies.hilt.android)
+    implementation(Dependencies.hilt.android)
     kapt(Dependencies.hilt.compiler)
 }

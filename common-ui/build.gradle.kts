@@ -40,7 +40,10 @@ dependencies {
     implementation(project(":foundation"))
 
     api(Dependencies.kotlin.coroutine)
-    api(Dependencies.androidX.lifecycle.viewModel)
+    implementation(Dependencies.androidX.core)
+    implementation(Dependencies.androidX.material)
+    implementation(Dependencies.androidX.constraintLayout)
+    implementation(Dependencies.androidX.appCompat)
     implementation(Dependencies.glide.android)
     implementation(Dependencies.glide.annotationProcessor)
     implementation(Dependencies.androidX.core)

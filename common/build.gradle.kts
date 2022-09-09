@@ -1,8 +1,8 @@
 plugins {
     id("com.android.library")
     id("org.jetbrains.kotlin.android")
-    id("com.google.gms.google-services")
-
+    kotlin("kapt")
+    id("dagger.hilt.android.plugin")
 }
 
 android {
@@ -38,14 +38,23 @@ android {
 dependencies {
 
     api(project(":foundation"))
+
+    implementation(Dependencies.androidX.core)
+    implementation(Dependencies.androidX.material)
+    implementation(Dependencies.androidX.appCompat)
+    
+    implementation(Dependencies.androidX.dataStore)
     testImplementation(Dependencies.Test.junit)
     androidTestImplementation(Dependencies.androidX.junit)
     androidTestImplementation(Dependencies.AndroidTest.espressoCore)
 
-    //Firebase
-    api(Dependencies.firebase.analytics)
-    api(Dependencies.firebase.cloudMessaging)
 
     //EventBus
     api(Dependencies.library.eventBus)
+
+    // Hilt
+    androidTestImplementation(Dependencies.androidTest.hilt)
+    kaptAndroidTest(Dependencies.hilt.compiler)
+    implementation(Dependencies.hilt.android)
+    kapt(Dependencies.hilt.compiler)
 }
