@@ -41,8 +41,10 @@ android {
 
 dependencies {
 
+    implementation(project(":common"))
     implementation(project(":common-ui"))
     implementation(project(":login"))
+    implementation(project(":prefer-team"))
     implementation(Dependencies.androidX.core)
     implementation(Dependencies.androidX.appCompat)
     implementation(Dependencies.androidX.material)

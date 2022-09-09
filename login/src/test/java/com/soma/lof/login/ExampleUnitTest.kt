@@ -1,4 +1,4 @@
-package com.soma.login
+package com.soma.lof.login
 
 import org.junit.Test
 

@@ -1,4 +1,4 @@
-package com.soma.login
+package com.soma.lof.login
 
 import androidx.test.platform.app.InstrumentationRegistry
 import androidx.test.ext.junit.runners.AndroidJUnit4

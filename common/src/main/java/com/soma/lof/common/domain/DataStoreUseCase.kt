@@ -1,15 +1,13 @@
-package com.soma.common.domain
+package com.soma.lof.common.domain
 
 import androidx.datastore.core.DataStore
 import androidx.datastore.preferences.core.edit
 import androidx.datastore.preferences.core.stringPreferencesKey
-import com.soma.common.util.FCM_TOKEN_KEY
-import com.soma.common.util.GOOGLE_ID_TOKEN_KEY
-import com.soma.common.util.JWT_TOKEN_KEY
+import com.soma.lof.common.util.FCM_TOKEN_KEY
+import com.soma.lof.common.util.JWT_TOKEN_KEY
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.map
 import javax.inject.Inject
-import javax.inject.Singleton
 
 class DataStoreUseCase @Inject constructor(
     private val dataStore: DataStore<androidx.datastore.preferences.core.Preferences>

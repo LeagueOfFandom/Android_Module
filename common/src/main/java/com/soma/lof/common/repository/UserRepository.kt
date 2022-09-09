@@ -1,4 +1,4 @@
-package com.soma.common.repository
+package com.soma.lof.common.repository
 
 import com.soma.lof.foundation.data.dto.UserTokenRequest
 import com.soma.lof.foundation.data.dto.UserTokenResponse

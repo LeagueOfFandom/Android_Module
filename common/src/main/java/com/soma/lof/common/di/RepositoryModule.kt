@@ -1,7 +1,7 @@
-package com.soma.common.di
+package com.soma.lof.common.di
 
-import com.soma.common.repository.UserRepository
-import com.soma.common.repository.UserRepositoryImpl
+import com.soma.lof.common.repository.UserRepository
+import com.soma.lof.common.repository.UserRepositoryImpl
 import dagger.Binds
 import dagger.Module
 import dagger.hilt.InstallIn

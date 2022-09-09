@@ -1,4 +1,4 @@
-package com.soma.login
+package com.soma.lof.login
 
 import android.content.Intent
 import android.os.Bundle
@@ -8,26 +8,19 @@ import androidx.activity.result.ActivityResult
 import androidx.activity.result.ActivityResultLauncher
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.activity.viewModels
-import androidx.appcompat.app.AppCompatActivity
-import androidx.databinding.DataBindingUtil
 import com.google.android.gms.auth.api.signin.GoogleSignIn
 import com.google.android.gms.common.api.ApiException
-import com.soma.common.util.HOME_ACTIVITY_CLASS
-import com.soma.login.databinding.ActivityLoginBinding
+import com.soma.common.base.BaseActivity
+import com.soma.lof.login.databinding.ActivityLoginBinding
 import dagger.hilt.android.AndroidEntryPoint
-import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.launch
 
 @AndroidEntryPoint
-class LoginActivity : AppCompatActivity() {
-    private lateinit var binding: ActivityLoginBinding
+class LoginActivity : BaseActivity<ActivityLoginBinding>(R.layout.activity_login) {
     private val viewModel by viewModels<LoginViewModel>()
     private lateinit var startGoogleLoginForResult: ActivityResultLauncher<Intent>
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        binding = DataBindingUtil.setContentView(this, R.layout.activity_login)
         binding.activity = this@LoginActivity
         supportActionBar?.hide()
 
@@ -35,10 +28,8 @@ class LoginActivity : AppCompatActivity() {
     }
 
     fun passLogin() {
-        val intent = Intent(this@LoginActivity, Class.forName(HOME_ACTIVITY_CLASS)).apply {
-            flags = Intent.FLAG_ACTIVITY_CLEAR_TASK or Intent.FLAG_ACTIVITY_NEW_TASK
-        }
         startActivity(intent)
+        viewModel.navigatePreferTeam(this@LoginActivity, Intent.FLAG_ACTIVITY_CLEAR_TASK, Intent.FLAG_ACTIVITY_NEW_TASK)
     }
 
     private fun initGoogleLogin() {

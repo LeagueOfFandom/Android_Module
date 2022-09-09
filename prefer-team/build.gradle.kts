@@ -46,6 +46,9 @@ dependencies {
     implementation(Dependencies.androidX.constraintLayout)
     implementation(Dependencies.androidX.fragment)
     implementation(Dependencies.androidX.lifecycle.viewModel)
+    implementation("androidx.appcompat:appcompat:1.5.1")
+    implementation("com.google.android.material:material:1.4.0")
+    implementation("androidx.constraintlayout:constraintlayout:2.0.4")
 
     testImplementation(Dependencies.Test.junit)
     androidTestImplementation(Dependencies.androidX.junit)

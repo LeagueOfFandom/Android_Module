@@ -1,11 +1,9 @@
-package com.soma.common.repository
+package com.soma.lof.common.repository
 
-import android.util.Log
 import com.soma.lof.foundation.data.dto.UserTokenRequest
 import com.soma.lof.foundation.data.dto.UserTokenResponse
 import com.soma.lof.foundation.exception.NetworkFailureException
 import com.soma.lof.foundation.api.UserService
-import com.soma.lof.foundation.result.UiState
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.catch
 import kotlinx.coroutines.flow.flow
