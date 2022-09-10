@@ -1,0 +1,3 @@
+<resources>
+    <string name="selectTeamCntMsg">총 %d팀을 선택하였습니다.</string>
+</resources>

@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.soma.lof.select_team">
+
+    <uses-permission android:name="android.permission.INTERNET"/>
+
+    <application>
+        <activity
+            android:name="com.soma.lof.select_team.ui.SelectTeamActivity"
+            android:exported="false" />
+    </application>
+
+</manifest>

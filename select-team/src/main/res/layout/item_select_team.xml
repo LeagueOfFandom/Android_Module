@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <variable
+            name="team"
+            type="com.soma.lof.foundation.data.entity.TeamInfo" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="100dp">
+
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/prefer_team_cv"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_margin="8dp"
+            android:elevation="8dp"
+            android:foreground="?android:attr/selectableItemBackground"
+            app:cardCornerRadius="8dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <androidx.constraintlayout.widget.Guideline
+                    android:id="@+id/item_prefer_team_logo_start_gl"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    app:layout_constraintGuide_percent="0.1" />
+
+                <androidx.constraintlayout.widget.Guideline
+                    android:id="@+id/item_prefer_team_logo_end_gl"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    app:layout_constraintGuide_percent="0.45" />
+
+                <androidx.constraintlayout.widget.Guideline
+                    android:id="@+id/item_prefer_team_name_start_gl"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    app:layout_constraintGuide_percent="0.55" />
+
+                <androidx.constraintlayout.widget.Guideline
+                    android:id="@+id/item_prefer_team_name_end_gl"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    app:layout_constraintGuide_percent="0.95" />
+
+                <androidx.constraintlayout.widget.Guideline
+                    android:id="@+id/item_prefer_team_top_gl"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    app:layout_constraintGuide_percent="0.1" />
+
+                <androidx.constraintlayout.widget.Guideline
+                    android:id="@+id/item_prefer_team_bottom_gl"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    app:layout_constraintGuide_percent="0.9" />
+
+                <TextView
+                    android:id="@+id/prefer_team_name"
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    android:layout_gravity="center"
+                    android:layout_margin="5dp"
+                    android:autoSizeMaxTextSize="18sp"
+                    android:autoSizeMinTextSize="10sp"
+                    android:autoSizeStepGranularity="2sp"
+                    android:autoSizeTextType="uniform"
+                    android:gravity="center"
+                    android:text="@{team.teamName}"
+                    android:textColor="@color/black"
+                    android:textStyle="bold"
+                    app:layout_constraintBottom_toTopOf="@id/item_prefer_team_bottom_gl"
+                    app:layout_constraintEnd_toStartOf="@id/item_prefer_team_name_end_gl"
+                    app:layout_constraintStart_toEndOf="@id/item_prefer_team_name_start_gl"
+                    app:layout_constraintTop_toBottomOf="@id/item_prefer_team_top_gl"
+                    tools:text="T1" />
+
+                <androidx.appcompat.widget.AppCompatImageView
+                    android:id="@+id/prefer_team_logo"
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    android:layout_gravity="center"
+                    android:layout_margin="4dp"
+                    android:paddingHorizontal="4dp"
+                    android:scaleType="centerInside"
+                    app:layout_constraintBottom_toTopOf="@id/item_prefer_team_bottom_gl"
+                    app:layout_constraintDimensionRatio="w, 1:1"
+                    app:layout_constraintEnd_toStartOf="@id/item_prefer_team_logo_end_gl"
+                    app:layout_constraintStart_toEndOf="@id/item_prefer_team_logo_start_gl"
+                    app:layout_constraintTop_toBottomOf="@id/item_prefer_team_top_gl"
+                    image="@{team.teamImg}" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+        </com.google.android.material.card.MaterialCardView>
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

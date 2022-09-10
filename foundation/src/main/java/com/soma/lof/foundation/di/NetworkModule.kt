@@ -1,5 +1,6 @@
 package com.soma.lof.foundation.di
 
+import com.soma.lof.foundation.api.TeamService
 import com.soma.lof.foundation.api.UserService
 import dagger.Module
 import dagger.Provides
@@ -9,11 +10,12 @@ import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
+import javax.inject.Named
 import javax.inject.Singleton
 
 @Module
 @InstallIn(SingletonComponent::class)
-class NetworkModule {
+object NetworkModule {
     //    private val BASE_URL = "https://leagueoffandom.site" //실 서버
     private val BASE_URL = "http://43.200.9.89" // 개발 서버
 
@@ -43,7 +45,15 @@ class NetworkModule {
 
     @Provides
     @Singleton
+    @Named("UserService")
     fun provideUserService(retrofit: Retrofit): UserService {
         return retrofit.create(UserService::class.java)
+    }
+
+    @Provides
+    @Singleton
+    @Named("TeamService")
+    fun provideTeamService(retrofit: Retrofit): TeamService {
+        return retrofit.create(TeamService::class.java)
     }
 }

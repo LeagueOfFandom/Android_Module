@@ -48,6 +48,9 @@ dependencies {
     androidTestImplementation(Dependencies.androidX.junit)
     androidTestImplementation(Dependencies.AndroidTest.espressoCore)
 
+    //Glide
+    implementation(Dependencies.glide.android)
+    implementation(Dependencies.glide.annotationProcessor)
 
     //EventBus
     api(Dependencies.library.eventBus)

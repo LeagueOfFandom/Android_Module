@@ -1,7 +1,6 @@
 plugins {
-    id("com.android.application")
+    id("com.android.library")
     kotlin("android")
-    id("com.google.gms.google-services")
     kotlin("kapt")
     id("dagger.hilt.android.plugin")
 }
@@ -10,11 +9,8 @@ android {
     compileSdk = ConfigData.compileSdkVersion
 
     defaultConfig {
-        applicationId = ConfigData.applicationId
         minSdk = ConfigData.minSdkVersion
         targetSdk = ConfigData.targetSdkVersion
-        versionCode = ConfigData.versionCode
-        versionName = ConfigData.versionName
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
     }
 
@@ -34,33 +30,28 @@ android {
     kotlinOptions {
         jvmTarget = "1.8"
     }
-    buildFeatures {
-        dataBinding = true
+    dataBinding {
+        isEnabled = true
     }
 }
 
 dependencies {
-
     implementation(project(":common"))
     implementation(project(":common-ui"))
-    implementation(project(":login"))
-    implementation(project(":select-team"))
+    implementation(project(":foundation"))
+
     implementation(Dependencies.androidX.core)
     implementation(Dependencies.androidX.appCompat)
     implementation(Dependencies.androidX.material)
     implementation(Dependencies.androidX.constraintLayout)
+    implementation(Dependencies.androidX.fragment)
+    implementation(Dependencies.androidX.lifecycle.viewModel)
 
-    implementation(Dependencies.test.junit)
-    testImplementation(Dependencies.test.mockito)
-    testImplementation(Dependencies.test.coroutine)
+    testImplementation(Dependencies.Test.junit)
+    androidTestImplementation(Dependencies.androidX.junit)
+    androidTestImplementation(Dependencies.AndroidTest.espressoCore)
 
-    androidTestImplementation(Dependencies.androidTest.runner)
-    androidTestImplementation(Dependencies.androidTest.rules)
-    androidTestImplementation(Dependencies.androidTest.junit)
-    androidTestImplementation(Dependencies.androidTest.espressoCore)
-    androidTestImplementation(Dependencies.androidTest.espressoContribute)
-    androidTestImplementation(Dependencies.androidTest.mockito)
-    debugImplementation(Dependencies.androidTest.fragment)
+    implementation(Dependencies.google.auth)
 
     //Firebase
     implementation(Dependencies.firebase.analytics)

@@ -11,7 +11,7 @@ import com.google.android.gms.auth.api.signin.GoogleSignInClient
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions
 import com.soma.lof.common.repository.UserRepository
 import com.soma.lof.common.domain.DataStoreUseCase
-import com.soma.lof.common.route.FeaturePreferTeamRouteContract
+import com.soma.lof.common.route.FeatureSelectTeamRouteContract
 import com.soma.lof.foundation.data.dto.UserTokenRequest
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
@@ -23,7 +23,7 @@ import javax.inject.Inject
 @HiltViewModel
 class LoginViewModel @Inject constructor(
     application: Application,
-    private val featurePreferTeamRouteContract: FeaturePreferTeamRouteContract,
+    private val featurePreferTeamRouteContract: FeatureSelectTeamRouteContract,
     private val dataStoreUseCase: DataStoreUseCase,
     private val userRepository: UserRepository,
 ) : AndroidViewModel(application) {
