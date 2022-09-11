@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="fake"
+            type="com.soma.lof.foundation.data.entity.LeagueTeamInfo" />
+
+        <variable
+            name="adapter"
+            type="com.soma.lof.select_team.ui.SelectTeamListAdapter" />
+
+        <variable
+            name="itemDecoration"
+            type="com.soma.lof.select_team.util.TeamItemDecoration" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <TextView
+            android:id="@+id/select_team_league_note"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:textColor="@color/main_color"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="대한민국의 LoL 프로 리그 팀의 리스트입니다."
+            android:text="@{fake.league}" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/fm_select_team_rv"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
+            app:spanCount="2"
+            app:itemDecoration="@{itemDecoration}"
+            app:adapter="@{adapter}"
+            tools:listitem="@layout/item_select_team"
+            app:layout_constraintTop_toBottomOf="@id/select_team_league_note"
+            app:layout_constraintBottom_toBottomOf="parent"
+            android:layout_marginTop="15dp"
+            android:layout_marginHorizontal="15dp"/>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</layout>

@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="main_color">#383A49</color>
+    <color name="bg_find_team_text">#F1F2F3</color>
+    <color name="white">#FFFFFFFF</color>
+
+</resources>
