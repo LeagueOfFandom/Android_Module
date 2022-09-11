@@ -20,7 +20,7 @@ class SelectTeamActivity : BaseActivity<ActivitySelectTeamBinding>(R.layout.acti
 
     private val viewModel by viewModels<SelectTeamViewModel>()
     private val teamLeagueAdapter: SelectTeamLeagueAdapter by lazy {
-        SelectTeamLeagueAdapter(this@SelectTeamActivity, viewModel.tabItems.value.size)
+        SelectTeamLeagueAdapter(this@SelectTeamActivity, viewModel)
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -32,17 +32,20 @@ class SelectTeamActivity : BaseActivity<ActivitySelectTeamBinding>(R.layout.acti
             adapter = teamLeagueAdapter
         }
 
+
         lifecycleScope.launchWhenCreated {
             viewModel.tabItems.collectLatest {
+                if (it.isNotEmpty()) {
+                    Log.d(TAG, "onCreate: tabItems ${it.toString()}")
+                    binding.selectTeamVp.apply {
+                        adapter = teamLeagueAdapter
+                        orientation = ViewPager2.ORIENTATION_HORIZONTAL
+                    }
 
-                binding.selectTeamVp.apply {
-                    adapter = teamLeagueAdapter
-                    orientation = ViewPager2.ORIENTATION_HORIZONTAL
+                    TabLayoutMediator(binding.selectTeamTabLayout, binding.selectTeamVp) { tab, position ->
+                        tab.text = it[position]
+                    }.attach()
                 }
-
-                TabLayoutMediator(binding.selectTeamTabLayout, binding.selectTeamVp) { tab, position ->
-                    tab.text = it[position]
-                }.attach()
             }
 
             viewModel.teamCnt.collectLatest {

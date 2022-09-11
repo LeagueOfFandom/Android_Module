@@ -18,7 +18,7 @@ class SelectTeamListFragment(private val position: Int) : BaseFragment<FragmentS
     }
 
     override fun initView() {
-        selectTeamListAdapter.submitList(viewModel.leagueTeamInfo.value[position].teamList)
+        selectTeamListAdapter.submitList(viewModel.leagueTeamInfo.value[position].teamInfo)
 
         bind {
             fake = viewModel.leagueTeamInfo.value[position]
