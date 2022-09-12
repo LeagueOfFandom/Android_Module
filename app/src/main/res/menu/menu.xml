@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <item
+        android:id="@+id/homeFragment"
+        android:icon="@drawable/ic_home"
+        android:title="home"
+        app:showAsAction="ifRoom"/>
+
+    <item
+        android:id="@+id/matchFragment"
+        android:icon="@drawable/ic_temp"
+        android:title="match"
+        app:showAsAction="ifRoom"/>
+
+    <item
+        android:id="@+id/communityFragment"
+        android:icon="@drawable/ic_community"
+        android:title="community"
+        app:showAsAction="ifRoom"/>
+
+    <item
+        android:id="@+id/infoFragment"
+        android:icon="@drawable/ic_alarm"
+        android:title="info"
+        app:showAsAction="ifRoom"/>
+
+    <item
+        android:id="@+id/settingFragment"
+        android:icon="@drawable/ic_alarm"
+        android:title="setting"
+        app:showAsAction="ifRoom"/>
+</menu>

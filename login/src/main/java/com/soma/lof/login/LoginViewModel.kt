@@ -24,7 +24,7 @@ import javax.inject.Inject
 @HiltViewModel
 class LoginViewModel @Inject constructor(
     application: Application,
-    private val featurePreferTeamRouteContract: FeatureSelectTeamRouteContract,
+    private val featureSelectTeamRouteContract: FeatureSelectTeamRouteContract,
     private val dataStoreUseCase: DataStoreUseCase,
     private val userRepository: UserRepository,
 ) : AndroidViewModel(application) {
@@ -57,8 +57,8 @@ class LoginViewModel @Inject constructor(
         }
     }
 
-    fun navigatePreferTeam(activity: Activity, vararg flag: Int) {
-        featurePreferTeamRouteContract.present(activity, flag)
+    fun navigateSelectTeam(activity: Activity, vararg flag: Int) {
+        featureSelectTeamRouteContract.present(activity, flag)
     }
 
     companion object {

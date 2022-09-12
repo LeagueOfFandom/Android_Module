@@ -7,6 +7,10 @@
         <import type="com.soma.lof.foundation.result.UiStateKt"/>
 
         <variable
+            name="activity"
+            type="com.soma.lof.select_team.ui.SelectTeamActivity" />
+
+        <variable
             name="vm"
             type="com.soma.lof.select_team.ui.SelectTeamViewModel" />
 
@@ -111,7 +115,8 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/select_team_cnt_note"
-                android:text="완료" />
+                android:text="완료"
+                android:onClick="@{()->vm.navigateHome(activity)}"/>
 
         </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.constraintlayout.widget.ConstraintLayout>
