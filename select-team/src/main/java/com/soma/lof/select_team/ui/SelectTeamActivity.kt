@@ -28,10 +28,10 @@ class SelectTeamActivity : BaseActivity<ActivitySelectTeamBinding>(R.layout.acti
         supportActionBar?.hide()
 
         bind {
+            activity = this@SelectTeamActivity
             vm = viewModel
             adapter = teamLeagueAdapter
         }
-
 
         lifecycleScope.launchWhenCreated {
             viewModel.tabItems.collectLatest {
@@ -53,7 +53,10 @@ class SelectTeamActivity : BaseActivity<ActivitySelectTeamBinding>(R.layout.acti
                 binding.selectTeamCntNote.text = "총 ${it}팀을 선택하였습니다."
             }
         }
+    }
 
+    private fun navigateMain() {
+        viewModel.navigateHome(this@SelectTeamActivity)
     }
 
     companion object {

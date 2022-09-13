@@ -41,14 +41,21 @@ android {
 
 dependencies {
 
-    implementation(project(":common"))
-    implementation(project(":common-ui"))
     implementation(project(":login"))
     implementation(project(":select-team"))
+    implementation(project(":home"))
+    implementation(project(":match"))
+    implementation(project(":community"))
+    implementation(project(":info"))
+    implementation(project(":setting"))
+    implementation(project(":common"))
+
     implementation(Dependencies.androidX.core)
     implementation(Dependencies.androidX.appCompat)
     implementation(Dependencies.androidX.material)
     implementation(Dependencies.androidX.constraintLayout)
+    implementation(Dependencies.androidX.navigation.ui)
+    implementation(Dependencies.androidX.navigation.fragment)
 
     implementation(Dependencies.test.junit)
     testImplementation(Dependencies.test.mockito)

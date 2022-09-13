@@ -28,8 +28,7 @@ class LoginActivity : BaseActivity<ActivityLoginBinding>(R.layout.activity_login
     }
 
     fun passLogin() {
-        startActivity(intent)
-        viewModel.navigatePreferTeam(this@LoginActivity, Intent.FLAG_ACTIVITY_CLEAR_TASK, Intent.FLAG_ACTIVITY_NEW_TASK)
+        viewModel.navigateSelectTeam(this@LoginActivity, Intent.FLAG_ACTIVITY_CLEAR_TASK, Intent.FLAG_ACTIVITY_NEW_TASK)
     }
 
     private fun initGoogleLogin() {

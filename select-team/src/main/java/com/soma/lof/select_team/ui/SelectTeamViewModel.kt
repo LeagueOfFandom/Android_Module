@@ -1,10 +1,12 @@
 package com.soma.lof.select_team.ui
 
+import android.app.Activity
 import android.util.Log
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.soma.lof.common.domain.DataStoreUseCase
 import com.soma.lof.common.repository.TeamRepository
+import com.soma.lof.common.route.FeatureHomeRouteContract
 import com.soma.lof.foundation.data.entity.LeagueTeamInfo
 import com.soma.lof.foundation.data.entity.TeamInfo
 import com.soma.lof.select_team.model.FakeLeagueTeamList
@@ -24,6 +26,7 @@ class SelectTeamViewModel @Inject constructor(
     private val selectTeamRepository: SelectTeamRepository,
     private val teamRepository: TeamRepository,
     private val dataStoreUseCase: DataStoreUseCase,
+    private val featureHomeRouteContract: FeatureHomeRouteContract,
     private val fakeRepository: SelectTeamFakeRepository,
 ) : ViewModel() {
 
@@ -75,6 +78,10 @@ class SelectTeamViewModel @Inject constructor(
     fun minusTeamCnt() {
         Log.d(SelectTeamActivity.TAG, "teamCnt minus")
         _teamCnt.value -= 1
+    }
+
+    fun navigateHome(activity: Activity, vararg flag: Int) {
+        featureHomeRouteContract.present(activity, flag)
     }
 
     companion object {
