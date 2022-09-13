@@ -12,6 +12,11 @@
         tools:layout="@layout/fragment_home"/>
 
     <fragment
+        android:id="@+id/matchFragment"
+        android:name="com.soma.lof.match.ui.MatchFragment"
+        android:label="MatchFragment" />
+
+    <fragment
         android:id="@+id/communityFragment"
         android:name="com.soma.lof.community.CommunityFragment"
         android:label="CommunityFragment"
@@ -22,13 +27,11 @@
         android:name="com.soma.lof.info.InfoFragment"
         android:label="InfoFragment"
         tools:layout="@layout/fragment_info"/>
+
     <fragment
         android:id="@+id/settingFragment"
         android:name="com.soma.lof.setting.SettingFragment"
         android:label="SettingFragment"
         tools:layout="@layout/fragment_setting"/>
-    <fragment
-        android:id="@+id/matchFragment"
-        android:name="com.soma.lof.match.MatchFragment"
-        android:label="MatchFragment" />
+
 </navigation>
