@@ -1,6 +1,7 @@
 package com.soma.lof.select_team.ui
 
 import android.app.Activity
+import android.content.Intent
 import android.util.Log
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
@@ -81,7 +82,7 @@ class SelectTeamViewModel @Inject constructor(
     }
 
     fun navigateHome(activity: Activity, vararg flag: Int) {
-        featureHomeRouteContract.present(activity, flag)
+        featureHomeRouteContract.present(activity, intArrayOf(Intent.FLAG_ACTIVITY_CLEAR_TASK, Intent.FLAG_ACTIVITY_NEW_TASK))
     }
 
     companion object {
