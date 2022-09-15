@@ -5,9 +5,12 @@ import androidx.fragment.app.viewModels
 import com.soma.common.base.BaseFragment
 import com.soma.lof.match.R
 import com.soma.lof.match.databinding.FragmentMatchDateGameListBinding
+import dagger.hilt.android.AndroidEntryPoint
+import javax.inject.Inject
 
 
-class MatchDateGameListFragment(
+@AndroidEntryPoint
+class MatchDateGameListFragment @Inject constructor(
     private val position: Int,
 ) : BaseFragment<FragmentMatchDateGameListBinding>(R.layout.fragment_match_date_game_list) {
 

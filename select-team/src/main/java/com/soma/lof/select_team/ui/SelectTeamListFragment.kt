@@ -6,8 +6,13 @@ import com.soma.lof.select_team.R
 import com.soma.lof.select_team.databinding.FragmentSelectTeamListBinding
 import com.soma.lof.select_team.util.TeamItemDecoration
 import com.soma.lof.select_team.util.bindTeamItems
+import dagger.hilt.android.AndroidEntryPoint
+import javax.inject.Inject
 
-class SelectTeamListFragment(private val position: Int) : BaseFragment<FragmentSelectTeamListBinding>(R.layout.fragment_select_team_list) {
+@AndroidEntryPoint
+class SelectTeamListFragment @Inject constructor(
+    private val position: Int,
+) : BaseFragment<FragmentSelectTeamListBinding>(R.layout.fragment_select_team_list) {
 
     private val viewModel by activityViewModels<SelectTeamViewModel>()
     private val selectTeamListAdapter: SelectTeamListAdapter by lazy {
