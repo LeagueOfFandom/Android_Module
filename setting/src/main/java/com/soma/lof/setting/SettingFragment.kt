@@ -13,4 +13,8 @@ class SettingFragment : BaseFragment<FragmentSettingBinding>(R.layout.fragment_s
 
     }
 
+    companion object {
+        fun newInstance() = SettingFragment()
+    }
+
 }

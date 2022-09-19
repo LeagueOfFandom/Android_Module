@@ -10,7 +10,6 @@ class MatchDateListAdapter(fa: Fragment, private val viewModel: MatchViewModel) 
     override fun getItemCount(): Int = viewModel.matchData.value.dateList.size
 
     override fun createFragment(position: Int): Fragment {
-        return MatchDateGameListFragment(position)
+        return MatchDateGameListFragment.newInstance(position)
     }
-
 }

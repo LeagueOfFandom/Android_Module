@@ -9,6 +9,11 @@ import com.soma.common.base.BaseFragment
 import com.soma.lof.community.databinding.FragmentCommunityBinding
 
 class CommunityFragment : BaseFragment<FragmentCommunityBinding>(R.layout.fragment_community) {
+
     override fun initView() {
+    }
+
+    companion object {
+        fun newInstance() = CommunityFragment()
     }
 }
