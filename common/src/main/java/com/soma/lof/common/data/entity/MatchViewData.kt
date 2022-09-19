@@ -1,4 +1,4 @@
-package com.soma.lof.match.model.entity
+package com.soma.lof.common.data.entity
 
 data class MatchViewData(
     val viewType: String,

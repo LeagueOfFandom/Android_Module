@@ -5,8 +5,12 @@
 
     <data>
         <variable
+            name="size"
+            type="Integer" />
+
+        <variable
             name="adapter"
-            type="com.soma.lof.match.ui.MatchDateGameAdapter" />
+            type="com.soma.lof.common.ui.CommonListAdapter" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -21,7 +25,7 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             android:layout_marginTop="20dp"
-            android:text="총 4개의 경기 일정이 있습니다."
+            android:text="@{@string/match_count(size)}"
             android:gravity="center"
             android:textColor="@color/black"
             android:textStyle="bold"/>
@@ -32,7 +36,6 @@
             android:layout_height="wrap_content"
             app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
             app:adapter="@{adapter}"
-            tools:listitem="@layout/item_match_date_game_schedule"
             app:layout_constraintTop_toBottomOf="@id/match_date_game_cnt_text"
             app:layout_constrainedHeight="true"
             android:layout_marginTop="15dp"

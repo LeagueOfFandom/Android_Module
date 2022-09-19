@@ -10,7 +10,7 @@
 
     <item
         android:id="@+id/matchFragment"
-        android:icon="@drawable/ic_temp"
+        android:icon="@drawable/ic_match"
         android:title="match"
         app:showAsAction="ifRoom"/>
 

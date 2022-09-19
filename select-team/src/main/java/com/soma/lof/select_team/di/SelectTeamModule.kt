@@ -19,7 +19,7 @@ object SelectTeamModule {
     @Provides
     @Singleton
     fun provideSelectTeamRepository(
-        @Named("TeamService") teamService: TeamService
+        teamService: TeamService
     ) : SelectTeamRepository {
         return SelectTeamRepositoryImpl(teamService)
     }

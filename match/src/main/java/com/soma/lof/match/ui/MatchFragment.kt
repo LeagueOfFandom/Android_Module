@@ -32,17 +32,13 @@ class MatchFragment : BaseFragment<FragmentMatchBinding>(R.layout.fragment_match
                     orientation = ViewPager2.ORIENTATION_HORIZONTAL
                 }
 
-                binding.matchMonth.text = it.month
+                binding.matchMonth.text = it.dateList[0].month
 
                 TabLayoutMediator(binding.matchTabLayout,
                     binding.matchViewpager) { tab, position ->
                     val dateInfo = it.dateList[position]
                     val spanText = SpannableStringBuilder(dateInfo.date)
-                    if(tab.isSelected) {
-                        spanText.setSpan(ForegroundColorSpan(Color.parseColor(dateInfo.selectedColor)), 0, dateInfo.date.length, Spannable.SPAN_EXCLUSIVE_INCLUSIVE)
-                    } else {
-                        spanText.setSpan(ForegroundColorSpan(Color.parseColor(dateInfo.color)), 0, dateInfo.date.length, Spannable.SPAN_EXCLUSIVE_INCLUSIVE)
-                    }
+                    spanText.setSpan(ForegroundColorSpan(Color.parseColor(dateInfo.color)), 0, dateInfo.date.length, Spannable.SPAN_EXCLUSIVE_INCLUSIVE)
                     tab.text = spanText
                 }.attach()
             }
