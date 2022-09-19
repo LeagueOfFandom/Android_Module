@@ -13,4 +13,8 @@ class InfoFragment : BaseFragment<FragmentInfoBinding>(R.layout.fragment_info) {
     override fun initView() {
     }
 
+    companion object {
+        fun newInstance() = InfoFragment()
+    }
+
 }

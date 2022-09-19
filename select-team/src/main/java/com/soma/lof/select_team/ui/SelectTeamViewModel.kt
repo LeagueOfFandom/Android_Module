@@ -8,9 +8,8 @@ import androidx.lifecycle.viewModelScope
 import com.soma.lof.common.domain.DataStoreUseCase
 import com.soma.lof.common.repository.TeamRepository
 import com.soma.lof.common.route.FeatureHomeRouteContract
-import com.soma.lof.foundation.data.entity.LeagueTeamInfo
-import com.soma.lof.foundation.data.entity.TeamInfo
-import com.soma.lof.select_team.model.FakeLeagueTeamList
+import com.soma.lof.common.data.entity.LeagueTeamInfo
+import com.soma.lof.common.data.entity.TeamInfo
 import com.soma.lof.select_team.repository.SelectTeamFakeRepository
 import com.soma.lof.select_team.repository.SelectTeamRepository
 import com.soma.lof.select_team.util.test_token
@@ -20,7 +19,6 @@ import kotlinx.coroutines.awaitAll
 import kotlinx.coroutines.flow.*
 import kotlinx.coroutines.launch
 import javax.inject.Inject
-import javax.inject.Named
 
 @HiltViewModel
 class SelectTeamViewModel @Inject constructor(

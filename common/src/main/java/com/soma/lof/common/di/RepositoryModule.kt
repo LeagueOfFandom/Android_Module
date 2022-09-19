@@ -4,9 +4,8 @@ import com.soma.lof.common.repository.TeamRepository
 import com.soma.lof.common.repository.TeamRepositoryImpl
 import com.soma.lof.common.repository.UserRepository
 import com.soma.lof.common.repository.UserRepositoryImpl
-import com.soma.lof.foundation.api.TeamService
-import com.soma.lof.foundation.api.UserService
-import dagger.Binds
+import com.soma.lof.common.api.TeamService
+import com.soma.lof.common.api.UserService
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn

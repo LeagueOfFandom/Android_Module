@@ -1,12 +1,10 @@
 package com.soma.lof.select_team.di
 
-import com.soma.lof.common.route.FeatureLoginRouteContract
-import com.soma.lof.foundation.api.TeamService
+import com.soma.lof.common.api.TeamService
 import com.soma.lof.select_team.repository.SelectTeamFakeRepository
 import com.soma.lof.select_team.repository.SelectTeamFakeRepositoryImpl
 import com.soma.lof.select_team.repository.SelectTeamRepository
 import com.soma.lof.select_team.repository.SelectTeamRepositoryImpl
-import dagger.Binds
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn

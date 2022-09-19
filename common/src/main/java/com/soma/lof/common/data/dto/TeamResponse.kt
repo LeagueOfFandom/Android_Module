@@ -1,6 +1,6 @@
-package com.soma.lof.foundation.data.dto
+package com.soma.lof.common.data.dto
 
-import com.soma.lof.foundation.data.entity.LeagueTeamInfo
+import com.soma.lof.common.data.entity.LeagueTeamInfo
 
 data class TeamResponse(
     val leagueInfo: List<LeagueTeamInfo>,

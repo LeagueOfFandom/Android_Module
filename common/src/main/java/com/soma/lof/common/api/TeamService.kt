@@ -1,8 +1,7 @@
-package com.soma.lof.foundation.api
+package com.soma.lof.common.api
 
-import com.soma.lof.foundation.data.dto.SelectTeamData
-import com.soma.lof.foundation.data.dto.TeamResponse
-import com.soma.lof.foundation.data.entity.TeamInfo
+import com.soma.lof.common.data.dto.TeamResponse
+import com.soma.lof.common.data.entity.TeamInfo
 import retrofit2.Response
 import retrofit2.http.Body
 import retrofit2.http.GET

@@ -12,7 +12,7 @@ import com.google.android.gms.auth.api.signin.GoogleSignInOptions
 import com.soma.lof.common.repository.UserRepository
 import com.soma.lof.common.domain.DataStoreUseCase
 import com.soma.lof.common.route.FeatureSelectTeamRouteContract
-import com.soma.lof.foundation.data.dto.UserTokenRequest
+import com.soma.lof.common.data.dto.UserTokenRequest
 import com.soma.login.google_login_web_key
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow

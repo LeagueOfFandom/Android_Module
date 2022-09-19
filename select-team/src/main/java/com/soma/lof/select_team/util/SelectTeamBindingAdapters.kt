@@ -2,8 +2,7 @@ package com.soma.lof.select_team.util
 
 import androidx.databinding.BindingAdapter
 import androidx.recyclerview.widget.RecyclerView
-import com.soma.lof.foundation.data.entity.TeamInfo
-import com.soma.lof.select_team.model.FakeLeagueTeamList
+import com.soma.lof.common.data.entity.TeamInfo
 import com.soma.lof.select_team.ui.SelectTeamListAdapter
 
 @BindingAdapter("teamItems")

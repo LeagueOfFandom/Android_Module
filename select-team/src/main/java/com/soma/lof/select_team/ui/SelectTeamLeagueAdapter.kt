@@ -8,7 +8,5 @@ class SelectTeamLeagueAdapter(fa: FragmentActivity, private val viewModel: Selec
 
     override fun getItemCount(): Int = viewModel.tabItems.value.size
 
-    override fun createFragment(position: Int): Fragment = SelectTeamListFragment(position)
-
-
+    override fun createFragment(position: Int): Fragment = SelectTeamListFragment.newInstance(position)
 }

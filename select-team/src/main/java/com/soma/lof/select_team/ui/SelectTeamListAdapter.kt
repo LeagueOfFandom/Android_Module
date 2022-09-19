@@ -9,7 +9,7 @@ import androidx.databinding.DataBindingUtil
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
-import com.soma.lof.foundation.data.entity.TeamInfo
+import com.soma.lof.common.data.entity.TeamInfo
 import com.soma.lof.select_team.R
 import com.soma.lof.select_team.databinding.ItemSelectTeamBinding
 
