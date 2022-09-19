@@ -1,4 +1,4 @@
-package com.soma.lof.foundation.data.dto
+package com.soma.lof.common.data.dto
 
 data class UserTokenRequest(
     val fcmToken: String?,

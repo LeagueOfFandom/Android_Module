@@ -1,6 +1,6 @@
 package com.soma.lof.select_team.model
 
-import com.soma.lof.foundation.data.entity.TeamInfo
+import com.soma.lof.common.data.entity.TeamInfo
 
 data class FakeLeagueTeamList(
     val note: String,

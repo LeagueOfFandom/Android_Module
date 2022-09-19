@@ -1,7 +1,7 @@
-package com.soma.lof.foundation.api
+package com.soma.lof.common.api
 
-import com.soma.lof.foundation.data.dto.UserTokenRequest
-import com.soma.lof.foundation.data.dto.UserTokenResponse
+import com.soma.lof.common.data.dto.UserTokenRequest
+import com.soma.lof.common.data.dto.UserTokenResponse
 import retrofit2.Response
 import retrofit2.http.Body
 import retrofit2.http.Header

@@ -7,7 +7,7 @@
 
         <variable
             name="fake"
-            type="com.soma.lof.foundation.data.entity.LeagueTeamInfo" />
+            type="com.soma.lof.common.data.entity.LeagueTeamInfo" />
 
         <variable
             name="adapter"

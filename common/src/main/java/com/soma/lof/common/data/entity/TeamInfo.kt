@@ -1,4 +1,4 @@
-package com.soma.lof.foundation.data.entity
+package com.soma.lof.common.data.entity
 
 data class TeamInfo(
     val league: String,

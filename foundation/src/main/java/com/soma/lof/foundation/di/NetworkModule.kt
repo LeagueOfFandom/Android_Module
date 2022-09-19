@@ -1,7 +1,5 @@
 package com.soma.lof.foundation.di
 
-import com.soma.lof.foundation.api.TeamService
-import com.soma.lof.foundation.api.UserService
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -10,7 +8,6 @@ import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
-import javax.inject.Named
 import javax.inject.Singleton
 
 @Module
@@ -41,19 +38,5 @@ object NetworkModule {
             .client(okHttpClient)
             .addConverterFactory(GsonConverterFactory.create())
             .build()
-    }
-
-    @Provides
-    @Singleton
-    @Named("UserService")
-    fun provideUserService(retrofit: Retrofit): UserService {
-        return retrofit.create(UserService::class.java)
-    }
-
-    @Provides
-    @Singleton
-    @Named("TeamService")
-    fun provideTeamService(retrofit: Retrofit): TeamService {
-        return retrofit.create(TeamService::class.java)
     }
 }
