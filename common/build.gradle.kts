@@ -44,6 +44,9 @@ dependencies {
     implementation(Dependencies.androidX.appCompat)
     
     implementation(Dependencies.androidX.dataStore)
+    implementation("androidx.appcompat:appcompat:1.5.1")
+    implementation("com.google.android.material:material:1.4.0")
+    implementation("androidx.constraintlayout:constraintlayout:2.1.4")
     testImplementation(Dependencies.Test.junit)
     androidTestImplementation(Dependencies.androidX.junit)
     androidTestImplementation(Dependencies.AndroidTest.espressoCore)

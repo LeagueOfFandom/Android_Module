@@ -1,2 +1,3 @@
 <resources>
+    <string name="match_count">총 %d개의 경기 일정이 있습니다.</string>
 </resources>

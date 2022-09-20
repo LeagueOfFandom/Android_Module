@@ -1,11 +1,8 @@
 package com.soma.lof.common.di
 
-import com.soma.lof.common.repository.TeamRepository
-import com.soma.lof.common.repository.TeamRepositoryImpl
-import com.soma.lof.common.repository.UserRepository
-import com.soma.lof.common.repository.UserRepositoryImpl
 import com.soma.lof.common.api.TeamService
 import com.soma.lof.common.api.UserService
+import com.soma.lof.common.repository.*
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -20,7 +17,7 @@ object RepositoryModule {
     @Provides
     @Singleton
     fun provideUserRepository(
-        @Named("UserService") userService: UserService
+        userService: UserService
     ) : UserRepository {
         return UserRepositoryImpl(userService)
     }
@@ -28,8 +25,15 @@ object RepositoryModule {
     @Provides
     @Singleton
     fun provideTeamRepository(
-        @Named("TeamService") teamService: TeamService
+        teamService: TeamService
     ) : TeamRepository {
         return TeamRepositoryImpl(teamService)
+    }
+
+    @Provides
+    @Singleton
+    fun provideMatchRepository(
+    ) : MatchRepository {
+        return MatchRepositoryImpl()
     }
 }

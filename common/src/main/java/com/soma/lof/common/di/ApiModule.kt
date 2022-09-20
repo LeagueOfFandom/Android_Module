@@ -16,14 +16,12 @@ object ApiModule {
 
     @Provides
     @Singleton
-    @Named("UserService")
     fun provideUserService(retrofit: Retrofit): UserService {
         return retrofit.create(UserService::class.java)
     }
 
     @Provides
     @Singleton
-    @Named("TeamService")
     fun provideTeamService(retrofit: Retrofit): TeamService {
         return retrofit.create(TeamService::class.java)
     }

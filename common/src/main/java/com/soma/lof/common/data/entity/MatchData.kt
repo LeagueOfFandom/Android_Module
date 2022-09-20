@@ -1,4 +1,4 @@
-package com.soma.lof.match.model.entity
+package com.soma.lof.common.data.entity
 
 data class MatchData(
     val matchId: Long,
@@ -11,6 +11,5 @@ data class MatchData(
     val isAlarm: Boolean,
     val homeScore: Int,
     val awayScore: Int,
-    var isHide: Boolean = true,
-    val isFinish: Boolean = false
+    var isHide: Boolean = true
 )

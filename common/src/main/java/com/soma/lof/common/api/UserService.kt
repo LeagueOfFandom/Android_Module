@@ -6,7 +6,9 @@ import retrofit2.Response
 import retrofit2.http.Body
 import retrofit2.http.Header
 import retrofit2.http.POST
+import javax.inject.Singleton
 
+@Singleton
 interface UserService {
     @POST("/user")
     suspend fun postUserToken(@Body userTokenRequest: UserTokenRequest) : Response<UserTokenResponse>

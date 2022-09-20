@@ -1,28 +1,27 @@
 package com.soma.lof.match.ui
 
-import android.util.Log
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.soma.lof.match.model.dto.FakeMatchDataResponse
-import com.soma.lof.match.model.entity.MatchData
-import com.soma.lof.match.repository.FakeMatchRepository
-import com.soma.lof.match.repository.FakeMatchRepositoryImpl
+import com.soma.lof.common.data.dto.MatchResponse
+import com.soma.lof.common.repository.MatchRepository
+import com.soma.lof.common.repository.MatchRepositoryImpl
 import dagger.hilt.android.lifecycle.HiltViewModel
-import kotlinx.coroutines.flow.*
+import kotlinx.coroutines.flow.MutableStateFlow
+import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 @HiltViewModel
 class MatchViewModel @Inject constructor(
-    private val fakeMatchRepository: FakeMatchRepository
+    private val matchRepository: MatchRepository
 ): ViewModel(){
 
 
-    val matchData: MutableStateFlow<FakeMatchDataResponse> = MutableStateFlow((fakeMatchRepository as FakeMatchRepositoryImpl).data)
+    val matchData: MutableStateFlow<MatchResponse> = MutableStateFlow((matchRepository as MatchRepositoryImpl).data)
 
     init {
         viewModelScope.launch {
-            fakeMatchRepository.getMatchData().collectLatest {
+            matchRepository.getMatchData().collectLatest {
                 matchData.value = it
             }
         }
