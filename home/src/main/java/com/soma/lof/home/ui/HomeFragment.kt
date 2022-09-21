@@ -23,9 +23,7 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>(R.layout.fragment_home) {
         CommonListAdapter(viewModel.homeData.value)
     }
 
-    private val homeBannerAdapter by lazy {
-        HomeBannerAdapter(this@HomeFragment, viewModel.homeBannerData.size)
-    }
+    private var homeBannerAdapter: HomeBannerAdapter? = null
 
     override fun initView() {
         Log.d(TAG, "initView: ${viewModel.homeData.value}")
@@ -34,6 +32,7 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>(R.layout.fragment_home) {
             adapter = homeAdapter
         }
 
+        homeBannerAdapter = HomeBannerAdapter(this@HomeFragment, viewModel.homeBannerData.size)
         binding.homeAdBanner.apply {
             adapter = homeBannerAdapter
             orientation = ViewPager2.ORIENTATION_HORIZONTAL
