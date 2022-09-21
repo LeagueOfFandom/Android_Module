@@ -71,12 +71,6 @@ class HomeRepositoryImpl @Inject constructor() : HomeRepository {
         CommonItem(
             "TEXT_ARROW_VIEW",
             TextArrowViewObject(
-                "My Team"
-            )
-        ),
-        CommonItem(
-            "TEXT_ARROW_VIEW",
-            TextArrowViewObject(
                 "실시간 인기글"
             )
         ),
