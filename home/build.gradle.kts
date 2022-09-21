@@ -60,4 +60,7 @@ dependencies {
     kaptAndroidTest(Dependencies.hilt.compiler)
     implementation(Dependencies.hilt.android)
     kapt(Dependencies.hilt.compiler)
+
+    // Indicator
+    implementation(Dependencies.library.indicator)
 }
