@@ -1,9 +1,6 @@
 package com.soma.lof.home.repository
 
-import com.soma.lof.common.data.entity.CommonItem
-import com.soma.lof.common.data.entity.HighLightViewObject
-import com.soma.lof.common.data.entity.MatchViewObject
-import com.soma.lof.common.data.entity.TextArrowViewObject
+import com.soma.lof.common.data.entity.*
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
 import javax.inject.Inject
@@ -81,6 +78,24 @@ class HomeRepositoryImpl @Inject constructor() : HomeRepository {
             "TEXT_ARROW_VIEW",
             TextArrowViewObject(
                 "실시간 인기글"
+            )
+        ),
+        CommonItem(
+            "COMMUNITY_VIEW",
+            CommunityViewObject(
+                "박정근",
+                "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS8SqlL9vqiQx_2-5mA0MY0Dv-ECXBAjEYtNg&usqp=CAU",
+                "2022년 9월 2일 22:05분",
+                "커뮤니티 테스트 내용"
+            )
+        ),
+        CommonItem(
+            "COMMUNITY_VIEW",
+            CommunityViewObject(
+                "실시간 인기글",
+                "https://file2.nocutnews.co.kr/newsroom/image/2020/04/22/20200422143312218214_0_800_800.jpg",
+                "2022년 9월 2일 22:05분",
+                "커뮤니티 테스트 내용\n하나 하나 하나"
             )
         ),
         CommonItem(
