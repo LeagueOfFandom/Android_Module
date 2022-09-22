@@ -108,5 +108,10 @@ object Dependencies {
 
     object Etc {
         val eventBus by lazy { "org.greenrobot:eventbus:3.3.1" }
+        //indicator
+        val indicator by lazy { "me.relex:circleindicator:2.1.6" }
+        // Youtube API
+        val youtubeCore by lazy { "com.pierfrancescosoffritti.androidyoutubeplayer:core:11.1.0" }
+        val youtubeChromeCast by lazy { "com.pierfrancescosoffritti.androidyoutubeplayer:chromecast-sender:0.26" }
     }
 }

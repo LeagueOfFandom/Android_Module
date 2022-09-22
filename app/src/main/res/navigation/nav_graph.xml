@@ -3,35 +3,12 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav_graph"
-    app:startDestination="@id/homeFragment">
+    app:startDestination="@id/nav_graph_home">
 
-    <fragment
-        android:id="@+id/homeFragment"
-        android:name="com.soma.lof.home.HomeFragment"
-        android:label="HomeFragment"
-        tools:layout="@layout/fragment_home"/>
-
-    <fragment
-        android:id="@+id/matchFragment"
-        android:name="com.soma.lof.match.ui.MatchFragment"
-        android:label="MatchFragment" />
-
-    <fragment
-        android:id="@+id/communityFragment"
-        android:name="com.soma.lof.community.CommunityFragment"
-        android:label="CommunityFragment"
-        tools:layout="@layout/fragment_community"/>
-
-    <fragment
-        android:id="@+id/infoFragment"
-        android:name="com.soma.lof.info.InfoFragment"
-        android:label="InfoFragment"
-        tools:layout="@layout/fragment_info"/>
-
-    <fragment
-        android:id="@+id/settingFragment"
-        android:name="com.soma.lof.setting.SettingFragment"
-        android:label="SettingFragment"
-        tools:layout="@layout/fragment_setting"/>
+    <include app:graph="@navigation/nav_graph_home"/>
+    <include app:graph="@navigation/nav_graph_match"/>
+    <include app:graph="@navigation/nav_graph_community"/>
+    <include app:graph="@navigation/nav_graph_info"/>
+    <include app:graph="@navigation/nav_graph_setting"/>
 
 </navigation>

@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph_match"
+    app:startDestination="@id/matchFragment">
+
+    <fragment
+        android:id="@+id/matchInfoFragment"
+        android:name="com.soma.lof.match.ui.MatchInfoFragment"
+        android:label="MatchInfoFragment"
+        tools:layout="@layout/fragment_match_info">
+        <action
+            android:id="@+id/action_matchInfoFragment_to_matchFragment"
+            app:destination="@id/matchFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/matchFragment"
+        android:name="com.soma.lof.match.ui.MatchFragment"
+        android:label="MatchFragment" >
+        <action
+            android:id="@+id/action_matchFragment_to_matchInfoFragment"
+            app:destination="@id/matchInfoFragment" />
+    </fragment>
+
+</navigation>

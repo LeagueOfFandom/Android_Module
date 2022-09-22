@@ -9,6 +9,10 @@
             type="com.soma.lof.common.data.entity.MatchViewObject" />
 
         <import type="android.view.View"/>
+
+        <variable
+            name="view"
+            type="com.soma.lof.common.ui.MatchResultVH" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -16,7 +20,8 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="16dp"
-        android:background="@drawable/bg_layout_pressed">
+        android:background="@drawable/bg_layout_pressed"
+        android:onClick="@{() -> view.navigateMatchInfo()}">
 
         <androidx.constraintlayout.widget.Guideline
             android:id="@+id/item_match_result_home_name_gl"

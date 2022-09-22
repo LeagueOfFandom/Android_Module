@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+        <variable
+            name="viewObject"
+            type="com.soma.lof.common.data.entity.HighLightViewObject" />
+        <variable
+            name="adapter"
+            type="com.soma.lof.common.ui.TestVideoAdapter" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="150dp"
+        android:paddingVertical="10dp">
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/highlight_view_rv"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            app:adapter="@{adapter}"
+            android:orientation="horizontal"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="test"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:textSize="30sp"/>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</layout>
