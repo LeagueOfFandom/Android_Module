@@ -1,7 +1,9 @@
 package com.soma.lof.home.ui
 
 import android.util.Log
+import androidx.core.net.toUri
 import androidx.fragment.app.viewModels
+import androidx.navigation.NavDeepLinkRequest
 import androidx.navigation.fragment.findNavController
 import androidx.viewpager2.widget.ViewPager2
 import com.soma.common.base.BaseFragment
@@ -67,6 +69,11 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>(R.layout.fragment_home) {
 
     fun move() {
         Log.d(TAG, "move: 클릭 중")
+        val request = NavDeepLinkRequest.Builder
+//            .fromUri("android-app://example.google.app/match_info_fragment".toUri())
+            .fromUri( "android-app://example.google.app/match_fragment".toUri())
+            .build()
+        findNavController().navigate(request)
     }
 
 

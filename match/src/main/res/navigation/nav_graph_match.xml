@@ -13,6 +13,9 @@
         <action
             android:id="@+id/action_matchInfoFragment_to_matchFragment"
             app:destination="@id/matchFragment" />
+
+        <deepLink
+            app:uri="android-app://example.google.app/match_info_fragment"/>
     </fragment>
 
     <fragment
@@ -22,6 +25,8 @@
         <action
             android:id="@+id/action_matchFragment_to_matchInfoFragment"
             app:destination="@id/matchInfoFragment" />
+        <deepLink
+            app:uri="android-app://example.google.app/match_fragment"/>
     </fragment>
 
 </navigation>
