@@ -1,6 +1,9 @@
 package com.soma.lof.common.ui
 
+import androidx.core.net.toUri
+import androidx.navigation.NavDeepLinkRequest
 import androidx.navigation.Navigation.findNavController
+import androidx.navigation.fragment.findNavController
 import com.soma.lof.common.data.entity.CommonItem
 import com.soma.lof.common.data.entity.MatchViewObject
 import com.soma.lof.common.databinding.ItemMatchResultBinding
@@ -18,6 +21,10 @@ class MatchResultVH(private val binding: ItemMatchResultBinding) : CommonVH(bind
     }
 
     fun navigateMatchInfo() {
-        featureMatchInfoRouteContract.show("", findNavController(itemView))
+        val request = NavDeepLinkRequest.Builder
+            .fromUri("android-app://example.google.app/match_info_fragment".toUri())
+            .build()
+        findNavController(itemView).navigate(request)
+        // featureMatchInfoRouteContract.show("", findNavController(itemView))
     }
 }
