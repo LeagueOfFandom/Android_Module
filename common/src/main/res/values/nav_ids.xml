@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <item name="base_flow" type="id"/>
+    <item name="home_flow" type="id" />
+    <item name="match_flow" type="id" />
+    <item name="community_flow" type="id" />
+    <item name="info_flow" type="id" />
+    <item name="setting_flow" type="id" />
+</resources>

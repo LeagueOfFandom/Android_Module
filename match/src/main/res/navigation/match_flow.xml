@@ -2,7 +2,7 @@
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/nav_graph_match"
+    android:id="@id/match_flow"
     app:startDestination="@id/matchFragment">
 
     <fragment
@@ -10,12 +10,9 @@
         android:name="com.soma.lof.match.ui.MatchInfoFragment"
         android:label="MatchInfoFragment"
         tools:layout="@layout/fragment_match_info">
-        <action
-            android:id="@+id/action_matchInfoFragment_to_matchFragment"
-            app:destination="@id/matchFragment" />
 
         <deepLink
-            app:uri="android-app://example.google.app/match_info_fragment"/>
+            app:uri="lof://match_info"/>
     </fragment>
 
     <fragment
@@ -26,7 +23,7 @@
             android:id="@+id/action_matchFragment_to_matchInfoFragment"
             app:destination="@id/matchInfoFragment" />
         <deepLink
-            app:uri="android-app://example.google.app/match_fragment"/>
+            app:uri="lof://match"/>
     </fragment>
 
 </navigation>
