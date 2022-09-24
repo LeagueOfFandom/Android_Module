@@ -19,10 +19,11 @@ import kotlinx.coroutines.flow.collectLatest
 class MatchFragment : BaseFragment<FragmentMatchBinding>(R.layout.fragment_match) {
 
     private val viewModel by viewModels<MatchViewModel>()
-    private val matchDateListAdapter: MatchDateListAdapter by lazy {
-        MatchDateListAdapter(this@MatchFragment, viewModel)
-    }
+    private var matchDateListAdapter: MatchDateListAdapter? = null
+
     override fun initView() {
+
+        matchDateListAdapter = MatchDateListAdapter(this@MatchFragment, viewModel)
 
         lifecycleScope.launchWhenCreated {
             viewModel.matchData.collectLatest {
