@@ -17,6 +17,6 @@ class MatchResultVH(private val binding: ItemMatchResultBinding) : CommonVH(bind
     }
 
     fun navigateMatchInfo() {
-        findNavController(itemView).deepLinkNavigateTo(DeepLinkDestination.Match.Info)
+        findNavController(itemView).deepLinkNavigateTo(DeepLinkDestination.Match.ResultInfo)
     }
 }

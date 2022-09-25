@@ -57,9 +57,16 @@ dependencies {
     androidTestImplementation(Dependencies.androidX.junit)
     androidTestImplementation(Dependencies.AndroidTest.espressoCore)
 
+    // Glide
+    implementation(Dependencies.glide.android)
+    implementation(Dependencies.glide.annotationProcessor)
+
     // Hilt
     androidTestImplementation(Dependencies.androidTest.hilt)
     kaptAndroidTest(Dependencies.hilt.compiler)
     implementation(Dependencies.hilt.android)
     kapt(Dependencies.hilt.compiler)
+
+    // Chart
+    implementation(Dependencies.library.chart)
 }
