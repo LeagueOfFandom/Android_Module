@@ -44,6 +44,22 @@ class MatchFragment : BaseFragment<FragmentMatchBinding>(R.layout.fragment_match
                 }.attach()
             }
         }
+
+        /*이벤트 연결하기
+Data Binding 을 이용하여 ViewModel 과 연동
+<androidx.appcompat.widget.SwitchCompat android:checked="@{viewModel.pushOnOff}" android:onCheckedChanged="@{(_, isChecked)-> viewModel.setPushOnOff(isChecked)}" />
+
+<androidx.appcompat.widget.SwitchCompat
+	android:checked="@{viewModel.pushOnOff}"
+    android:onCheckedChanged="@{(_, isChecked)-> viewModel.setPushOnOff(isChecked)}"
+/>
+viewModel code
+class SwitchViewModel :ViewModel{
+	val pushOnOff : MutableLiveData<Boolean> = MutableLiveData()
+	fun setPushOnOff( isTurnOn: Boolean) {
+		// something
+	}
+*/
     }
 
     companion object {
