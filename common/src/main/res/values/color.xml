@@ -8,4 +8,6 @@
     <color name="match_preview_default_text_color">#383A49</color>
     <color name="match_info_image_substitute">#CACDD6</color>
 
+    <color name="info_alarm_red_oval">#FC7B7B</color>
+
 </resources>
