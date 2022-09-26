@@ -19,10 +19,11 @@ import kotlinx.coroutines.flow.collectLatest
 class MatchFragment : BaseFragment<FragmentMatchBinding>(R.layout.fragment_match) {
 
     private val viewModel by viewModels<MatchViewModel>()
-    private val matchDateListAdapter: MatchDateListAdapter by lazy {
-        MatchDateListAdapter(this@MatchFragment, viewModel)
-    }
+    private var matchDateListAdapter: MatchDateListAdapter? = null
+
     override fun initView() {
+
+        matchDateListAdapter = MatchDateListAdapter(this@MatchFragment, viewModel)
 
         lifecycleScope.launchWhenCreated {
             viewModel.matchData.collectLatest {
@@ -43,6 +44,22 @@ class MatchFragment : BaseFragment<FragmentMatchBinding>(R.layout.fragment_match
                 }.attach()
             }
         }
+
+        /*이벤트 연결하기
+Data Binding 을 이용하여 ViewModel 과 연동
+<androidx.appcompat.widget.SwitchCompat android:checked="@{viewModel.pushOnOff}" android:onCheckedChanged="@{(_, isChecked)-> viewModel.setPushOnOff(isChecked)}" />
+
+<androidx.appcompat.widget.SwitchCompat
+	android:checked="@{viewModel.pushOnOff}"
+    android:onCheckedChanged="@{(_, isChecked)-> viewModel.setPushOnOff(isChecked)}"
+/>
+viewModel code
+class SwitchViewModel :ViewModel{
+	val pushOnOff : MutableLiveData<Boolean> = MutableLiveData()
+	fun setPushOnOff( isTurnOn: Boolean) {
+		// something
+	}
+*/
     }
 
     companion object {

@@ -1,0 +1,146 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:bind="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context=".feature.matchinfo.MatchLineUpFragment">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/white"
+        android:paddingTop="20dp">
+
+        <include
+            android:id="@+id/line_up_home_top"
+            layout="@layout/item_match_line_up_home_team"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_marginEnd="10dp"
+            android:layout_marginBottom="20dp"
+            app:layout_constraintBottom_toTopOf="@+id/line_up_home_jungle"
+            app:layout_constraintEnd_toStartOf="@+id/line_up_away_top"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <include
+            android:id="@+id/line_up_away_top"
+            layout="@layout/item_match_line_up_away_team"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_marginStart="10dp"
+            android:layout_marginBottom="20dp"
+            app:layout_constraintBottom_toTopOf="@+id/line_up_away_jungle"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toEndOf="@+id/line_up_home_top"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <include
+            android:id="@+id/line_up_home_jungle"
+            layout="@layout/item_match_line_up_home_team"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_marginEnd="10dp"
+            android:layout_marginBottom="20dp"
+            app:layout_constraintBottom_toTopOf="@+id/line_up_home_mid"
+            app:layout_constraintEnd_toStartOf="@+id/line_up_away_jungle"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/line_up_home_top" />
+
+        <include
+            android:id="@+id/line_up_away_jungle"
+            layout="@layout/item_match_line_up_away_team"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_marginStart="10dp"
+            android:layout_marginBottom="20dp"
+            app:layout_constraintBottom_toTopOf="@+id/line_up_away_mid"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toEndOf="@+id/line_up_home_jungle"
+            app:layout_constraintTop_toBottomOf="@+id/line_up_away_top" />
+
+        <include
+            android:id="@+id/line_up_home_mid"
+            layout="@layout/item_match_line_up_home_team"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_marginEnd="10dp"
+            android:layout_marginBottom="20dp"
+            app:layout_constraintBottom_toTopOf="@+id/line_up_home_bot"
+            app:layout_constraintEnd_toStartOf="@+id/line_up_away_mid"
+            app:layout_constraintHorizontal_bias="0.4"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/line_up_home_jungle" />
+
+        <include
+            android:id="@+id/line_up_away_mid"
+            layout="@layout/item_match_line_up_away_team"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_marginStart="10dp"
+            android:layout_marginBottom="20dp"
+            app:layout_constraintBottom_toTopOf="@+id/line_up_away_bot"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toEndOf="@+id/line_up_home_mid"
+            app:layout_constraintTop_toBottomOf="@+id/line_up_away_jungle" />
+
+
+        <include
+            android:id="@+id/line_up_home_bot"
+            layout="@layout/item_match_line_up_home_team"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_marginEnd="10dp"
+            android:layout_marginBottom="20dp"
+            app:layout_constraintBottom_toTopOf="@+id/line_up_home_sup"
+            app:layout_constraintEnd_toStartOf="@+id/line_up_away_bot"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/line_up_home_mid" />
+
+        <include
+            android:id="@+id/line_up_away_bot"
+            layout="@layout/item_match_line_up_away_team"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_marginStart="10dp"
+            android:layout_marginBottom="20dp"
+            app:layout_constraintBottom_toTopOf="@+id/line_up_away_sup"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toEndOf="@+id/line_up_home_bot"
+            app:layout_constraintTop_toBottomOf="@+id/line_up_away_mid"/>
+
+        <include
+            android:id="@+id/line_up_home_sup"
+            layout="@layout/item_match_line_up_home_team"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_marginEnd="10dp"
+            android:layout_marginBottom="20dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/line_up_away_sup"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/line_up_home_bot" />
+
+        <include
+            android:id="@+id/line_up_away_sup"
+            layout="@layout/item_match_line_up_away_team"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_marginStart="10dp"
+            android:layout_marginBottom="20dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toEndOf="@+id/line_up_home_sup"
+            app:layout_constraintTop_toBottomOf="@+id/line_up_away_bot" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

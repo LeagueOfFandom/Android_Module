@@ -1,4 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <color name="match_score_bg_color">#F6F7F8</color>
+    <color name="btn_match_set_color">#D2D2D2</color>
+    <color name="match_info_area_default_color">#E4E5E8</color>
+    <color name="match_line_up_color">#EFEFEF</color>
+    <color name="match_gray_color">#989CAA</color>
+    <color name="bg_color">#F6F7F8</color>
 </resources>

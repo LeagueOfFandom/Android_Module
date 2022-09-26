@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@id/match_flow"
+    app:startDestination="@id/matchFragment">
+
+    <fragment
+        android:id="@+id/matchFragment"
+        android:name="com.soma.lof.match.ui.MatchFragment"
+        android:label="MatchFragment" >
+
+        <deepLink
+            app:uri="lof://match"/>
+        <action
+            android:id="@+id/action_matchFragment_to_matchScheduleInfoFragment"
+            app:destination="@id/matchScheduleInfoFragment" />
+        <action
+            android:id="@+id/action_matchFragment_to_matchResultInfoFragment"
+            app:destination="@id/matchResultInfoFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/matchScheduleInfoFragment"
+        android:name="com.soma.lof.match.ui.MatchScheduleInfoFragment"
+        android:label="MatchInfoFragment"
+        tools:layout="@layout/fragment_match_schedule_info">
+
+        <deepLink
+            app:uri="lof://match_schedule_info"/>
+    </fragment>
+
+    <fragment
+        android:id="@+id/matchResultInfoFragment"
+        android:name="com.soma.lof.match.ui.MatchResultInfoFragment"
+        android:label="MatchResultInfoFragment" >
+
+        <deepLink
+            app:uri="lof://match_result_info"/>
+    </fragment>
+
+</navigation>

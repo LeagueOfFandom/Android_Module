@@ -1,6 +1,7 @@
 package com.soma.lof.common.data.entity
 
 enum class ViewType(viewType: String) {
+    // HOME
     MATCH_LIVE_VIEW("MATCH_LIVE_VIEW"),
     TEXT_ARROW_VIEW("TEXT_ARROW_VIEW"),
     MATCH_RESULT_VIEW("MATCH_RESULT_VIEW"),
@@ -8,5 +9,10 @@ enum class ViewType(viewType: String) {
     USER_TEAM_VIEW("USER_TEAM_VIEW"),
     COMMUNITY_VIEW("COMMUNITY_VIEW"),
     HIGHLIGHT_VIEW("HIGHLIGHT_VIEW"),
-    ERROR_VIEW("ERROR_VIEW")
+    ERROR_VIEW("ERROR_VIEW"),
+
+    // MATCH_INFO
+    MATCH_PREVIEW_TEXT_VIEW("MATCH_PREVIEW_TEXT_VIEW"),
+    MATCH_PREVIEW_IMAGE_VIEW("MATCH_PREVIEW_IMAGE_VIEW"),
+
 }

@@ -2,9 +2,12 @@ package com.soma.lof.home.ui
 
 import android.util.Log
 import androidx.fragment.app.viewModels
+import androidx.navigation.fragment.findNavController
 import androidx.viewpager2.widget.ViewPager2
 import com.soma.common.base.BaseFragment
 import com.soma.lof.common.ui.CommonListAdapter
+import com.soma.lof.common.util.DeepLinkDestination
+import com.soma.lof.common.util.deepLinkNavigateTo
 import com.soma.lof.home.R
 import com.soma.lof.home.databinding.FragmentHomeBinding
 import dagger.hilt.android.AndroidEntryPoint
@@ -30,6 +33,7 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>(R.layout.fragment_home) {
 
         bind {
             adapter = homeAdapter
+            fragment = this@HomeFragment
         }
 
         homeBannerAdapter = HomeBannerAdapter(this@HomeFragment, viewModel.homeBannerData.size)
@@ -58,4 +62,20 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>(R.layout.fragment_home) {
         binding.homeAdBanner.setCurrentItem(currentPage, true)
         currentPage = (currentPage + 1) % 6
     }
+
+    fun move() {
+//        Log.d(TAG, "move: 클릭 중")
+//        val request = NavDeepLinkRequest.Builder
+//            .fromUri("android-app://example.google.app/match_info_fragment".toUri())
+////            .fromUri( "android-app://example.google.app/match_fragment".toUri())
+//            .build()
+//        val startDestination = findNavController().graph.startDestinationId
+//        val navOptions = NavOptions.Builder()
+//            .setPopUpTo(startDestination, false)
+//            .build()
+//        Navigation.findNavController(requireView()).navigate(request, navOptions)
+        findNavController().deepLinkNavigateTo(DeepLinkDestination.Match.Result)
+    }
+
+
 }

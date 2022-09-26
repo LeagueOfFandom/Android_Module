@@ -113,5 +113,6 @@ object Dependencies {
         // Youtube API
         val youtubeCore by lazy { "com.pierfrancescosoffritti.androidyoutubeplayer:core:11.1.0" }
         val youtubeChromeCast by lazy { "com.pierfrancescosoffritti.androidyoutubeplayer:chromecast-sender:0.26" }
+        val chart by lazy { "com.github.PhilJay:MPAndroidChart:v3.1.0" }
     }
 }

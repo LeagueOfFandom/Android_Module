@@ -5,5 +5,7 @@
     <color name="white">#ffffff</color>
     <color name="default_text_color">#989CAA</color>
     <color name="live_match_text_color">#EF4D4D</color>
+    <color name="match_preview_default_text_color">#383A49</color>
+    <color name="match_info_image_substitute">#CACDD6</color>
 
 </resources>

@@ -18,19 +18,19 @@ object RouteModule {
 
     @Provides
     @Singleton
-    fun provideFeatureLoginRoute() : FeatureLoginRouteContract {
+    fun providesFeatureLoginRoute() : FeatureLoginRouteContract {
         return FeatureLoginRoute()
     }
 
     @Provides
     @Singleton
-    fun provideFeatureSelectTeamRoute() : FeatureSelectTeamRouteContract {
+    fun providesFeatureSelectTeamRoute() : FeatureSelectTeamRouteContract {
         return FeatureSelectTeamRoute()
     }
 
     @Provides
     @Singleton
-    fun provideHomeRoute(): FeatureHomeRouteContract {
+    fun providesHomeRoute(): FeatureHomeRouteContract {
         return FeatureHomeRoute()
     }
 }

@@ -3,31 +3,31 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <item
-        android:id="@+id/homeFragment"
+        android:id="@id/home_flow"
         android:icon="@drawable/ic_home"
         android:title="home"
         app:showAsAction="ifRoom"/>
 
     <item
-        android:id="@+id/matchFragment"
+        android:id="@id/match_flow"
         android:icon="@drawable/ic_match"
         android:title="match"
         app:showAsAction="ifRoom"/>
 
     <item
-        android:id="@+id/communityFragment"
+        android:id="@id/community_flow"
         android:icon="@drawable/ic_community"
         android:title="community"
         app:showAsAction="ifRoom"/>
 
     <item
-        android:id="@+id/infoFragment"
+        android:id="@id/info_flow"
         android:icon="@drawable/ic_alarm"
         android:title="info"
         app:showAsAction="ifRoom"/>
 
     <item
-        android:id="@+id/settingFragment"
+        android:id="@id/setting_flow"
         android:icon="@drawable/ic_more"
         android:title="setting"
         app:showAsAction="ifRoom"/>

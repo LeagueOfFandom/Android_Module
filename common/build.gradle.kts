@@ -3,6 +3,8 @@ plugins {
     id("org.jetbrains.kotlin.android")
     kotlin("kapt")
     id("dagger.hilt.android.plugin")
+    id("androidx.navigation.safeargs")
+
 }
 
 android {
@@ -40,16 +42,17 @@ dependencies {
     api(project(":foundation"))
 
     implementation(Dependencies.androidX.core)
-    implementation(Dependencies.androidX.material)
     implementation(Dependencies.androidX.appCompat)
-    
+    implementation(Dependencies.androidX.material)
+    implementation(Dependencies.androidX.constraintLayout)
     implementation(Dependencies.androidX.dataStore)
-    implementation("androidx.appcompat:appcompat:1.5.1")
-    implementation("com.google.android.material:material:1.4.0")
-    implementation("androidx.constraintlayout:constraintlayout:2.1.4")
+    implementation(Dependencies.androidX.navigation.ui)
+    implementation(Dependencies.androidX.navigation.fragment)
+
     testImplementation(Dependencies.Test.junit)
     androidTestImplementation(Dependencies.androidX.junit)
     androidTestImplementation(Dependencies.AndroidTest.espressoCore)
+
 
     //Glide
     implementation(Dependencies.glide.android)
