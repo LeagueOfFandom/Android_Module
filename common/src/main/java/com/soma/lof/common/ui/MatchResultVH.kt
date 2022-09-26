@@ -6,7 +6,6 @@ import com.soma.lof.common.data.entity.MatchViewObject
 import com.soma.lof.common.databinding.ItemMatchResultBinding
 import com.soma.lof.common.util.DeepLinkDestination
 import com.soma.lof.common.util.deepLinkNavigateTo
-import javax.inject.Inject
 
 class MatchResultVH(private val binding: ItemMatchResultBinding) : CommonVH(binding) {
 
@@ -16,7 +15,7 @@ class MatchResultVH(private val binding: ItemMatchResultBinding) : CommonVH(bind
         binding.view = this@MatchResultVH
     }
 
-    fun navigateMatchInfo() {
-        findNavController(itemView).deepLinkNavigateTo(DeepLinkDestination.Match.ResultInfo)
+    fun navigateMatchResult() {
+        findNavController(itemView).deepLinkNavigateTo(DeepLinkDestination.Match.Result)
     }
 }

@@ -15,7 +15,6 @@ import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
-import javax.inject.Inject
 
 @AndroidEntryPoint
 class HomeFragment : BaseFragment<FragmentHomeBinding>(R.layout.fragment_home) {
@@ -75,7 +74,7 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>(R.layout.fragment_home) {
 //            .setPopUpTo(startDestination, false)
 //            .build()
 //        Navigation.findNavController(requireView()).navigate(request, navOptions)
-        findNavController().deepLinkNavigateTo(DeepLinkDestination.Match.ResultInfo)
+        findNavController().deepLinkNavigateTo(DeepLinkDestination.Match.Result)
     }
 
 
