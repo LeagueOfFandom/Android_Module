@@ -19,6 +19,10 @@ object CommonVHFactory {
 
             ViewType.MATCH_PREVIEW_TEXT_VIEW.ordinal -> MatchPreviewTextVH(getViewDataBinding(parent, R.layout.item_match_preview_text))
             ViewType.MATCH_PREVIEW_IMAGE_VIEW.ordinal -> MatchPreviewTextVH(getViewDataBinding(parent, R.layout.item_match_preview_image))
+
+            ViewType.ONE_LINE_TEXT_VIEW.ordinal -> OneLineTextVH(getViewDataBinding(parent, R.layout.item_one_line_text))
+            ViewType.INFO_DEFAULT_VIEW.ordinal -> InfoDefaultVH(getViewDataBinding(parent, R.layout.item_info_default_view))
+
             else -> MatchScheduleVH(getViewDataBinding(parent, R.layout.item_match_schedule))
         }
     }
