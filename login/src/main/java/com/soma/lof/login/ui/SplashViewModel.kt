@@ -1,4 +1,4 @@
-package com.soma.lof.login
+package com.soma.lof.login.ui
 
 import android.util.Log
 import androidx.lifecycle.ViewModel

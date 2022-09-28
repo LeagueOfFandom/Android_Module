@@ -1,9 +1,10 @@
-package com.soma.lof.login
+package com.soma.lof.login.route
 
 import android.app.Activity
 import android.content.Intent
 import android.os.Bundle
 import com.soma.lof.common.route.FeatureLoginRouteContract
+import com.soma.lof.login.ui.LoginActivity
 import javax.inject.Singleton
 
 @Singleton

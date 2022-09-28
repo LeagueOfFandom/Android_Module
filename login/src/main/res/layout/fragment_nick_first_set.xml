@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:paddingHorizontal="16dp"
+        android:paddingVertical="20dp">
+
+        <TextView
+            android:id="@+id/set_first_nick_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="커뮤니티에서 사용할\n닉네임을 입력해주세요"
+            android:textColor="@color/black"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toTopOf="@id/set_nick_btn"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.3"
+            app:layout_constraintStart_toStartOf="parent"/>
+
+        <androidx.appcompat.widget.AppCompatEditText
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="30dp"
+            android:hint="이름"
+            android:paddingHorizontal="10dp"
+            android:paddingVertical="5dp"
+            android:textColor="@color/black"
+            android:textSize="20sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/set_first_nick_title"
+            tools:text="hello" />
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/set_nick_btn"
+            android:layout_width="0dp"
+            android:layout_height="50dp"
+            android:background="@drawable/bg_select_btn"
+            android:enabled="false"
+            android:gravity="center"
+            android:text="다음"
+            android:textColor="@color/white"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</layout>

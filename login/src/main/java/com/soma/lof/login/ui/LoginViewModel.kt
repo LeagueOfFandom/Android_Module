@@ -1,4 +1,4 @@
-package com.soma.lof.login
+package com.soma.lof.login.ui
 
 import android.app.Activity
 import android.app.Application

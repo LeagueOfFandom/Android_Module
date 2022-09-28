@@ -6,32 +6,18 @@
     <data>
         <variable
             name="activity"
-            type="com.soma.lof.login.LoginActivity" />
+            type="com.soma.lof.login.ui.LoginActivity" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".LoginActivity">
+        tools:context=".ui.LoginActivity">
 
-        <androidx.appcompat.widget.AppCompatButton
-            android:layout_width="300dp"
-            android:layout_height="wrap_content"
-            android:onClick="@{() -> activity.passLogin()}"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            android:layout_marginBottom="200dp"
-            android:text="Pass"
-            android:gravity="center"/>
-
-
-        <com.google.android.gms.common.SignInButton
+        <androidx.fragment.app.FragmentContainerView
+            android:id="@+id/login_fragment_view"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:onClick="@{() -> activity.googleLogin()}"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"/>
+            android:layout_height="match_parent"/>
+
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

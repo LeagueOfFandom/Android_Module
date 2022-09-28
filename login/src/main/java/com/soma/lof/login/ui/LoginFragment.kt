@@ -1,40 +1,37 @@
-package com.soma.lof.login
+package com.soma.lof.login.ui
 
 import android.content.Intent
-import android.os.Bundle
 import android.util.Log
 import android.widget.Toast
 import androidx.activity.result.ActivityResult
 import androidx.activity.result.ActivityResultLauncher
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.activity.viewModels
+import androidx.appcompat.app.AppCompatActivity
+import androidx.fragment.app.viewModels
 import com.google.android.gms.auth.api.signin.GoogleSignIn
 import com.google.android.gms.common.api.ApiException
-import com.soma.common.base.BaseActivity
-import com.soma.lof.login.databinding.ActivityLoginBinding
-import dagger.hilt.android.AndroidEntryPoint
+import com.soma.common.base.BaseFragment
+import com.soma.lof.login.R
+import com.soma.lof.login.databinding.FragmentLoginBinding
 
-@AndroidEntryPoint
-class LoginActivity : BaseActivity<ActivityLoginBinding>(R.layout.activity_login) {
-    private val viewModel by viewModels<LoginViewModel>()
+class LoginFragment : BaseFragment<FragmentLoginBinding>(R.layout.fragment_login) {
+
     private lateinit var startGoogleLoginForResult: ActivityResultLauncher<Intent>
+    private val viewModel by viewModels<LoginViewModel>()
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        binding.activity = this@LoginActivity
-        supportActionBar?.hide()
+    override fun initView() {
 
-        initGoogleLogin()
     }
 
-    fun passLogin() {
-        viewModel.navigateSelectTeam(this@LoginActivity, Intent.FLAG_ACTIVITY_CLEAR_TASK, Intent.FLAG_ACTIVITY_NEW_TASK)
-    }
+//    fun passLogin() {
+//        viewModel.navigateSelectTeam(this@LoginActivity, Intent.FLAG_ACTIVITY_CLEAR_TASK, Intent.FLAG_ACTIVITY_NEW_TASK)
+//    }
 
     private fun initGoogleLogin() {
         startGoogleLoginForResult =
             registerForActivityResult(ActivityResultContracts.StartActivityForResult()) { result: ActivityResult ->
-                if (result.resultCode == RESULT_OK) {
+                if (result.resultCode == AppCompatActivity.RESULT_OK) {
                     result.data?.let { data ->
                         val task = GoogleSignIn.getSignedInAccountFromIntent(data)
                         try {
@@ -45,7 +42,7 @@ class LoginActivity : BaseActivity<ActivityLoginBinding>(R.layout.activity_login
                                 Log.d(TAG, "viewModel 호출")
                                 viewModel.getUserTokenInfo(account.idToken!!)
                             } else {
-                                Toast.makeText(this, "Login Failed", Toast.LENGTH_SHORT).show()
+                                Toast.makeText(requireContext(), "Login Failed", Toast.LENGTH_SHORT).show()
                             }
                         } catch (e: ApiException) {
                             Log.e(TAG, "Google Result Error $result")
@@ -55,7 +52,7 @@ class LoginActivity : BaseActivity<ActivityLoginBinding>(R.layout.activity_login
                     Log.e(TAG, "initGoogleLogin: ${result.resultCode} ${result.data?.data} ")
                 }
             }
-        Toast.makeText(this, "Click", Toast.LENGTH_SHORT).show()
+        Toast.makeText(requireContext(), "Click", Toast.LENGTH_SHORT).show()
     }
 
     fun googleLogin() {
@@ -65,6 +62,6 @@ class LoginActivity : BaseActivity<ActivityLoginBinding>(R.layout.activity_login
     }
 
     companion object {
-        private const val TAG = "LoginActivity"
+        const val TAG = "LoginFragment"
     }
 }

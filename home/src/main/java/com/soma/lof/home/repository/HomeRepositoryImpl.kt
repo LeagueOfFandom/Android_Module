@@ -1,22 +1,32 @@
 package com.soma.lof.home.repository
 
+import android.util.Log
+import com.soma.lof.common.api.UserService
 import com.soma.lof.common.data.entity.*
-import kotlinx.coroutines.flow.Flow
-import kotlinx.coroutines.flow.flow
+import com.soma.lof.foundation.exception.EmptyBodyException
+import com.soma.lof.foundation.exception.NetworkFailureException
 import javax.inject.Inject
 
 
-class HomeRepositoryImpl @Inject constructor() : HomeRepository {
+class HomeRepositoryImpl @Inject constructor(
+    private val userService: UserService,
+) : HomeRepository {
 
-    /*TEXT_ARROW_VIEW("TEXT_ARROW_VIEW"),
-    MATCH_RESULT_VIEW("MATCH_RESULT_VIEW"),
-    MATCH_SCHEDULE_VIEW("MATCH_SCHEDULE_VIEW"),
-    USER_TEAM_VIEW("USER_TEAM_VIEW"),
-    COMMUNITY_VIEW("COMMUNITY_VIEW"),
-    HIGHLIGHT_VIEW("HIGHLIGHT_VIEW"),
-    ERROR_VIEW("ERROR_VIEW")*/
+    override suspend fun getMainPage(jwtToken: String): List<CommonItemResponse> {
 
-    val data = listOf<CommonItem>(
+        val response = userService.getMainPageTest(jwtToken)
+
+        if (response.isSuccessful) {
+            val data = response.body()
+                ?: throw EmptyBodyException("[${response.code()}] - ${response.raw()}")
+            Log.e("Home", "HomeRepositoryImpl: ${data}")
+            return data
+        } else {
+            throw NetworkFailureException("[${response.code()}] - ${response.raw()}")
+        }
+    }
+
+    val dummy: List<CommonItem> = listOf(
         CommonItem(
             "MATCH_LIVE_VIEW",
             MatchViewObject(
@@ -114,7 +124,6 @@ class HomeRepositoryImpl @Inject constructor() : HomeRepository {
             )
         )
     )
-    override suspend fun getHomeApi(): Flow<List<CommonItem>> = flow {
-        emit(data)
-    }
+
+
 }

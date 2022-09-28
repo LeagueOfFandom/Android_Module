@@ -1,5 +1,9 @@
 package com.soma.lof.common.data.entity
 
+import androidx.recyclerview.widget.RecyclerView
+import com.soma.lof.common.ui.CommonVH
+import com.soma.lof.common.ui.OneLineTextVH
+
 enum class ViewType(viewType: String) {
     // COMMON
     ONE_LINE_TEXT_VIEW("ONE_LINE_TEXT_VIEW"),
@@ -19,6 +23,5 @@ enum class ViewType(viewType: String) {
     MATCH_PREVIEW_IMAGE_VIEW("MATCH_PREVIEW_IMAGE_VIEW"),
 
     // INFO
-    INFO_DEFAULT_VIEW("INFO_DEFAULT_VIEW")
-
+    INFO_DEFAULT_VIEW("INFO_DEFAULT_VIEW");
 }

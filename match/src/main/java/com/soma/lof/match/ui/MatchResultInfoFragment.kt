@@ -2,7 +2,6 @@ package com.soma.lof.match.ui
 
 import com.soma.common.base.BaseFragment
 import com.soma.lof.common.data.entity.MatchViewObject
-import com.soma.lof.common.ui.CommonListAdapter
 import com.soma.lof.match.R
 import com.soma.lof.match.databinding.FragmentMatchResultInfoBinding
 

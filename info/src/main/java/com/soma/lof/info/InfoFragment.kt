@@ -1,10 +1,5 @@
 package com.soma.lof.info
 
-import android.os.Bundle
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
-import androidx.fragment.app.Fragment
 import com.soma.common.base.BaseFragment
 import com.soma.lof.common.data.entity.CommonItem
 import com.soma.lof.common.data.entity.InfoDefaultViewObject

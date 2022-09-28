@@ -71,4 +71,6 @@ dependencies {
     // Youtube
     implementation(Dependencies.library.youtubeCore)
     implementation(Dependencies.library.youtubeChromeCast)
+
+    implementation("com.google.code.gson:gson:2.9.1")
 }

@@ -46,6 +46,8 @@ dependencies {
     implementation(Dependencies.androidX.constraintLayout)
     implementation(Dependencies.androidX.fragment)
     implementation(Dependencies.androidX.lifecycle.viewModel)
+    implementation(Dependencies.androidX.navigation.ui)
+    implementation(Dependencies.androidX.navigation.fragment)
 
     testImplementation(Dependencies.Test.junit)
     androidTestImplementation(Dependencies.androidX.junit)

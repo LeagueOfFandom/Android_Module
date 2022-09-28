@@ -18,7 +18,7 @@ object CommonVHFactory {
             ViewType.HIGHLIGHT_VIEW.ordinal -> HighLightVH(getViewDataBinding(parent, R.layout.item_highlight_view))
 
             ViewType.MATCH_PREVIEW_TEXT_VIEW.ordinal -> MatchPreviewTextVH(getViewDataBinding(parent, R.layout.item_match_preview_text))
-            ViewType.MATCH_PREVIEW_IMAGE_VIEW.ordinal -> MatchPreviewTextVH(getViewDataBinding(parent, R.layout.item_match_preview_image))
+            ViewType.MATCH_PREVIEW_IMAGE_VIEW.ordinal -> MatchPreviewImageVH(getViewDataBinding(parent, R.layout.item_match_preview_image))
 
             ViewType.ONE_LINE_TEXT_VIEW.ordinal -> OneLineTextVH(getViewDataBinding(parent, R.layout.item_one_line_text))
             ViewType.INFO_DEFAULT_VIEW.ordinal -> InfoDefaultVH(getViewDataBinding(parent, R.layout.item_info_default_view))
