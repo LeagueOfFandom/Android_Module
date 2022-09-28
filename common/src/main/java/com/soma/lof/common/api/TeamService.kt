@@ -1,7 +1,6 @@
 package com.soma.lof.common.api
 
-import com.soma.lof.common.data.dto.TeamResponse
-import com.soma.lof.common.data.entity.TeamInfo
+import com.soma.lof.core_model.entity.TeamInfo
 import retrofit2.Response
 import retrofit2.http.Body
 import retrofit2.http.GET
@@ -13,7 +12,7 @@ import javax.inject.Singleton
 interface TeamService {
 
     @GET("/teamList")
-    suspend fun getSelectTeamList(@Header("Authorization") jwtToken: String): Response<TeamResponse>
+    suspend fun getSelectTeamList(@Header("Authorization") jwtToken: String): Response<com.soma.lof.core_model.dto.TeamResponse>
 
     @POST("/teamList")
     suspend fun postSelectTeamList(

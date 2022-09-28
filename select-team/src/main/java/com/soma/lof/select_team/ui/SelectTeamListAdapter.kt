@@ -1,6 +1,5 @@
 package com.soma.lof.select_team.ui
 
-
 import android.content.Context
 import android.view.LayoutInflater
 import android.view.ViewGroup
@@ -9,7 +8,7 @@ import androidx.databinding.DataBindingUtil
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
-import com.soma.lof.common.data.entity.TeamInfo
+import com.soma.lof.core_model.entity.TeamInfo
 import com.soma.lof.select_team.R
 import com.soma.lof.select_team.databinding.ItemSelectTeamBinding
 

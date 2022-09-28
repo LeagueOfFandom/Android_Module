@@ -7,7 +7,7 @@
     <data>
         <variable
             name="data"
-            type="com.soma.lof.common.data.entity.MatchViewObject" />
+            type="com.soma.lof.core_model.entity.MatchViewObject" />
 
         <variable
             name="setAdapter"

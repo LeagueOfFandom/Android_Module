@@ -4,14 +4,15 @@ import android.os.Bundle
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.NavigationUI
 import com.soma.common.base.BaseActivity
-import com.soma.lof.common.util.NavigationFlow
-import com.soma.lof.common.util.Navigator
-import com.soma.lof.common.util.ToFlowNavigable
+import com.soma.common_ui.util.NavigationFlow
+import com.soma.common_ui.util.Navigator
+import com.soma.common_ui.util.ToFlowNavigable
 import com.soma.lof.databinding.ActivityMainBinding
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
-class MainActivity : BaseActivity<ActivityMainBinding>(R.layout.activity_main), ToFlowNavigable {
+class MainActivity : BaseActivity<ActivityMainBinding>(R.layout.activity_main),
+    ToFlowNavigable {
 
     private val navigator: Navigator = Navigator(
 

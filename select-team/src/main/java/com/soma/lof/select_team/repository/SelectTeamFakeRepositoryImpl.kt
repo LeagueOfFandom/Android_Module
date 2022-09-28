@@ -1,6 +1,6 @@
 package com.soma.lof.select_team.repository
 
-import com.soma.lof.common.data.entity.TeamInfo
+import com.soma.lof.core_model.entity.TeamInfo
 import com.soma.lof.select_team.model.FakeLeagueTeamList
 import com.soma.lof.select_team.model.FakeSelectTeamModel
 import kotlinx.coroutines.flow.Flow
@@ -11,10 +11,10 @@ import javax.inject.Singleton
 class SelectTeamFakeRepositoryImpl : SelectTeamFakeRepository {
 
     val data = FakeSelectTeamModel(
-        listOf<String>(
+        listOf(
             "LCK", "LPL", "LCO"
         ),
-        listOf<FakeLeagueTeamList>(
+        listOf(
             FakeLeagueTeamList(
                 "대한민국의 LOL 프로 리그 팀의 리스트입니다.",
                 listOf(

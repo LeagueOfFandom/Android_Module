@@ -1,12 +1,9 @@
 package com.soma.lof.home.util
 
-import com.soma.lof.common.data.entity.CommonItem
-import com.soma.lof.common.data.entity.CommonItemResponse
-import com.soma.lof.common.data.entity.OneLineTextViewObject
-import com.soma.lof.common.data.entity.ViewType
-import com.soma.lof.common.ui.CommonVHFactory
-import com.soma.lof.common.ui.VHFactory
-import com.soma.lof.common.util.ViewObjectFactory
+import ViewObjectFactory
+import com.soma.lof.core_model.dto.CommonItem
+import com.soma.lof.core_model.dto.CommonItemResponse
+import com.soma.lof.core_model.entity.ViewType
 
 object CommonItemTranslator {
     fun List<CommonItemResponse>.toCommonItemList(): List<CommonItem> {
@@ -15,7 +12,8 @@ object CommonItemTranslator {
             commonItemList.add(
                 CommonItem(
                     item.viewType,
-                    ViewObjectFactory.createViewObject(ViewType.valueOf(item.viewType).ordinal, item.viewObject)
+                    ViewObjectFactory.createViewObject(ViewType.valueOf(item.viewType).ordinal,
+                        item.viewObject)
                 )
             )
         }

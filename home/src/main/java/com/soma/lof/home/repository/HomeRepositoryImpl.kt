@@ -1,8 +1,13 @@
 package com.soma.lof.home.repository
 
 import android.util.Log
+import com.soma.common_ui.presentation.TextArrowViewObject
 import com.soma.lof.common.api.UserService
-import com.soma.lof.common.data.entity.*
+import com.soma.lof.core_model.dto.CommonItem
+import com.soma.lof.core_model.dto.CommonItemResponse
+import com.soma.lof.core_model.entity.CommunityViewObject
+import com.soma.lof.core_model.entity.HighLightViewObject
+import com.soma.lof.core_model.entity.MatchViewObject
 import com.soma.lof.foundation.exception.EmptyBodyException
 import com.soma.lof.foundation.exception.NetworkFailureException
 import javax.inject.Inject
@@ -14,7 +19,7 @@ class HomeRepositoryImpl @Inject constructor(
 
     override suspend fun getMainPage(jwtToken: String): List<CommonItemResponse> {
 
-        val response = userService.getMainPageTest(jwtToken)
+        val response = userService.getMainPage(jwtToken)
 
         if (response.isSuccessful) {
             val data = response.body()

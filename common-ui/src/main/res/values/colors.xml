@@ -11,4 +11,11 @@
     <color name="main_color">#383A49</color>
     <color name="bg_color">#F6F7F8</color>
 
+    <color name="default_text_color">#989CAA</color>
+    <color name="live_match_text_color">#EF4D4D</color>
+    <color name="match_preview_default_text_color">#383A49</color>
+    <color name="match_info_image_substitute">#CACDD6</color>
+
+    <color name="info_alarm_red_oval">#FC7B7B</color>
+
 </resources>

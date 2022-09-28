@@ -1,7 +1,7 @@
 package com.soma.lof.select_team.repository
 
 import com.soma.lof.common.api.TeamService
-import com.soma.lof.common.data.dto.TeamResponse
+import com.soma.lof.core_model.dto.TeamResponse
 import com.soma.lof.foundation.exception.EmptyBodyException
 import com.soma.lof.foundation.exception.NetworkFailureException
 import kotlinx.coroutines.flow.Flow

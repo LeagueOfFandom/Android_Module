@@ -1,0 +1,228 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <variable
+            name="viewObject"
+            type="com.soma.lof.core_model.entity.MatchViewObject" />
+    </data>
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/match_live_layout"
+        android:layout_width="match_parent"
+        android:layout_height="120dp"
+        android:layout_marginHorizontal="16dp"
+        android:layout_marginTop="20dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:paddingHorizontal="12dp"
+            android:paddingVertical="12dp"
+            app:layout_constraintEnd_toStartOf="@+id/home_live_score_gl"
+            app:layout_constraintStart_toStartOf="@+id/home_live_score_gl">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/match_live_text_area"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
+
+                <TextView
+                    android:id="@+id/home_live_text"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="10dp"
+                    android:paddingHorizontal="5dp"
+                    android:paddingVertical="3dp"
+                    android:text="진행 중 경기보기"
+                    android:textColor="@color/black"
+                    android:textScaleX="1.1"
+                    android:textSize="11sp"
+                    android:textStyle="bold"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <TextView
+                    android:id="@+id/home_live_btn"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="10dp"
+                    android:background="@drawable/bg_match_live_text"
+                    android:paddingHorizontal="12dp"
+                    android:paddingVertical="3dp"
+                    android:text="LIVE"
+                    android:textColor="@color/white"
+                    android:textScaleX="1.1"
+                    android:textSize="11sp"
+                    android:textStyle="bold"
+                    app:layout_constraintStart_toEndOf="@id/home_live_text"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+            <TextView
+                android:id="@+id/home_live_info_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="10dp"
+                android:paddingHorizontal="5dp"
+                android:paddingVertical="3dp"
+                android:text="전적보기 >"
+                android:textColor="@color/black"
+                android:textScaleX="1.1"
+                android:textSize="11sp"
+                android:textStyle="bold"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <androidx.constraintlayout.widget.Guideline
+                android:id="@+id/home_live_home_name_gl"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                app:layout_constraintGuide_percent="0.2" />
+
+            <androidx.constraintlayout.widget.Guideline
+                android:id="@+id/home_live_home_logo_gl"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                app:layout_constraintGuide_percent="0.4" />
+
+            <androidx.constraintlayout.widget.Guideline
+                android:id="@+id/home_live_score_gl"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                app:layout_constraintGuide_percent="0.5" />
+
+
+            <androidx.constraintlayout.widget.Guideline
+                android:id="@+id/home_live_away_logo_gl"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                app:layout_constraintGuide_percent="0.6" />
+
+            <androidx.constraintlayout.widget.Guideline
+                android:id="@+id/home_live_away_name_gl"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                app:layout_constraintGuide_percent="0.8" />
+
+            <TextView
+                android:id="@+id/match_live_home_name"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:layout_marginTop="7dp"
+                android:autoSizeMaxTextSize="20sp"
+                android:autoSizeMinTextSize="14sp"
+                android:autoSizeStepGranularity="2sp"
+                android:autoSizeTextType="uniform"
+                android:gravity="center"
+                android:text="@{viewObject.homeName}"
+                android:textColor="@color/black"
+                android:textSize="14sp"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toStartOf="@id/home_live_home_name_gl"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/match_live_text_area"
+                tools:text="T1" />
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/home_live_home_logo"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:layout_margin="4dp"
+                android:scaleType="centerInside"
+                image="@{viewObject.homeImg}"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintDimensionRatio="w, 1:1"
+                app:layout_constraintEnd_toStartOf="@id/home_live_home_logo_gl"
+                app:layout_constraintStart_toEndOf="@id/home_live_home_name_gl"
+                app:layout_constraintTop_toBottomOf="@id/match_live_text_area" />
+
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/match_live_away_logo"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:layout_margin="4dp"
+                android:scaleType="centerInside"
+                image="@{viewObject.awayImg}"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintDimensionRatio="w, 1:1"
+                app:layout_constraintEnd_toStartOf="@id/home_live_away_name_gl"
+                app:layout_constraintStart_toEndOf="@id/home_live_away_logo_gl"
+                app:layout_constraintTop_toBottomOf="@id/match_live_text_area" />
+
+            <TextView
+                android:id="@+id/home_live_away_name"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:layout_marginTop="7dp"
+                android:autoSizeMaxTextSize="20sp"
+                android:autoSizeMinTextSize="14sp"
+                android:autoSizeStepGranularity="2sp"
+                android:autoSizeTextType="uniform"
+                android:gravity="center"
+                android:text="@{viewObject.awayName}"
+                android:textColor="@color/black"
+                android:textSize="14sp"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@id/home_live_away_name_gl"
+                app:layout_constraintTop_toBottomOf="@id/match_live_text_area"
+                tools:text="T1" />
+
+            <TextView
+                android:id="@+id/home_live_home_score"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/bg_match_live_result_score"
+                android:paddingHorizontal="7dp"
+                android:paddingVertical="3dp"
+                android:text="@{String.valueOf(viewObject.homeScore)}"
+                android:textColor="@color/black"
+                android:textSize="14sp"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toStartOf="@id/home_live_score_gl"
+                app:layout_constraintStart_toEndOf="@id/home_live_home_logo_gl"
+                app:layout_constraintTop_toBottomOf="@id/match_live_text_area"
+                app:layout_constraintVertical_chainStyle="packed"
+                tools:text="1" />
+
+            <TextView
+                android:id="@+id/home_live_away_score"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/bg_match_live_result_score"
+                android:paddingHorizontal="7dp"
+                android:paddingVertical="3dp"
+                android:text="@{String.valueOf(viewObject.awayScore)}"
+                android:textColor="@color/black"
+                android:textSize="14sp"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toStartOf="@id/home_live_away_logo_gl"
+                app:layout_constraintStart_toEndOf="@id/home_live_score_gl"
+                app:layout_constraintTop_toBottomOf="@id/match_live_text_area"
+                app:layout_constraintVertical_chainStyle="packed"
+                tools:text="1" />
+
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.cardview.widget.CardView>
+
+</layout>

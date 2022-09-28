@@ -2,6 +2,8 @@ plugins {
     id("com.android.library")
     id("org.jetbrains.kotlin.android")
     id("kotlin-kapt")
+    id("androidx.navigation.safeargs")
+
 
 }
 
@@ -37,20 +39,30 @@ android {
 
 dependencies {
 
-    implementation(project(":foundation"))
+    api(project(":foundation"))
+    implementation(project(":core-model"))
+
+    implementation(Dependencies.androidX.core)
+    implementation(Dependencies.androidX.appCompat)
+    implementation(Dependencies.androidX.material)
+    implementation(Dependencies.androidX.constraintLayout)
+    implementation(Dependencies.androidX.dataStore)
+    implementation(Dependencies.androidX.navigation.ui)
+    implementation(Dependencies.androidX.navigation.fragment)
 
     api(Dependencies.kotlin.coroutine)
-    implementation(Dependencies.androidX.core)
-    implementation(Dependencies.androidX.material)
-    implementation(Dependencies.androidX.constraintLayout)
-    implementation(Dependencies.androidX.appCompat)
-    implementation(Dependencies.glide.android)
-    implementation(Dependencies.glide.annotationProcessor)
-    implementation(Dependencies.androidX.core)
-    implementation(Dependencies.androidX.material)
-    implementation(Dependencies.androidX.constraintLayout)
-    implementation(Dependencies.androidX.appCompat)
+
+
     testImplementation(Dependencies.Test.junit)
     androidTestImplementation(Dependencies.androidX.junit)
     androidTestImplementation(Dependencies.AndroidTest.espressoCore)
+
+
+    //Glide
+    implementation(Dependencies.glide.android)
+    implementation(Dependencies.glide.annotationProcessor)
+
+    // Youtube
+    implementation(Dependencies.library.youtubeCore)
+    implementation(Dependencies.library.youtubeChromeCast)
 }

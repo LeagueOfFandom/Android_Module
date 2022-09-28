@@ -49,6 +49,7 @@ dependencies {
     implementation(project(":info"))
     implementation(project(":setting"))
     implementation(project(":common"))
+    implementation(project(":common-ui"))
 
     implementation(Dependencies.androidX.core)
     implementation(Dependencies.androidX.appCompat)

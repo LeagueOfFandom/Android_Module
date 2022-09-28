@@ -1,9 +1,9 @@
 package com.soma.lof.common.repository
 
-import com.soma.lof.common.data.dto.MatchResponse
-import com.soma.lof.common.data.entity.CommonItem
-import com.soma.lof.common.data.entity.DateInfo
-import com.soma.lof.common.data.entity.MatchViewObject
+import com.soma.lof.core_model.dto.CommonItem
+import com.soma.lof.core_model.dto.MatchResponse
+import com.soma.lof.core_model.entity.DateInfo
+import com.soma.lof.core_model.entity.MatchViewObject
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
 import javax.inject.Inject

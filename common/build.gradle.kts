@@ -40,6 +40,7 @@ android {
 dependencies {
 
     api(project(":foundation"))
+    implementation(project(":core-model"))
 
     implementation(Dependencies.androidX.core)
     implementation(Dependencies.androidX.appCompat)

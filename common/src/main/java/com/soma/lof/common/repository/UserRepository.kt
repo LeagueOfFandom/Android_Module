@@ -1,8 +1,7 @@
 package com.soma.lof.common.repository
 
-import com.soma.lof.common.data.dto.UserTokenRequest
-import com.soma.lof.common.data.dto.UserTokenResponse
-import com.soma.lof.common.data.entity.CommonItem
+import com.soma.lof.core_model.dto.UserTokenRequest
+import com.soma.lof.core_model.dto.UserTokenResponse
 import kotlinx.coroutines.flow.Flow
 import retrofit2.Response
 import retrofit2.http.Body

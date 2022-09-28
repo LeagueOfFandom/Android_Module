@@ -1,10 +1,6 @@
 package com.soma.lof.home.repository
 
-import com.soma.lof.common.data.entity.CommonItem
-import com.soma.lof.common.data.entity.CommonItemResponse
-import kotlinx.coroutines.flow.Flow
-import retrofit2.http.GET
-import retrofit2.http.Header
+import com.soma.lof.core_model.dto.CommonItemResponse
 import javax.inject.Singleton
 
 @Singleton

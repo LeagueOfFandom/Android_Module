@@ -8,8 +8,8 @@ import androidx.lifecycle.viewModelScope
 import com.soma.lof.common.domain.DataStoreUseCase
 import com.soma.lof.common.repository.TeamRepository
 import com.soma.lof.common.route.FeatureHomeRouteContract
-import com.soma.lof.common.data.entity.LeagueTeamInfo
-import com.soma.lof.common.data.entity.TeamInfo
+import com.soma.lof.core_model.entity.LeagueTeamInfo
+import com.soma.lof.core_model.entity.TeamInfo
 import com.soma.lof.select_team.repository.SelectTeamFakeRepository
 import com.soma.lof.select_team.repository.SelectTeamRepository
 import com.soma.lof.select_team.util.test_token

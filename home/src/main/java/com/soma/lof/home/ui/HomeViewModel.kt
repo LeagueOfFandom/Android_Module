@@ -1,10 +1,9 @@
 package com.soma.lof.home.ui
 
-import android.util.Log
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.soma.lof.common.data.entity.*
 import com.soma.lof.common.domain.DataStoreUseCase
+import com.soma.lof.core_model.dto.CommonItem
 import com.soma.lof.home.repository.HomeRepository
 import com.soma.lof.home.repository.HomeRepositoryImpl
 import com.soma.lof.home.usecase.HomeUseCase

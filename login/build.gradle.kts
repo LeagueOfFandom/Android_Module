@@ -39,6 +39,8 @@ dependencies {
     implementation(project(":common"))
     implementation(project(":common-ui"))
     implementation(project(":foundation"))
+    implementation(project(":core-model"))
+
 
     implementation(Dependencies.androidX.core)
     implementation(Dependencies.androidX.appCompat)

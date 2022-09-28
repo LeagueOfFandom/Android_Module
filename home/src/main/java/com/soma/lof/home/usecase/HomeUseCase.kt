@@ -1,6 +1,6 @@
 package com.soma.lof.home.usecase
 
-import com.soma.lof.common.data.entity.CommonItem
+import com.soma.lof.core_model.dto.CommonItem
 import com.soma.lof.home.repository.HomeRepository
 import com.soma.lof.home.util.CommonItemTranslator.toCommonItemList
 import javax.inject.Inject

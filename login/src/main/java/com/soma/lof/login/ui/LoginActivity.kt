@@ -1,19 +1,9 @@
 package com.soma.lof.login.ui
 
-import android.content.Intent
 import android.os.Bundle
-import android.util.Log
-import android.widget.Toast
-import androidx.activity.result.ActivityResult
-import androidx.activity.result.ActivityResultLauncher
-import androidx.activity.result.contract.ActivityResultContracts
-import androidx.activity.viewModels
 import androidx.navigation.fragment.NavHostFragment
-import androidx.navigation.ui.NavigationUI
-import com.google.android.gms.auth.api.signin.GoogleSignIn
-import com.google.android.gms.common.api.ApiException
 import com.soma.common.base.BaseActivity
-import com.soma.lof.common.util.Navigator
+import com.soma.common_ui.util.Navigator
 import com.soma.lof.login.R
 import com.soma.lof.login.databinding.ActivityLoginBinding
 import dagger.hilt.android.AndroidEntryPoint

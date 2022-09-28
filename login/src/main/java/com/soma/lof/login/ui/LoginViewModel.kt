@@ -12,7 +12,7 @@ import com.google.android.gms.auth.api.signin.GoogleSignInOptions
 import com.soma.lof.common.repository.UserRepository
 import com.soma.lof.common.domain.DataStoreUseCase
 import com.soma.lof.common.route.FeatureSelectTeamRouteContract
-import com.soma.lof.common.data.dto.UserTokenRequest
+import com.soma.lof.core_model.dto.UserTokenRequest
 import com.soma.login.google_login_web_key
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
@@ -49,7 +49,9 @@ class LoginViewModel @Inject constructor(
 
     fun getUserTokenInfo(googleAccessToken: String) {
         viewModelScope.launch {
-            userRepository.postUserToken(UserTokenRequest(dataStoreUseCase.fcmToken.first(), googleAccessToken)).collectLatest {
+            userRepository.postUserToken(UserTokenRequest(
+                dataStoreUseCase.fcmToken.first(),
+                googleAccessToken)).collectLatest {
                 dataStoreUseCase.editJwtToken(it.jwtToken)
                 newUserFlow.value = it.newUser
                 Log.d(TAG, "getUserTokenInfo: ${it.newUser} ${it.jwtToken}")

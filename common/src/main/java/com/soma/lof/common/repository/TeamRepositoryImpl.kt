@@ -1,7 +1,7 @@
 package com.soma.lof.common.repository
 
 import com.soma.lof.common.api.TeamService
-import com.soma.lof.common.data.entity.TeamInfo
+import com.soma.lof.core_model.entity.TeamInfo
 import com.soma.lof.foundation.exception.EmptyBodyException
 import com.soma.lof.foundation.exception.NetworkFailureException
 import kotlinx.coroutines.flow.Flow
