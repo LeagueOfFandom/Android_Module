@@ -1,90 +1,102 @@
 package com.soma.lof.common.repository
 
+import com.soma.lof.common.api.MatchService
 import com.soma.lof.core_model.dto.CommonItem
-import com.soma.lof.core_model.dto.MatchResponse
-import com.soma.lof.core_model.entity.DateInfo
+import com.soma.lof.core_model.dto.CommonItemResponse
 import com.soma.lof.core_model.entity.MatchViewObject
-import kotlinx.coroutines.flow.Flow
-import kotlinx.coroutines.flow.flow
+import com.soma.lof.foundation.exception.EmptyBodyException
+import com.soma.lof.foundation.exception.NetworkFailureException
 import javax.inject.Inject
 import javax.inject.Singleton
 
 @Singleton
 class MatchRepositoryImpl @Inject constructor(
-
+    private val matchService: MatchService,
 ) : MatchRepository {
 
-    val data = MatchResponse(
+    val data =
         listOf(
-            DateInfo("7월", "31일", "#000000"),
-            DateInfo("8월", "1일", "#000000"),
-            DateInfo("8월", "2일", "#426BFF"),
-            DateInfo("8월", "3일", "#E2012D"),
-            DateInfo("8월", "4일", "#000000"),
-            DateInfo("8월", "5일", "#000000"),
-            DateInfo("8월", "6일", "#000000"),
-            DateInfo("8월", "7일", "#000000"),
-            DateInfo("8월", "8일", "#000000"),
-            DateInfo("8월", "9일", "#426BFF"),
-            DateInfo("8월", "10일", "#E2012D"),
-            DateInfo("8월", "11일", "#000000"),
-            DateInfo("8월", "12일", "#000000"),
-            DateInfo("8월", "13일", "#000000"),
-        ),
-        listOf(
-            listOf(
-                CommonItem(
-                    "MATCH_RESULT_VIEW",
-                    MatchViewObject(
-                        1L,
-                        "DK",
-                        "https://cdn.pixabay.com/photo/2018/05/13/16/57/dog-3397110__480.jpg",
-                        "T1",
-                        "https://cdn.pixabay.com/photo/2018/05/13/16/57/dog-3397110__480.jpg",
-                        "2022년 8월 7일",
-                        "17:00",
-                        "LCK",
-                        false,
-                        0,
-                        0,
-                        isHide = true),
-                ),
-                CommonItem(
-                    "MATCH_SCHEDULE_VIEW",
-                    MatchViewObject(
-                        1L,
-                        "DK",
-                        "https://cdn.pixabay.com/photo/2018/05/13/16/57/dog-3397110__480.jpg",
-                        "T1",
-                        "https://cdn.pixabay.com/photo/2018/05/13/16/57/dog-3397110__480.jpg",
-                        "2022년 8월 7일",
-                        "17:00",
-                        "LCK",
-                        false,
-                        0,
-                        0,
-                        isHide = true),
-                ),
+            CommonItem(
+                "MATCH_RESULT_VIEW",
+                MatchViewObject(
+                    1L,
+                    "DK",
+                    "https://cdn.pixabay.com/photo/2018/05/13/16/57/dog-3397110__480.jpg",
+                    "T1",
+                    "https://cdn.pixabay.com/photo/2018/05/13/16/57/dog-3397110__480.jpg",
+                    "2022년 8월 7일",
+                    "17:00",
+                    "LCK",
+                    false,
+                    0,
+                    0,
+                    isHide = true),
             ),
-            listOf(),
-            listOf(),
-            listOf(),
-            listOf(),
-            listOf(),
-            listOf(),
-            listOf(),
-            listOf(),
-            listOf(),
-            listOf(),
-            listOf(),
-            listOf(),
-            listOf(),
+            CommonItem(
+                "MATCH_SCHEDULE_VIEW",
+                MatchViewObject(
+                    1L,
+                    "DK",
+                    "https://cdn.pixabay.com/photo/2018/05/13/16/57/dog-3397110__480.jpg",
+                    "T1",
+                    "https://cdn.pixabay.com/photo/2018/05/13/16/57/dog-3397110__480.jpg",
+                    "2022년 8월 7일",
+                    "17:00",
+                    "LCK",
+                    false,
+                    0,
+                    0,
+                    isHide = true),
+            ),
+            CommonItem(
+                "MATCH_SCHEDULE_VIEW",
+                MatchViewObject(
+                    1L,
+                    "DK",
+                    "https://cdn.pixabay.com/photo/2018/05/13/16/57/dog-3397110__480.jpg",
+                    "T1",
+                    "https://cdn.pixabay.com/photo/2018/05/13/16/57/dog-3397110__480.jpg",
+                    "2022년 8월 7일",
+                    "17:00",
+                    "LCK",
+                    false,
+                    0,
+                    0,
+                    isHide = true),
+            ),
+            CommonItem(
+                "MATCH_SCHEDULE_VIEW",
+                MatchViewObject(
+                    1L,
+                    "DK",
+                    "https://cdn.pixabay.com/photo/2018/05/13/16/57/dog-3397110__480.jpg",
+                    "T1",
+                    "https://cdn.pixabay.com/photo/2018/05/13/16/57/dog-3397110__480.jpg",
+                    "2022년 8월 7일",
+                    "17:00",
+                    "LCK",
+                    false,
+                    0,
+                    0,
+                    isHide = true),
+            ),
         )
-    )
 
-    override fun getMatchData(): Flow<MatchResponse> {
-        return flow {
-            emit(data)
+
+    override suspend fun getMatchList(
+        jwtString: String,
+        date: String,
+        isAll: Boolean,
+    ): List<CommonItemResponse> {
+        val response = matchService.getMatchList(jwtString, date, isAll)
+
+        if (response.isSuccessful) {
+            return response.body()
+                ?: throw EmptyBodyException("[${response.code()}] - ${response.raw()}")
+        } else {
+            throw NetworkFailureException("[${response.code()}] - ${response.raw()}")
         }
     }
+
+
 }

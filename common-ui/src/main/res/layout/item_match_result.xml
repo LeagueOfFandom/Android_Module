@@ -175,7 +175,7 @@
             tools:text="1"
             android:text="@{String.valueOf(viewObject.awayScore)}"/>
 
-        <TextView
+        <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/item_match_result_score_hide"
             android:layout_width="0dp"
             android:layout_height="0dp"
@@ -188,9 +188,7 @@
             android:visibility="@{viewObject.isHide ? View.VISIBLE : View.GONE}"
             android:textColor="@color/white"
             android:gravity="center"
-            android:textSize="14sp"
-            android:clickable="true"
-            android:focusable="true"/>
+            android:onClick="@{() -> view.setHideOption()}"/>
     </androidx.constraintlayout.widget.ConstraintLayout>
 
 </layout>

@@ -1,5 +1,6 @@
 package com.soma.lof.common.di
 
+import com.soma.lof.common.api.MatchService
 import com.soma.lof.common.api.TeamService
 import com.soma.lof.common.api.UserService
 import dagger.Module
@@ -24,5 +25,11 @@ object ApiModule {
     @Singleton
     fun provideTeamService(retrofit: Retrofit): TeamService {
         return retrofit.create(TeamService::class.java)
+    }
+
+    @Provides
+    @Singleton
+    fun provideMatchService(retrofit: Retrofit): MatchService {
+        return retrofit.create(MatchService::class.java)
     }
 }

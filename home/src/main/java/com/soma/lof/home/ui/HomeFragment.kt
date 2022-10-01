@@ -5,7 +5,7 @@ import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
 import androidx.viewpager2.widget.ViewPager2
 import com.soma.common.base.BaseFragment
-import com.soma.common_ui.presentation.TextArrowViewObject
+import com.soma.lof.core_model.entity.TextArrowViewObject
 import com.soma.common_ui.presentation.CommonListAdapter
 import com.soma.lof.core_model.dto.CommonItem
 import com.soma.lof.core_model.entity.CommunityViewObject

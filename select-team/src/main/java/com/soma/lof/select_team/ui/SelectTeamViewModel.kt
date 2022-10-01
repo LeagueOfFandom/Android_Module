@@ -7,7 +7,7 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.soma.lof.common.domain.DataStoreUseCase
 import com.soma.lof.common.repository.TeamRepository
-import com.soma.lof.common.route.FeatureHomeRouteContract
+import com.soma.common_ui.route.FeatureHomeRouteContract
 import com.soma.lof.core_model.entity.LeagueTeamInfo
 import com.soma.lof.core_model.entity.TeamInfo
 import com.soma.lof.select_team.repository.SelectTeamFakeRepository

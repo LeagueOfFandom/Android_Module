@@ -1,4 +1,4 @@
-package com.soma.lof.common.route
+package com.soma.common_ui.route
 
 import android.app.Activity
 import javax.inject.Singleton

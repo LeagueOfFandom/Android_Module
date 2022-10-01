@@ -4,9 +4,9 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.soma.lof.common.domain.DataStoreUseCase
 import com.soma.lof.core_model.dto.CommonItem
-import com.soma.lof.home.repository.HomeRepository
-import com.soma.lof.home.repository.HomeRepositoryImpl
-import com.soma.lof.home.usecase.HomeUseCase
+import com.soma.lof.common.repository.HomeRepository
+import com.soma.lof.common.repository.HomeRepositoryImpl
+import com.soma.lof.common.domain.HomeUseCase
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.*
 import kotlinx.coroutines.launch
@@ -29,7 +29,7 @@ class HomeViewModel @Inject constructor(
     val homeData : StateFlow<List<CommonItem>> = _homeData
 
     init {
-       getHomeApi()
+        getHomeApi()
     }
 
     private fun getHomeApi() {

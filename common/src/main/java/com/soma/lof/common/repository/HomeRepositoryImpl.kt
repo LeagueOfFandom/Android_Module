@@ -1,12 +1,12 @@
-package com.soma.lof.home.repository
+package com.soma.lof.common.repository
 
-import android.util.Log
-import com.soma.common_ui.presentation.TextArrowViewObject
+import com.soma.lof.core_model.entity.TextArrowViewObject
 import com.soma.lof.common.api.UserService
 import com.soma.lof.core_model.dto.CommonItem
 import com.soma.lof.core_model.dto.CommonItemResponse
 import com.soma.lof.core_model.entity.CommunityViewObject
 import com.soma.lof.core_model.entity.HighLightViewObject
+import com.soma.lof.core_model.entity.HomeMatchTitleViewObject
 import com.soma.lof.core_model.entity.MatchViewObject
 import com.soma.lof.foundation.exception.EmptyBodyException
 import com.soma.lof.foundation.exception.NetworkFailureException
@@ -22,10 +22,8 @@ class HomeRepositoryImpl @Inject constructor(
         val response = userService.getMainPage(jwtToken)
 
         if (response.isSuccessful) {
-            val data = response.body()
+            return response.body()
                 ?: throw EmptyBodyException("[${response.code()}] - ${response.raw()}")
-            Log.e("Home", "HomeRepositoryImpl: ${data}")
-            return data
         } else {
             throw NetworkFailureException("[${response.code()}] - ${response.raw()}")
         }
@@ -49,8 +47,8 @@ class HomeRepositoryImpl @Inject constructor(
                 isHide = true)
         ),
         CommonItem(
-            "TEXT_ARROW_VIEW",
-            TextArrowViewObject(
+            "HOME_MATCH_TITLE_VIEW",
+            HomeMatchTitleViewObject(
                 "경기 일정"
             )
         ),

@@ -1,5 +1,6 @@
 package com.soma.lof.common.di
 
+import com.soma.lof.common.api.MatchService
 import com.soma.lof.common.api.TeamService
 import com.soma.lof.common.api.UserService
 import com.soma.lof.common.repository.*
@@ -32,8 +33,15 @@ object RepositoryModule {
 
     @Provides
     @Singleton
+    fun providesHomeRepository(userService: UserService) : HomeRepository {
+        return HomeRepositoryImpl(userService)
+    }
+
+    @Provides
+    @Singleton
     fun provideMatchRepository(
+        matchService: MatchService
     ) : MatchRepository {
-        return MatchRepositoryImpl()
+        return MatchRepositoryImpl(matchService)
     }
 }

@@ -6,4 +6,6 @@
     <item name="community_flow" type="id" />
     <item name="info_flow" type="id" />
     <item name="setting_flow" type="id" />
+
+    <item name="select_team_flow" type="id" />
 </resources>

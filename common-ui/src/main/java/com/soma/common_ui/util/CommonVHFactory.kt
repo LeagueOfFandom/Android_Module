@@ -12,6 +12,7 @@ object CommonVHFactory {
     fun createViewHolder(parent: ViewGroup, viewType: Int): CommonVH {
         return when(viewType) {
             ViewType.MATCH_LIVE_VIEW.ordinal -> MatchLiveVH(getViewDataBinding(parent, R.layout.item_match_live))
+            ViewType.HOME_MATCH_TITLE_VIEW.ordinal -> HomeMatchTitleLineVH(getViewDataBinding(parent, R.layout.item_home_match_title_line))
             ViewType.MATCH_RESULT_VIEW.ordinal -> MatchResultVH(getViewDataBinding(parent, R.layout.item_match_result))
             ViewType.MATCH_SCHEDULE_VIEW.ordinal -> MatchScheduleVH(getViewDataBinding(parent, R.layout.item_match_schedule))
             ViewType.TEXT_ARROW_VIEW.ordinal -> TextArrowVH(getViewDataBinding(parent, R.layout.item_text_arrow))

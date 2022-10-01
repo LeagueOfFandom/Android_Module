@@ -11,7 +11,7 @@ import com.google.android.gms.auth.api.signin.GoogleSignInClient
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions
 import com.soma.lof.common.repository.UserRepository
 import com.soma.lof.common.domain.DataStoreUseCase
-import com.soma.lof.common.route.FeatureSelectTeamRouteContract
+import com.soma.common_ui.route.FeatureSelectTeamRouteContract
 import com.soma.lof.core_model.dto.UserTokenRequest
 import com.soma.login.google_login_web_key
 import dagger.hilt.android.lifecycle.HiltViewModel

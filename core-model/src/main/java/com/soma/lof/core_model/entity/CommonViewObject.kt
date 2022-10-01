@@ -18,12 +18,11 @@ data class CommonViewObject(
     val awayName: String?,
     val awayImg: String?,
     val date: String?,
-    val matchTime: String?,
     val league: String?,
     val isAlarm: Boolean?,
     val homeScore: Int?,
     val awayScore: Int?,
-    var isHide: Boolean? = true,
+    val status: String?,
 
     // Highlight
     val videoList: List<String>?,

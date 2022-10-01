@@ -13,4 +13,5 @@ class Navigator {
         is NavigationFlow.InfoFlow -> navController.navigate(MainNavGraphDirections.actionGlobalInfoFlow())
         is NavigationFlow.SettingFlow -> navController.navigate(MainNavGraphDirections.actionGlobalSettingFlow())
     }
+
 }

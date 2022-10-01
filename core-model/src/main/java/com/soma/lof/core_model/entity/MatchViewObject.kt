@@ -6,7 +6,7 @@ data class MatchViewObject(
     val homeImg: String,
     val awayName: String,
     val awayImg: String,
-    val date: String,
+    val date: String?,
     val time: String,
     val league: String,
     val isAlarm: Boolean,

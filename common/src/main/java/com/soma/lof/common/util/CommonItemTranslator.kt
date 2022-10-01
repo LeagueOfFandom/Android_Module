@@ -1,9 +1,9 @@
-package com.soma.lof.home.util
+package com.soma.lof.common.util
 
-import ViewObjectFactory
 import com.soma.lof.core_model.dto.CommonItem
 import com.soma.lof.core_model.dto.CommonItemResponse
 import com.soma.lof.core_model.entity.ViewType
+import com.soma.lof.core_model.util.ViewObjectFactory
 
 object CommonItemTranslator {
     fun List<CommonItemResponse>.toCommonItemList(): List<CommonItem> {

@@ -1,6 +1,6 @@
-import com.soma.common_ui.presentation.TextArrowViewObject
-import com.soma.lof.core_model.entity.*
+package com.soma.lof.core_model.util
 
+import com.soma.lof.core_model.entity.*
 
 object ViewObjectFactory {
     fun createViewObject(viewType: Int, data: CommonViewObject) : ViewObject {
@@ -12,12 +12,11 @@ object ViewObjectFactory {
                     data.awayName!!,
                     data.awayImg!!,
                     data.date!!,
-                    data.matchTime!!,
+                    data.time!!,
                     data.league!!,
                     data.isAlarm!!,
                     data.homeScore!!,
-                    data.awayScore!!,
-                    data.isHide!!)
+                    data.awayScore!!)
            ViewType.TEXT_ARROW_VIEW.ordinal -> TextArrowViewObject(
                 data.text!!)
            ViewType.COMMUNITY_VIEW.ordinal -> CommunityViewObject(
