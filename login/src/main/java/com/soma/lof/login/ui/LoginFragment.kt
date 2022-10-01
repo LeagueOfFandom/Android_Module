@@ -9,12 +9,16 @@ import androidx.activity.result.contract.ActivityResultContracts
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.viewModels
+import androidx.lifecycle.lifecycleScope
 import com.google.android.gms.auth.api.signin.GoogleSignIn
 import com.google.android.gms.common.api.ApiException
 import com.soma.common.base.BaseFragment
 import com.soma.lof.login.R
 import com.soma.lof.login.databinding.FragmentLoginBinding
+import dagger.hilt.android.AndroidEntryPoint
+import kotlinx.coroutines.flow.collectLatest
 
+@AndroidEntryPoint
 class LoginFragment : BaseFragment<FragmentLoginBinding>(R.layout.fragment_login) {
 
     private lateinit var startGoogleLoginForResult: ActivityResultLauncher<Intent>
@@ -22,11 +26,28 @@ class LoginFragment : BaseFragment<FragmentLoginBinding>(R.layout.fragment_login
 
     override fun initView() {
 
+        bind {
+            fragment = this@LoginFragment
+            logoResId = R.drawable.img_logo
+            subLogoResId = R.drawable.img_sub_logo
+        }
+        initGoogleLogin()
+
+        lifecycleScope.launchWhenCreated {
+            viewModel.googleLoginFlow.collectLatest { success ->
+                if (success) {
+                    Toast.makeText(requireContext(), "로그인 성공", Toast.LENGTH_SHORT).show()
+                    passLogin()
+
+                    /* TODO NewUser에 대해서 로그인 절차 추가 필요 */
+                }
+            }
+        }
     }
 
-//    fun passLogin() {
-//        viewModel.navigateSelectTeam(this@LoginActivity, Intent.FLAG_ACTIVITY_CLEAR_TASK, Intent.FLAG_ACTIVITY_NEW_TASK)
-//    }
+    fun passLogin() {
+        viewModel.navigateSelectTeam(requireActivity(), Intent.FLAG_ACTIVITY_CLEAR_TASK, Intent.FLAG_ACTIVITY_NEW_TASK)
+    }
 
     private fun initGoogleLogin() {
         startGoogleLoginForResult =
@@ -52,16 +73,15 @@ class LoginFragment : BaseFragment<FragmentLoginBinding>(R.layout.fragment_login
                     Log.e(TAG, "initGoogleLogin: ${result.resultCode} ${result.data?.data} ")
                 }
             }
-        Toast.makeText(requireContext(), "Click", Toast.LENGTH_SHORT).show()
     }
 
     fun googleLogin() {
-        Log.e(TAG, "click")
-
         startGoogleLoginForResult.launch(viewModel.getGoogleSignInClient().signInIntent)
     }
 
     companion object {
         const val TAG = "LoginFragment"
+
+        fun newInstance() = LoginFragment()
     }
 }

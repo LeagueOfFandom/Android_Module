@@ -5,33 +5,100 @@
     tools:context=".ui.LoginFragment">
 
     <data>
+
         <variable
             name="fragment"
             type="com.soma.lof.login.ui.LoginFragment" />
+
+        <variable
+            name="logo_resId"
+            type="Integer" />
+
+        <variable
+            name="sub_logo_resId"
+            type="Integer" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:background="@color/main_color">
 
-<!--        <androidx.appcompat.widget.AppCompatButton-->
-<!--            android:layout_width="300dp"-->
-<!--            android:layout_height="wrap_content"-->
-<!--            android:onClick="@{() -> fragment.passLogin()}"-->
-<!--            app:layout_constraintBottom_toBottomOf="parent"-->
-<!--            app:layout_constraintStart_toStartOf="parent"-->
-<!--            app:layout_constraintEnd_toEndOf="parent"-->
-<!--            android:layout_marginBottom="200dp"-->
-<!--            android:text="Pass"-->
-<!--            android:gravity="center"/>-->
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/login_logo"
+            imageResource="@{logo_resId}"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@id/login_logo_end_gl"
+            app:layout_constraintStart_toEndOf="@id/login_logo_start_gl"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.45"
+            tools:src="@drawable/img_logo" />
 
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/login_sub_logo"
+            imageResource="@{sub_logo_resId}"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="15dp"
+            app:layout_constraintEnd_toStartOf="@id/login_sub_logo_end_gl"
+            app:layout_constraintStart_toEndOf="@id/login_sub_logo_start_gl"
+            app:layout_constraintTop_toBottomOf="@id/login_logo"
+            tools:src="@drawable/img_sub_logo" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/login_logo_start_gl"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_percent="0.3" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/login_logo_end_gl"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_percent="0.7" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/login_sub_logo_start_gl"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_percent="0.2" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/login_sub_logo_end_gl"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_percent="0.8" />
+
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:layout_width="300dp"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="20dp"
+            android:background="#ffffff"
+            android:gravity="center"
+            android:onClick="@{() -> fragment.passLogin()}"
+            android:text="임시 통과 버튼"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
 
         <com.google.android.gms.common.SignInButton
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginHorizontal="30dp"
             android:onClick="@{() -> fragment.googleLogin()}"
             app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"/>
+            app:layout_constraintTop_toBottomOf="@id/login_sub_logo"
+            app:layout_constraintVertical_bias="0.5" />
+
     </androidx.constraintlayout.widget.ConstraintLayout>
+
 </layout>

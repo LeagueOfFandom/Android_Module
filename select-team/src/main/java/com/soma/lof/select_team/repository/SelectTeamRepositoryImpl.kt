@@ -25,6 +25,6 @@ class SelectTeamRepositoryImpl @Inject constructor(
             throw NetworkFailureException("[${response.code()}] - ${response.raw()}")
         }
     }.catch {
-        throw NetworkFailureException("Network Error")
+        throw NetworkFailureException("Network Error ${it.message}")
     }
 }

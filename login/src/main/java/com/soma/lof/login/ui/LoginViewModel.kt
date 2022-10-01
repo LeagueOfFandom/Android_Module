@@ -31,6 +31,7 @@ class LoginViewModel @Inject constructor(
 
     private var mGoogleSignInClient: GoogleSignInClient //
     private var gsa: GoogleSignInAccount? // 기존에 로그인했던 계정
+    val googleLoginFlow = MutableStateFlow(false)
     val newUserFlow = MutableStateFlow(false)
 
     init {
@@ -53,8 +54,10 @@ class LoginViewModel @Inject constructor(
                 dataStoreUseCase.fcmToken.first(),
                 googleAccessToken)).collectLatest {
                 dataStoreUseCase.editJwtToken(it.jwtToken)
+                googleLoginFlow.value = true
                 newUserFlow.value = it.newUser
                 Log.d(TAG, "getUserTokenInfo: ${it.newUser} ${it.jwtToken}")
+
             }
         }
     }
