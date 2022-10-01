@@ -5,28 +5,30 @@ import android.content.Intent
 import android.util.Log
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.soma.lof.common.domain.DataStoreUseCase
-import com.soma.lof.common.repository.TeamRepository
 import com.soma.common_ui.route.FeatureHomeRouteContract
+import com.soma.lof.common.domain.DataStoreUseCase
+import com.soma.lof.common.repository.SelectTeamRepository
+import com.soma.lof.common.repository.TeamRepository
 import com.soma.lof.core_model.entity.LeagueTeamInfo
 import com.soma.lof.core_model.entity.TeamInfo
-import com.soma.lof.select_team.repository.SelectTeamFakeRepository
-import com.soma.lof.select_team.repository.SelectTeamRepository
 import com.soma.lof.select_team.util.test_token
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.async
 import kotlinx.coroutines.awaitAll
-import kotlinx.coroutines.flow.*
+import kotlinx.coroutines.flow.MutableStateFlow
+import kotlinx.coroutines.flow.StateFlow
+import kotlinx.coroutines.flow.collectLatest
+import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
+/* TODO 추후 Repository를 UseCase로 리팩토링 */
 @HiltViewModel
 class SelectTeamViewModel @Inject constructor(
     private val selectTeamRepository: SelectTeamRepository,
     private val teamRepository: TeamRepository,
     private val dataStoreUseCase: DataStoreUseCase,
     private val featureHomeRouteContract: FeatureHomeRouteContract,
-    private val fakeRepository: SelectTeamFakeRepository,
 ) : ViewModel() {
 
     private val _tabItems: MutableStateFlow<List<String>> = MutableStateFlow(emptyList())
@@ -42,31 +44,28 @@ class SelectTeamViewModel @Inject constructor(
 
     init {
         viewModelScope.launch {
-            awaitAll(
-                async { getTeamTotalList() },
-                async { getUserTeamList() }
-            )
+            val jwtToken = dataStoreUseCase.jwtToken.first()
+            if (jwtToken != null) {
+                awaitAll(
+                    async { getTeamTotalList(jwtToken) },
+                    async { getUserTeamList(jwtToken) }
+                )
+            }
         }
     }
 
-    suspend fun getTeamTotalList() {
-        Log.d(TAG, "getTeamTotalList Start")
-        selectTeamRepository.getSelectTeamList(test_token).collectLatest {
+    private suspend fun getTeamTotalList(jwtToken: String) {
+        selectTeamRepository.getSelectTeamList(jwtToken).collectLatest {
             _tabItems.value = it.leagueList
             _leagueTeamInfo.value = it.leagueInfo
-            Log.d(TAG, "getTeamTotalList End")
         }
     }
 
-    suspend fun getUserTeamList() {
-        Log.d(TAG, "getUserTeamList Start")
-
-        teamRepository.getUserTeamList(test_token).collectLatest { teamInfoList ->
+    private suspend fun getUserTeamList(jwtToken: String) {
+        teamRepository.getUserTeamList(jwtToken).collectLatest { teamInfoList ->
             _userTeamInfo.value = teamInfoList
             _teamCnt.value = teamInfoList.size
-            Log.d(TAG, "getUserTeamList End")
         }
-
     }
 
     fun plusTeamCnt() {

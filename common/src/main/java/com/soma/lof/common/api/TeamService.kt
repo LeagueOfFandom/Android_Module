@@ -12,7 +12,7 @@ import javax.inject.Singleton
 interface TeamService {
 
     @GET("/teamList")
-    suspend fun getSelectTeamList(@Header("Authorization") jwtToken: String): Response<com.soma.lof.core_model.dto.TeamResponse>
+    suspend fun getSelectTeamList(@Header("Authorization") jwtToken: String): Response<com.soma.lof.core_model.dto.SelectTeamResponse>
 
     @POST("/teamList")
     suspend fun postSelectTeamList(

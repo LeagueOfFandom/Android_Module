@@ -1,7 +1,7 @@
-package com.soma.lof.select_team.repository
+package com.soma.lof.common.repository
 
 import com.soma.lof.common.api.TeamService
-import com.soma.lof.core_model.dto.TeamResponse
+import com.soma.lof.core_model.dto.SelectTeamResponse
 import com.soma.lof.foundation.exception.EmptyBodyException
 import com.soma.lof.foundation.exception.NetworkFailureException
 import kotlinx.coroutines.flow.Flow
@@ -15,7 +15,7 @@ class SelectTeamRepositoryImpl @Inject constructor(
     private val teamService: TeamService
 ) : SelectTeamRepository {
 
-    override fun getSelectTeamList(jwtToken: String): Flow<TeamResponse> = flow {
+    override fun getSelectTeamList(jwtToken: String): Flow<SelectTeamResponse> = flow {
         val response = teamService.getSelectTeamList(jwtToken)
 
         if (response.isSuccessful) {

@@ -17,7 +17,7 @@ object RepositoryModule {
 
     @Provides
     @Singleton
-    fun provideUserRepository(
+    fun providesUserRepository(
         userService: UserService
     ) : UserRepository {
         return UserRepositoryImpl(userService)
@@ -25,7 +25,7 @@ object RepositoryModule {
 
     @Provides
     @Singleton
-    fun provideTeamRepository(
+    fun providesTeamRepository(
         teamService: TeamService
     ) : TeamRepository {
         return TeamRepositoryImpl(teamService)
@@ -39,9 +39,17 @@ object RepositoryModule {
 
     @Provides
     @Singleton
-    fun provideMatchRepository(
+    fun providesMatchRepository(
         matchService: MatchService
     ) : MatchRepository {
         return MatchRepositoryImpl(matchService)
+    }
+
+    @Provides
+    @Singleton
+    fun providesSelectTeamRepository(
+        teamService: TeamService
+    ) : SelectTeamRepository {
+        return SelectTeamRepositoryImpl(teamService)
     }
 }

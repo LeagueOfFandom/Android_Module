@@ -1,4 +1,4 @@
-package com.soma.lof.select_team.model
+package com.soma.lof.core_model.fake
 
 import com.soma.lof.core_model.entity.TeamInfo
 

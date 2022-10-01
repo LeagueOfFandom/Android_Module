@@ -6,7 +6,7 @@
     <data>
 
         <variable
-            name="fake"
+            name="data"
             type="com.soma.lof.core_model.entity.LeagueTeamInfo" />
 
         <variable
@@ -32,7 +32,7 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             tools:text="대한민국의 LoL 프로 리그 팀의 리스트입니다."
-            android:text="@{fake.league}" />
+            android:text="@{data.note}" />
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/fm_select_team_rv"

@@ -27,7 +27,7 @@ class SelectTeamListFragment @Inject constructor() : BaseFragment<FragmentSelect
         selectTeamListAdapter.submitList(viewModel.leagueTeamInfo.value[position].teamInfo)
 
         bind {
-            fake = viewModel.leagueTeamInfo.value[position]
+            data = viewModel.leagueTeamInfo.value[position]
             adapter = selectTeamListAdapter
             itemDecoration = teamItemDecoration
         }

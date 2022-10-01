@@ -1,13 +1,12 @@
-package com.soma.lof.select_team.repository
+package com.soma.lof.common.repository.fake
 
 import com.soma.lof.core_model.entity.TeamInfo
-import com.soma.lof.select_team.model.FakeLeagueTeamList
-import com.soma.lof.select_team.model.FakeSelectTeamModel
+import com.soma.lof.core_model.fake.FakeLeagueTeamList
+import com.soma.lof.core_model.fake.FakeSelectTeamModel
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
 import javax.inject.Singleton
 
-@Singleton
 class SelectTeamFakeRepositoryImpl : SelectTeamFakeRepository {
 
     val data = FakeSelectTeamModel(
