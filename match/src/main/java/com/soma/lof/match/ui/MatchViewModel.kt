@@ -28,14 +28,11 @@ class MatchViewModel @Inject constructor(
 
     fun getMatchList(date: String, isAll: Boolean = false) {
         viewModelScope.launch {
-//            val jwtToken = dataStoreUseCase.jwtToken.first()
-//
-//            if (jwtToken != null) {
-//                matchRepository.getMatchList(jwtToken, isAll, date).collectLatest {
-//                    _matchData.value = it
-//                }
-//            }
-            _matchData.value = matchUseCase.getMatchList("test", date, isAll)
+            val jwtToken = dataStoreUseCase.jwtToken.first()
+
+            if (jwtToken != null) {
+                _matchData.value =  matchUseCase.getMatchList(jwtToken, date, isAll)
+            }
         }
     }
 }

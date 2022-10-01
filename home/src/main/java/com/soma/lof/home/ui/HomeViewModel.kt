@@ -25,6 +25,7 @@ class HomeViewModel @Inject constructor(
         "https://helpx.adobe.com/content/dam/help/en/photoshop/using/quick-actions/remove-background-before-qa1.png"
     )
 
+    /* TODO Dummy 데이터 처리 필요 */
     private val _homeData = MutableStateFlow((homeRepository as HomeRepositoryImpl).dummy)
     val homeData : StateFlow<List<CommonItem>> = _homeData
 
@@ -34,8 +35,10 @@ class HomeViewModel @Inject constructor(
 
     private fun getHomeApi() {
         viewModelScope.launch {
-            val jwtToken = "test"
-            _homeData.value = homeUseCase.getHomeData(jwtToken)
+            val jwtToken = dataStoreUseCase.jwtToken.first()
+            if (jwtToken != null) {
+                _homeData.value = homeUseCase.getHomeData(jwtToken)
+            }
         }
     }
 
