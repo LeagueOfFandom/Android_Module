@@ -5,7 +5,7 @@ import com.soma.lof.core_model.entity.*
 object ViewObjectFactory {
     fun createViewObject(viewType: Int, data: CommonViewObject) : ViewObject {
         return when (viewType) {
-            ViewType.MATCH_LIVE_VIEW.ordinal, ViewType.MATCH_RESULT_VIEW.ordinal, ViewType.MATCH_SCHEDULE_VIEW.ordinal ->
+            ViewType.LIVE_VIEW.ordinal, ViewType.MATCH_RESULT_VIEW.ordinal, ViewType.MATCH_SCHEDULE_VIEW.ordinal ->
                 MatchViewObject(data.matchId!!,
                     data.homeName!!,
                     data.homeImg!!,

@@ -7,13 +7,13 @@
 
     <application
         android:name=".LofApplication"
-        android:allowBackup="true"
+        android:allowBackup="false"
         android:dataExtractionRules="@xml/data_extraction_rules"
         android:fullBackupContent="@xml/backup_rules"
-        android:icon="@mipmap/ic_launcher"
+        android:icon="@drawable/lof"
         android:label="@string/app_name"
         android:networkSecurityConfig="@xml/network_security_config"
-        android:roundIcon="@mipmap/ic_launcher_round"
+        android:roundIcon="@drawable/lof"
         android:supportsRtl="true"
         android:theme="@style/Theme.LoF"
         tools:targetApi="31">

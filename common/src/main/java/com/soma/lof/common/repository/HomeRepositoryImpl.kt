@@ -31,7 +31,7 @@ class HomeRepositoryImpl @Inject constructor(
 
     val dummy: List<CommonItem> = listOf(
         CommonItem(
-            "MATCH_LIVE_VIEW",
+            "LIVE_VIEW",
             MatchViewObject(
                 1L,
                 "DK",

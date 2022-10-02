@@ -66,7 +66,7 @@ class LofFirebaseMessagingService: FirebaseMessagingService() {
           0, intent, PendingIntent.FLAG_IMMUTABLE) //알림이 여러개 표시되도록 requestCode 를 추가
 
         val notificationBuilder = NotificationCompat.Builder(this, LofApplication.channelID)
-            .setSmallIcon(R.drawable.ic_launcher_background)
+            .setSmallIcon(R.drawable.lof)
             .setContentTitle(title)
             .setContentText(message)
             .setPriority(NotificationCompat.PRIORITY_HIGH)
