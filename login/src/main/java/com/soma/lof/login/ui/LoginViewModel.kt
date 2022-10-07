@@ -33,6 +33,7 @@ class LoginViewModel @Inject constructor(
     private var gsa: GoogleSignInAccount? // 기존에 로그인했던 계정
     val googleLoginFlow = MutableStateFlow(false)
     val newUserFlow = MutableStateFlow(false)
+    val userLanguage = MutableStateFlow("")
 
     init {
         val gso = GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
@@ -43,7 +44,7 @@ class LoginViewModel @Inject constructor(
 
         mGoogleSignInClient = GoogleSignIn.getClient(application, gso)
 
-        gsa = GoogleSignIn.getLastSignedInAccount(application.baseContext)
+        gsa = GoogleSignIn.getLastSignedInAccount(application.applicationContext)
     }
 
     fun getGoogleSignInClient() = mGoogleSignInClient
