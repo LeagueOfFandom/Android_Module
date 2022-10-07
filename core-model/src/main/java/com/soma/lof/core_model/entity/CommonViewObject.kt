@@ -38,4 +38,6 @@ data class CommonViewObject(
     // Info
     val isCheck: Boolean?,
 
+
+
 )

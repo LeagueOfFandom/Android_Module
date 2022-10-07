@@ -1,4 +1,4 @@
-package com.soma.lof.match.ui
+package com.soma.lof.match.ui.match_info
 
 import android.content.Context
 import android.util.Log
