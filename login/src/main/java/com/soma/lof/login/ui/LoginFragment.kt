@@ -57,6 +57,8 @@ class LoginFragment : BaseFragment<FragmentLoginBinding>(R.layout.fragment_login
                         val task = GoogleSignIn.getSignedInAccountFromIntent(data)
                         try {
                             val account = task.getResult(ApiException::class.java)
+//                            viewModel.testScenario()
+
                             Log.d(TAG, "googleLoginToken: ${account.idToken}")
 
                             if (account.idToken != null) {

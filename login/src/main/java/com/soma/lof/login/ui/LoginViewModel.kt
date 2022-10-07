@@ -37,7 +37,7 @@ class LoginViewModel @Inject constructor(
     init {
         val gso = GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
             .requestIdToken(google_login_web_key)
-            .requestServerAuthCode(google_login_web_key)
+//            .requestServerAuthCode(google_login_web_key)
             .requestEmail()
             .build()
 
@@ -57,8 +57,14 @@ class LoginViewModel @Inject constructor(
                 googleLoginFlow.value = true
                 newUserFlow.value = it.newUser
                 Log.d(TAG, "getUserTokenInfo: ${it.newUser} ${it.jwtToken}")
-
             }
+        }
+    }
+
+    fun testScenario() {
+        viewModelScope.launch {
+            dataStoreUseCase.editJwtToken("test")
+            googleLoginFlow.value = true
         }
     }
 
