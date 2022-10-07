@@ -10,34 +10,34 @@
         android:paddingVertical="20dp">
 
         <TextView
-            android:id="@+id/set_first_nick_title"
+            android:id="@+id/first_nick_title"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="커뮤니티에서 사용할\n닉네임을 입력해주세요"
             android:textColor="@color/black"
-            android:textSize="20sp"
+            android:textSize="30sp"
             android:textStyle="bold"
-            app:layout_constraintBottom_toTopOf="@id/set_nick_btn"
+            app:layout_constraintBottom_toTopOf="@id/nickname_complete_btn"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintVertical_bias="0.3"
             app:layout_constraintStart_toStartOf="parent"/>
 
         <androidx.appcompat.widget.AppCompatEditText
+            android:id="@+id/nick_input_field"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="30dp"
             android:hint="이름"
             android:paddingHorizontal="10dp"
-            android:paddingVertical="5dp"
+            android:paddingBottom="20dp"
             android:textColor="@color/black"
             android:textSize="20sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/set_first_nick_title"
-            tools:text="hello" />
+            app:layout_constraintTop_toBottomOf="@id/first_nick_title" />
 
         <androidx.appcompat.widget.AppCompatButton
-            android:id="@+id/set_nick_btn"
+            android:id="@+id/nickname_complete_btn"
             android:layout_width="0dp"
             android:layout_height="50dp"
             android:background="@drawable/bg_select_btn"

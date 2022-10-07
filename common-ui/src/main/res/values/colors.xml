@@ -9,6 +9,7 @@
     <color name="white">#FFFFFFFF</color>
 
     <color name="main_color">#383A49</color>
+    <color name="text_color_gray">#989CAA</color>
     <color name="bg_color">#F6F7F8</color>
 
     <color name="default_text_color">#989CAA</color>

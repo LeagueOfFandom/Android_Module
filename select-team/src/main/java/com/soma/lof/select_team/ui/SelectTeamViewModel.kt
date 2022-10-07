@@ -45,6 +45,7 @@ class SelectTeamViewModel @Inject constructor(
     init {
         viewModelScope.launch {
             val jwtToken = dataStoreUseCase.jwtToken.first()
+            Log.d(TAG, "jwtToken: $jwtToken")
             if (jwtToken != null) {
                 awaitAll(
                     async { getTeamTotalList(jwtToken) },

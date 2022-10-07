@@ -55,6 +55,8 @@ dependencies {
     implementation(Dependencies.androidX.navigation.ui)
     implementation(Dependencies.androidX.navigation.fragment)
 
+    implementation(Dependencies.google.auth)
+
     testImplementation(Dependencies.Test.junit)
     androidTestImplementation(Dependencies.androidX.junit)
     androidTestImplementation(Dependencies.AndroidTest.espressoCore)

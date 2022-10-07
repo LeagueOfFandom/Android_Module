@@ -71,97 +71,28 @@
                     app:layout_constraintStart_toEndOf="@id/setting_nickname"
                     tools:text="님" />
 
-                <androidx.appcompat.widget.AppCompatImageView
-                    android:id="@+id/setting_profile_edit_icon"
-                    android:layout_width="12dp"
-                    android:layout_height="12dp"
-                    android:layout_marginStart="7dp"
-                    android:layout_marginBottom="1dp"
-                    android:src="@drawable/ic_nickname_edit"
-                    app:layout_constraintBottom_toBottomOf="@id/setting_nickname_sub"
-                    app:layout_constraintStart_toEndOf="@id/setting_nickname_sub" />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="수정하기"
+                    android:textColor="@color/text_color_gray"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
 
             </androidx.constraintlayout.widget.ConstraintLayout>
 
-            <TextView
-                android:id="@+id/setting_team_title"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginHorizontal="24dp"
-                android:layout_marginTop="30dp"
-                android:text="My Team"
-                android:textColor="@color/black"
-                android:textSize="16sp"
-                android:textStyle="bold"
+            <View
+                android:id="@+id/setting_profile_divide_line"
+                android:layout_width="0dp"
+                android:layout_height="2dp"
+                android:layout_marginHorizontal="20dp"
+                android:layout_marginVertical="20dp"
+                android:background="@color/divide_line"
+                app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/setting_profile_area" />
 
-            <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/setting_team_rv"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
-                android:paddingHorizontal="20dp"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/setting_team_title" />
-
-            <View
-                android:id="@+id/setting_team_divide_line"
-                android:layout_width="0dp"
-                android:layout_height="2dp"
-                android:layout_marginHorizontal="20dp"
-                android:layout_marginVertical="20dp"
-                android:background="@color/divide_line"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/setting_team_rv" />
-
-            <TextView
-                android:id="@+id/setting_league_title"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginHorizontal="24dp"
-                android:layout_marginTop="30dp"
-                android:text="My League"
-                android:textColor="@color/black"
-                android:textSize="16sp"
-                android:textStyle="bold"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/setting_team_divide_line" />
-
-            <TextView
-                android:id="@+id/setting_league_sub_title"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginHorizontal="24dp"
-                android:layout_marginTop="7dp"
-                android:text="등록 시 메인 페이지에서 경기 일정을 바로 보여줍니다."
-                android:textColor="@color/black"
-                android:textSize="12sp"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/setting_league_title" />
-
-            <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/setting_league_rv"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
-                android:paddingHorizontal="20dp"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/setting_league_sub_title" />
-
-            <View
-                android:id="@+id/setting_league_divide_line"
-                android:layout_width="0dp"
-                android:layout_height="2dp"
-                android:layout_marginHorizontal="20dp"
-                android:layout_marginVertical="20dp"
-                android:background="@color/divide_line"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/setting_league_rv" />
 
             <androidx.appcompat.widget.AppCompatImageView
                 android:id="@+id/setting_bookmark_icon"
@@ -171,7 +102,7 @@
                 android:layout_marginVertical="20dp"
                 android:src="@drawable/ic_bookmark"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/setting_league_divide_line" />
+                app:layout_constraintTop_toBottomOf="@id/setting_profile_divide_line" />
 
             <TextView
                 android:id="@+id/setting_bookmark_title"
@@ -184,6 +115,15 @@
                 android:textStyle="bold"
                 app:layout_constraintBottom_toBottomOf="@id/setting_bookmark_icon"
                 app:layout_constraintStart_toEndOf="@id/setting_bookmark_icon"
+                app:layout_constraintTop_toTopOf="@id/setting_bookmark_icon" />
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:layout_width="18dp"
+                android:layout_height="18dp"
+                android:layout_marginEnd="20dp"
+                android:src="@drawable/ic_setting_arrow_next"
+                app:layout_constraintBottom_toBottomOf="@id/setting_bookmark_icon"
+                app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toTopOf="@id/setting_bookmark_icon" />
 
             <View
@@ -205,7 +145,7 @@
                 android:paddingVertical="20dp"
                 android:src="@drawable/ic_highlight"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/setting_bookmark_divide_line"/>
+                app:layout_constraintTop_toBottomOf="@id/setting_bookmark_divide_line" />
 
             <TextView
                 android:id="@+id/setting_recent_highlight_title"
@@ -220,6 +160,15 @@
                 app:layout_constraintStart_toEndOf="@id/setting_highlight_icon"
                 app:layout_constraintTop_toTopOf="@id/setting_highlight_icon" />
 
+            <androidx.appcompat.widget.AppCompatImageView
+                android:layout_width="18dp"
+                android:layout_height="18dp"
+                android:layout_marginEnd="20dp"
+                android:src="@drawable/ic_setting_arrow_next"
+                app:layout_constraintBottom_toBottomOf="@id/setting_highlight_icon"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="@id/setting_highlight_icon" />
+
             <View
                 android:id="@+id/setting_highlight_divide_line"
                 android:layout_width="0dp"
@@ -229,6 +178,155 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/setting_highlight_icon" />
+
+            <TextView
+                android:id="@+id/setting_alarm_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="20dp"
+                android:text="알림 설정"
+                android:textColor="@color/text_color_gray"
+                android:textStyle="bold"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/setting_highlight_divide_line" />
+
+            <TextView
+                android:id="@+id/setting_alarm_match"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="20dp"
+                android:text="경기 일정 알람 설정"
+                android:textColor="@color/black"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/setting_alarm_title" />
+
+            <TextView
+                android:id="@+id/setting_alarm_community"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="20dp"
+                android:text="커뮤니티 일정 알람 설정"
+                android:textColor="@color/black"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/setting_alarm_match" />
+
+            <View
+                android:id="@+id/setting_alarm_divide_line"
+                android:layout_width="0dp"
+                android:layout_height="2dp"
+                android:layout_marginHorizontal="20dp"
+                android:layout_marginTop="20dp"
+                android:background="@color/divide_line"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/setting_alarm_community" />
+
+            <TextView
+                android:id="@+id/setting_language_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="16dp"
+                android:layout_marginTop="30dp"
+                android:text="언어 선택"
+                android:textColor="@color/black"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/setting_alarm_divide_line" />
+
+            <View
+                android:id="@+id/setting_language_divide_line"
+                android:layout_width="0dp"
+                android:layout_height="2dp"
+                android:layout_marginHorizontal="20dp"
+                android:layout_marginTop="30dp"
+                android:background="@color/divide_line"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/setting_language_text" />
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/setting_logout_area"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="16dp"
+                android:background="@drawable/bg_layout_pressed"
+                android:clickable="true"
+                android:focusable="true"
+                android:paddingVertical="20dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/setting_language_divide_line"
+                android:layout_marginTop="10dp">
+
+                <TextView
+                    android:id="@+id/setting_logout_text"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="로그아웃"
+                    android:textColor="@color/black"
+                    android:textSize="16sp"
+                    android:textStyle="bold"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <androidx.appcompat.widget.AppCompatImageView
+                    android:layout_width="18dp"
+                    android:layout_height="18dp"
+                    android:layout_marginEnd="4dp"
+                    android:src="@drawable/ic_setting_arrow_next"
+                    app:layout_constraintBottom_toBottomOf="@id/setting_logout_text"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="@id/setting_logout_text" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/setting_withdrawal_area"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="16dp"
+                android:background="@drawable/bg_layout_pressed"
+                android:clickable="true"
+                android:focusable="true"
+                android:paddingVertical="20dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/setting_logout_area">
+
+                <TextView
+                    android:id="@+id/setting_withdrawal_text"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+
+                    android:text="회원 탈퇴"
+                    android:textColor="@color/black"
+                    android:textSize="16sp"
+                    android:textStyle="bold"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <androidx.appcompat.widget.AppCompatImageView
+                    android:layout_width="18dp"
+                    android:layout_height="18dp"
+                    android:layout_marginEnd="4dp"
+                    android:src="@drawable/ic_setting_arrow_next"
+                    app:layout_constraintBottom_toBottomOf="@id/setting_withdrawal_text"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="@id/setting_withdrawal_text" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+
         </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.core.widget.NestedScrollView>
 

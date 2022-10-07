@@ -10,6 +10,7 @@ import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
+import androidx.navigation.fragment.findNavController
 import com.google.android.gms.auth.api.signin.GoogleSignIn
 import com.google.android.gms.common.api.ApiException
 import com.soma.common.base.BaseFragment
@@ -36,8 +37,9 @@ class LoginFragment : BaseFragment<FragmentLoginBinding>(R.layout.fragment_login
         lifecycleScope.launchWhenCreated {
             viewModel.googleLoginFlow.collectLatest { success ->
                 if (success) {
+                    navigateSelectLanguageFragment()
                     Toast.makeText(requireContext(), "로그인 성공", Toast.LENGTH_SHORT).show()
-                    passLogin()
+//                    passLogin()
 
                     /* TODO NewUser에 대해서 로그인 절차 추가 필요 */
                 }
@@ -59,7 +61,7 @@ class LoginFragment : BaseFragment<FragmentLoginBinding>(R.layout.fragment_login
                             val account = task.getResult(ApiException::class.java)
 //                            viewModel.testScenario()
 
-                            Log.d(TAG, "googleLoginToken: ${account.idToken}")
+                            Log.d(TAG, "googleLoginToken: ${account.email} ${account.givenName} ${account.displayName} ${account.photoUrl}")
 
                             if (account.idToken != null) {
                                 Log.d(TAG, "viewModel 호출")
@@ -79,6 +81,10 @@ class LoginFragment : BaseFragment<FragmentLoginBinding>(R.layout.fragment_login
 
     fun googleLogin() {
         startGoogleLoginForResult.launch(viewModel.getGoogleSignInClient().signInIntent)
+    }
+
+    fun navigateSelectLanguageFragment() {
+        findNavController().navigate(R.id.action_loginFragment_to_selectLanguageFragment)
     }
 
     companion object {

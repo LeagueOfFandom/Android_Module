@@ -6,17 +6,17 @@ object ViewObjectFactory {
     fun createViewObject(viewType: Int, data: CommonViewObject) : ViewObject {
         return when (viewType) {
             ViewType.LIVE_VIEW.ordinal, ViewType.MATCH_RESULT_VIEW.ordinal, ViewType.MATCH_SCHEDULE_VIEW.ordinal ->
-                MatchViewObject(data.matchId!!,
-                    data.homeName!!,
-                    data.homeImg!!,
-                    data.awayName!!,
-                    data.awayImg!!,
-                    data.date!!,
-                    data.time!!,
-                    data.league!!,
-                    data.isAlarm!!,
-                    data.homeScore!!,
-                    data.awayScore!!)
+                MatchViewObject(data.matchId,
+                    data.homeName,
+                    data.homeImg,
+                    data.awayName,
+                    data.awayImg,
+                    data.date,
+                    data.time,
+                    data.league,
+                    data.isAlarm,
+                    data.homeScore,
+                    data.awayScore)
            ViewType.TEXT_ARROW_VIEW.ordinal -> TextArrowViewObject(
                 data.text!!)
            ViewType.COMMUNITY_VIEW.ordinal -> CommunityViewObject(
