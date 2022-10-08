@@ -1,5 +1,6 @@
 package com.soma.lof.common.util
 
+import com.soma.lof.core_model.dto.CommonInfoItem
 import com.soma.lof.core_model.dto.CommonItem
 import com.soma.lof.core_model.dto.CommonItemResponse
 import com.soma.lof.core_model.entity.ViewType

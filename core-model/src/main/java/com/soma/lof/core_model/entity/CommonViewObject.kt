@@ -3,41 +3,42 @@ package com.soma.lof.core_model.entity
 data class CommonViewObject(
 
     // Text_Arrow
-    val text: String?,
+    val text: String = "",
 
     // Community
-    val nickname: String?,
-    val profileImg: String?,
-    val time: String?,
-    val content: String?,
+    val nickname: String = "",
+    val profileImg: String = "",
+    val time: String = "",
+    val content: String = "",
 
     // Match
-    val matchId: Long?,
-    val homeName: String?,
-    val homeImg: String?,
-    val awayName: String?,
-    val awayImg: String?,
-    val date: String?,
-    val league: String?,
-    val isAlarm: Boolean?,
-    val homeScore: Int?,
-    val awayScore: Int?,
-    val status: String?,
+    val matchId: Long = 0L,
+    val homeName: String = "",
+    val homeImg: String = "",
+    val awayName: String = "",
+    val awayImg: String = "",
+    val date: String = "",
+    val league: String = "",
+    val isAlarm: Boolean = false,
+    val homeScore: Int = 0,
+    val awayScore: Int = 0,
+    val status: String = "",
 
     // Highlight
-    val videoList: List<String>?,
+    val videoList: List<String> = emptyList(),
 
     // PreviewImage
-    val blueImgList: List<String>?,
-    val redImgList: List<String>?,
+    val blueImgList: List<String> = emptyList(),
+    val redImgList: List<String> = emptyList(),
 
     // PreviewText
-    val blueData: String?,
-    val redData: String?,
+    val blueData: String = "",
+    val redData: String = "",
 
     // Info
-    val isCheck: Boolean?,
-
-
-
+    val infoTitle: String = "",
+    val infoContent: String = "",
+    val infoIsCheck: Boolean = false,
+    val infoTimeCompare: String = "",
+    val infoDateTime: String = "",
 )
