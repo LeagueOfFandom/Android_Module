@@ -7,7 +7,7 @@
 
     <fragment
         android:id="@+id/matchFragment"
-        android:name="com.soma.lof.match.ui.MatchFragment"
+        android:name="com.soma.lof.match.ui.match_up.MatchFragment"
         android:label="MatchFragment" >
 
         <deepLink
@@ -22,7 +22,7 @@
 
     <fragment
         android:id="@+id/matchScheduleInfoFragment"
-        android:name="com.soma.lof.match.ui.MatchScheduleInfoFragment"
+        android:name="com.soma.lof.match.ui.match_info.MatchScheduleInfoFragment"
         android:label="MatchInfoFragment"
         tools:layout="@layout/fragment_match_schedule_info">
 
@@ -32,7 +32,7 @@
 
     <fragment
         android:id="@+id/matchResultInfoFragment"
-        android:name="com.soma.lof.match.ui.MatchResultInfoFragment"
+        android:name="com.soma.lof.match.ui.match_info.MatchResultInfoFragment"
         android:label="MatchResultInfoFragment" >
 
         <deepLink

@@ -1,24 +1,28 @@
-package com.soma.lof.match.ui
+package com.soma.lof.match.ui.match_info
 
-import android.os.Bundle
-import android.view.View
+import android.util.Log
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.viewModels
 import com.soma.common.base.BaseFragment
+import com.soma.common_ui.presentation.CommonListAdapter
 import com.soma.lof.match.R
 import com.soma.lof.match.databinding.FragmentMatchPreviewBinding
+import com.soma.lof.match.ui.match_up.MatchViewModel
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
 class MatchPreviewFragment() : BaseFragment<FragmentMatchPreviewBinding>(R.layout.fragment_match_preview) {
 
-//    private val viewModel by viewModels<MatchInfoViewModel>(ownerProducer = { requireParentFragment() })
-//    private lateinit var matchInfoPreviewAdapter: MatchInfoPreviewAdapter
+    private val viewModel: MatchInfoViewModel by viewModels(ownerProducer = { requireParentFragment() })
+    private lateinit var matchInfoPreviewAdapter: CommonListAdapter
 
     override fun initView() {
+        matchInfoPreviewAdapter = CommonListAdapter(viewModel.matchInfo.value.setInfo)
 
+        bind {
+            adapter = matchInfoPreviewAdapter
+        }
     }
-
-
 
 //        matchInfoPreviewAdapter = MatchInfoPreviewAdapter(viewModel)
 //        binding.matchPreviewRv.apply {
@@ -36,20 +40,8 @@ class MatchPreviewFragment() : BaseFragment<FragmentMatchPreviewBinding>(R.layou
 //        }
 
 
-    override fun onStart() {
-        super.onStart()
-//        if (viewModel.matchInfoSetData.value == null) {
-//            viewModel.getMatchInfo(matchId)
-//        }
-    }
-
     companion object {
-        fun newInstance(matchId: Long) : Fragment {
-            val fragment = MatchPreviewFragment()
-            val bundle = Bundle()
-            bundle.putLong("MATCH_ID", matchId)
-            fragment.arguments = bundle
-            return fragment
-        }
+        fun newInstance(): Fragment = MatchPreviewFragment()
+
     }
 }

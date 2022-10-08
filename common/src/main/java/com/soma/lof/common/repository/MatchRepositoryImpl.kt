@@ -3,7 +3,9 @@ package com.soma.lof.common.repository
 import com.soma.lof.common.api.MatchService
 import com.soma.lof.core_model.dto.CommonItem
 import com.soma.lof.core_model.dto.CommonItemResponse
-import com.soma.lof.core_model.entity.MatchViewObject
+import com.soma.lof.core_model.dto.MatchInfoDummyResponse
+import com.soma.lof.core_model.dto.MatchInfoResponse
+import com.soma.lof.core_model.entity.*
 import com.soma.lof.foundation.exception.EmptyBodyException
 import com.soma.lof.foundation.exception.NetworkFailureException
 import javax.inject.Inject
@@ -82,6 +84,109 @@ class MatchRepositoryImpl @Inject constructor(
             ),
         )
 
+    val matchInfoDummy = MatchInfoDummyResponse(
+        listOf(
+            CommonItem(
+                "MATCH_PREVIEW_TEXT_VIEW",
+                MatchPreviewTextViewObject(
+                    text = "KDA",
+                    blueData = "14/5/40",
+                    redData = "5/14/15"
+                )
+            ),
+            CommonItem(
+                "MATCH_PREVIEW_TEXT_VIEW",
+                MatchPreviewTextViewObject(
+                    text = "Text",
+                    blueData = "1230",
+                    redData = "555/15"
+                )
+            ),
+            CommonItem(
+                "MATCH_PREVIEW_IMAGE_VIEW",
+                MatchPreviewImageViewObject(
+                    "HERALDS",
+                    listOf(
+                        "https://media.istockphoto.com/vectors/dragon-icon-vector-illustration-vector-id877781616"
+                    ),
+                    listOf(
+                        "https://media.istockphoto.com/vectors/dragon-icon-vector-illustration-vector-id877781616"
+                    )
+                )
+            ),
+        ),
+        RosterObject(
+            listOf(
+                RosterData(
+                    "top",
+                    "H",
+                    ""
+                ),
+                RosterData(
+                    "jun",
+                    "H",
+                    ""
+                ),
+                RosterData(
+                    "mid",
+                    "H",
+                    ""
+                ),
+                RosterData(
+                    "adc",
+                    "H",
+                    ""
+                ),
+                RosterData(
+                    "sup",
+                    "H",
+                    ""
+                )
+            ),
+            listOf(
+                RosterData(
+                    "top",
+                    "H",
+                    ""
+                ),
+                RosterData(
+                    "jun",
+                    "H",
+                    ""
+                ),
+                RosterData(
+                    "mid",
+                    "H",
+                    ""
+                ),
+                RosterData(
+                    "adc",
+                    "H",
+                    ""
+                ),
+                RosterData(
+                    "sup",
+                    "H",
+                    ""
+                )
+            )
+        ),
+        MatchViewObject(
+            0L,
+            "DK",
+            "",
+            "T1",
+            "",
+            "2022년 8월 7일",
+            "18:00",
+            "LCK",
+            true,
+            1,
+            0
+        ),
+        PredictionData(10, 20)
+    )
+
 
     override suspend fun getMatchList(
         jwtString: String,
@@ -98,5 +203,7 @@ class MatchRepositoryImpl @Inject constructor(
         }
     }
 
-
+    override suspend fun getMatchInfoDataTest(): MatchInfoDummyResponse {
+        return matchInfoDummy
+    }
 }
