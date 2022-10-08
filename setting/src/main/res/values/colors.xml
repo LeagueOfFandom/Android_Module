@@ -2,4 +2,5 @@
 <resources>
     <color name="bg_profile_area_color">#F6F7F8</color>
     <color name="divide_line">#C1C2C2</color>
+    <color name="btn_disabled">#CACDD6</color>
 </resources>
