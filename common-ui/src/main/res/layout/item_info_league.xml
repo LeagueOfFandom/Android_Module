@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="viewObject"
+            type="com.soma.lof.core_model.entity.InfoViewObject" />
+
+        <import type="android.view.View" />
+
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/bg_info_default"
+        android:paddingHorizontal="16dp"
+        android:paddingVertical="10dp"
+        android:layout_marginBottom="15dp">
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/item_info_league_icon"
+            android:layout_width="32dp"
+            android:layout_height="32dp"
+            android:src="@drawable/ic_info_league"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/item_info_league_title"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
+            android:layout_marginEnd="10dp"
+            android:gravity="start"
+            android:text="@{viewObject.title}"
+            android:textColor="@color/black"
+            android:textSize="17sp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toStartOf="@id/item_info_league_check"
+            app:layout_constraintStart_toEndOf="@id/item_info_league_icon"
+            app:layout_constraintTop_toTopOf="@id/item_info_league_icon"
+            tools:text="(LCK) DRX vs KDF 경기 종료" />
+
+        <TextView
+            android:id="@+id/item_info_league_content"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:layout_marginEnd="10dp"
+            android:gravity="start"
+            android:text="@{viewObject.content}"
+            android:textColor="@color/black"
+            app:layout_constraintEnd_toStartOf="@id/item_info_league_check"
+            app:layout_constraintStart_toStartOf="@id/item_info_league_title"
+            app:layout_constraintTop_toBottomOf="@id/item_info_league_title"
+            tools:text="DRX와 KDF의 경기결과를 확인하러 가볼까요?" />
+
+        <TextView
+            android:id="@+id/item_info_league_time_compare"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:text="@{viewObject.timeCompare}"
+            android:textSize="12sp"
+            app:layout_constraintStart_toStartOf="@id/item_info_league_content"
+            app:layout_constraintTop_toBottomOf="@id/item_info_league_content"
+            tools:text="1시간 전" />
+
+        <TextView
+            android:id="@+id/item_info_league_date_time"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:text="@{viewObject.dateTime}"
+            android:textSize="12sp"
+            app:layout_constraintBaseline_toBaselineOf="@id/item_info_league_time_compare"
+            app:layout_constraintStart_toEndOf="@id/item_info_league_time_compare"
+            tools:text="22.09.01. 17:30" />
+
+
+        <View
+            android:id="@+id/item_info_league_check"
+            android:layout_width="10dp"
+            android:layout_height="10dp"
+            android:background="@drawable/bg_info_check_red_oval"
+            android:visibility="@{viewObject.isCheck ? View.VISIBLE : View.GONE}"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</layout>

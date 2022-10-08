@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="viewObject"
+            type="com.soma.lof.core_model.entity.InfoViewObject" />
+
+        <import type="android.view.View" />
+
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/bg_info_default"
+        android:paddingHorizontal="16dp"
+        android:paddingVertical="10dp"
+        android:layout_marginBottom="15dp">
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/item_info_comment_icon"
+            android:layout_width="32dp"
+            android:layout_height="32dp"
+            android:src="@drawable/ic_info_comment"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/item_info_comment_title"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="2dp"
+            android:layout_marginEnd="10dp"
+            android:gravity="start"
+            android:text="@{viewObject.title}"
+            android:textColor="@color/black"
+            android:textSize="15sp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toStartOf="@id/item_info_comment_check"
+            app:layout_constraintStart_toEndOf="@id/item_info_comment_icon"
+            app:layout_constraintTop_toTopOf="@id/item_info_comment_icon"
+            tools:text="'누구누구'님이 나의 글에 댓글을 남겼습니다." />
+
+        <TextView
+            android:id="@+id/item_info_comment_content"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:layout_marginEnd="10dp"
+            android:gravity="start"
+            android:text="@{viewObject.content}"
+            android:textColor="@color/black"
+            app:layout_constraintEnd_toStartOf="@id/item_info_comment_check"
+            app:layout_constraintStart_toStartOf="@id/item_info_comment_title"
+            app:layout_constraintTop_toBottomOf="@id/item_info_comment_title"
+            tools:text="댓글을 직접적으로 여기 보여줘요" />
+
+        <TextView
+            android:id="@+id/item_info_comment_time_compare"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:text="@{viewObject.timeCompare}"
+            android:textSize="12sp"
+            app:layout_constraintStart_toStartOf="@id/item_info_comment_content"
+            app:layout_constraintTop_toBottomOf="@id/item_info_comment_content"
+            tools:text="1시간 전" />
+
+        <TextView
+            android:id="@+id/item_info_comment_date_time"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:text="@{viewObject.dateTime}"
+            android:textSize="12sp"
+            app:layout_constraintBaseline_toBaselineOf="@id/item_info_comment_time_compare"
+            app:layout_constraintStart_toEndOf="@id/item_info_comment_time_compare"
+            tools:text="22.09.01. 17:30" />
+
+
+        <View
+            android:id="@+id/item_info_comment_check"
+            android:layout_width="10dp"
+            android:layout_height="10dp"
+            android:background="@drawable/bg_info_check_red_oval"
+            android:visibility="@{viewObject.isCheck ? View.VISIBLE : View.GONE}"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</layout>

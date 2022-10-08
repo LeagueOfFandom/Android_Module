@@ -6,6 +6,7 @@ import androidx.databinding.DataBindingUtil
 import androidx.databinding.ViewDataBinding
 import com.soma.common_ui.R
 import com.soma.common_ui.presentation.*
+import com.soma.common_ui.presentation.info.*
 import com.soma.lof.core_model.entity.ViewType
 
 object CommonVHFactory {
@@ -23,7 +24,14 @@ object CommonVHFactory {
             ViewType.MATCH_PREVIEW_IMAGE_VIEW.ordinal -> MatchPreviewImageVH(getViewDataBinding(parent, R.layout.item_match_preview_image))
 
             ViewType.ONE_LINE_TEXT_VIEW.ordinal -> OneLineTextVH(getViewDataBinding(parent, R.layout.item_one_line_text))
-            ViewType.INFO_DEFAULT_VIEW.ordinal -> InfoDefaultVH(getViewDataBinding(parent, R.layout.item_info_default_view))
+
+            /* Info Fragment UI */
+            ViewType.INFO_EVENT_VIEW.ordinal -> InfoEventVH(getViewDataBinding(parent, R.layout.item_info_event))
+            ViewType.INFO_LEAGUE_VIEW.ordinal -> InfoLeagueVH(getViewDataBinding(parent, R.layout.item_info_league))
+            ViewType.INFO_HIGHLIGHT_VIEW.ordinal -> InfoHighlightVH(getViewDataBinding(parent, R.layout.item_info_highlight))
+            ViewType.INFO_COMMENT_VIEW.ordinal -> InfoCommentVH(getViewDataBinding(parent, R.layout.item_info_comment))
+            ViewType.INFO_POST_LIKE_VIEW.ordinal -> InfoPostLikeVH(getViewDataBinding(parent, R.layout.item_info_post_like))
+            ViewType.INFO_POST_SUCCESS_VIEW.ordinal -> InfoPostSuccessVH(getViewDataBinding(parent, R.layout.item_info_post_success))
 
             else -> MatchScheduleVH(getViewDataBinding(parent, R.layout.item_match_schedule))
         }
