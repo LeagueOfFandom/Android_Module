@@ -4,6 +4,19 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <data>
+
+        <variable
+            name="vm"
+            type="com.soma.lof.select_team.ui.SelectTeamViewModel" />
+
+        <variable
+            name="leaguePos"
+            type="Integer" />
+
+        <variable
+            name="teamPos"
+            type="Integer" />
+
         <variable
             name="team"
             type="com.soma.lof.core_model.entity.TeamInfo" />
@@ -21,6 +34,8 @@
             android:elevation="8dp"
             android:foreground="?android:attr/selectableItemBackground"
             app:cardCornerRadius="8dp"
+            app:teamSelectStrokeColor="@{team}"
+            app:teamSelectStrokeWidth="@{team}"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"

@@ -6,8 +6,12 @@
     <data>
 
         <variable
-            name="data"
-            type="com.soma.lof.core_model.entity.LeagueTeamInfo" />
+            name="vm"
+            type="com.soma.lof.select_team.ui.SelectTeamViewModel" />
+
+        <variable
+            name="pos"
+            type="Integer" />
 
         <variable
             name="adapter"
@@ -27,26 +31,30 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="20dp"
+            android:text="test"
             android:textColor="@color/main_color"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            tools:text="대한민국의 LoL 프로 리그 팀의 리스트입니다."
-            android:text="@{data.note}" />
+            app:leagueNote="@{vm.selectTeamData}"
+            app:position="@{pos}"
+            tools:text="대한민국의 LoL 프로 리그 팀의 리스트입니다." />
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/fm_select_team_rv"
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
-            app:spanCount="2"
-            app:itemDecoration="@{itemDecoration}"
-            app:adapter="@{adapter}"
-            tools:listitem="@layout/item_select_team"
-            app:layout_constraintTop_toBottomOf="@id/select_team_league_note"
-            app:layout_constraintBottom_toBottomOf="parent"
+            android:layout_marginHorizontal="15dp"
             android:layout_marginTop="15dp"
-            android:layout_marginHorizontal="15dp"/>
+            app:adapter="@{adapter}"
+            app:itemDecoration="@{itemDecoration}"
+            app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/select_team_league_note"
+            app:position="@{pos}"
+            app:spanCount="2"
+            app:teamItems="@{vm.selectTeamData}"
+            tools:listitem="@layout/item_select_team" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 
 </layout>

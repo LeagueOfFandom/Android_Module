@@ -119,7 +119,7 @@
             android:id="@+id/loading_bar"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            app:show="@{vm.selectTeamModel}"
+            app:show="@{vm.selectTeamData}"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"

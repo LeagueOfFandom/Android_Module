@@ -33,7 +33,6 @@ class SelectTeamActivity : BaseActivity<ActivitySelectTeamBinding>(R.layout.acti
         lifecycleScope.launchWhenCreated {
             viewModel.tabItems.collectLatest {
                 if (it.isNotEmpty()) {
-                    Log.d(TAG, "onCreate: tabItems ${it.toString()}")
                     binding.selectTeamVp.apply {
                         adapter = teamLeagueAdapter
                         orientation = ViewPager2.ORIENTATION_HORIZONTAL
@@ -46,7 +45,6 @@ class SelectTeamActivity : BaseActivity<ActivitySelectTeamBinding>(R.layout.acti
             }
 
             viewModel.teamCnt.collectLatest {
-                Log.d(TAG, "teamCnt collect")
                 binding.selectTeamCntNote.text = "총 ${it}팀을 선택하였습니다."
             }
         }

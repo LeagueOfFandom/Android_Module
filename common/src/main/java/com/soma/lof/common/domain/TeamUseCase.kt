@@ -16,7 +16,7 @@ import javax.inject.Inject
 
 
 /**
- * [SelectTeamModel] is Data Layer
+ *  [SelectTeamModel] is Domain Layer Model
  */
 class TeamUseCase @Inject constructor(
     private val teamRepository: TeamRepository,
@@ -35,7 +35,7 @@ class TeamUseCase @Inject constructor(
                 }
                 teamRepository.getUserTeamList(jwtToken).collectLatest {
                     Timber.d("TeamUseCase getUserTeamList Success")
-                    data.teamInfo = it.data ?: emptyList()
+                    data.teamInfo = it.data?.toMutableList() ?: mutableListOf()
                 }
                 Timber.d("TeamUseCase emit data")
                 emit(Result.Success(data))

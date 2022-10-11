@@ -8,24 +8,17 @@ import androidx.lifecycle.viewModelScope
 import com.soma.common_ui.route.FeatureHomeRouteContract
 import com.soma.lof.common.domain.DataStoreUseCase
 import com.soma.lof.common.domain.TeamUseCase
-import com.soma.lof.common.repository.TeamRepository
 import com.soma.lof.core_model.dto.domain.SelectTeamModel
 import com.soma.lof.core_model.entity.LeagueTeamInfo
 import com.soma.lof.core_model.entity.TeamInfo
 import com.soma.lof.foundation.result.Result
 import com.soma.lof.foundation.result.data
-import com.soma.lof.select_team.ui.SelectTeamActivity.Companion.TAG
+import com.soma.lof.foundation.result.successOrNull
 import dagger.hilt.android.lifecycle.HiltViewModel
-import kotlinx.coroutines.Dispatchers.IO
-import kotlinx.coroutines.async
-import kotlinx.coroutines.awaitAll
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
-import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.launch
-import kotlinx.coroutines.withContext
-import okhttp3.Dispatcher
 import javax.inject.Inject
 
 @HiltViewModel
@@ -33,34 +26,29 @@ class SelectTeamViewModel @Inject constructor(
     private val teamUseCase: TeamUseCase,
     private val dataStoreUseCase: DataStoreUseCase,
     private val featureHomeRouteContract: FeatureHomeRouteContract,
-) : ViewModel() {
+) : ViewModel(), OnTeamClickListener {
 
     private val _tabItems: MutableStateFlow<List<String>> = MutableStateFlow(emptyList())
-    private val _leagueTeamInfo: MutableStateFlow<List<LeagueTeamInfo>> = MutableStateFlow(
-        emptyList())
     private val _userTeamInfo: MutableStateFlow<List<TeamInfo>> = MutableStateFlow(emptyList())
     private val _teamCnt = MutableStateFlow(0)
 
     val teamCnt: StateFlow<Int> get() = _teamCnt
     val tabItems: StateFlow<List<String>> get() = _tabItems
-    val leagueTeamInfo: StateFlow<List<LeagueTeamInfo>> get() = _leagueTeamInfo
     val userTeamInfo: StateFlow<List<TeamInfo>> get() = _userTeamInfo
 
-    private val _selectTeamItems: MutableStateFlow<Result<SelectTeamModel>> =
+    private val _selectTeamData: MutableStateFlow<Result<SelectTeamModel>> =
         MutableStateFlow(Result.Loading)
-    val selectTeamModel: StateFlow<Result<SelectTeamModel>> get() = _selectTeamItems
+    val selectTeamData: StateFlow<Result<SelectTeamModel>> get() = _selectTeamData
 
     init {
         viewModelScope.launch {
             val jwtToken = dataStoreUseCase.jwtToken.first()
-            Log.d(TAG, "TeamUseCase jwtToken: $jwtToken")
             if (jwtToken != null) {
-                Log.d(TAG, "TeamUseCase collect")
                 teamUseCase.getSelectTeamData(jwtToken).collect { result ->
-                    _leagueTeamInfo.value = result.data?.leagueInfo ?: emptyList()
                     _tabItems.value = result.data?.leagueList ?: emptyList()
                     _userTeamInfo.value = result.data?.teamInfo ?: emptyList()
-                    _selectTeamItems.value = result
+                    _teamCnt.value = result.data?.teamInfo?.size ?: 0
+                    _selectTeamData.value = result
                 }
             }
         }
@@ -83,6 +71,18 @@ class SelectTeamViewModel @Inject constructor(
 
     companion object {
         private val TAG = "SelectTeamViewModel"
+    }
+
+    override fun onClicked(team: TeamInfo, leaguePos: Int, teamPos: Int) {
+        Log.d(TAG, "onClicked: 클릭")
+        if (_selectTeamData.value.data!!.teamInfo.contains(team)) {
+            _selectTeamData.value.data!!.leagueInfo[leaguePos].teamInfo[teamPos].teamCheck = false
+            _selectTeamData.value.data!!.teamInfo.remove(team)
+        } else {
+            _selectTeamData.value.data!!.teamInfo.add(team)
+            _selectTeamData.value.data!!.leagueInfo[leaguePos].teamInfo[teamPos].teamCheck = true
+        }
+        Log.d(TAG, "onClicked: ${_selectTeamData.value.data!!.teamInfo.size}")
     }
 
 }
