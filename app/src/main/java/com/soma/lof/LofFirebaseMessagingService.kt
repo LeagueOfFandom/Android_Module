@@ -8,25 +8,25 @@ import androidx.core.app.NotificationCompat
 import androidx.core.app.NotificationManagerCompat
 import com.google.firebase.messaging.FirebaseMessagingService
 import com.google.firebase.messaging.RemoteMessage
+import timber.log.Timber
 
+/**
+ * Receives Firebase Cloud Messages and [TODO] will change Live Match Data
+ */
 class LofFirebaseMessagingService: FirebaseMessagingService() {
 
-    /* 토큰 생성 메서드*/
+    /* 토큰 생성 메서드 */
     override fun onNewToken(token: String) {
         super.onNewToken(token)
 
-        /*
-        * TODO Token 갱신 Api 필요
-        */
+        // TODO Token 갱신 Api 필요
+        Timber.d("New firebase token: $token")
     }
 
     /* 메세지 수신 메서드*/
     override fun onMessageReceived(message: RemoteMessage) {
         super.onMessageReceived(message)
-
-        Log.d(TAG, "onMessageReceived() - remoteMessage : ${message}")
-        Log.d(TAG, "onMessageReceived() - from : ${message.from}")
-        Log.d(TAG, "onMessageReceived() - notification : ${message.notification?.body}")
+        Timber.d("Message payload: $message.data")
 
         message.notification?.let {
             sendNotification(it.title, it.body)

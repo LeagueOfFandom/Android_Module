@@ -11,7 +11,6 @@ import com.soma.lof.common.repository.SelectTeamRepository
 import com.soma.lof.common.repository.TeamRepository
 import com.soma.lof.core_model.entity.LeagueTeamInfo
 import com.soma.lof.core_model.entity.TeamInfo
-import com.soma.lof.select_team.util.test_token
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.async
 import kotlinx.coroutines.awaitAll

@@ -2,8 +2,7 @@ package com.soma.lof.match.ui.match_info
 
 import android.util.Log
 import androidx.fragment.app.viewModels
-import com.soma.common.base.BaseFragment
-import com.soma.lof.core_model.entity.MatchViewObject
+import com.soma.lof.foundation.base.BaseFragment
 import com.soma.lof.match.R
 import com.soma.lof.match.databinding.FragmentMatchScheduleInfoBinding
 import dagger.hilt.android.AndroidEntryPoint

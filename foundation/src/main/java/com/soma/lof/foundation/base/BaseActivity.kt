@@ -1,4 +1,4 @@
-package com.soma.common.base
+package com.soma.lof.foundation.base
 
 import android.os.Bundle
 import android.widget.Toast

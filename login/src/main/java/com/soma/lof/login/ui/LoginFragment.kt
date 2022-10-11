@@ -6,14 +6,13 @@ import android.widget.Toast
 import androidx.activity.result.ActivityResult
 import androidx.activity.result.ActivityResultLauncher
 import androidx.activity.result.contract.ActivityResultContracts
-import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
 import com.google.android.gms.auth.api.signin.GoogleSignIn
 import com.google.android.gms.common.api.ApiException
-import com.soma.common.base.BaseFragment
+import com.soma.lof.foundation.base.BaseFragment
 import com.soma.lof.login.R
 import com.soma.lof.login.databinding.FragmentLoginBinding
 import dagger.hilt.android.AndroidEntryPoint

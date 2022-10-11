@@ -1,12 +1,10 @@
 package com.soma.lof.common.repository
 
 import com.soma.lof.common.api.UserService
-import com.soma.lof.core_model.dto.CommonInfoItem
 import com.soma.lof.core_model.dto.CommonItemResponse
 import com.soma.lof.core_model.dto.UserTokenRequest
 import com.soma.lof.core_model.dto.UserTokenResponse
 import com.soma.lof.core_model.entity.CommonViewObject
-import com.soma.lof.core_model.entity.InfoViewObject
 import com.soma.lof.foundation.exception.EmptyBodyException
 import com.soma.lof.foundation.exception.NetworkFailureException
 import kotlinx.coroutines.flow.Flow

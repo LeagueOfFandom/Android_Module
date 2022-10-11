@@ -3,14 +3,12 @@ package com.soma.lof.setting
 import android.app.Activity
 import android.app.Application
 import android.content.Intent
-import android.util.Log
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.viewModelScope
 import com.google.android.gms.auth.api.signin.GoogleSignIn
 import com.google.android.gms.auth.api.signin.GoogleSignInClient
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions
 import com.soma.common_ui.route.FeatureLoginRouteContract
-import com.soma.common_ui.route.FeatureSelectTeamRouteContract
 import com.soma.lof.common.domain.DataStoreUseCase
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.Dispatchers

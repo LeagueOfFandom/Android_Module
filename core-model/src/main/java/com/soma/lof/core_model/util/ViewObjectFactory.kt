@@ -1,7 +1,6 @@
 package com.soma.lof.core_model.util
 
 import com.soma.lof.core_model.entity.*
-import javax.swing.text.View
 
 object ViewObjectFactory {
     fun createViewObject(viewType: Int, data: CommonViewObject): ViewObject {

@@ -4,9 +4,6 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <data>
-
-        <import type="com.soma.lof.foundation.result.UiStateKt" />
-
         <variable
             name="activity"
             type="com.soma.lof.select_team.ui.SelectTeamActivity" />

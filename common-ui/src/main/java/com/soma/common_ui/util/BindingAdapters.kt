@@ -1,4 +1,4 @@
-package com.soma.common_ui
+package com.soma.common_ui.util
 
 import android.view.View
 import android.widget.ImageView

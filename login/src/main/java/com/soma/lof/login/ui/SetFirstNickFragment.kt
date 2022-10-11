@@ -4,8 +4,7 @@ import android.content.Intent
 import android.text.Editable
 import android.text.TextWatcher
 import androidx.fragment.app.activityViewModels
-import androidx.navigation.fragment.findNavController
-import com.soma.common.base.BaseFragment
+import com.soma.lof.foundation.base.BaseFragment
 import com.soma.lof.login.R
 import com.soma.lof.login.databinding.FragmentNickFirstSetBinding
 import dagger.hilt.android.AndroidEntryPoint

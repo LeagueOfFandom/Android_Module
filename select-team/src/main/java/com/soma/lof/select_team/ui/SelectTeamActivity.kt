@@ -1,15 +1,12 @@
 package com.soma.lof.select_team.ui
 
-import android.content.Intent
 import android.os.Bundle
-import android.text.SpannableStringBuilder
 import android.util.Log
 import androidx.activity.viewModels
 import androidx.lifecycle.lifecycleScope
 import androidx.viewpager2.widget.ViewPager2
 import com.google.android.material.tabs.TabLayoutMediator
-import com.soma.common.base.BaseActivity
-import com.soma.lof.foundation.result.successOrNull
+import com.soma.lof.foundation.base.BaseActivity
 import com.soma.lof.select_team.R
 import com.soma.lof.select_team.databinding.ActivitySelectTeamBinding
 import dagger.hilt.android.AndroidEntryPoint

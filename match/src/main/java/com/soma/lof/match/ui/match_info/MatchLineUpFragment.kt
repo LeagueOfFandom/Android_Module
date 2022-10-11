@@ -1,14 +1,12 @@
 package com.soma.lof.match.ui.match_info
 
 import android.graphics.Color
-import android.util.Log
 import androidx.fragment.app.viewModels
 import com.bumptech.glide.Glide
-import com.soma.common.base.BaseFragment
 import com.soma.lof.core_model.entity.Team
+import com.soma.lof.foundation.base.BaseFragment
 import com.soma.lof.match.R
 import com.soma.lof.match.databinding.FragmentMatchLineUpBinding
-import com.soma.lof.match.ui.match_up.MatchViewModel
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
