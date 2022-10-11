@@ -23,7 +23,7 @@
             android:layout_height="25dp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            tools:src="@drawable/ic_arrow_next" />
+            tools:src="@drawable/ic_arrow_next_black" />
 
         <TextView
             android:id="@+id/community_user_nickname"

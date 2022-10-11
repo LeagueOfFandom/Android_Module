@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="Widget.App.Switch" parent="Widget.MaterialComponents.CompoundButton.Switch">
+        <item name="materialThemeOverlay">@style/ThemeOverlay.App.Switch</item>
+    </style>
+
+    <style name="ThemeOverlay.App.Switch" parent="">
+        <item name="android:layout_height">wrap_content</item>
+        <item name="colorOnSurface">@color/text_color_gray</item>
+        <item name="colorSecondary">#426BFF</item>
+    </style>
+</resources>
