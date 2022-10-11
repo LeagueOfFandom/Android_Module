@@ -7,6 +7,7 @@ import android.content.Context
 import android.os.Build
 import android.util.Log
 import dagger.hilt.android.HiltAndroidApp
+import timber.log.Timber
 
 @HiltAndroidApp
 class LofApplication : Application() {
@@ -22,6 +23,10 @@ class LofApplication : Application() {
         super.onCreate()
 
         createNotificationChannel()
+
+        if(BuildConfig.DEBUG){
+            Timber.plant(Timber.DebugTree())
+        }
     }
 
     private fun createNotificationChannel() {

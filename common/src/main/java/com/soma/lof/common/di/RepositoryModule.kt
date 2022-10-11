@@ -44,12 +44,4 @@ object RepositoryModule {
     ) : MatchRepository {
         return MatchRepositoryImpl(matchService)
     }
-
-    @Provides
-    @Singleton
-    fun providesSelectTeamRepository(
-        teamService: TeamService
-    ) : SelectTeamRepository {
-        return SelectTeamRepositoryImpl(teamService)
-    }
 }

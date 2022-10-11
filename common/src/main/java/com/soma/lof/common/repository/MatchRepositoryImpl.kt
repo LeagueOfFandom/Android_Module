@@ -4,7 +4,6 @@ import com.soma.lof.common.api.MatchService
 import com.soma.lof.core_model.dto.CommonItem
 import com.soma.lof.core_model.dto.CommonItemResponse
 import com.soma.lof.core_model.dto.MatchInfoDummyResponse
-import com.soma.lof.core_model.dto.MatchInfoResponse
 import com.soma.lof.core_model.entity.*
 import com.soma.lof.foundation.exception.EmptyBodyException
 import com.soma.lof.foundation.exception.NetworkFailureException
@@ -20,7 +19,7 @@ class MatchRepositoryImpl @Inject constructor(
         listOf(
             CommonItem(
                 "MATCH_RESULT_VIEW",
-                MatchViewObject(
+                MatchVO(
                     1L,
                     "DK",
                     "https://cdn.pixabay.com/photo/2018/05/13/16/57/dog-3397110__480.jpg",
@@ -36,7 +35,7 @@ class MatchRepositoryImpl @Inject constructor(
             ),
             CommonItem(
                 "MATCH_SCHEDULE_VIEW",
-                MatchViewObject(
+                MatchVO(
                     1L,
                     "DK",
                     "https://cdn.pixabay.com/photo/2018/05/13/16/57/dog-3397110__480.jpg",
@@ -52,7 +51,7 @@ class MatchRepositoryImpl @Inject constructor(
             ),
             CommonItem(
                 "MATCH_SCHEDULE_VIEW",
-                MatchViewObject(
+                MatchVO(
                     1L,
                     "DK",
                     "https://cdn.pixabay.com/photo/2018/05/13/16/57/dog-3397110__480.jpg",
@@ -68,7 +67,7 @@ class MatchRepositoryImpl @Inject constructor(
             ),
             CommonItem(
                 "MATCH_SCHEDULE_VIEW",
-                MatchViewObject(
+                MatchVO(
                     1L,
                     "DK",
                     "https://cdn.pixabay.com/photo/2018/05/13/16/57/dog-3397110__480.jpg",
@@ -88,7 +87,7 @@ class MatchRepositoryImpl @Inject constructor(
         listOf(
             CommonItem(
                 "MATCH_PREVIEW_TEXT_VIEW",
-                MatchPreviewTextViewObject(
+                MatchPreviewTextVO(
                     text = "KDA",
                     blueData = "14/5/40",
                     redData = "5/14/15"
@@ -96,7 +95,7 @@ class MatchRepositoryImpl @Inject constructor(
             ),
             CommonItem(
                 "MATCH_PREVIEW_TEXT_VIEW",
-                MatchPreviewTextViewObject(
+                MatchPreviewTextVO(
                     text = "Text",
                     blueData = "1230",
                     redData = "555/15"
@@ -104,7 +103,7 @@ class MatchRepositoryImpl @Inject constructor(
             ),
             CommonItem(
                 "MATCH_PREVIEW_IMAGE_VIEW",
-                MatchPreviewImageViewObject(
+                MatchPreviewImageVO(
                     "HERALDS",
                     listOf(
                         "https://media.istockphoto.com/vectors/dragon-icon-vector-illustration-vector-id877781616"
@@ -171,7 +170,7 @@ class MatchRepositoryImpl @Inject constructor(
                 )
             )
         ),
-        MatchViewObject(
+        MatchVO(
             0L,
             "DK",
             "",

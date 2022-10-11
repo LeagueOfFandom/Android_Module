@@ -6,9 +6,9 @@ import androidx.lifecycle.lifecycleScope
 import androidx.viewpager2.widget.ViewPager2
 import com.soma.common_ui.presentation.CommonListAdapter
 import com.soma.lof.core_model.dto.CommonItem
-import com.soma.lof.core_model.entity.CommunityViewObject
-import com.soma.lof.core_model.entity.HighLightViewObject
-import com.soma.lof.core_model.entity.TextArrowViewObject
+import com.soma.lof.core_model.entity.CommunityVO
+import com.soma.lof.core_model.entity.HighLightVO
+import com.soma.lof.core_model.entity.TextArrowVO
 import com.soma.lof.foundation.base.BaseFragment
 import com.soma.lof.home.R
 import com.soma.lof.home.databinding.FragmentHomeBinding
@@ -43,22 +43,22 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>(R.layout.fragment_home) {
         val dummy = listOf(
             CommonItem(
                 "TEXT_ARROW_VIEW",
-                TextArrowViewObject("실시간 인기글")
+                TextArrowVO("실시간 인기글")
             ),
             CommonItem(
                 "COMMUNITY_VIEW",
-                CommunityViewObject("testNickname",
+                CommunityVO("testNickname",
                     "https://lh3.googleusercontent.com/a/ALm5wu0owKbQ9im6-ViZ9WKUHt2RwqGVLlx1i59ex1CZ=s96-c",
                     "2022-09-28T15:05:21.381546431",
                     "test 블라블라")
             ),
             CommonItem(
                 "TEXT_ARROW_VIEW",
-                TextArrowViewObject("실시간 인기글")
+                TextArrowVO("실시간 인기글")
             ),
             CommonItem(
                 "HIGHLIGHT_VIEW",
-                HighLightViewObject(listOf(
+                HighLightVO(listOf(
                     "fiY08uGY3dM", "fiY08uGY3dM"
                 )
                 )

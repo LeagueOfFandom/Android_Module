@@ -6,7 +6,7 @@
     <data>
         <variable
             name="viewObject"
-            type="com.soma.lof.core_model.entity.HomeMatchTitleViewObject" />
+            type="com.soma.lof.core_model.entity.HomeMatchTitleVO" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout

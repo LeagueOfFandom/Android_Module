@@ -1,6 +1,7 @@
 package com.soma.lof.common.repository
 
 import com.soma.lof.core_model.dto.CommonItemResponse
+import com.soma.lof.core_model.dto.UserTeamResponse
 import com.soma.lof.core_model.dto.UserTokenRequest
 import com.soma.lof.core_model.dto.UserTokenResponse
 import kotlinx.coroutines.flow.Flow

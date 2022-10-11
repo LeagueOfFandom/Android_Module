@@ -1,6 +1,6 @@
 package com.soma.lof.core_model.entity
 
-data class CommonViewObject(
+data class CommonVO(
 
     // Text_Arrow
     val text: String = "",

@@ -1,12 +1,13 @@
 package com.soma.common_ui.util
 
 import android.view.View
-import android.widget.ImageView
+import android.widget.ProgressBar
 import android.widget.Toast
 import androidx.appcompat.widget.AppCompatImageView
 import androidx.databinding.BindingAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
+import com.soma.lof.foundation.result.Result
 
 @BindingAdapter("imageResource")
 fun AppCompatImageView.setImageResource(resId: Int) {
@@ -41,4 +42,9 @@ fun AppCompatImageView.bindImage(uri: String?) {
             .load(uri)
             .into(this)
     }
+}
+
+@BindingAdapter("show")
+fun ProgressBar.bindShow(result: Result<*>) {
+    visibility = if (result is Result.Loading) View.VISIBLE else View.GONE
 }

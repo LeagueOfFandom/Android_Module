@@ -1,6 +1,6 @@
 package com.soma.lof.core_model.entity
 
-data class MatchViewObject(
+data class MatchVO(
     val matchId: Long?,
     val homeName: String?,
     val homeImg: String?,

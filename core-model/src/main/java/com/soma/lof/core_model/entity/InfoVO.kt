@@ -1,6 +1,6 @@
 package com.soma.lof.core_model.entity
 
-data class InfoViewObject(
+data class InfoVO(
     val title: String="",
     val content: String="",
     val isCheck: Boolean=false,

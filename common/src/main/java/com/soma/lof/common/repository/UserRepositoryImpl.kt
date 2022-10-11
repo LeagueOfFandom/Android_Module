@@ -2,10 +2,12 @@ package com.soma.lof.common.repository
 
 import com.soma.lof.common.api.UserService
 import com.soma.lof.core_model.dto.CommonItemResponse
+import com.soma.lof.core_model.dto.UserTeamResponse
 import com.soma.lof.core_model.dto.UserTokenRequest
 import com.soma.lof.core_model.dto.UserTokenResponse
-import com.soma.lof.core_model.entity.CommonViewObject
+import com.soma.lof.core_model.entity.CommonVO
 import com.soma.lof.foundation.exception.EmptyBodyException
+import com.soma.lof.foundation.exception.JwtTokenEmptyException
 import com.soma.lof.foundation.exception.NetworkFailureException
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.catch
@@ -13,6 +15,8 @@ import kotlinx.coroutines.flow.flow
 import retrofit2.Response
 import javax.inject.Inject
 import javax.inject.Singleton
+import com.soma.lof.foundation.result.Result
+import timber.log.Timber
 
 @Singleton
 class UserRepositoryImpl @Inject constructor(
@@ -41,13 +45,13 @@ class UserRepositoryImpl @Inject constructor(
         val data = listOf(
             CommonItemResponse(
                 "ONE_LINE_TEXT_VIEW",
-                CommonViewObject(
+                CommonVO(
                     text = "오늘"
                 )
             ),
             CommonItemResponse(
                 "INFO_EVENT_VIEW",
-                CommonViewObject(
+                CommonVO(
                     infoTitle = "T1 vs DX",
                     infoContent = "T1과 DX의 라이브 경기가 진행 중입니다. 확인하러 가볼까요?",
                     infoIsCheck = true,
@@ -57,11 +61,11 @@ class UserRepositoryImpl @Inject constructor(
             ),
             CommonItemResponse(
                 "ONE_LINE_TEXT_VIEW",
-                CommonViewObject(text="어제")
+                CommonVO(text="어제")
             ),
             CommonItemResponse(
                 "INFO_LEAGUE_VIEW",
-                CommonViewObject(
+                CommonVO(
                     infoTitle= "DRX 2 : 1 KDF",
                     infoContent = "DRX가 KDF의 경기에서 2:1로 승리하였습니다!",
                     infoIsCheck = true,
@@ -71,7 +75,7 @@ class UserRepositoryImpl @Inject constructor(
             ),
             CommonItemResponse(
                 "INFO_HIGHLIGHT_VIEW",
-                CommonViewObject(
+                CommonVO(
                     infoTitle= "DRX vs T1 하이라이트 영상 업로드!",
                     infoContent = "9월 30일 18:00 경기의 하이라이트 영상이 업로드 되었습니다. 지금 확인해보세요!",
                     infoIsCheck = true,
@@ -81,11 +85,11 @@ class UserRepositoryImpl @Inject constructor(
             ),
             CommonItemResponse(
                 "ONE_LINE_TEXT_VIEW",
-                CommonViewObject(text="이번주")
+                CommonVO(text="이번주")
             ),
             CommonItemResponse(
                 "INFO_COMMENT_VIEW",
-                CommonViewObject(
+                CommonVO(
                     infoTitle= "'누구누구'님이 나의 글에 댓글을 남겼습니다",
                     infoContent = "와 너무 좋아요",
                     infoIsCheck = false,
@@ -95,7 +99,7 @@ class UserRepositoryImpl @Inject constructor(
             ),
             CommonItemResponse(
                 "INFO_POST_LIKE_VIEW",
-                CommonViewObject(
+                CommonVO(
                     infoTitle = "'누구누구'님이 나의 게시글에 하트를 눌렀습니다.",
                     infoContent = "나의 게시글 - 와 너무 잘해",
                     infoIsCheck = false,
@@ -105,7 +109,7 @@ class UserRepositoryImpl @Inject constructor(
             ),
             CommonItemResponse(
                 "INFO_POST_SUCCESS_VIEW",
-                CommonViewObject(
+                CommonVO(
                     infoTitle = "게시글을 성공적으로 업로드했습니다.",
                     infoContent = "나의 게시글 제목",
                     infoIsCheck = false,
