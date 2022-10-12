@@ -65,4 +65,7 @@ dependencies {
     // Youtube
     implementation(Dependencies.library.youtubeCore)
     implementation(Dependencies.library.youtubeChromeCast)
+
+    // Indicator
+    implementation(Dependencies.library.indicator)
 }

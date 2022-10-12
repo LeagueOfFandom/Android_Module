@@ -1,9 +1,11 @@
 package com.soma.lof.common.repository
 
 import com.soma.lof.core_model.dto.CommonItemResponse
+import com.soma.lof.foundation.result.Result
+import kotlinx.coroutines.flow.Flow
 import javax.inject.Singleton
 
-@Singleton
 interface HomeRepository {
-    suspend fun getMainPage(jwtToken: String) : List<CommonItemResponse>
+    suspend fun getMainPage(jwtToken: String, onlyMyTeam: Boolean) : Flow<Result<List<CommonItemResponse>>>
+
 }

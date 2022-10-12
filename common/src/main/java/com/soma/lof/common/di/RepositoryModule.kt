@@ -33,8 +33,8 @@ object RepositoryModule {
 
     @Provides
     @Singleton
-    fun providesHomeRepository(userService: UserService) : HomeRepository {
-        return HomeRepositoryImpl(userService)
+    fun providesHomeRepository(matchService: MatchService) : HomeRepository {
+        return HomeRepositoryImpl(matchService)
     }
 
     @Provides

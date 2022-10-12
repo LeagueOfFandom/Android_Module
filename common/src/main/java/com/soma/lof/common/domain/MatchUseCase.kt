@@ -4,7 +4,7 @@ import com.soma.lof.common.repository.MatchRepository
 import com.soma.lof.common.util.CommonItemTranslator
 import com.soma.lof.common.util.CommonItemTranslator.toCommonItemList
 import com.soma.lof.core_model.dto.CommonItem
-import com.soma.lof.core_model.dto.MatchInfoDummyResponse
+import com.soma.lof.core_model.dto.CommonItemResponse
 import com.soma.lof.foundation.result.Result
 import com.soma.lof.foundation.result.data
 import kotlinx.coroutines.flow.Flow
@@ -14,6 +14,7 @@ import javax.inject.Inject
 import javax.inject.Singleton
 
 /**
+ * We need to translate [CommonItemResponse] to [CommonItem]
  * [toCommonItemList] is a func of [CommonItemTranslator]
  */
 @Singleton
@@ -32,6 +33,4 @@ class MatchUseCase @Inject constructor(
             }
         }
     }
-
-    suspend fun getMatchInfo(): MatchInfoDummyResponse = matchRepository.getMatchInfoDataTest()
 }
