@@ -9,6 +9,7 @@ import android.view.View
 import android.view.inputmethod.InputMethodManager
 import androidx.core.content.ContextCompat.getSystemService
 import androidx.core.content.getSystemService
+import androidx.core.content.res.ResourcesCompat
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
 import com.soma.lof.foundation.base.BaseFragment
@@ -32,6 +33,7 @@ class SetFirstNickFragment :
             override fun onTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
                 if (p0 != null) {
                     binding.nicknameCompleteBtn.isEnabled = p0.isNotEmpty()
+                    binding.nickInputTextCnt.text = getString(R.string.nick_text_cnt, p0.length, 16)
                 }
             }
         })

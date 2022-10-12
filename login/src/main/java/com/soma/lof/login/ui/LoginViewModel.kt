@@ -1,21 +1,17 @@
 package com.soma.lof.login.ui
 
-import android.app.Activity
 import android.app.Application
-import android.util.Log
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.viewModelScope
 import com.google.android.gms.auth.api.signin.GoogleSignIn
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount
 import com.google.android.gms.auth.api.signin.GoogleSignInClient
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions
-import com.soma.common_ui.route.FeatureSelectTeamRouteContract
 import com.soma.lof.common.domain.DataStoreUseCase
 import com.soma.lof.common.repository.UserRepository
 import com.soma.lof.core_model.dto.CreateUserRequest
 import com.soma.lof.foundation.result.data
-import com.soma.lof.foundation.result.successOrNull
-import com.soma.lof.login.util.google_login_web_key
+import com.soma.login.google_login_web_key
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.collectLatest
