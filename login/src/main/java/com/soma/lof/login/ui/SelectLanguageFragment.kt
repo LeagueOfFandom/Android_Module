@@ -1,11 +1,8 @@
 package com.soma.lof.login.ui
 
-import android.util.Log
-import android.widget.RadioGroup
 import androidx.fragment.app.Fragment
-import androidx.navigation.Navigation
 import androidx.navigation.fragment.findNavController
-import com.soma.common.base.BaseFragment
+import com.soma.lof.foundation.base.BaseFragment
 import com.soma.lof.login.R
 import com.soma.lof.login.databinding.FragmentLanguageSelectBinding
 

@@ -8,9 +8,9 @@ import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
 import dagger.hilt.components.SingletonComponent
-import javax.inject.Named
 import javax.inject.Singleton
 
+/* TODO Provides에서 Binds로 전환 */
 @Module
 @InstallIn(SingletonComponent::class)
 object RepositoryModule {
@@ -43,13 +43,5 @@ object RepositoryModule {
         matchService: MatchService
     ) : MatchRepository {
         return MatchRepositoryImpl(matchService)
-    }
-
-    @Provides
-    @Singleton
-    fun providesSelectTeamRepository(
-        teamService: TeamService
-    ) : SelectTeamRepository {
-        return SelectTeamRepositoryImpl(teamService)
     }
 }

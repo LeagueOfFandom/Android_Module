@@ -6,6 +6,9 @@ import com.soma.lof.core_model.dto.CommonItemResponse
 import com.soma.lof.core_model.entity.ViewType
 import com.soma.lof.core_model.util.ViewObjectFactory
 
+/**
+ * This Translator translates data to List<CommonItem>
+ */
 object CommonItemTranslator {
     fun List<CommonItemResponse>.toCommonItemList(): List<CommonItem> {
         val commonItemList = mutableListOf<CommonItem>()

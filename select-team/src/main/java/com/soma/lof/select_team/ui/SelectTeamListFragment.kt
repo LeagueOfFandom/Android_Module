@@ -3,31 +3,33 @@ package com.soma.lof.select_team.ui
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
-import com.soma.common.base.BaseFragment
+import androidx.lifecycle.lifecycleScope
+import com.soma.lof.foundation.base.BaseFragment
+import com.soma.lof.foundation.result.data
 import com.soma.lof.select_team.R
 import com.soma.lof.select_team.databinding.FragmentSelectTeamListBinding
 import com.soma.lof.select_team.util.TeamItemDecoration
-import com.soma.lof.select_team.util.bindTeamItems
 import dagger.hilt.android.AndroidEntryPoint
+import kotlinx.coroutines.flow.collectLatest
 import javax.inject.Inject
 
 @AndroidEntryPoint
 class SelectTeamListFragment @Inject constructor() : BaseFragment<FragmentSelectTeamListBinding>(R.layout.fragment_select_team_list) {
 
     private val viewModel by activityViewModels<SelectTeamViewModel>()
-    private val selectTeamListAdapter: SelectTeamListAdapter by lazy {
-        SelectTeamListAdapter(viewModel)
-    }
+    private lateinit var selectTeamListAdapter: SelectTeamListAdapter
     private val teamItemDecoration: TeamItemDecoration by lazy {
         TeamItemDecoration()
     }
 
     override fun initView() {
         val position = arguments?.getInt(POSITION_KEY) ?: 0
-        selectTeamListAdapter.submitList(viewModel.leagueTeamInfo.value[position].teamInfo)
+
+        selectTeamListAdapter = SelectTeamListAdapter(viewModel, position)
 
         bind {
-            data = viewModel.leagueTeamInfo.value[position]
+            vm = viewModel
+            pos = position
             adapter = selectTeamListAdapter
             itemDecoration = teamItemDecoration
         }

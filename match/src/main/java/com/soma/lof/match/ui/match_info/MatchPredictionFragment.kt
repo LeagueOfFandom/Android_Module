@@ -2,18 +2,16 @@ package com.soma.lof.match.ui.match_info
 
 import android.graphics.Color
 import android.graphics.Typeface
-import android.util.Log
 import androidx.fragment.app.viewModels
 import com.github.mikephil.charting.animation.Easing
 import com.github.mikephil.charting.data.PieData
 import com.github.mikephil.charting.data.PieDataSet
 import com.github.mikephil.charting.data.PieEntry
 import com.github.mikephil.charting.formatter.PercentFormatter
-import com.soma.common.base.BaseFragment
 import com.soma.lof.core_model.entity.Team
+import com.soma.lof.foundation.base.BaseFragment
 import com.soma.lof.match.R
 import com.soma.lof.match.databinding.FragmentMatchPredictionBinding
-import com.soma.lof.match.ui.match_up.MatchViewModel
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint

@@ -1,8 +1,8 @@
 package com.soma.lof.core_model.dto
 
-import com.soma.lof.core_model.entity.InfoViewObject
+import com.soma.lof.core_model.entity.InfoVO
 
 data class CommonInfoItem(
     val viewType: String,
-    val viewObject: InfoViewObject
+    val viewObject: InfoVO
 )

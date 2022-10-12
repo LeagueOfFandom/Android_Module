@@ -1,12 +1,18 @@
-package com.soma.common_ui
+package com.soma.common_ui.util
 
 import android.view.View
-import android.widget.ImageView
+import android.widget.ProgressBar
 import android.widget.Toast
 import androidx.appcompat.widget.AppCompatImageView
 import androidx.databinding.BindingAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
+import com.soma.common_ui.presentation.CommonListAdapter2
+import com.soma.lof.core_model.dto.CommonItem
+import com.soma.lof.core_model.dto.domain.SelectTeamModel
+import com.soma.lof.foundation.result.Result
+import com.soma.lof.foundation.result.data
+import com.soma.lof.foundation.result.successOrNull
 
 @BindingAdapter("imageResource")
 fun AppCompatImageView.setImageResource(resId: Int) {
@@ -41,4 +47,18 @@ fun AppCompatImageView.bindImage(uri: String?) {
             .load(uri)
             .into(this)
     }
+}
+
+@BindingAdapter("commonItems")
+fun RecyclerView.bindTeamItems(state: Result<List<CommonItem>>) {
+    val boundAdapter = this.adapter
+    if (boundAdapter is CommonListAdapter2 && state.successOrNull() != null) {
+        boundAdapter.submitList(state.data)
+    }
+}
+
+
+@BindingAdapter("show")
+fun ProgressBar.bindShow(result: Result<*>) {
+    visibility = if (result is Result.Loading) View.VISIBLE else View.GONE
 }

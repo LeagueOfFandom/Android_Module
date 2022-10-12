@@ -1,15 +1,12 @@
 package com.soma.lof.select_team.ui
 
-import android.content.Intent
 import android.os.Bundle
-import android.text.SpannableStringBuilder
 import android.util.Log
 import androidx.activity.viewModels
 import androidx.lifecycle.lifecycleScope
 import androidx.viewpager2.widget.ViewPager2
 import com.google.android.material.tabs.TabLayoutMediator
-import com.soma.common.base.BaseActivity
-import com.soma.lof.foundation.result.successOrNull
+import com.soma.lof.foundation.base.BaseActivity
 import com.soma.lof.select_team.R
 import com.soma.lof.select_team.databinding.ActivitySelectTeamBinding
 import dagger.hilt.android.AndroidEntryPoint
@@ -36,7 +33,6 @@ class SelectTeamActivity : BaseActivity<ActivitySelectTeamBinding>(R.layout.acti
         lifecycleScope.launchWhenCreated {
             viewModel.tabItems.collectLatest {
                 if (it.isNotEmpty()) {
-                    Log.d(TAG, "onCreate: tabItems ${it.toString()}")
                     binding.selectTeamVp.apply {
                         adapter = teamLeagueAdapter
                         orientation = ViewPager2.ORIENTATION_HORIZONTAL
@@ -49,7 +45,6 @@ class SelectTeamActivity : BaseActivity<ActivitySelectTeamBinding>(R.layout.acti
             }
 
             viewModel.teamCnt.collectLatest {
-                Log.d(TAG, "teamCnt collect")
                 binding.selectTeamCntNote.text = "총 ${it}팀을 선택하였습니다."
             }
         }

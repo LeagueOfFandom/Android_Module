@@ -3,7 +3,7 @@ package com.soma.lof.home.ui
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
-import com.soma.common.base.BaseFragment
+import com.soma.lof.foundation.base.BaseFragment
 import com.soma.lof.home.R
 import com.soma.lof.home.databinding.FragmentHomeBannerBinding
 

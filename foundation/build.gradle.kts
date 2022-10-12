@@ -54,4 +54,7 @@ dependencies {
     kaptAndroidTest(Dependencies.hilt.compiler)
     implementation(Dependencies.hilt.android)
     kapt(Dependencies.hilt.compiler)
+
+    // Timber
+    implementation(Dependencies.Logger.timber)
 }

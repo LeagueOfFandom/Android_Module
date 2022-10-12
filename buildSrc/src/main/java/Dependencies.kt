@@ -10,6 +10,7 @@ object Dependencies {
     val google = Google
     val firebase = Firebase
     val library = Etc
+    val logger = Logger
 
     object Kotlin {
         val coroutine by lazy { "org.jetbrains.kotlinx:kotlinx-coroutines-core:${Versions.coroutineCore}" }
@@ -104,6 +105,10 @@ object Dependencies {
 
     object Google {
         val auth by lazy { "com.google.android.gms:play-services-auth:${Versions.googleServiceAuth}" }
+    }
+
+    object Logger {
+        val timber by lazy { "com.jakewharton.timber:timber:5.0.1" }
     }
 
     object Etc {

@@ -6,7 +6,7 @@
     <data>
         <variable
             name="viewObject"
-            type="com.soma.lof.core_model.entity.MatchPreviewImageViewObject" />
+            type="com.soma.lof.core_model.entity.MatchPreviewImageVO" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout

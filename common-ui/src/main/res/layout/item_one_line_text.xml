@@ -6,7 +6,7 @@
     <data>
         <variable
             name="viewObject"
-            type="com.soma.lof.core_model.entity.OneLineTextViewObject" />
+            type="com.soma.lof.core_model.entity.OneLineTextVO" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout

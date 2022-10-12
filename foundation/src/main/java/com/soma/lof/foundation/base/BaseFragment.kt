@@ -1,4 +1,4 @@
-package com.soma.common.base
+package com.soma.lof.foundation.base
 
 import android.graphics.drawable.Drawable
 import android.os.Bundle

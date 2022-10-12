@@ -4,9 +4,6 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <data>
-
-        <import type="com.soma.lof.foundation.result.UiStateKt" />
-
         <variable
             name="activity"
             type="com.soma.lof.select_team.ui.SelectTeamActivity" />
@@ -117,6 +114,16 @@
                 app:layout_constraintTop_toBottomOf="@id/select_team_cnt_note" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <ProgressBar
+            android:id="@+id/loading_bar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:show="@{vm.selectTeamData}"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 
 </layout>
