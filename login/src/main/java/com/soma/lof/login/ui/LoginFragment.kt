@@ -58,16 +58,10 @@ class LoginFragment : BaseFragment<FragmentLoginBinding>(R.layout.fragment_login
                         val task = GoogleSignIn.getSignedInAccountFromIntent(data)
                         try {
                             val account = task.getResult(ApiException::class.java)
-//                            viewModel.testScenario()
+                            viewModel.getUserTokenInfo(account.email, account.displayName ?: "", account.photoUrl?.toString() ?: "")
 
                             Log.d(TAG, "googleLoginToken: ${account.email} ${account.givenName} ${account.displayName} ${account.photoUrl}")
 
-                            if (account.idToken != null) {
-                                Log.d(TAG, "viewModel 호출")
-                                viewModel.getUserTokenInfo(account.idToken!!)
-                            } else {
-                                Toast.makeText(requireContext(), "Login Failed", Toast.LENGTH_SHORT).show()
-                            }
                         } catch (e: ApiException) {
                             Log.e(TAG, "Google Result Error $result")
                         }

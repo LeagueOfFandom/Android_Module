@@ -9,11 +9,13 @@ import com.google.android.gms.auth.api.signin.GoogleSignIn
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount
 import com.google.android.gms.auth.api.signin.GoogleSignInClient
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions
-import com.soma.lof.common.repository.UserRepository
-import com.soma.lof.common.domain.DataStoreUseCase
 import com.soma.common_ui.route.FeatureSelectTeamRouteContract
+import com.soma.lof.common.domain.DataStoreUseCase
+import com.soma.lof.common.repository.UserRepository
 import com.soma.lof.core_model.dto.CreateUserRequest
-import com.soma.login.google_login_web_key
+import com.soma.lof.foundation.result.data
+import com.soma.lof.foundation.result.successOrNull
+import com.soma.lof.login.util.google_login_web_key
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.collectLatest
@@ -38,7 +40,6 @@ class LoginViewModel @Inject constructor(
     init {
         val gso = GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
             .requestIdToken(google_login_web_key)
-//            .requestServerAuthCode(google_login_web_key)
             .requestEmail()
             .build()
 
@@ -49,15 +50,21 @@ class LoginViewModel @Inject constructor(
 
     fun getGoogleSignInClient() = mGoogleSignInClient
 
-    fun getUserTokenInfo(googleAccessToken: String) {
+    fun getUserTokenInfo(email: String?, displayName: String, photoUrl: String) {
         viewModelScope.launch {
-            userRepository.createUser(CreateUserRequest(
-                dataStoreUseCase.fcmToken.first(),
-                googleAccessToken)).collectLatest {
-                dataStoreUseCase.editJwtToken(it.jwtToken)
-                googleLoginFlow.value = true
-                newUserFlow.value = it.newUser
-                Log.d(TAG, "getUserTokenInfo: ${it.newUser} ${it.jwtToken}")
+            val fcmToken = dataStoreUseCase.fcmToken.first()
+
+            // email이 Null일 경우 toast msg 띄우도록.
+            if (email != null) {
+                userRepository.createUser(
+                    CreateUserRequest(
+                        email, displayName, fcmToken, photoUrl
+                    )
+                ).collectLatest {
+                    dataStoreUseCase.editJwtToken(it.data!!.jwtToken)
+                    newUserFlow.value = it.data!!.isNewUser
+                    googleLoginFlow.value = true
+                }
             }
         }
     }

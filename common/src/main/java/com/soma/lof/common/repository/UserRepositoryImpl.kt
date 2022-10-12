@@ -5,7 +5,6 @@ import com.soma.lof.core_model.dto.CommonItemResponse
 import com.soma.lof.core_model.dto.CreateUserRequest
 import com.soma.lof.core_model.dto.CreateUserResponse
 import com.soma.lof.core_model.entity.CommonVO
-import com.soma.lof.foundation.exception.EmptyBodyException
 import com.soma.lof.foundation.exception.NetworkFailureException
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.catch
@@ -13,22 +12,21 @@ import kotlinx.coroutines.flow.flow
 import retrofit2.Response
 import javax.inject.Inject
 import javax.inject.Singleton
+import com.soma.lof.foundation.result.Result
 
 @Singleton
 class UserRepositoryImpl @Inject constructor(
     private val userService: UserService
 ) : UserRepository {
 
-    override suspend fun createUser(userTokenRequest: CreateUserRequest): Flow<CreateUserResponse> =
-        flow {
-            val response = userService.createUser(userTokenRequest)
-            if (response.isSuccessful) {
-                val data: CreateUserResponse = response.body() ?: throw EmptyBodyException("[${response.code()}] - ${response.raw()}")
-                emit(data)
-            } else {
-                throw NetworkFailureException("[${response.code()}] - ${response.raw()}")
-            }
-        }.catch { throw NetworkFailureException("Network Error") }
+    override suspend fun createUser(createUserRequest: CreateUserRequest): Flow<Result<CreateUserResponse>> {
+        return flow {
+            val data = userService.createUser(createUserRequest)
+            emit(Result.Success(data))
+        }.catch {
+            throw NetworkFailureException("Network Error ${it.message}")
+        }
+    }
 
     override suspend fun setUserNickName(jwtToken: String, nickname: String): Result<String> {
         TODO("Not yet implemented")
