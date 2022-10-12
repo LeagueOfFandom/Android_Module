@@ -17,7 +17,7 @@ object ViewObjectFactory {
                     data.isAlarm,
                     data.homeScore,
                     data.awayScore)
-            ViewType.TEXT_ARROW_VIEW.ordinal -> TextArrowVO(
+            ViewType.TEXT_ARROW_VIEW.ordinal -> TextVO(
                 data.text)
             ViewType.COMMUNITY_VIEW.ordinal -> CommunityVO(
                 data.nickname,
@@ -34,7 +34,7 @@ object ViewObjectFactory {
                 data.text,
                 data.blueData,
                 data.redData)
-            ViewType.ONE_LINE_TEXT_VIEW.ordinal -> OneLineTextVO(
+            ViewType.ONE_LINE_TEXT_VIEW.ordinal -> TextVO(
                 data.text)
 
             ViewType.INFO_EVENT_VIEW.ordinal, ViewType.INFO_COMMENT_VIEW.ordinal, ViewType.INFO_LEAGUE_VIEW.ordinal,
@@ -46,7 +46,7 @@ object ViewObjectFactory {
                     data.infoTimeCompare,
                     data.infoDateTime
                 )
-            else -> OneLineTextVO(data.text)
+            else -> TextVO(data.text)
         }
     }
 }

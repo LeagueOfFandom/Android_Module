@@ -9,6 +9,9 @@
     <color name="white">#FFFFFFFF</color>
 
     <color name="main_color">#383A49</color>
+    <color name="sub_color">#426BFF</color>
+    <color name="red_color">#FC7B7B</color>
+
     <color name="text_color_gray">#989CAA</color>
     <color name="text_color_gray2">#CACDD6</color>
     <color name="bg_color">#F6F7F8</color>
@@ -19,5 +22,9 @@
     <color name="match_info_image_substitute">#CACDD6</color>
 
     <color name="info_alarm_red_oval">#FC7B7B</color>
+
+    <color name="match_result_date_line_bg_color">#E4E5E8</color>
+    <color name="match_today_date_line_bg_color">#F2F4FA</color>
+    <color name="match_schedule_date_line_bg_color">#FCF4F4</color>
 
 </resources>

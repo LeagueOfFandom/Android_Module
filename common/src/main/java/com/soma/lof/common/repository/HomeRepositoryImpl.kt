@@ -1,15 +1,7 @@
 package com.soma.lof.common.repository
 
 import com.soma.lof.common.api.MatchService
-import com.soma.lof.core_model.entity.TextArrowVO
-import com.soma.lof.common.api.UserService
-import com.soma.lof.core_model.dto.CommonItem
 import com.soma.lof.core_model.dto.CommonItemResponse
-import com.soma.lof.core_model.entity.CommunityVO
-import com.soma.lof.core_model.entity.HighLightVO
-import com.soma.lof.core_model.entity.HomeMatchTitleVO
-import com.soma.lof.core_model.entity.MatchVO
-import com.soma.lof.foundation.exception.EmptyBodyException
 import com.soma.lof.foundation.exception.NetworkFailureException
 import com.soma.lof.foundation.result.Result
 import kotlinx.coroutines.flow.Flow

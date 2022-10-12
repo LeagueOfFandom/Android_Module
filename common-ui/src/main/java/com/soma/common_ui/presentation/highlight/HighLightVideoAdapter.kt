@@ -1,4 +1,4 @@
-package com.soma.common_ui.presentation
+package com.soma.common_ui.presentation.highlight
 
 import android.view.LayoutInflater
 import android.view.ViewGroup

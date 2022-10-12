@@ -1,6 +1,7 @@
-package com.soma.common_ui.presentation
+package com.soma.common_ui.presentation.highlight
 
 import com.soma.common_ui.databinding.ItemHighlightViewBinding
+import com.soma.common_ui.presentation.CommonVH
 import com.soma.lof.core_model.dto.CommonItem
 import com.soma.lof.core_model.entity.HighLightVO
 
