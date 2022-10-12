@@ -32,9 +32,23 @@
             android:paddingBottom="20dp"
             android:textColor="@color/black"
             android:textSize="20sp"
+            android:maxLines="1"
+            android:ellipsize="end"
+            android:ems="16"
+            android:maxLength="16"
+            android:inputType="text"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/first_nick_title" />
+
+        <TextView
+            android:id="@+id/nick_input_text_cnt"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            tools:text="@{@string/nick_text_cnt(0, 16)}"
+            app:layout_constraintEnd_toEndOf="@id/nick_input_field"
+            app:layout_constraintBaseline_toBaselineOf="@id/nick_input_field"
+            android:layout_marginEnd="15dp"/>
 
         <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/nickname_complete_btn"

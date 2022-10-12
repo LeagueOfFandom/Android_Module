@@ -1,18 +1,16 @@
 package com.soma.lof.login.ui
 
-import android.app.Activity
 import android.app.Application
-import android.util.Log
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.viewModelScope
 import com.google.android.gms.auth.api.signin.GoogleSignIn
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount
 import com.google.android.gms.auth.api.signin.GoogleSignInClient
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions
-import com.soma.lof.common.repository.UserRepository
 import com.soma.lof.common.domain.DataStoreUseCase
-import com.soma.common_ui.route.FeatureSelectTeamRouteContract
-import com.soma.lof.core_model.dto.UserTokenRequest
+import com.soma.lof.common.repository.UserRepository
+import com.soma.lof.core_model.dto.CreateUserRequest
+import com.soma.lof.foundation.result.data
 import com.soma.login.google_login_web_key
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
@@ -24,7 +22,6 @@ import javax.inject.Inject
 @HiltViewModel
 class LoginViewModel @Inject constructor(
     application: Application,
-    private val featureSelectTeamRouteContract: FeatureSelectTeamRouteContract,
     private val dataStoreUseCase: DataStoreUseCase,
     private val userRepository: UserRepository,
 ) : AndroidViewModel(application) {
@@ -38,7 +35,6 @@ class LoginViewModel @Inject constructor(
     init {
         val gso = GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
             .requestIdToken(google_login_web_key)
-//            .requestServerAuthCode(google_login_web_key)
             .requestEmail()
             .build()
 
@@ -49,15 +45,21 @@ class LoginViewModel @Inject constructor(
 
     fun getGoogleSignInClient() = mGoogleSignInClient
 
-    fun getUserTokenInfo(googleAccessToken: String) {
+    fun getUserTokenInfo(email: String?, displayName: String, photoUrl: String) {
         viewModelScope.launch {
-            userRepository.postUserToken(UserTokenRequest(
-                dataStoreUseCase.fcmToken.first(),
-                googleAccessToken)).collectLatest {
-                dataStoreUseCase.editJwtToken(it.jwtToken)
-                googleLoginFlow.value = true
-                newUserFlow.value = it.newUser
-                Log.d(TAG, "getUserTokenInfo: ${it.newUser} ${it.jwtToken}")
+            val fcmToken = dataStoreUseCase.fcmToken.first()
+
+            // email이 Null일 경우 toast msg 띄우기
+            if (email != null) {
+                userRepository.createUser(
+                    CreateUserRequest(
+                        email, displayName, fcmToken, photoUrl
+                    )
+                ).collectLatest {
+                    dataStoreUseCase.editJwtToken(it.data!!.jwtToken)
+                    newUserFlow.value = it.data!!.isNewUser
+                    googleLoginFlow.value = true
+                }
             }
         }
     }
@@ -67,10 +69,6 @@ class LoginViewModel @Inject constructor(
             dataStoreUseCase.editJwtToken("test")
             googleLoginFlow.value = true
         }
-    }
-
-    fun navigateSelectTeam(activity: Activity, vararg flag: Int) {
-        featureSelectTeamRouteContract.present(activity, flag)
     }
 
     companion object {

@@ -11,7 +11,6 @@ import dagger.hilt.android.AndroidEntryPoint
 @AndroidEntryPoint
 class LoginActivity : BaseActivity<ActivityLoginBinding>(R.layout.activity_login) {
 
-
     private val navigator: Navigator = Navigator()
 
     override fun onCreate(savedInstanceState: Bundle?) {
