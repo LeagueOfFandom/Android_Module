@@ -11,5 +11,5 @@ interface MatchService {
     @GET("/matchList")
     suspend fun getMatchList(@Header("Authorization") jwtToken: String,
                              @Query("date") date: String,
-                             @Query("all") isAll: Boolean) : Response<List<CommonItemResponse>>
+                             @Query("all") isAll: Boolean) :List<CommonItemResponse>
 }

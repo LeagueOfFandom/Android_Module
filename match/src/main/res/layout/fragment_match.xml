@@ -5,8 +5,12 @@
 
     <data>
         <variable
+            name="vm"
+            type="com.soma.lof.match.ui.match_up.MatchViewModel" />
+
+        <variable
             name="adapter"
-            type="com.soma.common_ui.presentation.CommonListAdapter" />
+            type="com.soma.common_ui.presentation.CommonListAdapter2" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -114,11 +118,22 @@
             android:layout_weight="1"
             android:orientation="vertical"
             app:adapter="@{adapter}"
+            app:commonItems="@{vm.matchData}"
             app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
             app:layout_constrainedHeight="true"
             app:layout_constraintTop_toBottomOf="@id/match_date_area"
             app:layout_constraintBottom_toTopOf="@id/match_select_box_gl"
             android:overScrollMode="never"/>
+
+        <ProgressBar
+            android:id="@+id/loading_bar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:show="@{vm.matchData}"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

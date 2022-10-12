@@ -5,8 +5,11 @@ import com.soma.lof.core_model.dto.CommonItem
 import com.soma.lof.core_model.dto.CommonItemResponse
 import com.soma.lof.core_model.dto.MatchInfoDummyResponse
 import com.soma.lof.core_model.entity.*
-import com.soma.lof.foundation.exception.EmptyBodyException
 import com.soma.lof.foundation.exception.NetworkFailureException
+import com.soma.lof.foundation.result.Result
+import kotlinx.coroutines.flow.Flow
+import kotlinx.coroutines.flow.catch
+import kotlinx.coroutines.flow.flow
 import javax.inject.Inject
 import javax.inject.Singleton
 
@@ -186,19 +189,16 @@ class MatchRepositoryImpl @Inject constructor(
         PredictionData(10, 20)
     )
 
-
     override suspend fun getMatchList(
         jwtString: String,
         date: String,
         isAll: Boolean,
-    ): List<CommonItemResponse> {
-        val response = matchService.getMatchList(jwtString, date, isAll)
-
-        if (response.isSuccessful) {
-            return response.body()
-                ?: throw EmptyBodyException("[${response.code()}] - ${response.raw()}")
-        } else {
-            throw NetworkFailureException("[${response.code()}] - ${response.raw()}")
+    ): Flow<Result<List<CommonItemResponse>>> {
+        return flow {
+            val matchList = matchService.getMatchList(jwtString, date, isAll)
+            emit(Result.Success(matchList))
+        }.catch {
+            throw NetworkFailureException("Network Error ${it.message}")
         }
     }
 
