@@ -28,12 +28,20 @@ class UserRepositoryImpl @Inject constructor(
         }
     }
 
-    override suspend fun setUserNickName(jwtToken: String, nickname: String): Result<String> {
-        TODO("Not yet implemented")
+    override suspend fun setUserNickName(jwtToken: String, nickname: String): Flow<Result<String>> {
+        return flow<Result<String>> {
+            emit(Result.Success(userService.setUserNickName(jwtToken, nickname)))
+        }.catch {
+            throw NetworkFailureException("Network Error ${it.message}")
+        }
     }
 
-    override suspend fun getUserNickName(jwtToken: String): Result<String> {
-        TODO("Not yet implemented")
+    override suspend fun getUserNickName(jwtToken: String): Flow<Result<String>> {
+        return flow<Result<String>> {
+            emit(Result.Success(userService.getUserNickName(jwtToken)))
+        }.catch {
+            throw NetworkFailureException("Network Error ${it.message}")
+        }
     }
 
     override suspend fun postFcmToken(

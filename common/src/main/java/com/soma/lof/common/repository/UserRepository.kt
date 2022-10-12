@@ -16,9 +16,9 @@ interface UserRepository {
 
     suspend fun createUser(@Body createUserRequest: CreateUserRequest) : Flow<Result<CreateUserResponse>>
 
-    suspend fun setUserNickName(@Header("Authorization") jwtToken: String, @Body nickname: String) : Result<String>
+    suspend fun setUserNickName(@Header("Authorization") jwtToken: String, @Body nickname: String) : Flow<Result<String>>
 
-    suspend fun getUserNickName(@Header("Authorization") jwtToken: String) : Result<String>
+    suspend fun getUserNickName(@Header("Authorization") jwtToken: String) : Flow<Result<String>>
 
     @POST("/fcm")
     suspend fun postFcmToken(@Header("Authorization") jwtToken: String, @Body fcmToken: String) : Response<CreateUserResponse>

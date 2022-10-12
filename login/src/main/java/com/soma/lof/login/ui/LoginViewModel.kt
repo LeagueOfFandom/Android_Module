@@ -26,7 +26,6 @@ import javax.inject.Inject
 @HiltViewModel
 class LoginViewModel @Inject constructor(
     application: Application,
-    private val featureSelectTeamRouteContract: FeatureSelectTeamRouteContract,
     private val dataStoreUseCase: DataStoreUseCase,
     private val userRepository: UserRepository,
 ) : AndroidViewModel(application) {
@@ -54,7 +53,7 @@ class LoginViewModel @Inject constructor(
         viewModelScope.launch {
             val fcmToken = dataStoreUseCase.fcmToken.first()
 
-            // email이 Null일 경우 toast msg 띄우도록.
+            // email이 Null일 경우 toast msg 띄우기
             if (email != null) {
                 userRepository.createUser(
                     CreateUserRequest(
@@ -74,10 +73,6 @@ class LoginViewModel @Inject constructor(
             dataStoreUseCase.editJwtToken("test")
             googleLoginFlow.value = true
         }
-    }
-
-    fun navigateSelectTeam(activity: Activity, vararg flag: Int) {
-        featureSelectTeamRouteContract.present(activity, flag)
     }
 
     companion object {
