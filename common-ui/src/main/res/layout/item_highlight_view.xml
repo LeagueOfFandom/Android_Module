@@ -8,7 +8,7 @@
             type="com.soma.lof.core_model.entity.HighLightVO" />
         <variable
             name="adapter"
-            type="com.soma.common_ui.presentation.TestVideoAdapter" />
+            type="com.soma.common_ui.presentation.highlight.TestVideoAdapter" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout

@@ -22,10 +22,4 @@ interface UserService {
 
     @GET("/v1/user/nickname")
     suspend fun getUserNickName(@Header("Authorization") jwtToken: String) : String
-
-    @POST("/fcm")
-    suspend fun postFcmToken(@Header("Authorization") jwtToken: String, @Body fcmToken: String) : Response<CreateUserResponse>
-
-    @GET("/mainPage")
-    suspend fun getMainPage(@Header("Authorization") jwtToken: String) : Response<List<CommonItemResponse>>
 }

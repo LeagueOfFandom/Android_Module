@@ -6,15 +6,12 @@ import com.soma.lof.core_model.dto.CreateUserRequest
 import com.soma.lof.core_model.dto.CreateUserResponse
 import com.soma.lof.core_model.entity.CommonVO
 import com.soma.lof.foundation.exception.NetworkFailureException
+import com.soma.lof.foundation.result.Result
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.catch
 import kotlinx.coroutines.flow.flow
-import retrofit2.Response
 import javax.inject.Inject
-import javax.inject.Singleton
-import com.soma.lof.foundation.result.Result
 
-@Singleton
 class UserRepositoryImpl @Inject constructor(
     private val userService: UserService
 ) : UserRepository {
@@ -42,13 +39,6 @@ class UserRepositoryImpl @Inject constructor(
         }.catch {
             throw NetworkFailureException("Network Error ${it.message}")
         }
-    }
-
-    override suspend fun postFcmToken(
-        jwtToken: String,
-        fcmToken: String,
-    ): Response<CreateUserResponse> {
-        TODO("Not yet implemented")
     }
 
     override suspend fun getUserInfo(jwtToken: String): List<CommonItemResponse> {

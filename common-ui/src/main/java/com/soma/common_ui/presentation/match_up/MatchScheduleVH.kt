@@ -1,7 +1,8 @@
-package com.soma.common_ui.presentation
+package com.soma.common_ui.presentation.match_up
 
 import androidx.navigation.Navigation
 import com.soma.common_ui.databinding.ItemMatchScheduleBinding
+import com.soma.common_ui.presentation.CommonVH
 import com.soma.common_ui.util.DeepLinkDestination
 import com.soma.common_ui.util.deepLinkNavigateTo
 import com.soma.lof.core_model.dto.CommonItem

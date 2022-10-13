@@ -6,7 +6,13 @@ import androidx.databinding.DataBindingUtil
 import androidx.databinding.ViewDataBinding
 import com.soma.common_ui.R
 import com.soma.common_ui.presentation.*
+import com.soma.common_ui.presentation.highlight.HighLightVH
 import com.soma.common_ui.presentation.info.*
+import com.soma.common_ui.presentation.match_info.MatchPreviewImageVH
+import com.soma.common_ui.presentation.match_info.MatchPreviewTextVH
+import com.soma.common_ui.presentation.match_up.HomeMatchTitleLineVH
+import com.soma.common_ui.presentation.match_up.MatchResultVH
+import com.soma.common_ui.presentation.match_up.MatchScheduleVH
 import com.soma.lof.core_model.entity.ViewType
 
 object CommonVHFactory {

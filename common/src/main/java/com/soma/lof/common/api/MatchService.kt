@@ -12,4 +12,8 @@ interface MatchService {
     suspend fun getMatchList(@Header("Authorization") jwtToken: String,
                              @Query("date") date: String,
                              @Query("all") isAll: Boolean) :List<CommonItemResponse>
+
+
+    @GET("/v1/match/mainPage")
+    suspend fun getMainPage(@Header("Authorization") jwtToken: String, onlyMyTeam: Boolean) : List<CommonItemResponse>
 }

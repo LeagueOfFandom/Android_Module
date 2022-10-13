@@ -3,12 +3,15 @@ package com.soma.lof.home.ui
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.soma.lof.common.domain.DataStoreUseCase
-import com.soma.lof.core_model.dto.CommonItem
-import com.soma.lof.common.repository.HomeRepository
-import com.soma.lof.common.repository.HomeRepositoryImpl
 import com.soma.lof.common.domain.HomeUseCase
+import com.soma.lof.common.repository.HomeRepository
+import com.soma.lof.core_model.dto.CommonItem
+import com.soma.lof.foundation.result.Result
 import dagger.hilt.android.lifecycle.HiltViewModel
-import kotlinx.coroutines.flow.*
+import kotlinx.coroutines.flow.MutableStateFlow
+import kotlinx.coroutines.flow.StateFlow
+import kotlinx.coroutines.flow.collectLatest
+import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
@@ -20,24 +23,21 @@ class HomeViewModel @Inject constructor(
 ): ViewModel() {
 
     val homeBannerData = listOf(
-        "https://byline.network/wp-content/uploads/2018/05/cat.png",
-        "https://t1.daumcdn.net/cfile/tistory/24283C3858F778CA2E",
-        "https://helpx.adobe.com/content/dam/help/en/photoshop/using/quick-actions/remove-background-before-qa1.png"
+        "https://d654rq93y7j8z.cloudfront.net/soma-bucket/lof_banner/1.jpg",
+        "https://d654rq93y7j8z.cloudfront.net/soma-bucket/lof_banner/2.jpg",
+        "https://d654rq93y7j8z.cloudfront.net/soma-bucket/lof_banner/3.jpg"
     )
 
-    /* TODO Dummy 데이터 처리 필요 */
-    private val _homeData = MutableStateFlow((homeRepository as HomeRepositoryImpl).dummy)
-    val homeData : StateFlow<List<CommonItem>> = _homeData
+    private val _homeData = MutableStateFlow<Result<List<CommonItem>>>(Result.Loading)
+    val homeData : StateFlow<Result<List<CommonItem>>> get() = _homeData
 
     init {
-        getHomeApi()
-    }
-
-    private fun getHomeApi() {
         viewModelScope.launch {
             val jwtToken = dataStoreUseCase.jwtToken.first()
             if (jwtToken != null) {
-                _homeData.value = homeUseCase.getHomeData(jwtToken)
+                homeUseCase.getHomeData(jwtToken).collectLatest {
+                    _homeData.value = it
+                }
             }
         }
     }

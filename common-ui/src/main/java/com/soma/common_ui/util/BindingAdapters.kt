@@ -5,7 +5,9 @@ import android.widget.ProgressBar
 import android.widget.Toast
 import androidx.appcompat.widget.AppCompatImageView
 import androidx.databinding.BindingAdapter
+import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
+import androidx.viewpager2.widget.ViewPager2
 import com.bumptech.glide.Glide
 import com.soma.common_ui.presentation.CommonListAdapter2
 import com.soma.lof.core_model.dto.CommonItem
@@ -13,6 +15,7 @@ import com.soma.lof.core_model.dto.domain.SelectTeamModel
 import com.soma.lof.foundation.result.Result
 import com.soma.lof.foundation.result.data
 import com.soma.lof.foundation.result.successOrNull
+import me.relex.circleindicator.CircleIndicator3
 
 @BindingAdapter("imageResource")
 fun AppCompatImageView.setImageResource(resId: Int) {
@@ -61,4 +64,34 @@ fun RecyclerView.bindTeamItems(state: Result<List<CommonItem>>) {
 @BindingAdapter("show")
 fun ProgressBar.bindShow(result: Result<*>) {
     visibility = if (result is Result.Loading) View.VISIBLE else View.GONE
+}
+
+@BindingAdapter("viewpager")
+fun CircleIndicator3.bindViewPager(viewPager: ViewPager2) {
+    this.setViewPager(viewPager)
+}
+
+@BindingAdapter("adapter", "submitList", requireAll = true)
+fun bindRecyclerView(view: RecyclerView, adapter: RecyclerView.Adapter<*>, submitList: List<Any>?) {
+    view.adapter = adapter.apply {
+        stateRestorationPolicy = RecyclerView.Adapter.StateRestorationPolicy.PREVENT_WHEN_EMPTY
+        (this as ListAdapter<Any, *>).submitList(submitList?.toMutableList())
+    }
+}
+
+@BindingAdapter("isGone")
+fun bindIsGone(view: View, isGone: Boolean) {
+    view.visibility = if (isGone) {
+        View.GONE
+    } else {
+        View.VISIBLE
+    }
+}
+
+@BindingAdapter("commonItems")
+fun RecyclerView.bindCommonItems(state: Result<List<CommonItem>>) {
+    val boundAdapter = this.adapter
+    if (boundAdapter is CommonListAdapter2 && state.successOrNull() != null) {
+        boundAdapter.submitList(state.data!!)
+    }
 }

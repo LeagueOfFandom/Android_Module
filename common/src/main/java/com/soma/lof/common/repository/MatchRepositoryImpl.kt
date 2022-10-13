@@ -11,9 +11,11 @@ import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.catch
 import kotlinx.coroutines.flow.flow
 import javax.inject.Inject
-import javax.inject.Singleton
 
-@Singleton
+/**
+ * [CommonItemResponse] is for obtaining CommonList Data Form
+ * CommonList is to apply ViewHolder and Data according to ViewType for Easy Recycling.
+ */
 class MatchRepositoryImpl @Inject constructor(
     private val matchService: MatchService,
 ) : MatchRepository {

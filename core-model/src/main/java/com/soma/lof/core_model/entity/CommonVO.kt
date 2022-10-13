@@ -1,5 +1,8 @@
 package com.soma.lof.core_model.entity
 
+/**
+ * This [CommonVO] is for obtaining each ViewType ViewHolder Data
+ */
 data class CommonVO(
 
     // Text_Arrow

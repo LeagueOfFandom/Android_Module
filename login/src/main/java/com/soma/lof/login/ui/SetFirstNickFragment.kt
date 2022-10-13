@@ -1,15 +1,13 @@
 package com.soma.lof.login.ui
 
-import android.content.Context.INPUT_METHOD_SERVICE
+import android.content.Intent
 import android.text.Editable
 import android.text.TextWatcher
-import android.util.Log
 import android.view.KeyEvent
 import android.view.View
 import android.view.inputmethod.InputMethodManager
-import androidx.core.content.ContextCompat.getSystemService
+import android.widget.Toast
 import androidx.core.content.getSystemService
-import androidx.core.content.res.ResourcesCompat
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
 import com.soma.lof.foundation.base.BaseFragment
@@ -17,7 +15,6 @@ import com.soma.lof.login.R
 import com.soma.lof.login.databinding.FragmentNickFirstSetBinding
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.flow.collectLatest
-
 
 @AndroidEntryPoint
 class SetFirstNickFragment :
@@ -47,22 +44,37 @@ class SetFirstNickFragment :
                 }
                 return false
             }
-        });
+        })
 
         binding.nicknameCompleteBtn.setOnClickListener {
-            Log.d("SetFirstNickFragment", "initView: 클릭 ${binding.nickInputField.text.toString()}")
-            viewModel.setNickName(binding.nickInputField.text.toString())
+            val userInputNickname = binding.nickInputField.text.toString()
+            if (validationNickName(userInputNickname)) {
+                viewModel.setNickName(binding.nickInputField.text.toString())
+            }
         }
 
         lifecycleScope.launchWhenStarted {
             viewModel.nickNameSetSuccess.collectLatest {
                 if (it) {
-                    // viewModel.navigateSelectTeam(reqeActivity(), Intent.FLAG_ACTIVITY_CLEAR_TASK or Intent.FLAG_ACTIVITY_NEW_TASK)
+                    viewModel.navigateSelectTeam(requireActivity(), Intent.FLAG_ACTIVITY_CLEAR_TASK or Intent.FLAG_ACTIVITY_NEW_TASK)
                 }
-            }
-            viewModel.nick.collectLatest {
-                Log.d("SetFirstNickFragment", "nickname: $it")
             }
         }
     }
+
+    private fun validationNickName(nickName: String): Boolean {
+        if (nickName.length < 3) {
+            Toast.makeText(requireContext(), "3글자 이상을 입력하셔야 합니다.", Toast.LENGTH_SHORT).show()
+            return false
+        }
+        val regex = "([0-9a-zA-Z])*".toRegex()
+        val matchResult: MatchResult? = regex.matchEntire(nickName)
+        if (matchResult == null) {
+            Toast.makeText(requireContext(), "영어와 숫자로 이루어져야 합니다.", Toast.LENGTH_SHORT).show()
+            return false
+        }
+
+        return true
+    }
+
 }

@@ -1,6 +1,7 @@
-package com.soma.common_ui.presentation
+package com.soma.common_ui.presentation.match_up
 
 import com.soma.common_ui.databinding.ItemHomeMatchTitleLineBinding
+import com.soma.common_ui.presentation.CommonVH
 import com.soma.lof.core_model.dto.CommonItem
 import com.soma.lof.core_model.entity.HomeMatchTitleVO
 
