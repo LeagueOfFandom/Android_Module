@@ -22,10 +22,8 @@ class SetNickNameViewModel @Inject constructor(
     private val dataStoreUseCase: DataStoreUseCase
 ): ViewModel() {
 
-    val _nickNameSetSuccess = MutableStateFlow(false)
+    private val _nickNameSetSuccess = MutableStateFlow(false)
     val nickNameSetSuccess get() = _nickNameSetSuccess
-
-    val nick = MutableStateFlow("")
 
     fun setNickName(nickName: String) {
         viewModelScope.launch(Dispatchers.IO) {
@@ -34,21 +32,8 @@ class SetNickNameViewModel @Inject constructor(
             if (jwtToken != null) {
                 userRepository.setUserNickName(jwtToken, nickName).collectLatest {
                     _nickNameSetSuccess.value = true
-                    getNickName()
                 }
 
-            }
-        }
-    }
-
-    fun getNickName() {
-        viewModelScope.launch(Dispatchers.IO) {
-            val jwtToken = dataStoreUseCase.jwtToken.first()
-
-            if (jwtToken != null) {
-                userRepository.getUserNickName(jwtToken).collectLatest {
-                    nick.value = it.data ?: ""
-                }
             }
         }
     }
