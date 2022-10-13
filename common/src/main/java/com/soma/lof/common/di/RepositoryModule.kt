@@ -1,7 +1,7 @@
 package com.soma.lof.common.di
 
 import com.soma.lof.common.api.MatchService
-import com.soma.lof.common.api.TeamService
+import com.soma.lof.common.api.LeagueService
 import com.soma.lof.common.api.UserService
 import com.soma.lof.common.repository.*
 import dagger.Module
@@ -24,10 +24,10 @@ object RepositoryModule {
 
     @Provides
     @Singleton
-    fun providesTeamRepository(
-        teamService: TeamService
-    ) : TeamRepository {
-        return TeamRepositoryImpl(teamService)
+    fun providesLeagueRepository(
+        leagueService: LeagueService
+    ) : LeagueRepository {
+        return LeagueRepositoryImpl(leagueService)
     }
 
     @Provides

@@ -7,13 +7,11 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.soma.common_ui.route.FeatureHomeRouteContract
 import com.soma.lof.common.domain.DataStoreUseCase
-import com.soma.lof.common.domain.TeamUseCase
+import com.soma.lof.common.domain.SelectTeamUseCase
 import com.soma.lof.core_model.dto.domain.SelectTeamModel
-import com.soma.lof.core_model.entity.LeagueTeamInfo
 import com.soma.lof.core_model.entity.TeamInfo
 import com.soma.lof.foundation.result.Result
 import com.soma.lof.foundation.result.data
-import com.soma.lof.foundation.result.successOrNull
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
@@ -23,10 +21,10 @@ import javax.inject.Inject
 
 @HiltViewModel
 class SelectTeamViewModel @Inject constructor(
-    private val teamUseCase: TeamUseCase,
+    private val teamUseCase: SelectTeamUseCase,
     private val dataStoreUseCase: DataStoreUseCase,
     private val featureHomeRouteContract: FeatureHomeRouteContract,
-) : ViewModel(), OnTeamClickListener {
+) : ViewModel(){
 
     private val _tabItems: MutableStateFlow<List<String>> = MutableStateFlow(emptyList())
     private val _userTeamInfo: MutableStateFlow<List<TeamInfo>> = MutableStateFlow(emptyList())
@@ -56,11 +54,9 @@ class SelectTeamViewModel @Inject constructor(
 
     fun plusTeamCnt() {
         _teamCnt.value += 1
-        Log.d(SelectTeamActivity.TAG, "teamCnt plus ${teamCnt.value}")
     }
 
     fun minusTeamCnt() {
-        Log.d(SelectTeamActivity.TAG, "teamCnt minus")
         _teamCnt.value -= 1
     }
 
@@ -72,17 +68,4 @@ class SelectTeamViewModel @Inject constructor(
     companion object {
         private val TAG = "SelectTeamViewModel"
     }
-
-    override fun onClicked(team: TeamInfo, leaguePos: Int, teamPos: Int) {
-        Log.d(TAG, "onClicked: 클릭")
-        if (_selectTeamData.value.data!!.teamInfo.contains(team)) {
-            _selectTeamData.value.data!!.leagueInfo[leaguePos].teamInfo[teamPos].teamCheck = false
-            _selectTeamData.value.data!!.teamInfo.remove(team)
-        } else {
-            _selectTeamData.value.data!!.teamInfo.add(team)
-            _selectTeamData.value.data!!.leagueInfo[leaguePos].teamInfo[teamPos].teamCheck = true
-        }
-        Log.d(TAG, "onClicked: ${_selectTeamData.value.data!!.teamInfo.size}")
-    }
-
 }

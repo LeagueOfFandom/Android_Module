@@ -1,16 +1,14 @@
 package com.soma.lof.select_team.ui
 
-import android.content.Context
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.core.content.ContextCompat.getColor
-import androidx.core.content.res.ResourcesCompat
 import androidx.databinding.DataBindingUtil
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
-import com.soma.common_ui.generated.callback.OnClickListener
+import com.google.android.material.card.MaterialCardView
 import com.soma.lof.core_model.entity.TeamInfo
 import com.soma.lof.foundation.result.data
 import com.soma.lof.select_team.R
@@ -37,43 +35,43 @@ class SelectTeamListAdapter(
         holder.binding.team = getItem(position)
         holder.binding.teamPos = position
 
-        /* TODO API 정리 후 추후 수정 예정 */
+        val item = getItem(position)
         holder.binding.preferTeamCv.setOnClickListener {
-            getItem(position).teamCheck = when (getItem(position).teamCheck) {
+            item.teamCheck = when (item.teamCheck) {
                 true -> {
-                    holder.binding.preferTeamCv.strokeColor = getColor(holder.itemView.context, R.color.white)
-                    holder.binding.preferTeamCv.strokeWidth = 0
-                    if (viewModel.selectTeamData.value.data!!.teamInfo.contains(getItem(position))) {
-                        viewModel.selectTeamData.value.data!!.leagueInfo[pos].teamInfo[position].teamCheck = false
-                        viewModel.selectTeamData.value.data!!.teamInfo.remove(getItem(position))
-                    } else {
-                        viewModel.selectTeamData.value.data!!.leagueInfo[pos].teamInfo[position].teamCheck = true
-                        viewModel.selectTeamData.value.data!!.teamInfo.add(getItem(position))
+                    holder.binding.preferTeamCv.setUnchecked()
+                    if (viewModel.selectTeamData.value.data!!.teamInfo.contains(item)) {
+                        viewModel.selectTeamData.value.data!!.leagueInfo[pos].teamInfoDtoList[position].teamCheck = false
+                        viewModel.selectTeamData.value.data!!.teamInfo.remove(item)
+                        viewModel.minusTeamCnt()
                     }
-
-                    Log.d("OnClick", "onClick: ${viewModel.selectTeamData.value.data!!.teamInfo.size}")
-                    viewModel.minusTeamCnt()
                     false
                 }
                 else -> {
-                    if (viewModel.selectTeamData.value.data!!.teamInfo.contains(getItem(position))) {
-                        viewModel.selectTeamData.value.data!!.leagueInfo[pos].teamInfo[position].teamCheck = false
-                        viewModel.selectTeamData.value.data!!.teamInfo.remove(getItem(position))
-                    } else {
-                        viewModel.selectTeamData.value.data!!.leagueInfo[pos].teamInfo[position].teamCheck = true
-                        viewModel.selectTeamData.value.data!!.teamInfo.add(getItem(position))
+                    if (!viewModel.selectTeamData.value.data!!.teamInfo.contains(item)) {
+                        viewModel.selectTeamData.value.data!!.leagueInfo[pos].teamInfoDtoList[position].teamCheck = true
+                        viewModel.selectTeamData.value.data!!.teamInfo.add(item)
+                        viewModel.plusTeamCnt()
                     }
-                    Log.d("OnClick", "onClick: ${viewModel.selectTeamData.value.data!!.teamInfo.size}")
-                    holder.binding.preferTeamCv.strokeColor =
-                        getColor(holder.itemView.context, R.color.main_color)
-                    holder.binding.preferTeamCv.strokeWidth = 10
-                    viewModel.plusTeamCnt()
+                    holder.binding.preferTeamCv.setChecked()
+
                     true
                 }
             }
         }
         holder.binding.executePendingBindings()
     }
+
+    private fun MaterialCardView.setChecked() {
+        this.strokeColor = getColor(context, R.color.main_color)
+        this.strokeWidth = 10
+    }
+
+    private fun MaterialCardView.setUnchecked() {
+        this.strokeColor = getColor(context, R.color.white)
+        this.strokeWidth = 0
+    }
+
 }
 
 class SelectTeamViewHolder(
