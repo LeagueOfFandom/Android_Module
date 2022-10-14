@@ -56,5 +56,5 @@ dependencies {
     kapt(Dependencies.hilt.compiler)
 
     // Timber
-    implementation(Dependencies.Logger.timber)
+    api(Dependencies.Logger.timber)
 }

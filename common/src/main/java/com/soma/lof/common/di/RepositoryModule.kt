@@ -1,7 +1,7 @@
 package com.soma.lof.common.di
 
 import com.soma.lof.common.api.MatchService
-import com.soma.lof.common.api.TeamService
+import com.soma.lof.common.api.LeagueService
 import com.soma.lof.common.api.UserService
 import com.soma.lof.common.repository.*
 import dagger.Module
@@ -10,7 +10,6 @@ import dagger.hilt.InstallIn
 import dagger.hilt.components.SingletonComponent
 import javax.inject.Singleton
 
-/* TODO Provides에서 Binds로 전환 */
 @Module
 @InstallIn(SingletonComponent::class)
 object RepositoryModule {
@@ -25,10 +24,10 @@ object RepositoryModule {
 
     @Provides
     @Singleton
-    fun providesTeamRepository(
-        teamService: TeamService
-    ) : TeamRepository {
-        return TeamRepositoryImpl(teamService)
+    fun providesLeagueRepository(
+        leagueService: LeagueService
+    ) : LeagueRepository {
+        return LeagueRepositoryImpl(leagueService)
     }
 
     @Provides

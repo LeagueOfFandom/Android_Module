@@ -1,6 +1,7 @@
 package com.soma.lof.common.api
 
 import com.soma.lof.core_model.dto.CommonItemResponse
+import com.soma.lof.core_model.dto.MainPageResponse
 import retrofit2.Response
 import retrofit2.http.GET
 import retrofit2.http.Header
@@ -15,5 +16,5 @@ interface MatchService {
 
 
     @GET("/v1/match/mainPage")
-    suspend fun getMainPage(@Header("Authorization") jwtToken: String, onlyMyTeam: Boolean) : List<CommonItemResponse>
+    suspend fun getMainPage(@Header("Authorization") jwtToken: String, onlyMyTeam: Boolean) : MainPageResponse
 }

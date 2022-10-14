@@ -2,6 +2,7 @@ package com.soma.lof.common.repository
 
 import com.soma.lof.common.api.MatchService
 import com.soma.lof.core_model.dto.CommonItemResponse
+import com.soma.lof.core_model.dto.MainPageResponse
 import com.soma.lof.foundation.exception.NetworkFailureException
 import com.soma.lof.foundation.result.Result
 import kotlinx.coroutines.flow.Flow
@@ -20,7 +21,7 @@ class HomeRepositoryImpl @Inject constructor(
     override suspend fun getMainPage(
         jwtToken: String,
         onlyMyTeam: Boolean,
-    ): Flow<Result<List<CommonItemResponse>>> {
+    ): Flow<Result<MainPageResponse>> {
         return flow {
             val mainPageData = matchService.getMainPage(jwtToken, onlyMyTeam)
             emit(Result.Success(mainPageData))

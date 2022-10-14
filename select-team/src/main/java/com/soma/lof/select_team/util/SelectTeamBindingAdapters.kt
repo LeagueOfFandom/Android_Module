@@ -19,7 +19,7 @@ import com.soma.lof.select_team.ui.SelectTeamListAdapter
 fun RecyclerView.bindTeamItems(state: Result<SelectTeamModel>, pos: Int) {
     val boundAdapter = this.adapter
     if (boundAdapter is SelectTeamListAdapter && state.successOrNull() != null) {
-        boundAdapter.submitList(state.data!!.leagueInfo[pos].teamInfo)
+        boundAdapter.submitList(state.data!!.leagueInfo[pos].teamInfoDtoList)
     }
 }
 
@@ -32,7 +32,6 @@ fun TextView.text(state: Result<SelectTeamModel>, pos: Int) {
 
 @BindingAdapter("teamSelectStrokeColor")
 fun MaterialCardView.strokeColor(teamInfo: TeamInfo) {
-    Log.d("Team", "strokeColor: teamCheck: ${teamInfo.teamCheck}")
     if (teamInfo.teamCheck) {
         this.strokeColor = getColor(context, R.color.main_color)
     } else {

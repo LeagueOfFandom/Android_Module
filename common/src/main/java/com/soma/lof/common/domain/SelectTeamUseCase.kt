@@ -1,25 +1,19 @@
 package com.soma.lof.common.domain
 
-import android.util.Log
-import com.soma.lof.common.repository.TeamRepository
-import com.soma.lof.common.repository.UserRepository
-import com.soma.lof.core_model.dto.CommonItemResponse
+import com.soma.lof.common.repository.LeagueRepository
 import com.soma.lof.core_model.dto.domain.SelectTeamModel
 import com.soma.lof.foundation.exception.JwtTokenEmptyException
 import com.soma.lof.foundation.result.Result
 import com.soma.lof.foundation.result.data
-import kotlinx.coroutines.*
-import kotlinx.coroutines.channels.awaitClose
 import kotlinx.coroutines.flow.*
 import timber.log.Timber
 import javax.inject.Inject
 
-
 /**
  *  [SelectTeamModel] is Domain Layer Model
  */
-class TeamUseCase @Inject constructor(
-    private val teamRepository: TeamRepository,
+class SelectTeamUseCase @Inject constructor(
+    private val teamRepository: LeagueRepository,
 ) {
     suspend fun getSelectTeamData(jwtToken: String?): Flow<Result<SelectTeamModel>> {
         return flow {
@@ -30,8 +24,8 @@ class TeamUseCase @Inject constructor(
                 val data = SelectTeamModel()
                 teamRepository.getSelectTeamList(jwtToken).collectLatest {
                     Timber.d("TeamUseCase getSelectTeamList Success")
-                    data.leagueList = it.data?.leagueList ?: emptyList()
-                    data.leagueInfo = it.data?.leagueInfo ?: emptyList()
+                    data.leagueList = it.data?.leagueNameList ?: emptyList()
+                    data.leagueInfo = it.data?.leagueInfoDtoList ?: emptyList()
                 }
                 teamRepository.getUserTeamList(jwtToken).collectLatest {
                     Timber.d("TeamUseCase getUserTeamList Success")

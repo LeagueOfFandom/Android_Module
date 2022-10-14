@@ -27,7 +27,6 @@ class SelectTeamActivity : BaseActivity<ActivitySelectTeamBinding>(R.layout.acti
         bind {
             activity = this@SelectTeamActivity
             vm = viewModel
-            adapter = teamLeagueAdapter
         }
 
         lifecycleScope.launchWhenCreated {
@@ -42,10 +41,6 @@ class SelectTeamActivity : BaseActivity<ActivitySelectTeamBinding>(R.layout.acti
                         tab.text = it[position]
                     }.attach()
                 }
-            }
-
-            viewModel.teamCnt.collectLatest {
-                binding.selectTeamCntNote.text = "총 ${it}팀을 선택하였습니다."
             }
         }
     }
