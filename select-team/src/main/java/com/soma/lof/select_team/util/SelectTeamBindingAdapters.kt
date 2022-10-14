@@ -1,6 +1,5 @@
 package com.soma.lof.select_team.util
 
-import android.util.Log
 import android.widget.TextView
 import androidx.core.content.ContextCompat.getColor
 import androidx.databinding.BindingAdapter
@@ -19,7 +18,9 @@ import com.soma.lof.select_team.ui.SelectTeamListAdapter
 fun RecyclerView.bindTeamItems(state: Result<SelectTeamModel>, pos: Int) {
     val boundAdapter = this.adapter
     if (boundAdapter is SelectTeamListAdapter && state.successOrNull() != null) {
-        boundAdapter.submitList(state.data!!.leagueInfo[pos].teamInfoDtoList)
+        if (state.data != null) {
+            boundAdapter.submitList(state.data!!.leagueInfo[pos].teamInfoListResponse)
+        }
     }
 }
 

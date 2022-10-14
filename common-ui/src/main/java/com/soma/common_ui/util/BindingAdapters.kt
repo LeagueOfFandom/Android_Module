@@ -38,10 +38,10 @@ fun View.bindToast(throwable: Throwable?) {
     }
 }
 
-@BindingAdapter("adapter")
-fun RecyclerView.bindAdapter(adapter: RecyclerView.Adapter<*>) {
-    this.adapter = adapter
-}
+//@BindingAdapter("adapter")
+//fun RecyclerView.bindAdapter(adapter: RecyclerView.Adapter<*>) {
+//    this.adapter = adapter
+//}
 
 @BindingAdapter("image")
 fun AppCompatImageView.bindImage(uri: String?) {
@@ -62,21 +62,13 @@ fun RecyclerView.bindTeamItems(state: Result<List<CommonItem>>) {
 
 
 @BindingAdapter("show")
-fun ProgressBar.bindShow(result: Result<*>) {
-    visibility = if (result is Result.Loading) View.VISIBLE else View.GONE
+fun ProgressBar.bindShow(result: Result<*>?) {
+    visibility = if (result is Result.Loading || result == null) View.VISIBLE else View.GONE
 }
 
 @BindingAdapter("viewpager")
 fun CircleIndicator3.bindViewPager(viewPager: ViewPager2) {
     this.setViewPager(viewPager)
-}
-
-@BindingAdapter("adapter", "submitList", requireAll = true)
-fun bindRecyclerView(view: RecyclerView, adapter: RecyclerView.Adapter<*>, submitList: List<Any>?) {
-    view.adapter = adapter.apply {
-        stateRestorationPolicy = RecyclerView.Adapter.StateRestorationPolicy.PREVENT_WHEN_EMPTY
-        (this as ListAdapter<Any, *>).submitList(submitList?.toMutableList())
-    }
 }
 
 @BindingAdapter("isGone")

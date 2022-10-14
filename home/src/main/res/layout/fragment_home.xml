@@ -10,20 +10,12 @@
             type="com.soma.lof.home.ui.HomeViewModel" />
 
         <variable
-            name="bannerAdapter"
-            type="com.soma.lof.home.ui.HomeBannerAdapter" />
-
-        <variable
             name="rvAdapter"
             type="com.soma.common_ui.presentation.CommonListAdapter2" />
 
         <variable
             name="fragment"
             type="com.soma.lof.home.ui.HomeFragment" />
-
-        <variable
-            name="viewpager"
-            type="androidx.viewpager2.widget.ViewPager2" />
     </data>
 
     <androidx.core.widget.NestedScrollView
@@ -47,17 +39,14 @@
                 <androidx.viewpager2.widget.ViewPager2
                     android:id="@+id/home_ad_banner"
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    app:adapter="@{bannerAdapter}"
-                    android:orientation="horizontal" />
+                    android:layout_height="match_parent"/>
 
                 <me.relex.circleindicator.CircleIndicator3
                     android:id="@+id/indicator2"
                     android:layout_width="match_parent"
-                    android:layout_height="48dp"
+                    android:layout_height="wrap_content"
                     android:layout_gravity="bottom"
-                    android:layout_marginBottom="20dp"
-                    app:viewpager="@{viewpager}"/>
+                    android:layout_marginBottom="10dp"/>
 
             </FrameLayout>
 
@@ -65,24 +54,23 @@
                 android:id="@+id/home_rv"
                 android:layout_width="0dp"
                 android:layout_height="0dp"
-                app:adapter="@{rvAdapter}"
                 app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                app:adapter="@{rvAdapter}"
                 app:layout_constrainedHeight="true"
-                app:commonItems="@{vm.homeData}"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/home_ad_banner_area" />
 
-            <ProgressBar
-                android:id="@+id/home_loading_bar"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                app:show="@{vm.homeData}"
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintEnd_toEndOf="parent" />
+<!--            <ProgressBar-->
+<!--                android:id="@+id/home_loading_bar"-->
+<!--                android:layout_width="wrap_content"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                app:show="@{vm.homeData}"-->
+<!--                app:layout_constraintTop_toTopOf="parent"-->
+<!--                app:layout_constraintBottom_toBottomOf="parent"-->
+<!--                app:layout_constraintStart_toStartOf="parent"-->
+<!--                app:layout_constraintEnd_toEndOf="parent" />-->
 
         </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.core.widget.NestedScrollView>
