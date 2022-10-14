@@ -1,6 +1,7 @@
 package com.soma.lof.common.domain
 
 import com.soma.lof.common.repository.HomeRepository
+import com.soma.lof.common.repository.MatchRepository
 import com.soma.lof.common.util.CommonItemTranslator.toCommonItemList
 import com.soma.lof.core_model.dto.CommonItem
 import com.soma.lof.core_model.dto.domain.HomeModel

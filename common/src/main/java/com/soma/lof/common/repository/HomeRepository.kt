@@ -8,5 +8,4 @@ import javax.inject.Singleton
 
 interface HomeRepository {
     suspend fun getMainPage(jwtToken: String, onlyMyTeam: Boolean) : Flow<Result<MainPageResponse>>
-
 }
