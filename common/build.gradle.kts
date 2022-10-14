@@ -72,7 +72,4 @@ dependencies {
     // Youtube
     implementation(Dependencies.library.youtubeCore)
     implementation(Dependencies.library.youtubeChromeCast)
-
-    // Timber
-    implementation(Dependencies.Logger.timber)
 }
