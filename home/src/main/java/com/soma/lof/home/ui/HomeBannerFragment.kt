@@ -4,6 +4,7 @@ import android.os.Bundle
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import com.soma.lof.foundation.base.BaseFragment
+import com.soma.lof.foundation.result.data
 import com.soma.lof.home.R
 import com.soma.lof.home.databinding.FragmentHomeBannerBinding
 
@@ -14,9 +15,9 @@ class HomeBannerFragment() :
 
     override fun initView() {
         val position = arguments?.getInt(POSITION_KEY) ?: 0
-
+        val bannerData = viewModel.homeData.value.data?.bannerList
         bind {
-            imageUrl = viewModel.homeBannerData[position]
+            imageUrl = "https://cdn.imweb.me/upload/S201910012ff964777e0e3/62f9a36ea3cea.jpg"
         }
     }
 

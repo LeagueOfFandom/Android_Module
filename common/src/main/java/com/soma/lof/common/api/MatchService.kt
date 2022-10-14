@@ -16,5 +16,5 @@ interface MatchService {
 
 
     @GET("/v1/match/mainPage")
-    suspend fun getMainPage(@Header("Authorization") jwtToken: String, onlyMyTeam: Boolean) : MainPageResponse
+    suspend fun getMainPage(@Header("Authorization") jwtToken: String, @Query("onlyMyTeam") onlyMyTeam: Boolean) : MainPageResponse
 }
