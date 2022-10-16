@@ -2,5 +2,5 @@ package com.soma.lof.core_model.entity
 
 data class LeagueTeamInfo(
     val note: String,
-    val teamInfoListResponse: List<TeamInfo>
+    val teamInfoList: List<TeamInfo>
 )

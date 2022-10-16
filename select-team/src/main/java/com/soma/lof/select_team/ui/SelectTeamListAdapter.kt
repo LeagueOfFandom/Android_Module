@@ -1,6 +1,5 @@
 package com.soma.lof.select_team.ui
 
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.core.content.ContextCompat.getColor
@@ -41,7 +40,7 @@ class SelectTeamListAdapter(
                 true -> {
                     holder.binding.preferTeamCv.setUnchecked()
                     if (viewModel.selectTeamData.value.data!!.teamInfo.contains(item)) {
-                        viewModel.selectTeamData.value.data!!.leagueInfo[pos].teamInfoListResponse[position].teamCheck = false
+                        viewModel.selectTeamData.value.data!!.leagueInfo[pos].teamInfoList[position].teamCheck = false
                         viewModel.selectTeamData.value.data!!.teamInfo.remove(item)
                         viewModel.minusTeamCnt()
                     }
@@ -49,7 +48,7 @@ class SelectTeamListAdapter(
                 }
                 else -> {
                     if (!viewModel.selectTeamData.value.data!!.teamInfo.contains(item)) {
-                        viewModel.selectTeamData.value.data!!.leagueInfo[pos].teamInfoListResponse[position].teamCheck = true
+                        viewModel.selectTeamData.value.data!!.leagueInfo[pos].teamInfoList[position].teamCheck = true
                         viewModel.selectTeamData.value.data!!.teamInfo.add(item)
                         viewModel.plusTeamCnt()
                     }

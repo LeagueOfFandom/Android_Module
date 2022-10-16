@@ -17,7 +17,7 @@ class HomeBannerFragment() :
         val position = arguments?.getInt(POSITION_KEY) ?: 0
         val bannerData = viewModel.homeData.value.data?.bannerList
         bind {
-            imageUrl = "https://cdn.imweb.me/upload/S201910012ff964777e0e3/62f9a36ea3cea.jpg"
+            imageUrl = bannerData?.get(position) ?: "https://cdn.imweb.me/upload/S201910012ff964777e0e3/62f9a36ea3cea.jpg"
         }
     }
 
