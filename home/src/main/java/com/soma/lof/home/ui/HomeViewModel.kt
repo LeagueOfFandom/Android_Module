@@ -13,6 +13,7 @@ import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.launch
+import timber.log.Timber
 import javax.inject.Inject
 
 @HiltViewModel
@@ -27,9 +28,9 @@ class HomeViewModel @Inject constructor(
     init {
         viewModelScope.launch {
             val jwtToken = dataStoreUseCase.jwtToken.first()
+            Timber.tag(TAG).d("jwtToken: $jwtToken")
             if (jwtToken != null) {
                 homeUseCase.getHomeData(jwtToken).collectLatest {
-                    Log.d(TAG, "homeData: $it")
                     _homeData.value = it
                 }
             }

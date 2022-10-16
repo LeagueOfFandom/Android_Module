@@ -1,9 +1,7 @@
 package com.soma.lof.common.domain
 
 import com.soma.lof.common.repository.HomeRepository
-import com.soma.lof.common.repository.MatchRepository
 import com.soma.lof.common.util.CommonItemTranslator.toCommonItemList
-import com.soma.lof.core_model.dto.CommonItem
 import com.soma.lof.core_model.dto.domain.HomeModel
 import com.soma.lof.foundation.result.Result
 import com.soma.lof.foundation.result.data
@@ -19,7 +17,7 @@ class HomeUseCase @Inject constructor(
         return flow {
             emit(Result.Loading)
             homeRepository.getMainPage(jwtToken, onlyMyTeam).collect {
-                emit(Result.Success(HomeModel(it.data?.bannerList ?: emptyList(), it.data?.commonItemListResponse?.toCommonItemList() ?: emptyList())))
+                emit(Result.Success(HomeModel(it.data?.bannerList ?: emptyList(), it.data?.commonItemList?.toCommonItemList() ?: emptyList())))
             }
         }
     }

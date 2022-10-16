@@ -1,7 +1,5 @@
 package com.soma.lof.home.ui
 
-import android.annotation.SuppressLint
-import android.util.Log
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
 import androidx.viewpager2.widget.ViewPager2
@@ -29,9 +27,6 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>(R.layout.fragment_home) {
 
         homeBannerAdapter = HomeBannerAdapter(this@HomeFragment, viewModel)
         commonListAdapter = CommonListAdapter2()
-
-        Log.d(TAG, "initView homeData 있니?: ${viewModel.homeData.value}")
-        Log.d(TAG, "initView bannerAdapter 있니?: ${homeBannerAdapter.itemCount}")
 
         /* TODO Databinding할 때 Parameter specified as non-null is null: method kotlin.jvm.internal.Intrinsics.checkNotNullParameter, parameter state 라고 뜸 하지만 State에 Null이 들어올 수 없음.*/
         lifecycleScope.launchWhenCreated {

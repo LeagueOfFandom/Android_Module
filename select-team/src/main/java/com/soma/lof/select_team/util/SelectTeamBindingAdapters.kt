@@ -19,7 +19,7 @@ fun RecyclerView.bindTeamItems(state: Result<SelectTeamModel>, pos: Int) {
     val boundAdapter = this.adapter
     if (boundAdapter is SelectTeamListAdapter && state.successOrNull() != null) {
         if (state.data != null) {
-            boundAdapter.submitList(state.data!!.leagueInfo[pos].teamInfoListResponse)
+            boundAdapter.submitList(state.data!!.leagueInfo[pos].teamInfoList)
         }
     }
 }

@@ -25,7 +25,7 @@ class SelectTeamUseCase @Inject constructor(
                 teamRepository.getSelectTeamList(jwtToken).collectLatest {
                     Timber.d("TeamUseCase getSelectTeamList Success")
                     data.leagueList = it.data?.leagueNameList ?: emptyList()
-                    data.leagueInfo = it.data?.leagueInfoListListResponse ?: emptyList()
+                    data.leagueInfo = it.data?.leagueInfoList ?: emptyList()
                 }
                 teamRepository.getUserTeamList(jwtToken).collectLatest {
                     Timber.d("TeamUseCase getUserTeamList Success")

@@ -6,6 +6,7 @@ import androidx.lifecycle.lifecycleScope
 import com.soma.common_ui.presentation.CommonListAdapter
 import com.soma.common_ui.presentation.CommonListAdapter2
 import com.soma.lof.foundation.base.BaseFragment
+import com.soma.lof.foundation.result.data
 import com.soma.lof.match.R
 import com.soma.lof.match.databinding.FragmentMatchBinding
 import dagger.hilt.android.AndroidEntryPoint
@@ -24,6 +25,12 @@ class MatchFragment : BaseFragment<FragmentMatchBinding>(R.layout.fragment_match
 
         bind {
             adapter = matchListAdapter
+        }
+
+        lifecycleScope.launchWhenCreated {
+            viewModel.matchData.collectLatest {
+                matchListAdapter.submitList(it.data)
+            }
         }
 
         // API 상의 후 변경 예정
