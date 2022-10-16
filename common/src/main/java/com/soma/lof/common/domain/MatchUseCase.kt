@@ -25,10 +25,10 @@ class MatchUseCase @Inject constructor(
     suspend fun getMatchList(
         jwtToken: String,
         date: String,
-        isAll: Boolean,
+        onlyMyTeam: Boolean,
     ): Flow<Result<List<CommonItem>>> {
         return flow {
-            matchRepository.getMatchList(jwtToken, date, isAll).collectLatest {
+            matchRepository.getMatchList(jwtToken, date, onlyMyTeam).collectLatest {
                 emit(Result.Success(it.data?.toCommonItemList() ?: emptyList()))
             }
         }

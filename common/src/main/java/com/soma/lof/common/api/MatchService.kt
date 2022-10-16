@@ -9,10 +9,10 @@ import retrofit2.http.Query
 
 interface MatchService {
 
-    @GET("/matchList")
+    @GET("/v1/match/matchListByMonth")
     suspend fun getMatchList(@Header("Authorization") jwtToken: String,
                              @Query("date") date: String,
-                             @Query("all") isAll: Boolean) :List<CommonItemResponse>
+                             @Query("onlyMyTeam") onlyMyTeam: Boolean) :List<CommonItemResponse>
 
 
     @GET("/v1/match/mainPage")

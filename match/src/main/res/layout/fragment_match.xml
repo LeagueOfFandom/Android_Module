@@ -118,7 +118,6 @@
             android:layout_weight="1"
             android:orientation="vertical"
             app:adapter="@{adapter}"
-            app:commonItems="@{vm.matchData}"
             app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
             app:layout_constrainedHeight="true"
             app:layout_constraintTop_toBottomOf="@id/match_date_area"

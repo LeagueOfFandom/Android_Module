@@ -194,10 +194,10 @@ class MatchRepositoryImpl @Inject constructor(
     override suspend fun getMatchList(
         jwtString: String,
         date: String,
-        isAll: Boolean,
+        onlyMyTeam: Boolean,
     ): Flow<Result<List<CommonItemResponse>>> {
         return flow {
-            val matchList = matchService.getMatchList(jwtString, date, isAll)
+            val matchList = matchService.getMatchList(jwtString, date, onlyMyTeam)
             emit(Result.Success(matchList))
         }.catch {
             throw NetworkFailureException("Network Error ${it.message}")

@@ -13,6 +13,7 @@ import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.launch
+import java.text.SimpleDateFormat
 import javax.inject.Inject
 
 @HiltViewModel
@@ -21,18 +22,32 @@ class MatchViewModel @Inject constructor(
     private val dataStoreUseCase: DataStoreUseCase,
 ) : ViewModel() {
 
+
     private val _matchData = MutableStateFlow<Result<List<CommonItem>>>(Result.Loading)
     val matchData: StateFlow<Result<List<CommonItem>>> = _matchData
+    val todayDate = MutableStateFlow("")
 
-    fun getMatchList(date: String, isAll: Boolean = false) {
+    init {
+        todayDate.value = convertTimestampToMonthDate()
+        getMatchList()
+    }
+
+    fun getMatchList(onlyMyTeam: Boolean = false) {
         viewModelScope.launch {
             val jwtToken = dataStoreUseCase.jwtToken.first()
 
             if (jwtToken != null) {
-                matchUseCase.getMatchList(jwtToken, date, isAll).collectLatest {
+                matchUseCase.getMatchList(jwtToken, todayDate.value, onlyMyTeam).collectLatest {
                     _matchData.value = it
+
                 }
             }
         }
+    }
+
+    private fun convertTimestampToMonthDate() : String{
+        val currentTime = System.currentTimeMillis()
+        val sdf = SimpleDateFormat("yyyy-MM-dd")
+        return sdf.format(currentTime)
     }
 }
