@@ -10,12 +10,12 @@ import javax.inject.Singleton
 
 interface UserService {
 
-    @POST("/v1/user/create")
+    @POST("/v1/users")
     suspend fun createUser(@Body createUserRequest: CreateUserRequest) : CreateUserResponse
 
-    @POST("/v1/user/nickname")
+    @POST("/v1/users/nickname")
     suspend fun setUserNickName(@Header("Authorization") jwtToken: String, @Body nickname: String) : String
 
-    @GET("/v1/user/nickname")
+    @GET("/v1/users/nickname")
     suspend fun getUserNickName(@Header("Authorization") jwtToken: String) : String
 }

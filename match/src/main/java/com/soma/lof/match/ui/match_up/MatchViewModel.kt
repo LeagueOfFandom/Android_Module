@@ -6,7 +6,6 @@ import com.soma.lof.common.domain.DataStoreUseCase
 import com.soma.lof.common.domain.MatchUseCase
 import com.soma.lof.core_model.dto.CommonItem
 import com.soma.lof.foundation.result.Result
-import com.soma.lof.foundation.result.data
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
@@ -14,6 +13,7 @@ import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.launch
 import java.text.SimpleDateFormat
+import java.util.*
 import javax.inject.Inject
 
 @HiltViewModel
@@ -22,9 +22,8 @@ class MatchViewModel @Inject constructor(
     private val dataStoreUseCase: DataStoreUseCase,
 ) : ViewModel() {
 
-
     private val _matchData = MutableStateFlow<Result<List<CommonItem>>>(Result.Loading)
-    val matchData: StateFlow<Result<List<CommonItem>>> = _matchData
+    val matchData: StateFlow<Result<List<CommonItem>>> get()= _matchData
     val todayDate = MutableStateFlow("")
 
     init {
@@ -39,7 +38,6 @@ class MatchViewModel @Inject constructor(
             if (jwtToken != null) {
                 matchUseCase.getMatchList(jwtToken, todayDate.value, onlyMyTeam).collectLatest {
                     _matchData.value = it
-
                 }
             }
         }
@@ -47,7 +45,7 @@ class MatchViewModel @Inject constructor(
 
     private fun convertTimestampToMonthDate() : String{
         val currentTime = System.currentTimeMillis()
-        val sdf = SimpleDateFormat("yyyy-MM-dd")
+        val sdf = SimpleDateFormat("yyyy-MM-dd", Locale.KOREA)
         return sdf.format(currentTime)
     }
 }

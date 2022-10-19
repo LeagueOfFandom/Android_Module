@@ -15,7 +15,9 @@ import com.soma.lof.core_model.dto.domain.SelectTeamModel
 import com.soma.lof.foundation.result.Result
 import com.soma.lof.foundation.result.data
 import com.soma.lof.foundation.result.successOrNull
+import kotlinx.coroutines.flow.MutableStateFlow
 import me.relex.circleindicator.CircleIndicator3
+import timber.log.Timber
 
 @BindingAdapter("imageResource")
 fun AppCompatImageView.setImageResource(resId: Int) {
@@ -63,6 +65,7 @@ fun RecyclerView.bindTeamItems(state: Result<List<CommonItem>>) {
 
 @BindingAdapter("show")
 fun ProgressBar.bindShow(result: Result<*>?) {
+    Timber.tag("MatchViewModel").d("progressbar result: ${result?.data}")
     visibility = if (result is Result.Loading || result == null) View.VISIBLE else View.GONE
 }
 
@@ -77,13 +80,5 @@ fun bindIsGone(view: View, isGone: Boolean) {
         View.GONE
     } else {
         View.VISIBLE
-    }
-}
-
-@BindingAdapter("commonItems")
-fun RecyclerView.bindCommonItems(state: Result<List<CommonItem>>) {
-    val boundAdapter = this.adapter
-    if (boundAdapter is CommonListAdapter2 && state.successOrNull() != null) {
-        boundAdapter.submitList(state.data!!)
     }
 }

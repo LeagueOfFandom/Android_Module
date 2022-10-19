@@ -28,22 +28,20 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>(R.layout.fragment_home) {
         homeBannerAdapter = HomeBannerAdapter(this@HomeFragment, viewModel)
         commonListAdapter = CommonListAdapter2()
 
-        /* TODO Databinding할 때 Parameter specified as non-null is null: method kotlin.jvm.internal.Intrinsics.checkNotNullParameter, parameter state 라고 뜸 하지만 State에 Null이 들어올 수 없음.*/
+        bind {
+            vm = viewModel
+            rvAdapter = commonListAdapter
+            fragment = this@HomeFragment
+        }
+
         lifecycleScope.launchWhenCreated {
             viewModel.homeData.collectLatest {
-                commonListAdapter.submitList(it.data?.commonItemList)
-
                 binding.homeAdBanner.apply {
                     adapter = homeBannerAdapter
                     orientation = ViewPager2.ORIENTATION_HORIZONTAL
                 }
 
                 binding.indicator2.setViewPager(binding.homeAdBanner)
-
-                bind {
-                    rvAdapter = commonListAdapter
-                    fragment = this@HomeFragment
-                }
             }
         }
 
