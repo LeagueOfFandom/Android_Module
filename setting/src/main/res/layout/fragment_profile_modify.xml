@@ -3,6 +3,12 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
 
+    <data>
+        <variable
+            name="vm"
+            type="com.soma.lof.setting.ModifyProfileViewModel" />
+    </data>
+
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -16,7 +22,6 @@
             android:src="@drawable/ic_arrow_prev_black"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
-
 
         <TextView
             android:id="@+id/modify_profile_title"
@@ -61,35 +66,44 @@
             app:layout_constraintBottom_toBottomOf="@id/modify_profile_image"
             app:layout_constraintEnd_toEndOf="@id/modify_profile_image" />
 
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="이름"
-            android:textSize="12sp"
-            android:textStyle="bold"
-            android:textColor="@color/text_color_gray2"
-            app:layout_constraintBottom_toTopOf="@id/modify_profile_nickname"
-            app:layout_constraintStart_toStartOf="parent"
-            android:layout_marginBottom="10dp"/>
-
         <androidx.appcompat.widget.AppCompatEditText
-            android:id="@+id/modify_profile_nickname"
+            android:id="@+id/modify_profile_nickname_input_field"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
+            android:layout_marginTop="30dp"
+            android:hint="이름"
+            app:username="@{vm.userNickName}"
+            android:paddingHorizontal="10dp"
             android:paddingBottom="20dp"
+            android:textColor="@color/black"
+            android:textSize="20sp"
+            android:maxLines="1"
+            android:ellipsize="end"
+            android:ems="16"
+            android:maxLength="16"
+            android:inputType="text"
+            app:layout_constraintVertical_bias="0.15"
             app:layout_constraintBottom_toTopOf="@id/modify_profile_btn"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/modify_profile_image"
-            app:layout_constraintVertical_bias="0.15" />
+            app:layout_constraintTop_toBottomOf="@id/modify_profile_image" />
 
-        <androidx.appcompat.widget.AppCompatImageView
+        <TextView
+            android:id="@+id/modify_profile_nickname_input_text_cnt"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="@id/modify_profile_nickname"
-            app:layout_constraintBottom_toBottomOf="@id/modify_profile_nickname"
+            tools:text="@{@string/nick_text_cnt(0, 16)}"
+            app:layout_constraintEnd_toStartOf="@id/modify_profile_nickname_pencil_image"
+            app:layout_constraintBaseline_toBaselineOf="@id/modify_profile_nickname_input_field"
+            android:layout_marginEnd="15dp"/>
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/modify_profile_nickname_pencil_image"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintEnd_toEndOf="@id/modify_profile_nickname_input_field"
+            app:layout_constraintTop_toTopOf="@id/modify_profile_nickname_input_field"
+            app:layout_constraintBottom_toBottomOf="@id/modify_profile_nickname_input_field"
             android:src="@drawable/ic_nickname_edit"
             android:layout_marginEnd="10dp"/>
 

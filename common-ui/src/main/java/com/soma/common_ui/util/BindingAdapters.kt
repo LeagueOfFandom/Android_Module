@@ -2,6 +2,7 @@ package com.soma.common_ui.util
 
 import android.view.View
 import android.widget.ProgressBar
+import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.widget.AppCompatImageView
 import androidx.databinding.BindingAdapter
@@ -86,5 +87,9 @@ fun bindIsGone(view: View, isGone: Boolean) {
 fun hideMsg(view:View, result: Result<List<CommonItem>>) {
     view.visibility =  if (result is Result.Loading) View.GONE
     else if (result.data == null || result.data!!.isEmpty()) View.VISIBLE else View.GONE
+}
 
+@BindingAdapter("username")
+fun TextView.showUserName(result: Result<String>) {
+    this.text = result.data
 }
