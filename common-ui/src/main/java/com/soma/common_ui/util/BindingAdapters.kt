@@ -64,9 +64,8 @@ fun RecyclerView.bindTeamItems(state: Result<List<CommonItem>>) {
 
 
 @BindingAdapter("show")
-fun ProgressBar.bindShow(result: Result<*>?) {
-    Timber.tag("MatchViewModel").d("progressbar result: ${result?.data}")
-    visibility = if (result is Result.Loading || result == null) View.VISIBLE else View.GONE
+fun ProgressBar.bindShow(result: Result<*>) {
+    visibility = if (result is Result.Loading) View.VISIBLE else View.GONE
 }
 
 @BindingAdapter("viewpager")
@@ -81,4 +80,11 @@ fun bindIsGone(view: View, isGone: Boolean) {
     } else {
         View.VISIBLE
     }
+}
+
+@BindingAdapter("msgGone")
+fun hideMsg(view:View, result: Result<List<CommonItem>>) {
+    view.visibility =  if (result is Result.Loading) View.GONE
+    else if (result.data == null || result.data!!.isEmpty()) View.VISIBLE else View.GONE
+
 }

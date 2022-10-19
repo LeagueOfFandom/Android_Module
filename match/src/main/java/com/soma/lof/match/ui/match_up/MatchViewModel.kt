@@ -31,7 +31,7 @@ class MatchViewModel @Inject constructor(
         getMatchList()
     }
 
-    fun getMatchList(onlyMyTeam: Boolean = false) {
+    private fun getMatchList(onlyMyTeam: Boolean = true) {
         viewModelScope.launch {
             val jwtToken = dataStoreUseCase.jwtToken.first()
 
@@ -41,6 +41,11 @@ class MatchViewModel @Inject constructor(
                 }
             }
         }
+    }
+
+    fun setMyTeamSwitchEvent(isTurnOn: Boolean) {
+        _matchData.value = Result.Loading
+        getMatchList(isTurnOn)
     }
 
     private fun convertTimestampToMonthDate() : String{
