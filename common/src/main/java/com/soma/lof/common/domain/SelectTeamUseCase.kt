@@ -13,7 +13,7 @@ import javax.inject.Inject
  *  [SelectTeamModel] is Domain Layer Model
  */
 class SelectTeamUseCase @Inject constructor(
-    private val teamRepository: LeagueRepository,
+    private val leagueRepository: LeagueRepository,
 ) {
     suspend fun getSelectTeamData(jwtToken: String?): Flow<Result<SelectTeamModel>> {
         return flow {
@@ -22,17 +22,27 @@ class SelectTeamUseCase @Inject constructor(
                 emit(Result.Error(JwtTokenEmptyException()))
             } else {
                 val data = SelectTeamModel()
-                teamRepository.getSelectTeamList(jwtToken).collectLatest {
-                    Timber.d("TeamUseCase getSelectTeamList Success")
+                leagueRepository.getSelectTeamList(jwtToken).collectLatest {
                     data.leagueList = it.data?.leagueNameList ?: emptyList()
                     data.leagueInfo = it.data?.leagueInfoList ?: emptyList()
                 }
-                teamRepository.getUserTeamList(jwtToken).collectLatest {
-                    Timber.d("TeamUseCase getUserTeamList Success")
+                leagueRepository.getUserTeamList(jwtToken).collectLatest {
                     data.teamInfo = it.data?.toMutableList() ?: mutableListOf()
                 }
-                Timber.d("TeamUseCase emit data")
                 emit(Result.Success(data))
+            }
+        }
+    }
+
+    suspend fun postSelectTeamData(jwtToken: String?, teamList: List<Long>): Flow<Result<Boolean>> {
+        return flow {
+            emit(Result.Loading)
+            if (jwtToken == null) {
+                emit(Result.Error(JwtTokenEmptyException()))
+            } else {
+                leagueRepository.postUserTeamList(jwtToken, teamList).collect {
+                    emit(Result.Success(true))
+                }
             }
         }
     }

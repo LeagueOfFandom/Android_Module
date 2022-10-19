@@ -8,6 +8,7 @@ import com.soma.lof.core_model.dto.CommonItemResponse
 import com.soma.lof.foundation.result.Result
 import com.soma.lof.foundation.result.data
 import kotlinx.coroutines.flow.Flow
+import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.flow.flow
 import javax.inject.Inject
@@ -28,7 +29,7 @@ class MatchUseCase @Inject constructor(
         onlyMyTeam: Boolean,
     ): Flow<Result<List<CommonItem>>> {
         return flow {
-            matchRepository.getMatchList(jwtToken, date, onlyMyTeam).collectLatest {
+            matchRepository.getMatchList(jwtToken, date, onlyMyTeam).collect {
                 emit(Result.Success(it.data?.toCommonItemList() ?: emptyList()))
             }
         }

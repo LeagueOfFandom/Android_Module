@@ -16,6 +16,9 @@ interface LeagueService {
     @GET("/v1/league/selectedTeamByUser")
     suspend fun getUserTeam(@Header("Authorization") jwtToken: String) : List<TeamInfo>
 
+    @POST("/v1/league/selectedTeamByUser")
+    suspend fun postUserTeam(@Header("Authorization") jwtToken: String, @Body teamIdList: List<Long>) : List<Long>
+
     @POST("/teamList")
     suspend fun postSelectTeamList(
         @Header("Authorization") jwtToken: String,

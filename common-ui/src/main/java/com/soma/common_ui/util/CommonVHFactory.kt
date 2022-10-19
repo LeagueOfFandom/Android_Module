@@ -10,9 +10,8 @@ import com.soma.common_ui.presentation.highlight.HighLightVH
 import com.soma.common_ui.presentation.info.*
 import com.soma.common_ui.presentation.match_info.MatchPreviewImageVH
 import com.soma.common_ui.presentation.match_info.MatchPreviewTextVH
-import com.soma.common_ui.presentation.match_up.HomeMatchTitleLineVH
-import com.soma.common_ui.presentation.match_up.MatchResultVH
-import com.soma.common_ui.presentation.match_up.MatchScheduleVH
+import com.soma.common_ui.presentation.match_up.*
+import com.soma.lof.core_model.entity.TextVO
 import com.soma.lof.core_model.entity.ViewType
 
 object CommonVHFactory {
@@ -25,6 +24,11 @@ object CommonVHFactory {
             ViewType.TEXT_ARROW_VIEW.ordinal -> TextArrowVH(getViewDataBinding(parent, R.layout.item_text_arrow))
             ViewType.COMMUNITY_VIEW.ordinal -> CommunityVH(getViewDataBinding(parent, R.layout.item_community))
             ViewType.HIGHLIGHT_VIEW.ordinal -> HighLightVH(getViewDataBinding(parent, R.layout.item_highlight_view))
+
+            // MATCH_UP
+            ViewType.MATCH_SCHEDULE_DATE_LINE.ordinal -> MatchScheduleDateLineVH(getViewDataBinding(parent, R.layout.item_match_schuedule_date_line))
+            ViewType.MATCH_RESULT_DATE_LINE.ordinal -> MatchResultDateLineVH(getViewDataBinding(parent, R.layout.item_match_result_date_line))
+            ViewType.MATCH_TODAY_DATE_LINE.ordinal -> MatchTodayDateLineVH(getViewDataBinding(parent, R.layout.item_match_today_date_line))
 
             ViewType.MATCH_PREVIEW_TEXT_VIEW.ordinal -> MatchPreviewTextVH(getViewDataBinding(parent, R.layout.item_match_preview_text))
             ViewType.MATCH_PREVIEW_IMAGE_VIEW.ordinal -> MatchPreviewImageVH(getViewDataBinding(parent, R.layout.item_match_preview_image))

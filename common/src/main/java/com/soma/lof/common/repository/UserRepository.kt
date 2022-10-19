@@ -16,5 +16,6 @@ interface UserRepository {
 
     suspend fun getUserNickName(@Header("Authorization") jwtToken: String) : Flow<Result<String>>
 
+    // Info Fragment Dummy Data
     suspend fun getUserInfo(@Header("Authorization") jwtToken: String) : List<CommonItemResponse>
 }
