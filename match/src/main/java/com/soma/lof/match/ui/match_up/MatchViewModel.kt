@@ -22,6 +22,7 @@ class MatchViewModel @Inject constructor(
     private val dataStoreUseCase: DataStoreUseCase,
 ) : ViewModel() {
 
+
     private val _matchData = MutableStateFlow<Result<List<CommonItem>>>(Result.Loading)
     val matchData: StateFlow<Result<List<CommonItem>>> get()= _matchData
     val todayDate = MutableStateFlow("")
@@ -38,6 +39,7 @@ class MatchViewModel @Inject constructor(
             if (jwtToken != null) {
                 matchUseCase.getMatchList(jwtToken, todayDate.value, onlyMyTeam).collectLatest {
                     _matchData.value = it
+
                 }
             }
         }
@@ -51,6 +53,7 @@ class MatchViewModel @Inject constructor(
     private fun convertTimestampToMonthDate() : String{
         val currentTime = System.currentTimeMillis()
         val sdf = SimpleDateFormat("yyyy-MM-dd", Locale.KOREA)
+
         return sdf.format(currentTime)
     }
 }

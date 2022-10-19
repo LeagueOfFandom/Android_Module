@@ -28,6 +28,12 @@ class MatchFragment : BaseFragment<FragmentMatchBinding>(R.layout.fragment_match
             adapter = matchListAdapter
         }
 
+        lifecycleScope.launchWhenCreated {
+            viewModel.matchData.collectLatest {
+                matchListAdapter.submitList(it.data)
+            }
+        }
+
         // API 상의 후 변경 예정
         binding.matchMonth.text = convertTimestampToMonthDate()
     }
