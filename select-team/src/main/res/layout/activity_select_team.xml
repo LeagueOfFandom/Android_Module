@@ -105,7 +105,7 @@
                 android:layout_marginHorizontal="30dp"
                 android:layout_marginBottom="10dp"
                 android:background="@drawable/bg_btm_select_btn"
-                android:onClick="@{()->vm.navigateHome(activity)}"
+                android:onClick="@{()->vm.submitUserTeamList(activity)}"
                 android:text="완료"
                 android:textColor="@color/white"
                 app:layout_constraintBottom_toBottomOf="parent"

@@ -31,4 +31,16 @@ class LeagueRepositoryImpl @Inject constructor(
             throw NetworkFailureException("Network Error ${it.message}")
         }
     }
+
+    override suspend fun postUserTeamList(
+        jwtToken: String,
+        teamIdList: List<Long>
+    ): Flow<Result<List<Long>>> {
+        return flow {
+            val userTeamList = leagueService.postUserTeam(jwtToken, teamIdList)
+            emit(Result.Success(userTeamList))
+        }.catch {
+            throw NetworkFailureException("Network Error ${it.message}")
+        }
+    }
 }

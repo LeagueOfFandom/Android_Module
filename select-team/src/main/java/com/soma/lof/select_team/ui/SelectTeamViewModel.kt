@@ -13,9 +13,7 @@ import com.soma.lof.core_model.entity.TeamInfo
 import com.soma.lof.foundation.result.Result
 import com.soma.lof.foundation.result.data
 import dagger.hilt.android.lifecycle.HiltViewModel
-import kotlinx.coroutines.flow.MutableStateFlow
-import kotlinx.coroutines.flow.StateFlow
-import kotlinx.coroutines.flow.first
+import kotlinx.coroutines.flow.*
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
@@ -27,12 +25,14 @@ class SelectTeamViewModel @Inject constructor(
 ) : ViewModel(){
 
     private val _tabItems: MutableStateFlow<List<String>> = MutableStateFlow(emptyList())
-    private val _userTeamInfo: MutableStateFlow<List<TeamInfo>> = MutableStateFlow(emptyList())
+    private val _userTeamInfo: MutableStateFlow<MutableList<TeamInfo>> = MutableStateFlow(
+        mutableListOf()
+    )
     private val _teamCnt = MutableStateFlow(0)
 
     val teamCnt: StateFlow<Int> get() = _teamCnt
     val tabItems: StateFlow<List<String>> get() = _tabItems
-    val userTeamInfo: StateFlow<List<TeamInfo>> get() = _userTeamInfo
+    val userTeamInfo: StateFlow<MutableList<TeamInfo>> get() = _userTeamInfo
 
     private val _selectTeamData: MutableStateFlow<Result<SelectTeamModel>> =
         MutableStateFlow(Result.Loading)
@@ -44,7 +44,7 @@ class SelectTeamViewModel @Inject constructor(
             if (jwtToken != null) {
                 teamUseCase.getSelectTeamData(jwtToken).collect { result ->
                     _tabItems.value = result.data?.leagueList ?: emptyList()
-                    _userTeamInfo.value = result.data?.teamInfo ?: emptyList()
+                    _userTeamInfo.value = result.data?.teamInfo ?: mutableListOf()
                     _teamCnt.value = result.data?.teamInfo?.size ?: 0
                     _selectTeamData.value = result
                 }
@@ -60,7 +60,19 @@ class SelectTeamViewModel @Inject constructor(
         _teamCnt.value -= 1
     }
 
-    fun navigateHome(activity: Activity, vararg flag: Int) {
+    fun submitUserTeamList(activity: Activity) {
+        val userTeamIdList = userTeamInfo.value.map { it.teamId }
+        viewModelScope.launch {
+            val jwtToken = dataStoreUseCase.jwtToken.first()
+            if (jwtToken != null) {
+                teamUseCase.postSelectTeamData(jwtToken, userTeamIdList).collectLatest {
+                    navigateHome(activity)
+                }
+            }
+        }
+    }
+
+    fun navigateHome(activity: Activity) {
         featureHomeRouteContract.present(activity,
             intArrayOf(Intent.FLAG_ACTIVITY_CLEAR_TASK, Intent.FLAG_ACTIVITY_NEW_TASK))
     }

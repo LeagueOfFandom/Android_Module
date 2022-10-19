@@ -42,6 +42,7 @@ class SelectTeamListAdapter(
                     if (viewModel.selectTeamData.value.data!!.teamInfo.contains(item)) {
                         viewModel.selectTeamData.value.data!!.leagueInfo[pos].teamInfoList[position].teamCheck = false
                         viewModel.selectTeamData.value.data!!.teamInfo.remove(item)
+                        viewModel.userTeamInfo.value.remove(item)
                         viewModel.minusTeamCnt()
                     }
                     false
@@ -50,6 +51,7 @@ class SelectTeamListAdapter(
                     if (!viewModel.selectTeamData.value.data!!.teamInfo.contains(item)) {
                         viewModel.selectTeamData.value.data!!.leagueInfo[pos].teamInfoList[position].teamCheck = true
                         viewModel.selectTeamData.value.data!!.teamInfo.add(item)
+                        viewModel.userTeamInfo.value.add(item)
                         viewModel.plusTeamCnt()
                     }
                     holder.binding.preferTeamCv.setChecked()
