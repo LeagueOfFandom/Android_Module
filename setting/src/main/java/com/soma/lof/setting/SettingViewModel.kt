@@ -40,6 +40,7 @@ class SettingViewModel @Inject constructor(
     private val _settingData = MutableStateFlow<Result<SettingModel>>(Result.Loading)
     val settingData: StateFlow<Result<SettingModel>> get() = _settingData
 
+
     init {
         val gso = GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
             .requestEmail()

@@ -19,6 +19,9 @@ object ViewObjectFactory {
                     data.homeScore,
                     data.awayScore
                 )
+            ViewType.TEXT_ARROW_VIEW.ordinal -> TextVO(
+                data.text
+            )
             ViewType.COMMUNITY_VIEW.ordinal -> CommunityVO(
                 data.nickname,
                 data.profileImg,
@@ -40,6 +43,7 @@ object ViewObjectFactory {
             )
 
             ViewType.ONE_LINE_TEXT_VIEW.ordinal, ViewType.TEXT_ARROW_VIEW.ordinal -> TextVO(
+
                 data.text
             )
 

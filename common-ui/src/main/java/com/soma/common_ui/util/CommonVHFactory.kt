@@ -11,6 +11,7 @@ import com.soma.common_ui.presentation.info.*
 import com.soma.common_ui.presentation.match_info.MatchPreviewImageVH
 import com.soma.common_ui.presentation.match_info.MatchPreviewTextVH
 import com.soma.common_ui.presentation.match_up.*
+import com.soma.lof.core_model.entity.TextVO
 import com.soma.lof.core_model.entity.ViewType
 
 object CommonVHFactory {
