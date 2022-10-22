@@ -41,12 +41,14 @@ object ViewObjectFactory {
                 data.blueData,
                 data.redData
             )
-            ViewType.ONE_LINE_TEXT_VIEW.ordinal -> TextVO(
+
+            ViewType.ONE_LINE_TEXT_VIEW.ordinal, ViewType.TEXT_ARROW_VIEW.ordinal -> TextVO(
+
                 data.text
             )
 
             // HOME_FRAGMENT, MATCH_FRAGMENT
-            ViewType.MATCH_SCHEDULE_DATE_LINE.ordinal, ViewType.MATCH_TODAY_DATE_LINE.ordinal, ViewType.MATCH_RESULT_DATE_LINE.ordinal
+            ViewType.ONE_LINE_TEXT_VIEW.ordinal, ViewType.MATCH_SCHEDULE_DATE_LINE.ordinal, ViewType.MATCH_TODAY_DATE_LINE.ordinal, ViewType.MATCH_RESULT_DATE_LINE.ordinal
             -> TextVO(
                 data.text
             )

@@ -1,9 +1,11 @@
 package com.soma.lof.login.ui
 
+import android.app.Activity
 import android.util.Log
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.google.firebase.messaging.FirebaseMessaging
+import com.soma.common_ui.route.FeatureHomeRouteContract
 import com.soma.lof.common.domain.DataStoreUseCase
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.*
@@ -12,15 +14,16 @@ import javax.inject.Inject
 
 @HiltViewModel
 class SplashViewModel @Inject constructor(
+    private val featureHomeRouteContract: FeatureHomeRouteContract,
     private val dataStoreUseCase: DataStoreUseCase,
 ) : ViewModel() {
 
     val timeOut = MutableStateFlow(false)
+    val autoSignIn = MutableStateFlow(false)
 
     init {
         FirebaseMessaging.getInstance().token.addOnCompleteListener { task ->
             if (!task.isSuccessful) {
-                Log.w(SplashActivity.TAG, "Fetching FCM registeration token failed", task.exception)
                 return@addOnCompleteListener
             }
 
@@ -32,6 +35,17 @@ class SplashViewModel @Inject constructor(
                 }
             }
         }
+
+        viewModelScope.launch {
+            val jwtToken = dataStoreUseCase.jwtToken.first()
+            if (jwtToken != null) {
+                autoSignIn.value = true
+            }
+        }
+    }
+
+    fun navigateHome(activity: Activity, vararg flag: Int) {
+        featureHomeRouteContract.present(activity, flag)
     }
 
     companion object {

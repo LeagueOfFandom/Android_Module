@@ -6,6 +6,8 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import com.soma.common_ui.R
+import com.soma.common_ui.util.NavigationFlow
+import com.soma.common_ui.util.ToFlowNavigable
 
 class StartFragment : Fragment() {
 
@@ -20,7 +22,7 @@ class StartFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        (requireActivity() as com.soma.common_ui.util.ToFlowNavigable).navigateToFlow(com.soma.common_ui.util.NavigationFlow.HomeFlow)
+        (requireActivity() as ToFlowNavigable).navigateToFlow(NavigationFlow.HomeFlow)
     }
 
     companion object {

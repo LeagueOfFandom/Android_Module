@@ -9,8 +9,11 @@ import com.google.android.gms.auth.api.signin.GoogleSignIn
 import com.google.android.gms.auth.api.signin.GoogleSignInClient
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions
 import com.soma.common_ui.route.FeatureLoginRouteContract
+import com.soma.common_ui.route.FeatureSelectTeamRouteContract
 import com.soma.lof.common.domain.DataStoreUseCase
+import com.soma.lof.common.domain.SettingUseCase
 import com.soma.lof.common.repository.UserRepository
+import com.soma.lof.core_model.dto.domain.SettingModel
 import com.soma.lof.foundation.result.Result
 import com.soma.lof.foundation.result.data
 import dagger.hilt.android.lifecycle.HiltViewModel
@@ -26,15 +29,17 @@ import javax.inject.Inject
 @HiltViewModel
 class SettingViewModel @Inject constructor(
     application: Application,
-    private val userRepository: UserRepository,
+    private val settingUseCase: SettingUseCase,
     private val featureLoginRouteContract: FeatureLoginRouteContract,
     private val dataStoreUseCase: DataStoreUseCase,
+    private val featureSelectTeamRouteContract: FeatureSelectTeamRouteContract
 ) : AndroidViewModel(application) {
 
     private var mGoogleSignInClient: GoogleSignInClient
 
-    private val _userNickName = MutableStateFlow<Result<String>>(Result.Loading)
-    val userNickName: StateFlow<Result<String>> get() = _userNickName
+    private val _settingData = MutableStateFlow<Result<SettingModel>>(Result.Loading)
+    val settingData: StateFlow<Result<SettingModel>> get() = _settingData
+
 
     init {
         val gso = GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
@@ -44,13 +49,22 @@ class SettingViewModel @Inject constructor(
         mGoogleSignInClient = GoogleSignIn.getClient(application, gso)
     }
 
-    fun getUserNickName() {
+    fun getSettingData() {
         viewModelScope.launch(Dispatchers.IO) {
             val jwtToken = dataStoreUseCase.jwtToken.first()
             if (jwtToken != null) {
-                userRepository.getUserNickName(jwtToken).collectLatest {
-                    _userNickName.value = it
+                settingUseCase.getUserSettingData(jwtToken).collectLatest {
+                    _settingData.value = it
                 }
+            }
+        }
+    }
+
+    fun postUserMatchAlarm(alarm: Boolean) {
+        viewModelScope.launch(Dispatchers.IO) {
+            val jwtToken = dataStoreUseCase.jwtToken.first()
+            if (jwtToken != null) {
+                settingUseCase.postUserMatchAlarm(jwtToken, alarm)
             }
         }
     }
@@ -64,5 +78,9 @@ class SettingViewModel @Inject constructor(
                 }
             }
         }
+    }
+
+    fun selectTeam(activity: Activity) {
+        featureSelectTeamRouteContract.present(activity,  intArrayOf(Intent.FLAG_ACTIVITY_NEW_TASK))
     }
 }

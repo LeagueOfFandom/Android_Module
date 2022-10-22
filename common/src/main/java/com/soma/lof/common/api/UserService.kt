@@ -18,4 +18,10 @@ interface UserService {
 
     @GET("/v1/users/nickname")
     suspend fun getUserNickName(@Header("Authorization") jwtToken: String) : String
+
+    @GET("/v1/users/alarm")
+    suspend fun getUserAlarmSetting(@Header("Authorization") jwtToken: String) : Boolean
+
+    @POST("/v1/users/alarm")
+    suspend fun updateUserAlarmSetting(@Header("Authorization") jwtToken: String, @Body alarm: Boolean) : Boolean
 }
