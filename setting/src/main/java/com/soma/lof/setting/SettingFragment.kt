@@ -8,6 +8,7 @@ import com.soma.lof.foundation.result.data
 import com.soma.lof.setting.databinding.FragmentSettingBinding
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.flow.collectLatest
+import timber.log.Timber
 
 @AndroidEntryPoint
 class SettingFragment : BaseFragment<FragmentSettingBinding>(R.layout.fragment_setting) {
@@ -20,18 +21,27 @@ class SettingFragment : BaseFragment<FragmentSettingBinding>(R.layout.fragment_s
         }
 
         lifecycleScope.launchWhenStarted {
-            viewModel.userNickName.collectLatest {
-                binding.settingNickname.text = it.data
+            viewModel.settingData.collectLatest {
+                binding.settingNickname.text = it.data?.userNickName ?: ""
+                binding.settingAlarmMatchSwitch.isChecked = it.data?.userAlarmSetting ?: true
+
+                binding.settingAlarmMatchSwitch.setOnCheckedChangeListener { _, isChecked ->
+                    viewModel.postUserMatchAlarm(isChecked)
+                }
             }
         }
 
         binding.settingLogoutArea.setOnClickListener {
             viewModel.signOut(requireActivity())
         }
+
+        binding.settingTeamArea.setOnClickListener {
+            viewModel.selectTeam(requireActivity())
+        }
     }
 
     override fun onStart() {
         super.onStart()
-        viewModel.getUserNickName()
+        viewModel.getSettingData()
     }
 }

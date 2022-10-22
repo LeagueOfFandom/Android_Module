@@ -18,7 +18,6 @@ import javax.inject.Singleton
  * We need to translate [CommonItemResponse] to [CommonItem]
  * [toCommonItemList] is a func of [CommonItemTranslator]
  */
-@Singleton
 class MatchUseCase @Inject constructor(
     private val matchRepository: MatchRepository,
 ) {

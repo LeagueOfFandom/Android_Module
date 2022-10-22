@@ -34,10 +34,14 @@ class SplashActivity : BaseActivity<ActivitySplashBinding>(R.layout.activity_spl
         lifecycleScope.launchWhenCreated {
             viewModel.timeOut.collectLatest { timeOut ->
                 if (timeOut) {
-                    val intent = Intent(this@SplashActivity, LoginActivity::class.java).apply {
-                        flags = Intent.FLAG_ACTIVITY_CLEAR_TASK or Intent.FLAG_ACTIVITY_NEW_TASK
+                    if (viewModel.autoSignIn.value) {
+                        viewModel.navigateHome(this@SplashActivity, Intent.FLAG_ACTIVITY_CLEAR_TASK or Intent.FLAG_ACTIVITY_NEW_TASK)
+                    } else {
+                        val intent = Intent(this@SplashActivity, LoginActivity::class.java).apply {
+                            flags = Intent.FLAG_ACTIVITY_CLEAR_TASK or Intent.FLAG_ACTIVITY_NEW_TASK
+                        }
+                        startActivity(intent)
                     }
-                    startActivity(intent)
                 }
             }
         }

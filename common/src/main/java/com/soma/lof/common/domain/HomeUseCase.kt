@@ -9,7 +9,6 @@ import kotlinx.coroutines.flow.*
 import javax.inject.Inject
 import javax.inject.Singleton
 
-@Singleton
 class HomeUseCase @Inject constructor(
     private val homeRepository: HomeRepository
 ) {

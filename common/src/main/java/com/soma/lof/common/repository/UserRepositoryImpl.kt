@@ -41,6 +41,18 @@ class UserRepositoryImpl @Inject constructor(
         }
     }
 
+    override suspend fun getUserAlarmSetting(jwtToken: String): Flow<Result<Boolean>> {
+        return flow<Result<Boolean>> {
+            emit(Result.Success(userService.getUserAlarmSetting(jwtToken)))
+        }.catch {
+            throw NetworkFailureException("Network Error ${it.message}")
+        }
+    }
+
+    override suspend fun updateMatchAlarmSetting(jwtToken: String, alarm: Boolean): Boolean {
+        return userService.updateUserAlarmSetting(jwtToken, alarm)
+    }
+
     override suspend fun getUserInfo(jwtToken: String): List<CommonItemResponse> {
         val data = listOf(
             CommonItemResponse(
