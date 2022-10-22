@@ -5,9 +5,11 @@ import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
 import com.soma.common_ui.presentation.CommonListAdapter2
 import com.soma.lof.foundation.base.BaseFragment
+import com.soma.lof.foundation.result.data
 import com.soma.lof.match.R
 import com.soma.lof.match.databinding.FragmentMatchBinding
 import dagger.hilt.android.AndroidEntryPoint
+import kotlinx.coroutines.flow.collectLatest
 import java.text.SimpleDateFormat
 import java.util.*
 
