@@ -33,7 +33,6 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>(R.layout.fragment_home) {
             rvAdapter = commonListAdapter
             fragment = this@HomeFragment
         }
-
         lifecycleScope.launchWhenCreated {
             viewModel.homeData.collectLatest {
                 binding.homeAdBanner.apply {
