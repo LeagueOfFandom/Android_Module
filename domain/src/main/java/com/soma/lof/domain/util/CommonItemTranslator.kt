@@ -3,7 +3,6 @@ package com.soma.lof.domain.util
 import com.soma.lof.core.model.dto.CommonItem
 import com.soma.lof.core.model.dto.CommonItemResponse
 import com.soma.lof.core.model.entity.ViewType
-import com.soma.lof.core.model.util.ViewObjectFactory
 
 /**
  * This Translator translates data to List<CommonItem>

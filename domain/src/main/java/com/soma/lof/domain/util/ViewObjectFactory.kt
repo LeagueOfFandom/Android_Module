@@ -1,4 +1,4 @@
-package com.soma.lof.core.model.util
+package com.soma.lof.domain.util
 
 import com.soma.lof.core.model.entity.*
 

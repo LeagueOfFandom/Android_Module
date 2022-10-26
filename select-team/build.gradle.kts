@@ -41,22 +41,6 @@ dependencies {
     implementation(project(":common-ui"))
     implementation(project(":core-model"))
 
-
-    implementation(Dependencies.androidX.core)
-    implementation(Dependencies.androidX.appCompat)
-    implementation(Dependencies.androidX.material)
-    implementation(Dependencies.androidX.constraintLayout)
-    implementation(Dependencies.androidX.fragment)
-    implementation(Dependencies.androidX.lifecycle.viewModel)
-    implementation(Dependencies.androidX.navigation.ui)
-    implementation(Dependencies.androidX.navigation.fragment)
-
-    testImplementation(Dependencies.Test.junit)
-    androidTestImplementation(Dependencies.androidX.junit)
-    androidTestImplementation(Dependencies.AndroidTest.espressoCore)
-
-    implementation(Dependencies.google.auth)
-
     //Firebase
     implementation(Dependencies.firebase.analytics)
     implementation(Dependencies.firebase.cloudMessaging)
@@ -66,4 +50,9 @@ dependencies {
     kaptAndroidTest(Dependencies.hilt.compiler)
     implementation(Dependencies.hilt.android)
     kapt(Dependencies.hilt.compiler)
+
+    // Test
+    testImplementation(Dependencies.Test.junit)
+    androidTestImplementation(Dependencies.androidX.junit)
+    androidTestImplementation(Dependencies.AndroidTest.espressoCore)
 }

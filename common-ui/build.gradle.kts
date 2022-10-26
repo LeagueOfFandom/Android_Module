@@ -47,11 +47,7 @@ dependencies {
     api(Dependencies.androidX.dataStore)
     api(Dependencies.androidX.navigation.ui)
     api(Dependencies.androidX.navigation.fragment)
-
-    testImplementation(Dependencies.Test.junit)
-    androidTestImplementation(Dependencies.androidX.junit)
-    androidTestImplementation(Dependencies.AndroidTest.espressoCore)
-
+    api(Dependencies.androidX.lifecycle.viewModel)
 
     //Glide
     api(Dependencies.glide.android)
@@ -63,4 +59,9 @@ dependencies {
 
     // Indicator
     api(Dependencies.library.indicator)
+
+    // Test
+    testImplementation(Dependencies.Test.junit)
+    androidTestImplementation(Dependencies.androidX.junit)
+    androidTestImplementation(Dependencies.AndroidTest.espressoCore)
 }
