@@ -8,10 +8,10 @@ import com.google.android.gms.auth.api.signin.GoogleSignIn
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount
 import com.google.android.gms.auth.api.signin.GoogleSignInClient
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions
-import com.soma.common_ui.route.FeatureHomeRouteContract
-import com.soma.lof.common.usecase.DataStoreUseCase
+import com.soma.common.ui.route.FeatureHomeRouteContract
+import com.soma.lof.domain.usecase.DataStoreUseCase
 import com.soma.lof.core.data.UserRepository
-import com.soma.lof.core_model.dto.CreateUserRequest
+import com.soma.lof.core.model.dto.CreateUserRequest
 import com.soma.login.google_login_web_key
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow

@@ -3,11 +3,11 @@ package com.soma.lof
 import android.os.Bundle
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.NavigationUI
-import com.soma.common_ui.util.NavigationFlow
-import com.soma.common_ui.util.Navigator
-import com.soma.common_ui.util.ToFlowNavigable
+import com.soma.common.ui.util.NavigationFlow
+import com.soma.common.ui.util.Navigator
+import com.soma.common.ui.util.ToFlowNavigable
 import com.soma.lof.databinding.ActivityMainBinding
-import com.soma.common_ui.base.BaseActivity
+import com.soma.common.ui.base.BaseActivity
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint

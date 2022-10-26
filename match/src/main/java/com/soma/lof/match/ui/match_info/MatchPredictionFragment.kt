@@ -8,8 +8,8 @@ import com.github.mikephil.charting.data.PieData
 import com.github.mikephil.charting.data.PieDataSet
 import com.github.mikephil.charting.data.PieEntry
 import com.github.mikephil.charting.formatter.PercentFormatter
-import com.soma.lof.core_model.entity.Team
-import com.soma.common_ui.base.BaseFragment
+import com.soma.lof.core.model.entity.Team
+import com.soma.common.ui.base.BaseFragment
 import com.soma.lof.match.R
 import com.soma.lof.match.databinding.FragmentMatchPredictionBinding
 import dagger.hilt.android.AndroidEntryPoint

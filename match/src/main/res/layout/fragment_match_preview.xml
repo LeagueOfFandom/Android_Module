@@ -8,7 +8,7 @@
 
         <variable
             name="adapter"
-            type="com.soma.common_ui.presentation.CommonListAdapter" />
+            type="com.soma.common.presentation.CommonListAdapter" />
     </data>
 
     <FrameLayout

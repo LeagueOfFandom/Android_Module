@@ -1,12 +1,12 @@
 package com.soma.lof.core.data.repository
 
-import com.soma.lof.core_model.dto.CommonItemResponse
-import com.soma.lof.core_model.dto.CreateUserRequest
-import com.soma.lof.core_model.dto.CreateUserResponse
-import com.soma.lof.core_model.entity.CommonVO
-import com.soma.lof.core_network.exception.NetworkFailureException
-import com.soma.lof.core_network.result.UiState
-import com.soma.lof.core_network.service.UserService
+import com.soma.lof.core.model.dto.CommonItemResponse
+import com.soma.lof.core.model.dto.CreateUserRequest
+import com.soma.lof.core.model.dto.CreateUserResponse
+import com.soma.lof.core.model.entity.CommonVO
+import com.soma.lof.core.network.exception.NetworkFailureException
+import com.soma.lof.core.result.UiState
+import com.soma.lof.core.service.UserService
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.catch
 import kotlinx.coroutines.flow.flow

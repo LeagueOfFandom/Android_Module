@@ -1,9 +1,9 @@
 package com.soma.lof.di
 
 import com.soma.lof.FeatureHomeRoute
-import com.soma.common_ui.route.FeatureHomeRouteContract
-import com.soma.common_ui.route.FeatureLoginRouteContract
-import com.soma.common_ui.route.FeatureSelectTeamRouteContract
+import com.soma.common.ui.route.FeatureHomeRouteContract
+import com.soma.common.ui.route.FeatureLoginRouteContract
+import com.soma.common.ui.route.FeatureSelectTeamRouteContract
 import com.soma.lof.login.route.FeatureLoginRoute
 import com.soma.lof.select_team.route.FeatureSelectTeamRoute
 import dagger.Module

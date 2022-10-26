@@ -1,12 +1,11 @@
 package com.soma.lof.login.ui
 
 import android.app.Activity
-import android.util.Log
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.google.firebase.messaging.FirebaseMessaging
-import com.soma.common_ui.route.FeatureHomeRouteContract
-import com.soma.lof.common.usecase.DataStoreUseCase
+import com.soma.common.ui.route.FeatureHomeRouteContract
+import com.soma.lof.domain.usecase.DataStoreUseCase
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.*
 import kotlinx.coroutines.launch

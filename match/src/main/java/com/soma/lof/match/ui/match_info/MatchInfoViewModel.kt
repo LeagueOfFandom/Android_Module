@@ -1,9 +1,9 @@
 package com.soma.lof.match.ui.match_info
 
 import androidx.lifecycle.ViewModel
-import com.soma.lof.common.usecase.DataStoreUseCase
-import com.soma.lof.common.usecase.MatchUseCase
-import com.soma.lof.core_model.dto.MatchInfoDummyResponse
+import com.soma.lof.domain.usecase.DataStoreUseCase
+import com.soma.lof.domain.usecase.MatchUseCase
+import com.soma.lof.core.model.dto.MatchInfoDummyResponse
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow

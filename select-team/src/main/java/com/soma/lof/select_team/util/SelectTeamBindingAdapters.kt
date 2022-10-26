@@ -5,9 +5,8 @@ import androidx.core.content.ContextCompat.getColor
 import androidx.databinding.BindingAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.card.MaterialCardView
-import com.soma.lof.core_model.dto.domain.SelectTeamModel
-import com.soma.lof.core_model.entity.TeamInfo
-import com.soma.lof.foundation.result.Result
+import com.soma.lof.core.model.dto.domain.SelectTeamModel
+import com.soma.lof.core.model.entity.TeamInfo
 import com.soma.lof.foundation.result.data
 import com.soma.lof.foundation.result.successOrNull
 import com.soma.lof.select_team.R

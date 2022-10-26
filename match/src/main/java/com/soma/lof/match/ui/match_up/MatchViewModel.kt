@@ -2,10 +2,10 @@ package com.soma.lof.match.ui.match_up
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.soma.lof.common.usecase.DataStoreUseCase
-import com.soma.lof.common.usecase.MatchUseCase
-import com.soma.lof.core_model.dto.CommonItem
-import com.soma.lof.core_network.result.UiState
+import com.soma.lof.domain.usecase.DataStoreUseCase
+import com.soma.lof.domain.usecase.MatchUseCase
+import com.soma.lof.core.model.dto.CommonItem
+import com.soma.lof.core.result.UiState
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow

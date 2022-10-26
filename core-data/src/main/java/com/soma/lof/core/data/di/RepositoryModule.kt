@@ -1,9 +1,9 @@
 package com.soma.lof.core.data.di
 
 import com.soma.lof.core.data.repository.*
-import com.soma.lof.core_network.service.MatchService
-import com.soma.lof.core_network.service.LeagueService
-import com.soma.lof.core_network.service.UserService
+import com.soma.lof.core.service.MatchService
+import com.soma.lof.core.service.LeagueService
+import com.soma.lof.core.service.UserService
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn

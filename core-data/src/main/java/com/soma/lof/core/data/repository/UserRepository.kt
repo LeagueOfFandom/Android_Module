@@ -1,9 +1,9 @@
 package com.soma.lof.core.data.repository
 
-import com.soma.lof.core_model.dto.CommonItemResponse
-import com.soma.lof.core_model.dto.CreateUserRequest
-import com.soma.lof.core_model.dto.CreateUserResponse
-import com.soma.lof.core_network.result.UiState
+import com.soma.lof.core.model.dto.CommonItemResponse
+import com.soma.lof.core.model.dto.CreateUserRequest
+import com.soma.lof.core.model.dto.CreateUserResponse
+import com.soma.lof.core.result.UiState
 import kotlinx.coroutines.flow.Flow
 import retrofit2.http.Header
 

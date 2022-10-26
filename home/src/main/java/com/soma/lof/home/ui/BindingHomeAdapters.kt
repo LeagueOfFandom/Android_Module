@@ -2,9 +2,8 @@ package com.soma.lof.home.ui
 
 import androidx.databinding.BindingAdapter
 import androidx.recyclerview.widget.RecyclerView
-import com.soma.common_ui.presentation.CommonListAdapter2
-import com.soma.lof.core_model.dto.domain.HomeModel
-import com.soma.lof.foundation.result.Result
+import com.soma.common.ui.presentation.CommonListAdapter2
+import com.soma.lof.core.model.dto.domain.HomeModel
 import com.soma.lof.foundation.result.data
 
 @BindingAdapter("homeCommonItems")

@@ -3,9 +3,9 @@ package com.soma.lof.match.ui.match_up
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
-import com.soma.common_ui.base.BaseFragment
-import com.soma.common_ui.presentation.CommonListAdapter2
-import com.soma.lof.core_network.result.data
+import com.soma.common.ui.base.BaseFragment
+import com.soma.common.ui.presentation.CommonListAdapter2
+import com.soma.lof.core.result.data
 import com.soma.lof.match.R
 import com.soma.lof.match.databinding.FragmentMatchBinding
 import dagger.hilt.android.AndroidEntryPoint

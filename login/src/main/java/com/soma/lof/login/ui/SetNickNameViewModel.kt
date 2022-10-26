@@ -3,8 +3,8 @@ package com.soma.lof.login.ui
 import android.app.Activity
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.soma.common_ui.route.FeatureSelectTeamRouteContract
-import com.soma.lof.common.usecase.DataStoreUseCase
+import com.soma.common.ui.route.FeatureSelectTeamRouteContract
+import com.soma.lof.domain.usecase.DataStoreUseCase
 import com.soma.lof.core.data.UserRepository
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.Dispatchers

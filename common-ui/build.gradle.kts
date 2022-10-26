@@ -3,8 +3,6 @@ plugins {
     id("org.jetbrains.kotlin.android")
     id("kotlin-kapt")
     id("androidx.navigation.safeargs")
-
-
 }
 
 android {
@@ -39,19 +37,16 @@ android {
 
 dependencies {
 
-    implementation(project(":core-network"))
+    api(project(":core-network"))
     implementation(project(":core-model"))
 
-    implementation(Dependencies.androidX.core)
-    implementation(Dependencies.androidX.appCompat)
-    implementation(Dependencies.androidX.material)
-    implementation(Dependencies.androidX.constraintLayout)
-    implementation(Dependencies.androidX.dataStore)
-    implementation(Dependencies.androidX.navigation.ui)
-    implementation(Dependencies.androidX.navigation.fragment)
-
-    api(Dependencies.kotlin.coroutine)
-
+    api(Dependencies.androidX.core)
+    api(Dependencies.androidX.appCompat)
+    api(Dependencies.androidX.material)
+    api(Dependencies.androidX.constraintLayout)
+    api(Dependencies.androidX.dataStore)
+    api(Dependencies.androidX.navigation.ui)
+    api(Dependencies.androidX.navigation.fragment)
 
     testImplementation(Dependencies.Test.junit)
     androidTestImplementation(Dependencies.androidX.junit)
@@ -59,13 +54,13 @@ dependencies {
 
 
     //Glide
-    implementation(Dependencies.glide.android)
-    implementation(Dependencies.glide.annotationProcessor)
+    api(Dependencies.glide.android)
+    api(Dependencies.glide.annotationProcessor)
 
     // Youtube
     implementation(Dependencies.library.youtubeCore)
     implementation(Dependencies.library.youtubeChromeCast)
 
     // Indicator
-    implementation(Dependencies.library.indicator)
+    api(Dependencies.library.indicator)
 }

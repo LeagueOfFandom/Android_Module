@@ -10,7 +10,7 @@
 
         <variable
             name="adapter"
-            type="com.soma.common_ui.presentation.CommonListAdapter2" />
+            type="com.soma.common.presentation.CommonListAdapter2" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout

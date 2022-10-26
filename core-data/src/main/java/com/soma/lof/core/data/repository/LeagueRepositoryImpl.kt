@@ -1,16 +1,16 @@
 package com.soma.lof.core.data.repository
 
-import com.soma.lof.core_model.dto.LeagueTeamResponse
-import com.soma.lof.core_model.entity.TeamInfo
-import com.soma.lof.core_network.exception.NetworkFailureException
-import com.soma.lof.core_network.result.UiState
+import com.soma.lof.core.model.dto.LeagueTeamResponse
+import com.soma.lof.core.model.entity.TeamInfo
+import com.soma.lof.core.network.exception.NetworkFailureException
+import com.soma.lof.core.result.UiState
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.catch
 import kotlinx.coroutines.flow.flow
 import javax.inject.Inject
 
 class LeagueRepositoryImpl @Inject constructor(
-    private val leagueService: com.soma.lof.core_network.service.LeagueService,
+    private val leagueService: com.soma.lof.core.service.LeagueService,
 ) : LeagueRepository {
 
     override fun getSelectTeamList(jwtToken: String): Flow<UiState<LeagueTeamResponse>> {

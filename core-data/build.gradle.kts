@@ -43,7 +43,7 @@ dependencies {
     implementation(Dependencies.hilt.android)
     kapt(Dependencies.hilt.compiler)
 
-    implementation(Dependencies.Test.junit)
-    androidTestImplementation("androidx.test.ext:junit:1.1.3")
-    androidTestImplementation("androidx.test.espresso:espresso-core:3.4.0")
+    testImplementation(Dependencies.Test.junit)
+    androidTestImplementation(Dependencies.androidX.junit)
+    androidTestImplementation(Dependencies.AndroidTest.espressoCore)
 }

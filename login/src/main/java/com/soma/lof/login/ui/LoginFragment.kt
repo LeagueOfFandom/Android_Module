@@ -1,7 +1,6 @@
 package com.soma.lof.login.ui
 
 import android.content.Intent
-import android.util.Log
 import android.widget.Toast
 import androidx.activity.result.ActivityResult
 import androidx.activity.result.ActivityResultLauncher
@@ -12,7 +11,7 @@ import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
 import com.google.android.gms.auth.api.signin.GoogleSignIn
 import com.google.android.gms.common.api.ApiException
-import com.soma.common_ui.base.BaseFragment
+import com.soma.common.ui.base.BaseFragment
 import com.soma.lof.login.R
 import com.soma.lof.login.databinding.FragmentLoginBinding
 import dagger.hilt.android.AndroidEntryPoint

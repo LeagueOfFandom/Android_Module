@@ -5,7 +5,7 @@ import androidx.activity.viewModels
 import androidx.lifecycle.lifecycleScope
 import androidx.viewpager2.widget.ViewPager2
 import com.google.android.material.tabs.TabLayoutMediator
-import com.soma.common_ui.base.BaseActivity
+import com.soma.common.ui.base.BaseActivity
 import com.soma.lof.select_team.R
 import com.soma.lof.select_team.databinding.ActivitySelectTeamBinding
 import dagger.hilt.android.AndroidEntryPoint

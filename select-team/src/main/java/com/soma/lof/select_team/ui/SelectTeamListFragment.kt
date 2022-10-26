@@ -3,7 +3,7 @@ package com.soma.lof.select_team.ui
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
-import com.soma.common_ui.base.BaseFragment
+import com.soma.common.ui.base.BaseFragment
 import com.soma.lof.select_team.R
 import com.soma.lof.select_team.databinding.FragmentSelectTeamListBinding
 import com.soma.lof.select_team.util.TeamItemDecoration

@@ -1,7 +1,7 @@
 package com.soma.lof.core.data.repository
 
-import com.soma.lof.core_model.dto.MainPageResponse
-import com.soma.lof.core_network.result.UiState
+import com.soma.lof.core.model.dto.MainPageResponse
+import com.soma.lof.core.result.UiState
 import kotlinx.coroutines.flow.Flow
 
 interface HomeRepository {

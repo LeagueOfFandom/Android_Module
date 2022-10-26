@@ -1,9 +1,9 @@
 package com.soma.lof.core.data.repository
 
-import com.soma.lof.core_model.dto.CommonItemResponse
-import com.soma.lof.core_model.dto.MainPageResponse
-import com.soma.lof.core_network.exception.NetworkFailureException
-import com.soma.lof.core_network.result.UiState
+import com.soma.lof.core.model.dto.CommonItemResponse
+import com.soma.lof.core.model.dto.MainPageResponse
+import com.soma.lof.core.network.exception.NetworkFailureException
+import com.soma.lof.core.result.UiState
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.catch
 import kotlinx.coroutines.flow.flow
@@ -14,7 +14,7 @@ import javax.inject.Inject
  * CommonList is to apply ViewHolder and Data according to ViewType for Easy Recycling.
  */
 class HomeRepositoryImpl @Inject constructor(
-    private val matchService: com.soma.lof.core_network.service.MatchService
+    private val matchService: com.soma.lof.core.service.MatchService
 ) : HomeRepository {
 
     override suspend fun getMainPage(
