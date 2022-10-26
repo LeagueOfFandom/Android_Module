@@ -3,7 +3,7 @@ package com.soma.lof.login.ui
 import android.os.Bundle
 import androidx.navigation.fragment.NavHostFragment
 import com.soma.common_ui.util.Navigator
-import com.soma.lof.foundation.base.BaseActivity
+import com.soma.common_ui.base.BaseActivity
 import com.soma.lof.login.R
 import com.soma.lof.login.databinding.ActivityLoginBinding
 import dagger.hilt.android.AndroidEntryPoint

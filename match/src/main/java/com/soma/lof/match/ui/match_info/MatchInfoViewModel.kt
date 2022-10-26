@@ -1,10 +1,8 @@
 package com.soma.lof.match.ui.match_info
 
 import androidx.lifecycle.ViewModel
-import com.soma.lof.common.domain.DataStoreUseCase
-import com.soma.lof.common.domain.MatchUseCase
-import com.soma.lof.common.repository.MatchRepository
-import com.soma.lof.common.repository.MatchRepositoryImpl
+import com.soma.lof.common.usecase.DataStoreUseCase
+import com.soma.lof.common.usecase.MatchUseCase
 import com.soma.lof.core_model.dto.MatchInfoDummyResponse
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
@@ -19,6 +17,6 @@ class MatchInfoViewModel @Inject constructor(
 ) : ViewModel() {
 
 //
-    private val _matchInfo: MutableStateFlow<MatchInfoDummyResponse> = MutableStateFlow((matchRepository as MatchRepositoryImpl).matchInfoDummy)
+    private val _matchInfo: MutableStateFlow<MatchInfoDummyResponse> = MutableStateFlow((matchRepository as com.soma.lof.core.data.MatchRepositoryImpl).matchInfoDummy)
     val matchInfo: StateFlow<MatchInfoDummyResponse> = _matchInfo
 }

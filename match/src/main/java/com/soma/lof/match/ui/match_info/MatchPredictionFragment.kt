@@ -9,7 +9,7 @@ import com.github.mikephil.charting.data.PieDataSet
 import com.github.mikephil.charting.data.PieEntry
 import com.github.mikephil.charting.formatter.PercentFormatter
 import com.soma.lof.core_model.entity.Team
-import com.soma.lof.foundation.base.BaseFragment
+import com.soma.common_ui.base.BaseFragment
 import com.soma.lof.match.R
 import com.soma.lof.match.databinding.FragmentMatchPredictionBinding
 import dagger.hilt.android.AndroidEntryPoint
@@ -33,7 +33,7 @@ class MatchPredictionFragment() :
         entries.add(PieEntry(predictionData.blueTeamWin.toFloat(), mainData.homeName))
         entries.add(PieEntry(predictionData.redTeamWin.toFloat(), mainData.awayName))
 
-        binding.matchPredictionChart.animateY(1000, Easing.EaseInOutQuad);
+        binding.matchPredictionChart.animateY(1000, Easing.EaseInOutQuad)
 
         val pieDataSet = PieDataSet(entries, "")
         pieDataSet.sliceSpace = 3f
@@ -58,7 +58,7 @@ class MatchPredictionFragment() :
             dragDecelerationFrictionCoef = 0.95f
             isDrawHoleEnabled = true
             setHoleColor(Color.WHITE)
-            isHighlightPerTapEnabled = true;
+            isHighlightPerTapEnabled = true
             data = pieData
             setEntryLabelTypeface(Typeface.DEFAULT_BOLD)
             highlightValues(null)

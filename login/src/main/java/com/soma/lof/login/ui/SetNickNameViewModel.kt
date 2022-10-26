@@ -4,9 +4,8 @@ import android.app.Activity
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.soma.common_ui.route.FeatureSelectTeamRouteContract
-import com.soma.lof.common.domain.DataStoreUseCase
-import com.soma.lof.common.repository.UserRepository
-import com.soma.lof.foundation.result.data
+import com.soma.lof.common.usecase.DataStoreUseCase
+import com.soma.lof.core.data.UserRepository
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.MutableStateFlow

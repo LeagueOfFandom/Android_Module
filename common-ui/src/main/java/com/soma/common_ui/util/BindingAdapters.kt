@@ -6,19 +6,15 @@ import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.widget.AppCompatImageView
 import androidx.databinding.BindingAdapter
-import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import androidx.viewpager2.widget.ViewPager2
 import com.bumptech.glide.Glide
 import com.soma.common_ui.presentation.CommonListAdapter2
 import com.soma.lof.core_model.dto.CommonItem
-import com.soma.lof.core_model.dto.domain.SelectTeamModel
-import com.soma.lof.foundation.result.Result
-import com.soma.lof.foundation.result.data
-import com.soma.lof.foundation.result.successOrNull
-import kotlinx.coroutines.flow.MutableStateFlow
+import com.soma.lof.core_network.result.UiState
+import com.soma.lof.core_network.result.data
+import com.soma.lof.core_network.result.successOrNull
 import me.relex.circleindicator.CircleIndicator3
-import timber.log.Timber
 
 @BindingAdapter("imageResource")
 fun AppCompatImageView.setImageResource(resId: Int) {
@@ -56,7 +52,7 @@ fun AppCompatImageView.bindImage(uri: String?) {
 }
 
 @BindingAdapter("commonItems")
-fun RecyclerView.bindTeamItems(state: Result<List<CommonItem>>) {
+fun RecyclerView.bindTeamItems(state: UiState<List<CommonItem>>) {
     val boundAdapter = this.adapter
     if (boundAdapter is CommonListAdapter2 && state.successOrNull() != null) {
         boundAdapter.submitList(state.data)
@@ -65,8 +61,8 @@ fun RecyclerView.bindTeamItems(state: Result<List<CommonItem>>) {
 
 
 @BindingAdapter("show")
-fun ProgressBar.bindShow(result: Result<*>) {
-    visibility = if (result is Result.Loading) View.VISIBLE else View.GONE
+fun ProgressBar.bindShow(result: UiState<*>) {
+    visibility = if (result is UiState.Loading) View.VISIBLE else View.GONE
 }
 
 @BindingAdapter("viewpager")
@@ -84,12 +80,12 @@ fun bindIsGone(view: View, isGone: Boolean) {
 }
 
 @BindingAdapter("msgGone")
-fun hideMsg(view:View, result: Result<List<CommonItem>>) {
-    view.visibility =  if (result is Result.Loading) View.GONE
+fun hideMsg(view:View, result: UiState<List<CommonItem>>) {
+    view.visibility =  if (result is UiState.Loading) View.GONE
     else if (result.data == null || result.data!!.isEmpty()) View.VISIBLE else View.GONE
 }
 
 @BindingAdapter("username")
-fun TextView.showUserName(result: Result<String>) {
+fun TextView.showUserName(result: UiState<String>) {
     this.text = result.data
 }

@@ -10,12 +10,10 @@ import com.google.android.gms.auth.api.signin.GoogleSignInClient
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions
 import com.soma.common_ui.route.FeatureLoginRouteContract
 import com.soma.common_ui.route.FeatureSelectTeamRouteContract
-import com.soma.lof.common.domain.DataStoreUseCase
-import com.soma.lof.common.domain.SettingUseCase
-import com.soma.lof.common.repository.UserRepository
+import com.soma.lof.common.usecase.DataStoreUseCase
+import com.soma.lof.common.usecase.SettingUseCase
 import com.soma.lof.core_model.dto.domain.SettingModel
-import com.soma.lof.foundation.result.Result
-import com.soma.lof.foundation.result.data
+import com.soma.lof.core_network.result.UiState
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.MutableStateFlow
@@ -37,8 +35,8 @@ class SettingViewModel @Inject constructor(
 
     private var mGoogleSignInClient: GoogleSignInClient
 
-    private val _settingData = MutableStateFlow<Result<SettingModel>>(Result.Loading)
-    val settingData: StateFlow<Result<SettingModel>> get() = _settingData
+    private val _settingData = MutableStateFlow<UiState<SettingModel>>(UiState.Loading)
+    val settingData: StateFlow<UiState<SettingModel>> get() = _settingData
 
 
     init {

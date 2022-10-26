@@ -39,7 +39,7 @@ android {
 
 dependencies {
 
-    api(project(":foundation"))
+    implementation(project(":core-network"))
     implementation(project(":core-model"))
 
     implementation(Dependencies.androidX.core)

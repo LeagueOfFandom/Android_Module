@@ -4,7 +4,7 @@ import android.graphics.Color
 import androidx.fragment.app.viewModels
 import com.bumptech.glide.Glide
 import com.soma.lof.core_model.entity.Team
-import com.soma.lof.foundation.base.BaseFragment
+import com.soma.common_ui.base.BaseFragment
 import com.soma.lof.match.R
 import com.soma.lof.match.databinding.FragmentMatchLineUpBinding
 import dagger.hilt.android.AndroidEntryPoint

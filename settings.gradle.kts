@@ -15,9 +15,8 @@ dependencyResolutionManagement {
 }
 rootProject.name = "LoF"
 include(":app")
-include(":common")
+include(":domain")
 include(":login")
-include(":foundation")
 include(":common-ui")
 include(":select-team")
 include(":home")
@@ -26,3 +25,5 @@ include(":setting")
 include(":info")
 include(":match")
 include(":core-model")
+include(":core-network")
+include(":core-data")

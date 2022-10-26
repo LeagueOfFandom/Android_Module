@@ -1,12 +1,11 @@
 package com.soma.lof.select_team.ui
 
 import android.os.Bundle
-import android.util.Log
 import androidx.activity.viewModels
 import androidx.lifecycle.lifecycleScope
 import androidx.viewpager2.widget.ViewPager2
 import com.google.android.material.tabs.TabLayoutMediator
-import com.soma.lof.foundation.base.BaseActivity
+import com.soma.common_ui.base.BaseActivity
 import com.soma.lof.select_team.R
 import com.soma.lof.select_team.databinding.ActivitySelectTeamBinding
 import dagger.hilt.android.AndroidEntryPoint

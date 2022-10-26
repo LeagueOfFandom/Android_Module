@@ -2,18 +2,20 @@ package com.soma.lof.select_team.ui
 
 import android.app.Activity
 import android.content.Intent
-import android.util.Log
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.soma.common_ui.route.FeatureHomeRouteContract
-import com.soma.lof.common.domain.DataStoreUseCase
-import com.soma.lof.common.domain.SelectTeamUseCase
+import com.soma.lof.common.usecase.DataStoreUseCase
+import com.soma.lof.common.usecase.SelectTeamUseCase
 import com.soma.lof.core_model.dto.domain.SelectTeamModel
 import com.soma.lof.core_model.entity.TeamInfo
-import com.soma.lof.foundation.result.Result
-import com.soma.lof.foundation.result.data
+import com.soma.lof.core_network.result.UiState
+import com.soma.lof.core_network.result.data
 import dagger.hilt.android.lifecycle.HiltViewModel
-import kotlinx.coroutines.flow.*
+import kotlinx.coroutines.flow.MutableStateFlow
+import kotlinx.coroutines.flow.StateFlow
+import kotlinx.coroutines.flow.collectLatest
+import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
@@ -34,9 +36,9 @@ class SelectTeamViewModel @Inject constructor(
     val tabItems: StateFlow<List<String>> get() = _tabItems
     val userTeamInfo: StateFlow<MutableList<TeamInfo>> get() = _userTeamInfo
 
-    private val _selectTeamData: MutableStateFlow<Result<SelectTeamModel>> =
-        MutableStateFlow(Result.Loading)
-    val selectTeamData: StateFlow<Result<SelectTeamModel>> get() = _selectTeamData
+    private val _selectTeamData: MutableStateFlow<UiState<SelectTeamModel>> =
+        MutableStateFlow(UiState.Loading)
+    val selectTeamData: StateFlow<UiState<SelectTeamModel>> get() = _selectTeamData
 
     init {
         viewModelScope.launch {

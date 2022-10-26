@@ -40,8 +40,7 @@ android {
 
 dependencies {
 
-    implementation(project(":foundation"))
-    implementation(project(":common"))
+    implementation(project(":domain"))
     implementation(project(":common-ui"))
     implementation(project(":core-model"))
 

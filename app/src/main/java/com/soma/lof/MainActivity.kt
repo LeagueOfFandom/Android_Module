@@ -7,7 +7,7 @@ import com.soma.common_ui.util.NavigationFlow
 import com.soma.common_ui.util.Navigator
 import com.soma.common_ui.util.ToFlowNavigable
 import com.soma.lof.databinding.ActivityMainBinding
-import com.soma.lof.foundation.base.BaseActivity
+import com.soma.common_ui.base.BaseActivity
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint

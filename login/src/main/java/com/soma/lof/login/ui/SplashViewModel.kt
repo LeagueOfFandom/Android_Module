@@ -6,10 +6,11 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.google.firebase.messaging.FirebaseMessaging
 import com.soma.common_ui.route.FeatureHomeRouteContract
-import com.soma.lof.common.domain.DataStoreUseCase
+import com.soma.lof.common.usecase.DataStoreUseCase
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.*
 import kotlinx.coroutines.launch
+import timber.log.Timber
 import javax.inject.Inject
 
 @HiltViewModel
@@ -31,7 +32,7 @@ class SplashViewModel @Inject constructor(
             viewModelScope.launch {
                 dataStoreUseCase.editFcmToken(fcmToken)
                 dataStoreUseCase.fcmToken.collectLatest {
-                    Log.d(TAG, "fcmToken: $it")
+                    Timber.tag(TAG).d("fcmToken: %s", it)
                 }
             }
         }

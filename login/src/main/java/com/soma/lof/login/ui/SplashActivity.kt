@@ -4,7 +4,7 @@ import android.content.Intent
 import android.os.Bundle
 import androidx.activity.viewModels
 import androidx.lifecycle.lifecycleScope
-import com.soma.lof.foundation.base.BaseActivity
+import com.soma.common_ui.base.BaseActivity
 import com.soma.lof.login.R
 import com.soma.lof.login.databinding.ActivitySplashBinding
 import dagger.hilt.android.AndroidEntryPoint

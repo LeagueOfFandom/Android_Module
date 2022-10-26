@@ -4,8 +4,7 @@ import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
 import androidx.viewpager2.widget.ViewPager2
 import com.soma.common_ui.presentation.CommonListAdapter2
-import com.soma.lof.foundation.base.BaseFragment
-import com.soma.lof.foundation.result.data
+import com.soma.common_ui.base.BaseFragment
 import com.soma.lof.home.R
 import com.soma.lof.home.databinding.FragmentHomeBinding
 import dagger.hilt.android.AndroidEntryPoint
