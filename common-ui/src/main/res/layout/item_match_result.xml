@@ -6,13 +6,13 @@
     <data>
         <variable
             name="viewObject"
-            type="com.soma.lof.core_model.entity.MatchVO" />
+            type="com.soma.lof.core.model.entity.MatchVO" />
 
         <import type="android.view.View"/>
 
         <variable
             name="view"
-            type="com.soma.common_ui.presentation.match_up.MatchResultVH" />
+            type="com.soma.common.ui.presentation.match_up.MatchResultVH" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout

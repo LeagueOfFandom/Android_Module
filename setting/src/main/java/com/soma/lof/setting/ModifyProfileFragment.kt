@@ -1,6 +1,5 @@
 package com.soma.lof.setting
 
-import android.content.Context
 import android.text.Editable
 import android.text.TextWatcher
 import android.view.KeyEvent
@@ -11,12 +10,11 @@ import androidx.core.content.getSystemService
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
-import com.soma.common_ui.R.string.nick_text_cnt
-import com.soma.lof.foundation.base.BaseFragment
+import com.soma.common.ui.R.string.nick_text_cnt
+import com.soma.common.ui.base.BaseFragment
 import com.soma.lof.setting.databinding.FragmentProfileModifyBinding
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.flow.collectLatest
-import timber.log.Timber
 
 @AndroidEntryPoint
 class ModifyProfileFragment : BaseFragment<FragmentProfileModifyBinding>(R.layout.fragment_profile_modify) {

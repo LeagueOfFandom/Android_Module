@@ -2,10 +2,9 @@ package com.soma.lof.setting
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.soma.common_ui.route.FeatureLoginRouteContract
-import com.soma.lof.common.domain.DataStoreUseCase
-import com.soma.lof.common.repository.UserRepository
-import com.soma.lof.foundation.result.Result
+import com.soma.lof.domain.usecase.DataStoreUseCase
+import com.soma.lof.core.result.UiState
+import com.soma.lof.domain.usecase.UserUseCase
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.MutableStateFlow
@@ -13,16 +12,17 @@ import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.launch
+import timber.log.Timber
 import javax.inject.Inject
 
 @HiltViewModel
 class ModifyProfileViewModel @Inject constructor(
-    private val userRepository: UserRepository,
+    private val userUseCase: UserUseCase,
     private val dataStoreUseCase: DataStoreUseCase,
 ) : ViewModel() {
 
-    private val _userNickName = MutableStateFlow<Result<String>>(Result.Loading)
-    val userNickName: StateFlow<Result<String>> get() = _userNickName
+    private val _userNickName = MutableStateFlow<UiState<String>>(UiState.Loading)
+    val userNickName: StateFlow<UiState<String>> get() = _userNickName
 
     private val _nickNameSetSuccess = MutableStateFlow(false)
     val nickNameSetSuccess get() = _nickNameSetSuccess
@@ -32,7 +32,7 @@ class ModifyProfileViewModel @Inject constructor(
             val jwtToken = dataStoreUseCase.jwtToken.first()
 
             if (jwtToken != null) {
-                userRepository.getUserNickName(jwtToken).collectLatest {
+                userUseCase.getUserNickName(jwtToken).collectLatest {
                     _userNickName.value = it
                 }
             }
@@ -42,9 +42,9 @@ class ModifyProfileViewModel @Inject constructor(
     fun setNickName(nickName: String) {
         viewModelScope.launch(Dispatchers.IO) {
             val jwtToken = dataStoreUseCase.jwtToken.first()
-
+            Timber.tag("Modify").d("setNickName: %s", nickName)
             if (jwtToken != null) {
-                userRepository.setUserNickName(jwtToken, nickName).collectLatest {
+                userUseCase.setUserNickName(jwtToken, nickName).collectLatest {
                     _nickNameSetSuccess.value = true
                 }
             }

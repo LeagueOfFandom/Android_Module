@@ -40,28 +40,12 @@ android {
 
 dependencies {
 
-    implementation(project(":common"))
+    implementation(project(":domain"))
     implementation(project(":common-ui"))
-    implementation(project(":foundation"))
     implementation(project(":core-model"))
 
-
-    implementation(Dependencies.androidX.core)
-    implementation(Dependencies.androidX.appCompat)
-    implementation(Dependencies.androidX.material)
-    implementation(Dependencies.androidX.constraintLayout)
-    implementation(Dependencies.androidX.fragment)
-    implementation(Dependencies.androidX.lifecycle.viewModel)
-    implementation(Dependencies.androidX.navigation.ui)
-    implementation(Dependencies.androidX.navigation.fragment)
-
-    testImplementation(Dependencies.Test.junit)
-    androidTestImplementation(Dependencies.androidX.junit)
-    androidTestImplementation(Dependencies.AndroidTest.espressoCore)
-
-    // Glide
-    implementation(Dependencies.glide.android)
-    implementation(Dependencies.glide.annotationProcessor)
+    // Chart
+    implementation(Dependencies.library.chart)
 
     // Hilt
     androidTestImplementation(Dependencies.androidTest.hilt)
@@ -69,6 +53,8 @@ dependencies {
     implementation(Dependencies.hilt.android)
     kapt(Dependencies.hilt.compiler)
 
-    // Chart
-    implementation(Dependencies.library.chart)
+    // Test
+    testImplementation(Dependencies.Test.junit)
+    androidTestImplementation(Dependencies.androidX.junit)
+    androidTestImplementation(Dependencies.AndroidTest.espressoCore)
 }

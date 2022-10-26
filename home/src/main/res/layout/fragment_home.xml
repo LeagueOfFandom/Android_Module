@@ -11,7 +11,7 @@
 
         <variable
             name="rvAdapter"
-            type="com.soma.common_ui.presentation.CommonListAdapter2" />
+            type="com.soma.common.ui.presentation.CommonListAdapter2" />
 
         <variable
             name="fragment"

@@ -2,7 +2,7 @@ package com.soma.lof.login.ui
 
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
-import com.soma.lof.foundation.base.BaseFragment
+import com.soma.common.ui.base.BaseFragment
 import com.soma.lof.login.R
 import com.soma.lof.login.databinding.FragmentLanguageSelectBinding
 

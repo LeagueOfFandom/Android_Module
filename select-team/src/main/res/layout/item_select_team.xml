@@ -19,7 +19,7 @@
 
         <variable
             name="team"
-            type="com.soma.lof.core_model.entity.TeamInfo" />
+            type="com.soma.lof.core.model.entity.TeamInfo" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout

@@ -1,12 +1,11 @@
 package com.soma.lof.home.ui
 
-import android.util.Log
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.soma.lof.common.domain.DataStoreUseCase
-import com.soma.lof.common.domain.HomeUseCase
-import com.soma.lof.core_model.dto.domain.HomeModel
-import com.soma.lof.foundation.result.Result
+import com.soma.lof.domain.model.HomeModel
+import com.soma.lof.core.result.UiState
+import com.soma.lof.domain.usecase.DataStoreUseCase
+import com.soma.lof.domain.usecase.HomeUseCase
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
@@ -22,8 +21,8 @@ class HomeViewModel @Inject constructor(
     private val dataStoreUseCase: DataStoreUseCase
 ): ViewModel() {
 
-    private val _homeData = MutableStateFlow<Result<HomeModel>>(Result.Loading)
-    val homeData : StateFlow<Result<HomeModel>> get() = _homeData
+    private val _homeData = MutableStateFlow<UiState<HomeModel>>(UiState.Loading)
+    val homeData : StateFlow<UiState<HomeModel>> get() = _homeData
 
     init {
         viewModelScope.launch {

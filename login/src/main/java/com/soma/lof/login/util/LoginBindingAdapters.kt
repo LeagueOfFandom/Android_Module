@@ -1,4 +1,4 @@
-package com.soma.lof.login
+package com.soma.lof.login.util
 
 import androidx.databinding.BindingAdapter
 import com.google.android.gms.common.SignInButton

@@ -8,8 +8,8 @@ import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.card.MaterialCardView
-import com.soma.lof.core_model.entity.TeamInfo
-import com.soma.lof.foundation.result.data
+import com.soma.lof.core.model.entity.TeamInfo
+import com.soma.lof.core.result.data
 import com.soma.lof.select_team.R
 import com.soma.lof.select_team.databinding.ItemSelectTeamBinding
 
