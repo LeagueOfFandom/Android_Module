@@ -36,11 +36,13 @@ class LoginFragment : BaseFragment<FragmentLoginBinding>(R.layout.fragment_login
         lifecycleScope.launchWhenCreated {
             viewModel.googleLoginFlow.collectLatest { success ->
                 if (success) {
-                    navigateSelectLanguageFragment()
-                    Toast.makeText(requireContext(), "로그인 성공", Toast.LENGTH_SHORT).show()
-//                    passLogin()
 
-                    /* TODO NewUser에 대해서 로그인 절차 추가 필요 */
+                    if (viewModel.newUserFlow.value) {
+                        viewModel.navigateHomeFragment(requireActivity(), Intent.FLAG_ACTIVITY_CLEAR_TASK or Intent.FLAG_ACTIVITY_NEW_TASK)
+                    } else {
+                        navigateSelectLanguageFragment()
+                    }
+                    Toast.makeText(requireContext(), "로그인 성공", Toast.LENGTH_SHORT).show()
                 }
             }
         }
@@ -71,6 +73,7 @@ class LoginFragment : BaseFragment<FragmentLoginBinding>(R.layout.fragment_login
     fun googleLogin() {
         startGoogleLoginForResult.launch(viewModel.getGoogleSignInClient().signInIntent)
     }
+
 
     fun navigateSelectLanguageFragment() {
         findNavController().navigate(R.id.action_loginFragment_to_selectLanguageFragment)
