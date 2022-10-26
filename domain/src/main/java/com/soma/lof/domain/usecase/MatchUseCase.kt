@@ -5,6 +5,7 @@ import com.soma.lof.domain.util.CommonItemTranslator.toCommonItemList
 import com.soma.lof.core.data.repository.MatchRepository
 import com.soma.lof.core.model.dto.CommonItem
 import com.soma.lof.core.model.dto.CommonItemResponse
+import com.soma.lof.core.model.dto.MatchInfoDummyResponse
 import com.soma.lof.core.result.UiState
 import com.soma.lof.core.result.data
 import kotlinx.coroutines.flow.Flow
@@ -29,5 +30,9 @@ class MatchUseCase @Inject constructor(
                 emit(UiState.Success(it.data?.toCommonItemList() ?: emptyList()))
             }
         }
+    }
+
+    fun getMatchInfoDataTest(): MatchInfoDummyResponse {
+        return matchRepository.getMatchInfoDataTest()
     }
 }

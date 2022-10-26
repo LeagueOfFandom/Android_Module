@@ -1,7 +1,7 @@
 package com.soma.lof.domain.usecase
 
 import com.soma.lof.core.data.repository.LeagueRepository
-import com.soma.lof.core.model.dto.domain.SelectTeamModel
+import com.soma.lof.domain.model.SelectTeamModel
 import com.soma.lof.core.network.exception.JwtTokenEmptyException
 import com.soma.lof.core.result.UiState
 import com.soma.lof.core.result.data

@@ -1,7 +1,6 @@
 package com.soma.lof.match.ui.match_info
 
 import android.content.Context
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.core.content.res.ResourcesCompat
@@ -19,8 +18,10 @@ class MatchSetAdapter(private val context: Context) : RecyclerView.Adapter<Match
             binding.itemMatchSetText.text = "${position+1}Set"
 
             if (position == checkPosition) {
-                Log.d(TAG, "$position $checkPosition ${position == checkPosition}")
-                binding.itemMatchSetLayout.background = ResourcesCompat.getDrawable(context.resources, R.drawable.bg_match_set_btn_selected, null)
+                binding.itemMatchSetLayout.background =
+                    ResourcesCompat.getDrawable(context.resources,
+                        R.drawable.bg_match_set_btn_selected,
+                        null)
                 binding.itemMatchSetLayout.translationZ = 10f
             } else {
                 binding.itemMatchSetLayout.background = ResourcesCompat.getDrawable(context.resources, R.drawable.bg_match_set_btn, null)

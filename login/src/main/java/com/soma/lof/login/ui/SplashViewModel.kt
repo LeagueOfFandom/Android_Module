@@ -7,7 +7,9 @@ import com.google.firebase.messaging.FirebaseMessaging
 import com.soma.common.ui.route.FeatureHomeRouteContract
 import com.soma.lof.domain.usecase.DataStoreUseCase
 import dagger.hilt.android.lifecycle.HiltViewModel
-import kotlinx.coroutines.flow.*
+import kotlinx.coroutines.flow.MutableStateFlow
+import kotlinx.coroutines.flow.collectLatest
+import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.launch
 import timber.log.Timber
 import javax.inject.Inject

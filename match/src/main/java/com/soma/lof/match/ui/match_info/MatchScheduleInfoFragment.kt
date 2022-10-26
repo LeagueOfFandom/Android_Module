@@ -14,8 +14,6 @@ class MatchScheduleInfoFragment : BaseFragment<FragmentMatchScheduleInfoBinding>
 
 
     override fun initView() {
-        Log.d("MatchInfoViewModel", "initView: ${viewModel.matchInfo.value}")
-
         bind {
             data = viewModel.matchInfo.value.mainInfo
             vpAdapter = MatchInfoAdapter(

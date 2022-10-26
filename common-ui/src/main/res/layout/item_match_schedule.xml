@@ -7,11 +7,11 @@
 
         <variable
             name="viewObject"
-            type="com.soma.lof.core.entity.MatchVO" />
+            type="com.soma.lof.core.model.entity.MatchVO" />
 
         <variable
             name="view"
-            type="com.soma.common.presentation.match_up.MatchScheduleVH" />
+            type="com.soma.common.ui.presentation.match_up.MatchScheduleVH" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout

@@ -6,8 +6,8 @@ import androidx.databinding.DataBindingUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.pierfrancescosoffritti.androidyoutubeplayer.core.player.YouTubePlayer
 import com.pierfrancescosoffritti.androidyoutubeplayer.core.player.listeners.AbstractYouTubePlayerListener
-import com.soma.common.R
-import com.soma.common.databinding.ItemHighlightVideoBinding
+import com.soma.common.ui.R
+import com.soma.common.ui.databinding.ItemHighlightVideoBinding
 
 class TestVideoAdapter(val dataSet: List<String>) :  RecyclerView.Adapter<TestVideoAdapter.ViewHolder>() {
 

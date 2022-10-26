@@ -1,6 +1,6 @@
 package com.soma.common.ui.presentation.match_info
 
-import com.soma.common.databinding.ItemMatchPreviewTextBinding
+import com.soma.common.ui.databinding.ItemMatchPreviewTextBinding
 import com.soma.common.ui.presentation.CommonVH
 import com.soma.lof.core.model.dto.CommonItem
 import com.soma.lof.core.model.entity.MatchPreviewTextVO

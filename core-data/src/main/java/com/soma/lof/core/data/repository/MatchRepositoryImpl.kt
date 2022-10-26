@@ -203,7 +203,7 @@ class MatchRepositoryImpl @Inject constructor(
         }
     }
 
-    override suspend fun getMatchInfoDataTest(): MatchInfoDummyResponse {
+    override fun getMatchInfoDataTest(): MatchInfoDummyResponse {
         return matchInfoDummy
     }
 }

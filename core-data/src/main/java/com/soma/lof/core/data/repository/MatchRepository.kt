@@ -8,5 +8,5 @@ import kotlinx.coroutines.flow.Flow
 interface MatchRepository {
     suspend fun getMatchList(jwtString: String, date: String, onlyMyTeam: Boolean) : Flow<UiState<List<CommonItemResponse>>>
 
-    suspend fun getMatchInfoDataTest() : MatchInfoDummyResponse
+    fun getMatchInfoDataTest() : MatchInfoDummyResponse
 }

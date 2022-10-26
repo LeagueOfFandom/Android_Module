@@ -15,7 +15,6 @@ class MatchResultInfoFragment :
 
     override fun initView() {
 
-        Log.d("MatchInfoViewModel", "initView: ${viewModel.matchInfo.value}")
         bind {
             data = viewModel.matchInfo.value.mainInfo
             setAdapter = MatchSetAdapter(requireContext())

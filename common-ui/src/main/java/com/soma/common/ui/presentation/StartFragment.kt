@@ -5,9 +5,9 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import com.soma.common.R
 import com.soma.common.ui.util.NavigationFlow
 import com.soma.common.ui.util.ToFlowNavigable
+import com.soma.common.ui.R
 
 class StartFragment : Fragment() {
 

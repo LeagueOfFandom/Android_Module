@@ -5,10 +5,10 @@
     <data>
         <variable
             name="viewObject"
-            type="com.soma.lof.core.entity.HighLightVO" />
+            type="com.soma.lof.core.model.entity.HighLightVO" />
         <variable
             name="adapter"
-            type="com.soma.common.presentation.highlight.TestVideoAdapter" />
+            type="com.soma.common.ui.presentation.highlight.TestVideoAdapter" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout

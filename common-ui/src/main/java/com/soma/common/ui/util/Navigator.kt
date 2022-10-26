@@ -1,7 +1,7 @@
 package com.soma.common.ui.util
 
 import androidx.navigation.NavController
-import com.soma.common.MainNavGraphDirections
+import com.soma.common.ui.MainNavGraphDirections
 
 class Navigator {
     lateinit var navController: NavController
@@ -13,5 +13,4 @@ class Navigator {
         is NavigationFlow.InfoFlow -> navController.navigate(MainNavGraphDirections.actionGlobalInfoFlow())
         is NavigationFlow.SettingFlow -> navController.navigate(MainNavGraphDirections.actionGlobalSettingFlow())
     }
-
 }

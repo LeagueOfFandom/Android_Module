@@ -2,7 +2,7 @@ package com.soma.common.ui.presentation.match_up
 
 import android.view.View
 import androidx.navigation.Navigation.findNavController
-import com.soma.common.databinding.ItemMatchResultBinding
+import com.soma.common.ui.databinding.ItemMatchResultBinding
 import com.soma.common.ui.presentation.CommonVH
 import com.soma.common.ui.util.DeepLinkDestination
 import com.soma.common.ui.util.deepLinkNavigateTo

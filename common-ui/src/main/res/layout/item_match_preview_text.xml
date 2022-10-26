@@ -7,7 +7,7 @@
 
         <variable
             name="viewObject"
-            type="com.soma.lof.core.entity.MatchPreviewTextVO" />
+            type="com.soma.lof.core.model.entity.MatchPreviewTextVO" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout

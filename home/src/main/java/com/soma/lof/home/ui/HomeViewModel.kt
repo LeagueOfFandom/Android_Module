@@ -2,10 +2,10 @@ package com.soma.lof.home.ui
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.soma.lof.domain.model.HomeModel
+import com.soma.lof.core.result.UiState
 import com.soma.lof.domain.usecase.DataStoreUseCase
 import com.soma.lof.domain.usecase.HomeUseCase
-import com.soma.lof.core.model.dto.domain.HomeModel
-import com.soma.lof.core.result.UiState
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow

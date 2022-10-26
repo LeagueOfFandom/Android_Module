@@ -4,7 +4,7 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.databinding.ViewDataBinding
-import com.soma.common.R
+import com.soma.common.ui.R
 import com.soma.common.ui.presentation.*
 import com.soma.common.ui.presentation.highlight.HighLightVH
 import com.soma.common.ui.presentation.info.*

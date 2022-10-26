@@ -1,6 +1,6 @@
 package com.soma.common.ui.presentation
 
-import com.soma.common.databinding.ItemTextArrowBinding
+import com.soma.common.ui.databinding.ItemTextArrowBinding
 import com.soma.lof.core.model.dto.CommonItem
 import com.soma.lof.core.model.entity.TextVO
 

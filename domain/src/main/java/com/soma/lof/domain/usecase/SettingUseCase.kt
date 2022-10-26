@@ -1,7 +1,7 @@
 package com.soma.lof.domain.usecase
 
 import com.soma.lof.core.data.repository.UserRepository
-import com.soma.lof.core.model.dto.domain.SettingModel
+import com.soma.lof.domain.model.SettingModel
 import com.soma.lof.core.result.UiState
 import com.soma.lof.core.result.data
 import kotlinx.coroutines.flow.Flow

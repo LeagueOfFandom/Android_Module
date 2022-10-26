@@ -3,7 +3,7 @@ package com.soma.lof.select_team.util
 import android.graphics.Rect
 import android.view.View
 import androidx.recyclerview.widget.RecyclerView
-import com.soma.lof.foundation.util.dpToPx
+import com.soma.common.ui.util.dpToPx
 
 class TeamItemDecoration : RecyclerView.ItemDecoration() {
 

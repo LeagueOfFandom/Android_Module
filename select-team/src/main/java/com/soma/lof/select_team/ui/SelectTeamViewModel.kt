@@ -5,12 +5,12 @@ import android.content.Intent
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.soma.common.ui.route.FeatureHomeRouteContract
-import com.soma.lof.domain.usecase.DataStoreUseCase
-import com.soma.lof.domain.usecase.SelectTeamUseCase
-import com.soma.lof.core.model.dto.domain.SelectTeamModel
 import com.soma.lof.core.model.entity.TeamInfo
 import com.soma.lof.core.result.UiState
 import com.soma.lof.core.result.data
+import com.soma.lof.domain.model.SelectTeamModel
+import com.soma.lof.domain.usecase.DataStoreUseCase
+import com.soma.lof.domain.usecase.SelectTeamUseCase
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow

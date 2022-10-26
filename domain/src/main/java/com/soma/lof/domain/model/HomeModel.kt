@@ -1,4 +1,4 @@
-package com.soma.lof.core.model.dto.domain
+package com.soma.lof.domain.model
 
 import com.soma.lof.core.model.dto.CommonItem
 

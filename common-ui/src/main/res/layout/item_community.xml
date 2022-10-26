@@ -7,7 +7,7 @@
 
         <variable
             name="viewObject"
-            type="com.soma.lof.core.entity.CommunityVO" />
+            type="com.soma.lof.core.model.entity.CommunityVO" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout

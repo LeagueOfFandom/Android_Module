@@ -6,7 +6,7 @@
     <data>
         <variable
             name="viewObject"
-            type="com.soma.lof.core.entity.MatchVO" />
+            type="com.soma.lof.core.model.entity.MatchVO" />
     </data>
 
     <androidx.cardview.widget.CardView

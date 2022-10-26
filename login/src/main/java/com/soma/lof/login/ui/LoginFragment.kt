@@ -38,9 +38,9 @@ class LoginFragment : BaseFragment<FragmentLoginBinding>(R.layout.fragment_login
                 if (success) {
 
                     if (viewModel.newUserFlow.value) {
-                        viewModel.navigateHomeFragment(requireActivity(), Intent.FLAG_ACTIVITY_CLEAR_TASK or Intent.FLAG_ACTIVITY_NEW_TASK)
-                    } else {
                         navigateSelectLanguageFragment()
+                    } else {
+                        viewModel.navigateHomeFragment(requireActivity(), Intent.FLAG_ACTIVITY_CLEAR_TASK or Intent.FLAG_ACTIVITY_NEW_TASK)
                     }
                     Toast.makeText(requireContext(), "로그인 성공", Toast.LENGTH_SHORT).show()
                 }

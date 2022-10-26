@@ -10,10 +10,10 @@ import com.google.android.gms.auth.api.signin.GoogleSignInClient
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions
 import com.soma.common.ui.route.FeatureLoginRouteContract
 import com.soma.common.ui.route.FeatureSelectTeamRouteContract
+import com.soma.lof.core.result.UiState
+import com.soma.lof.domain.model.SettingModel
 import com.soma.lof.domain.usecase.DataStoreUseCase
 import com.soma.lof.domain.usecase.SettingUseCase
-import com.soma.lof.core.model.dto.domain.SettingModel
-import com.soma.lof.core.result.UiState
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.MutableStateFlow
