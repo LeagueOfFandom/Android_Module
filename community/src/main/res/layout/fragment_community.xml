@@ -4,6 +4,11 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <data>
+
+        <variable
+            name="fragment"
+            type="com.soma.lof.community.CommunityFragment" />
+
         <variable
             name="adapter"
             type="com.soma.lof.community.PostAdapter" />
@@ -33,14 +38,14 @@
             android:layout_height="40dp"
             android:layout_marginBottom="30dp"
             android:background="@drawable/bg_post_write_btn"
+            android:clickable="true"
+            android:focusable="true"
             android:paddingHorizontal="10dp"
             android:paddingVertical="7dp"
+            android:translationZ="1dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            android:focusable="true"
-            android:clickable="true"
-            android:translationZ="1dp">
+            app:layout_constraintStart_toStartOf="parent">
 
             <TextView
                 android:id="@+id/community_post_write_text"
