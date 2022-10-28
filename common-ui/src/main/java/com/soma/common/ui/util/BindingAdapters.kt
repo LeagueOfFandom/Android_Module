@@ -23,6 +23,7 @@ fun AppCompatImageView.setImageResource(resId: Int) {
         .into(this)
 }
 
+
 @BindingAdapter("itemDecoration")
 fun RecyclerView.bindItemDecoration(itemDecoration: RecyclerView.ItemDecoration) {
     if (itemDecorationCount == 0) {
@@ -48,6 +49,16 @@ fun AppCompatImageView.bindImage(uri: String?) {
         Glide.with(context)
             .load(uri)
             .into(this)
+    }
+}
+
+@BindingAdapter("profileImg")
+fun AppCompatImageView.bindProfileImage(uri: String?) {
+    if (uri != null && uri != "") {
+        Glide.with(context)
+            .load(uri)
+            .into(this)
+
     }
 }
 
@@ -80,8 +91,8 @@ fun bindIsGone(view: View, isGone: Boolean) {
 }
 
 @BindingAdapter("msgGone")
-fun hideMsg(view:View, result: UiState<List<CommonItem>>) {
-    view.visibility =  if (result is UiState.Loading) View.GONE
+fun hideMsg(view: View, result: UiState<List<CommonItem>>) {
+    view.visibility = if (result is UiState.Loading) View.GONE
     else if (result.data == null || result.data!!.isEmpty()) View.VISIBLE else View.GONE
 }
 

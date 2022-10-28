@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:background="@drawable/bg_post">
+
+    <data>
+        <variable
+            name="item"
+            type="com.soma.lof.core.model.entity.PostItem" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingHorizontal="16dp"
+        android:paddingVertical="12dp">
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/item_post_profile_img"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:src="@drawable/ic_profile"
+            app:profileImg="@{item.userProfileImg}"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/item_post_user_profile"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="1dp"
+            android:text="@{item.userNickName}"
+            android:textColor="@color/black"
+            android:textSize="14sp"
+            android:textStyle="bold"
+            app:layout_constraintStart_toEndOf="@id/item_post_profile_img"
+            app:layout_constraintTop_toTopOf="@id/item_post_profile_img"
+            tools:text="홍길동" />
+
+        <TextView
+            android:id="@+id/item_post_date"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="3dp"
+            android:textSize="12sp"
+            android:text="@{item.postDate}"
+            app:layout_constraintStart_toStartOf="@id/item_post_user_profile"
+            app:layout_constraintTop_toBottomOf="@id/item_post_user_profile"
+            tools:text="2022년 9월 2일 22:05" />
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/item_post_bookmark"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_post_bookmark"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/item_post_content"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="3dp"
+            android:layout_marginTop="10dp"
+            android:text="@{item.content}"
+            android:textColor="@color/black"
+            android:textSize="14sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/item_post_profile_img"
+            tools:text="와~ 내용이 들어갈 자리입니다." />
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/item_post_comment_img"
+            android:layout_width="16dp"
+            android:layout_height="16dp"
+            android:layout_marginTop="15dp"
+            android:layout_marginBottom="5dp"
+            android:src="@drawable/ic_post_comment"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="@id/item_post_content"
+            app:layout_constraintTop_toBottomOf="@id/item_post_content" />
+
+        <TextView
+            android:id="@+id/item_post_comment_cnt"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="5dp"
+            android:layout_marginBottom="2dp"
+            android:text="@{item.commentCnt}"
+            app:layout_constraintBottom_toBottomOf="@id/item_post_comment_img"
+            app:layout_constraintStart_toEndOf="@id/item_post_comment_img"
+            app:layout_constraintTop_toTopOf="@id/item_post_comment_img"
+            tools:text="99+" />
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/item_post_favorite_img"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:src="@drawable/ic_post_favorite"
+            app:layout_constraintBottom_toBottomOf="@id/item_post_comment_img"
+            app:layout_constraintStart_toEndOf="@id/item_post_comment_cnt"
+            app:layout_constraintTop_toTopOf="@id/item_post_comment_img" />
+
+        <TextView
+            android:id="@+id/item_post_favorite_cnt"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="5dp"
+            android:layout_marginBottom="2dp"
+            android:text="@{item.favoriteCnt}"
+            app:layout_constraintBottom_toBottomOf="@id/item_post_favorite_img"
+            app:layout_constraintStart_toEndOf="@id/item_post_favorite_img"
+            app:layout_constraintTop_toTopOf="@id/item_post_favorite_img"
+            tools:text="99+" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</layout>
