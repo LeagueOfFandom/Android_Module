@@ -5,9 +5,16 @@
     android:background="@drawable/bg_post">
 
     <data>
+
         <variable
             name="item"
             type="com.soma.lof.core.model.entity.PostItem" />
+
+        <variable
+            name="photoAdapter"
+            type="com.soma.lof.community.PhotoAdapter" />
+
+        <import type="android.view.View" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -21,9 +28,9 @@
             android:layout_width="40dp"
             android:layout_height="40dp"
             android:src="@drawable/ic_profile"
-            app:profileImg="@{item.userProfileImg}"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="parent"
+            app:profileImg="@{item.userProfileImg}" />
 
         <TextView
             android:id="@+id/item_post_user_profile"
@@ -44,11 +51,26 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="3dp"
-            android:textSize="12sp"
             android:text="@{item.postDate}"
+            android:textSize="12sp"
             app:layout_constraintStart_toStartOf="@id/item_post_user_profile"
             app:layout_constraintTop_toBottomOf="@id/item_post_user_profile"
             tools:text="2022년 9월 2일 22:05" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/item_post_photo_rv"
+            android:layout_width="match_parent"
+            android:layout_height="300dp"
+            android:layout_marginTop="20dp"
+            android:orientation="horizontal"
+            android:visibility="@{item.postPhotoList.size == 0 ? View.GONE : View.VISIBLE}"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/item_post_date"
+            tools:listitem="@layout/item_photo"
+            tools:visibility="visible"
+            android:adapter="@{photoAdapter}"/>
 
         <androidx.appcompat.widget.AppCompatImageView
             android:id="@+id/item_post_bookmark"
@@ -68,7 +90,7 @@
             android:textColor="@color/black"
             android:textSize="14sp"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/item_post_profile_img"
+            app:layout_constraintTop_toBottomOf="@id/item_post_photo_rv"
             tools:text="와~ 내용이 들어갈 자리입니다." />
 
         <androidx.appcompat.widget.AppCompatImageView
