@@ -7,12 +7,21 @@ import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.soma.lof.community.databinding.ItemPostBinding
 import com.soma.lof.core.model.entity.PostItem
+import timber.log.Timber
 
 class PostAdapter : ListAdapter<PostItem, PostAdapter.ViewHolder>(postAdapterDiffUtil){
 
     inner class ViewHolder(private val binding: ItemPostBinding) : RecyclerView.ViewHolder(binding.root) {
+        private lateinit var photoAdapter: PhotoAdapter
+
         fun bind(item: PostItem) {
-            binding.item = item
+            photoAdapter = PhotoAdapter()
+            binding.also {
+                it.item = item
+                it.photoAdapter = photoAdapter
+            }
+            binding.itemPostPhotoRv.addItemDecoration(PhotoItemDecoration())
+            photoAdapter.submitList(item.postPhotoList)
         }
     }
 
