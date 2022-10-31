@@ -14,8 +14,8 @@ class PhotoItemDecoration() : RecyclerView.ItemDecoration() {
         state: RecyclerView.State,
     ) {
         super.getItemOffsets(outRect, view, parent, state)
-        outRect.left = 20
-        outRect.right = 20
+        outRect.left = 10
+        outRect.right = 10
     }
 
     override fun onDraw(canvas: Canvas, parent: RecyclerView, state: RecyclerView.State) {

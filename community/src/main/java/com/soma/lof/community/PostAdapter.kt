@@ -2,6 +2,7 @@ package com.soma.lof.community
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import androidx.appcompat.content.res.AppCompatResources
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
@@ -22,6 +23,12 @@ class PostAdapter : ListAdapter<PostItem, PostAdapter.ViewHolder>(postAdapterDif
             }
             binding.itemPostPhotoRv.addItemDecoration(PhotoItemDecoration())
             photoAdapter.submitList(item.postPhotoList)
+
+            binding.itemPostBookmark.setOnClickListener {
+                item.isBookMarked = !item.isBookMarked
+                val drawableInt = if (item.isBookMarked) R.drawable.ic_post_bookmark_checked else R.drawable.ic_post_bookmark
+                binding.itemPostBookmark.setImageDrawable(AppCompatResources.getDrawable(itemView.context, drawableInt))
+            }
         }
     }
 
