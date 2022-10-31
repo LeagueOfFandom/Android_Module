@@ -76,5 +76,4 @@ class CommunityViewModel @Inject constructor(
             "99+",
         )
     )
-
 }
