@@ -12,12 +12,15 @@ import com.soma.common.ui.presentation.match_info.MatchPreviewImageVH
 import com.soma.common.ui.presentation.match_info.MatchPreviewTextVH
 import com.soma.common.ui.presentation.match_up.*
 import com.soma.lof.core.model.entity.ViewType
+import timber.log.Timber
 
 object CommonVHFactory {
     fun createViewHolder(parent: ViewGroup, viewType: Int): CommonVH {
         return when(viewType) {
-            ViewType.LIVE_VIEW.ordinal -> MatchLiveVH(getViewDataBinding(parent, R.layout.item_match_live))
             ViewType.HOME_MATCH_TITLE_VIEW.ordinal -> HomeMatchTitleLineVH(getViewDataBinding(parent, R.layout.item_home_match_title_line))
+            ViewType.MATCH_SCHEDULE_VIEW.ordinal -> MatchScheduleVH(getViewDataBinding(parent, R.layout.item_match_schedule))
+            ViewType.LIVE_VIEW.ordinal -> MatchLiveVH(getViewDataBinding(parent, R.layout.item_match_live))
+
             ViewType.MATCH_RESULT_VIEW.ordinal -> MatchResultVH(getViewDataBinding(parent, R.layout.item_match_result))
             ViewType.MATCH_SCHEDULE_VIEW.ordinal -> MatchScheduleVH(getViewDataBinding(parent, R.layout.item_match_schedule))
             ViewType.TEXT_ARROW_VIEW.ordinal -> TextArrowVH(getViewDataBinding(parent, R.layout.item_text_arrow))
@@ -42,7 +45,7 @@ object CommonVHFactory {
             ViewType.INFO_POST_LIKE_VIEW.ordinal -> InfoPostLikeVH(getViewDataBinding(parent, R.layout.item_info_post_like))
             ViewType.INFO_POST_SUCCESS_VIEW.ordinal -> InfoPostSuccessVH(getViewDataBinding(parent, R.layout.item_info_post_success))
 
-            else -> MatchScheduleVH(getViewDataBinding(parent, R.layout.item_match_schedule))
+            else -> NothingVH(getViewDataBinding(parent, R.layout.item_nothing))
         }
     }
 

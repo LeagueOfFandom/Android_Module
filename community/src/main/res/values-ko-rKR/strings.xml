@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="community_title">커뮤니티</string>
+    <string name="community_write">글쓰기</string>
+    <string name="write_post_btn_text">작성 완료</string>
+    <string name="write_post_content_title_hint">제목을 입력하세요.</string>
+    <string name="write_post_content_hint">내용을 입력하세요.</string>
+    <string name="write_post_title">글쓰기</string>
+</resources>

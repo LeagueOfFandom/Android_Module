@@ -1,2 +1,17 @@
 <resources>
+    <string name="profile_modify_title">Profile Settings</string>
+    <string name="modify_profile_btn_text">Finished</string>
+    <string name="modify_profile_hint">Nickname</string>
+    <string name="setting_title">Setting</string>
+    <string name="setting_edit">edit</string>
+    <string name="setting_alarm_title">Alarm</string>
+    <string name="setting_alarm_match_text">Match Alarm Setting</string>
+    <string name="setting_alarm_community_text">Community Alarm Setting</string>
+    <string name="setting_language_text">Language Selected</string>
+    <string name="setting_language_korean">korean</string>
+    <string name="setting_logout_text">Logout</string>
+    <string name="setting_withdrawal_text">Withdrawal</string>
+    <string name="setting_team_text">Select Team</string>
+    <string name="setting_bookmark_text">Bookmarked Post</string>
+    <string name="setting_highlight_text">Highlight Video Recently</string>
 </resources>

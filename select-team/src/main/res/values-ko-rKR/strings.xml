@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="selectTeamCntMsg">총 %d팀을 선택하였습니다</string>
+    <string name="select_team_title">응원하고 있거나 소식을 받고싶은 팀을 선택해주세요</string>
+    <string name="select_team_finish">완료</string>
+</resources>

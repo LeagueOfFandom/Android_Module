@@ -36,7 +36,7 @@
             android:gravity="center"
             android:paddingHorizontal="7dp"
             android:paddingVertical="2dp"
-            android:text="오늘"
+            android:text="@string/match_today_date_text"
             android:textColor="@color/white"
             android:textSize="10sp"
             android:textStyle="bold"

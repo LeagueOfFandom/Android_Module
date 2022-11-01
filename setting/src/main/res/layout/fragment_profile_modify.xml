@@ -31,10 +31,10 @@
             android:textColor="@color/black"
             android:textSize="16sp"
             android:textStyle="bold"
+            android:text="@string/profile_modify_title"
             app:layout_constraintBottom_toBottomOf="@id/modify_profile_prev_icon"
             app:layout_constraintStart_toEndOf="@id/modify_profile_prev_icon"
-            app:layout_constraintTop_toTopOf="@id/modify_profile_prev_icon"
-            tools:text="프로필 설정" />
+            app:layout_constraintTop_toTopOf="@id/modify_profile_prev_icon"/>
 
         <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/modify_profile_btn"
@@ -42,7 +42,7 @@
             android:layout_height="55dp"
             android:background="@drawable/bg_select_btn"
             android:gravity="center"
-            android:text="완료"
+            android:text="@string/modify_profile_btn_text"
             android:textColor="@color/white"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
@@ -71,7 +71,7 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="30dp"
-            android:hint="이름"
+            android:hint="@string/modify_profile_hint"
             app:username="@{vm.userNickName}"
             android:paddingHorizontal="10dp"
             android:paddingBottom="20dp"
