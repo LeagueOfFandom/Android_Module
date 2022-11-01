@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="nick_text_cnt">(%d/%d)</string>
+    <string name="home_match_title_my_team_btn_text">My팀 설정</string>
+    <string name="match_live_show_match">진행 중 경기보기</string>
+    <string name="match_live_records"><![CDATA[전적보기 >]]></string>
+    <string name="match_schedule_date_line_text">경기예정</string>
+    <string name="match_today_date_text">오늘</string>
+    <string name="match_result_date_text">경기종료</string>
+</resources>

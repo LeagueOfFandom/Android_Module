@@ -1,3 +1,9 @@
 <resources>
     <string name="nick_text_cnt">(%d/%d)</string>
+    <string name="home_match_title_my_team_btn_text">My Team</string>
+    <string name="match_live_show_match">Watch Game</string>
+    <string name="match_live_records"><![CDATA[records >]]></string>
+    <string name="match_schedule_date_line_text">Scheduled</string>
+    <string name="match_today_date_text">today</string>
+    <string name="match_result_date_text">Finished</string>
 </resources>
