@@ -7,5 +7,13 @@
     <fragment
         android:id="@+id/communityFragment"
         android:name="com.soma.lof.community.CommunityFragment"
-        android:label="CommunityFragment" />
+        android:label="CommunityFragment" >
+        <action
+            android:id="@+id/action_communityFragment_to_postWriteFragment"
+            app:destination="@id/postWriteFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/postWriteFragment"
+        android:name="com.soma.lof.community.PostWriteFragment"
+        android:label="PostWriteFragment" />
 </navigation>
