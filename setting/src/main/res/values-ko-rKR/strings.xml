@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="profile_modify_title">프로필 설정</string>
+    <string name="modify_profile_btn_text">완료</string>
+    <string name="modify_profile_hint">이름</string>
+    <string name="setting_title">더보기</string>
+    <string name="setting_edit">수정하기</string>
+    <string name="setting_alarm_title">알림 설정</string>
+    <string name="setting_alarm_match_text">경기 일정 알람 설정</string>
+    <string name="setting_alarm_community_text">커뮤니티 일정 알람 설정</string>
+    <string name="setting_language_text">언어 선택</string>
+    <string name="setting_language_korean">한국어</string>
+    <string name="setting_logout_text">로그아웃</string>
+    <string name="setting_withdrawal_text">회원 탈퇴</string>
+    <string name="setting_team_text">팀 선택</string>
+    <string name="setting_bookmark_text">북마크한 게시글</string>
+    <string name="setting_highlight_text">최근 본 하이라이트</string>
+</resources>
