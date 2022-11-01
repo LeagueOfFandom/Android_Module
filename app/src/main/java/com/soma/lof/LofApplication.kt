@@ -5,10 +5,15 @@ import android.app.NotificationChannel
 import android.app.NotificationManager
 import android.content.Context
 import android.os.Build
-import android.util.Log
 import dagger.hilt.android.HiltAndroidApp
 import timber.log.Timber
+import java.util.*
 
+/*
+* 대한민국 - country: KR, language: ko
+* 미국 - country: US, language: en
+* 영국 - country:GB, language: en
+*/
 @HiltAndroidApp
 class LofApplication : Application() {
 
@@ -19,6 +24,9 @@ class LofApplication : Application() {
         var channel: NotificationChannel? = null
     }
 
+    private lateinit var language: String
+    private lateinit var country: String
+
     override fun onCreate() {
         super.onCreate()
 
@@ -27,7 +35,19 @@ class LofApplication : Application() {
         if(BuildConfig.DEBUG){
             Timber.plant(Timber.DebugTree())
         }
+
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
+            val primaryLocale: Locale = applicationContext.resources.configuration.locales.get(0)
+            language = primaryLocale.language
+            country = primaryLocale.country
+        } else {
+            language = Locale.getDefault().language
+            country = Locale.getDefault().country
+        }
     }
+
+    fun getApplicationLanguage() = language
+    fun getApplicationCountry() = country
 
     private fun createNotificationChannel() {
         val notificationManager = getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager

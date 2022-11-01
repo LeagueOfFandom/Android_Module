@@ -1,2 +1,13 @@
 <resources>
+
+    <!-- SelectLanguageFragment -->
+    <string name="language_english">English (영어)</string>
+    <string name="language_korean">Korean (한국어)</string>
+    <string name="language_title">Select a language</string>
+
+    <!-- SetNickNameFirstFragment -->
+    <string name="nick_first_title">Please enter a nickname</string>
+    <string name="nick_first_hint">nickname</string>
+
+    <string name="login_module_continue">Continue</string>
 </resources>

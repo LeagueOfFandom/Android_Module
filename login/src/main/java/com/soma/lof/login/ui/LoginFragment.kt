@@ -37,11 +37,11 @@ class LoginFragment : BaseFragment<FragmentLoginBinding>(R.layout.fragment_login
             viewModel.googleLoginFlow.collectLatest { success ->
                 if (success) {
 
-                    if (viewModel.newUserFlow.value) {
+//                    if (viewModel.newUserFlow.value) {
                         navigateSelectLanguageFragment()
-                    } else {
+                    /*} else {
                         viewModel.navigateHomeFragment(requireActivity(), Intent.FLAG_ACTIVITY_CLEAR_TASK or Intent.FLAG_ACTIVITY_NEW_TASK)
-                    }
+                    }*/
                     Toast.makeText(requireContext(), "로그인 성공", Toast.LENGTH_SHORT).show()
                 }
             }
