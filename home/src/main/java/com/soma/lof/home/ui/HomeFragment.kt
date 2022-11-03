@@ -24,14 +24,19 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>(R.layout.fragment_home) {
 
     override fun initView() {
 
-        homeBannerAdapter = HomeBannerAdapter(this@HomeFragment, viewModel)
+        homeBannerAdapter = HomeBannerAdapter(this@HomeFragment)
         commonListAdapter = CommonListAdapter2(requireActivity())
 
         bind {
             vm = viewModel
             rvAdapter = commonListAdapter
-            fragment = this@HomeFragment
         }
+
+        subscribeUI()
+        setAutoBannerPass()
+    }
+
+    private fun subscribeUI() {
         lifecycleScope.launchWhenCreated {
             viewModel.homeData.collectLatest {
                 binding.homeAdBanner.apply {
@@ -42,11 +47,10 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>(R.layout.fragment_home) {
                 binding.indicator2.setViewPager(binding.homeAdBanner)
             }
         }
-
-        initHomeUi()
     }
 
-    private fun initHomeUi() {
+
+    private fun setAutoBannerPass() {
         // 홈 배너 자동 스크롤
         CoroutineScope(Dispatchers.Main).launch {
             while (true) {

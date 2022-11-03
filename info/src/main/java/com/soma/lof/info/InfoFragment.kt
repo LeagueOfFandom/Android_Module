@@ -17,8 +17,4 @@ class InfoFragment : BaseFragment<FragmentInfoBinding>(R.layout.fragment_info) {
         }
     }
 
-    companion object {
-        fun newInstance() = InfoFragment()
-    }
-
 }
