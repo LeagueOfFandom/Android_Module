@@ -7,8 +7,8 @@
     <data>
 
         <variable
-            name="fragment"
-            type="com.soma.lof.login.ui.LoginFragment" />
+            name="listener"
+            type="com.soma.lof.login.ui.LoginFragmentListener" />
 
         <variable
             name="logo_resId"
@@ -79,7 +79,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="30dp"
-            android:onClick="@{() -> fragment.googleLogin()}"
+            android:onClick="@{() -> listener.googleLogin()}"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"

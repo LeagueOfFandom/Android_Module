@@ -29,16 +29,24 @@ class SplashActivity : BaseActivity<ActivitySplashBinding>(R.layout.activity_spl
         super.onCreate(savedInstanceState)
 
         supportActionBar?.hide()
+
         bind {
             logoResId = R.drawable.img_logo
             subLogoResId = R.drawable.img_sub_logo
         }
 
+        delayInSplashTimeOut()
+        subscribeUI()
+    }
+
+    private fun delayInSplashTimeOut() {
         CoroutineScope(Dispatchers.Main).launch {
             delay(3000L)
             viewModel.timeOut.value = true
         }
+    }
 
+    private fun subscribeUI() {
         lifecycleScope.launchWhenCreated {
             viewModel.timeOut.collectLatest { timeOut ->
                 if (timeOut) {

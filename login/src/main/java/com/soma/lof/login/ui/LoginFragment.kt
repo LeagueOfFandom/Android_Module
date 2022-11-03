@@ -14,12 +14,19 @@ import com.google.android.gms.common.api.ApiException
 import com.soma.common.ui.base.BaseFragment
 import com.soma.lof.login.R
 import com.soma.lof.login.databinding.FragmentLoginBinding
+import com.soma.lof.login.util.LoginUtil
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.flow.collectLatest
 import timber.log.Timber
+import javax.inject.Inject
+import javax.inject.Named
 
 @AndroidEntryPoint
-class LoginFragment : BaseFragment<FragmentLoginBinding>(R.layout.fragment_login) {
+class LoginFragment : BaseFragment<FragmentLoginBinding>(R.layout.fragment_login), LoginFragmentListener {
+
+    @Inject
+    @Named("Main")
+    lateinit var homeActivityClass: Class<*>
 
     private lateinit var startGoogleLoginForResult: ActivityResultLauncher<Intent>
     private val viewModel by viewModels<LoginViewModel>()
@@ -27,22 +34,25 @@ class LoginFragment : BaseFragment<FragmentLoginBinding>(R.layout.fragment_login
     override fun initView() {
 
         bind {
-            fragment = this@LoginFragment
+            listener = this@LoginFragment
             logoResId = R.drawable.img_logo
             subLogoResId = R.drawable.img_sub_logo
         }
-        initGoogleLogin()
 
+        initGoogleLogin()
+        subscribeUI()
+    }
+
+    private fun subscribeUI() {
         lifecycleScope.launchWhenCreated {
             viewModel.googleLoginFlow.collectLatest { success ->
                 if (success) {
-
-//                    if (viewModel.newUserFlow.value) {
+                    if (viewModel.newUserFlow.value) {
                         navigateSelectLanguageFragment()
-                    /*} else {
-                        viewModel.navigateHomeFragment(requireActivity(), Intent.FLAG_ACTIVITY_CLEAR_TASK or Intent.FLAG_ACTIVITY_NEW_TASK)
-                    }*/
-                    Toast.makeText(requireContext(), "로그인 성공", Toast.LENGTH_SHORT).show()
+                    } else {
+                        LoginUtil.startMainActivity(requireActivity(), homeActivityClass)
+                    }
+                    Toast.makeText(requireContext(), R.string.login_success, Toast.LENGTH_SHORT).show()
                 }
             }
         }
@@ -60,9 +70,6 @@ class LoginFragment : BaseFragment<FragmentLoginBinding>(R.layout.fragment_login
                                 account.displayName ?: "",
                                 account.photoUrl?.toString() ?: "")
 
-                            Timber.tag(TAG)
-                                .d("googleLoginToken: ${account.email} ${account.givenName} ${account.displayName} ${account.photoUrl}")
-
                         } catch (e: ApiException) {
                             Timber.tag(TAG).e("Google Result Error $result")
                         }
@@ -73,18 +80,20 @@ class LoginFragment : BaseFragment<FragmentLoginBinding>(R.layout.fragment_login
             }
     }
 
-    fun googleLogin() {
-        startGoogleLoginForResult.launch(viewModel.getGoogleSignInClient().signInIntent)
-    }
-
-
     private fun navigateSelectLanguageFragment() {
         findNavController().navigate(R.id.action_loginFragment_to_selectLanguageFragment)
     }
 
+    /** [LoginFragmentListener] */
+    override fun googleLogin() {
+        startGoogleLoginForResult.launch(viewModel.getGoogleSignInClient().signInIntent)
+    }
+
     companion object {
         const val TAG = "LoginFragment"
-
-        fun newInstance() = LoginFragment()
     }
+}
+
+interface LoginFragmentListener {
+    fun googleLogin()
 }
