@@ -3,6 +3,17 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
 
+    <data>
+
+        <variable
+            name="vm"
+            type="com.soma.lof.setting.SettingViewModel" />
+
+        <variable
+            name="listener"
+            type="com.soma.lof.setting.SettingFragmentListener" />
+    </data>
+
     <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -32,6 +43,9 @@
                 android:layout_marginHorizontal="16dp"
                 android:layout_marginTop="20dp"
                 android:background="@drawable/bg_profile_area"
+                android:clickable="true"
+                android:focusable="true"
+                android:onClick="@{() -> listener.navigateModifyFragment()}"
                 android:paddingHorizontal="20dp"
                 android:paddingVertical="20dp"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -425,6 +439,7 @@
                 android:background="@drawable/bg_layout_pressed"
                 android:clickable="true"
                 android:focusable="true"
+                android:onClick="@{()-> vm.signOut()}"
                 android:paddingHorizontal="6dp"
                 android:paddingVertical="20dp"
                 app:layout_constraintEnd_toEndOf="parent"

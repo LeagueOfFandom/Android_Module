@@ -14,12 +14,19 @@ import com.soma.common.ui.base.BaseFragment
 import com.soma.common.ui.R.string.nick_text_cnt
 import com.soma.lof.login.R
 import com.soma.lof.login.databinding.FragmentNickFirstSetBinding
+import com.soma.lof.login.util.LoginUtil
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.flow.collectLatest
+import javax.inject.Inject
+import javax.inject.Named
 
 @AndroidEntryPoint
 class SetFirstNickFragment :
     BaseFragment<FragmentNickFirstSetBinding>(R.layout.fragment_nick_first_set) {
+
+    @Inject
+    @Named("SelectTeam")
+    lateinit var selectTeamActivityClass: Class<*>
 
     private val viewModel by viewModels<SetNickNameViewModel>()
 
@@ -57,11 +64,16 @@ class SetFirstNickFragment :
         lifecycleScope.launchWhenStarted {
             viewModel.nickNameSetSuccess.collectLatest {
                 if (it) {
-                    viewModel.navigateSelectTeam(requireActivity(), Intent.FLAG_ACTIVITY_CLEAR_TASK or Intent.FLAG_ACTIVITY_NEW_TASK)
+                    navigateToSelectTeam()
                 }
             }
         }
     }
+
+    private fun navigateToSelectTeam() {
+        LoginUtil.startSelectTeamActivity(requireActivity(), selectTeamActivityClass)
+    }
+
 
     private fun validationNickName(nickName: String): Boolean {
         if (nickName.length < 3) {

@@ -1,5 +1,6 @@
 package com.soma.common.ui.util
 
+import android.app.Activity
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
@@ -12,12 +13,11 @@ import com.soma.common.ui.presentation.match_info.MatchPreviewImageVH
 import com.soma.common.ui.presentation.match_info.MatchPreviewTextVH
 import com.soma.common.ui.presentation.match_up.*
 import com.soma.lof.core.model.entity.ViewType
-import timber.log.Timber
 
 object CommonVHFactory {
-    fun createViewHolder(parent: ViewGroup, viewType: Int): CommonVH {
+    fun createViewHolder(parent: ViewGroup, viewType: Int, activity: Activity? = null): CommonVH {
         return when(viewType) {
-            ViewType.HOME_MATCH_TITLE_VIEW.ordinal -> HomeMatchTitleLineVH(getViewDataBinding(parent, R.layout.item_home_match_title_line))
+            ViewType.HOME_MATCH_TITLE_VIEW.ordinal -> HomeMatchTitleLineVH(getViewDataBinding(parent, R.layout.item_home_match_title_line), activity)
             ViewType.MATCH_SCHEDULE_VIEW.ordinal -> MatchScheduleVH(getViewDataBinding(parent, R.layout.item_match_schedule))
             ViewType.LIVE_VIEW.ordinal -> MatchLiveVH(getViewDataBinding(parent, R.layout.item_match_live))
 

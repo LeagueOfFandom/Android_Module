@@ -14,7 +14,6 @@ import com.soma.lof.select_team.R
 import com.soma.lof.select_team.databinding.ItemSelectTeamBinding
 
 class SelectTeamListAdapter(
-    //private val whenItemClicked: () -> Unit,
     private val viewModel: SelectTeamViewModel,
     private val pos: Int
 ) : ListAdapter<TeamInfo, SelectTeamViewHolder>(DiffCallback) {

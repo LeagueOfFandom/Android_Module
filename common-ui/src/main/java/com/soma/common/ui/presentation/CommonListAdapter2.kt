@@ -1,16 +1,17 @@
 package com.soma.common.ui.presentation
 
+import android.app.Activity
 import android.view.ViewGroup
 import androidx.recyclerview.widget.ListAdapter
 import com.soma.common.ui.util.CommonVHFactory
 import com.soma.lof.core.model.dto.CommonItem
 import com.soma.lof.core.model.entity.ViewType
 
-class CommonListAdapter2 : ListAdapter<CommonItem, CommonVH>(CommonItemDiffUtilCallback()){
+class CommonListAdapter2(private val activity: Activity? = null) : ListAdapter<CommonItem, CommonVH>(CommonItemDiffUtilCallback()){
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): CommonVH {
         /* 새로운 뷰타입이 생길 때마다 분기를 추가 */
-        return CommonVHFactory.createViewHolder(parent, viewType)
+        return CommonVHFactory.createViewHolder(parent, viewType, activity)
     }
 
     /* CommonViewType에서 해당 data의 viewType의 ordinal(인덱스)를 반환  */

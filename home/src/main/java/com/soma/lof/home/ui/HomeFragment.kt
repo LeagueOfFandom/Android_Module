@@ -25,7 +25,7 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>(R.layout.fragment_home) {
     override fun initView() {
 
         homeBannerAdapter = HomeBannerAdapter(this@HomeFragment, viewModel)
-        commonListAdapter = CommonListAdapter2()
+        commonListAdapter = CommonListAdapter2(requireActivity())
 
         bind {
             vm = viewModel

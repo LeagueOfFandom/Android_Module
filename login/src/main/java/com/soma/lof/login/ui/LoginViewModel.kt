@@ -1,6 +1,5 @@
 package com.soma.lof.login.ui
 
-import android.app.Activity
 import android.app.Application
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.viewModelScope
@@ -8,7 +7,6 @@ import com.google.android.gms.auth.api.signin.GoogleSignIn
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount
 import com.google.android.gms.auth.api.signin.GoogleSignInClient
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions
-import com.soma.common.ui.route.FeatureHomeRouteContract
 import com.soma.lof.core.model.dto.CreateUserRequest
 import com.soma.lof.core.result.data
 import com.soma.lof.domain.usecase.DataStoreUseCase
@@ -26,7 +24,6 @@ class LoginViewModel @Inject constructor(
     application: Application,
     private val dataStoreUseCase: DataStoreUseCase,
     private val userUseCase: UserUseCase,
-    private val featureHomeRouteContract: FeatureHomeRouteContract
 ) : AndroidViewModel(application) {
 
     private var mGoogleSignInClient: GoogleSignInClient //
@@ -64,17 +61,6 @@ class LoginViewModel @Inject constructor(
                     googleLoginFlow.value = true
                 }
             }
-        }
-    }
-
-    fun navigateHomeFragment(activity: Activity, vararg flag: Int) {
-        featureHomeRouteContract.present(activity, flag)
-    }
-
-    fun testScenario() {
-        viewModelScope.launch {
-            dataStoreUseCase.editJwtToken("test")
-            googleLoginFlow.value = true
         }
     }
 

@@ -52,7 +52,8 @@
             android:textColor="@color/white"
             app:layout_constraintBottom_toBottomOf="@id/home_match_title"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="@id/home_match_title" />
+            app:layout_constraintTop_toTopOf="@id/home_match_title"
+            android:onClick="@{() -> vh.navigateSelectTeam()}"/>
     </androidx.constraintlayout.widget.ConstraintLayout>
 
 </layout>
