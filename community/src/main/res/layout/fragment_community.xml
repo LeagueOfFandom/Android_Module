@@ -6,12 +6,16 @@
     <data>
 
         <variable
-            name="fragment"
-            type="com.soma.lof.community.CommunityFragment" />
+            name="listener"
+            type="com.soma.lof.community.CommunityFragmentListener" />
 
         <variable
             name="adapter"
             type="com.soma.lof.community.PostAdapter" />
+
+        <variable
+            name="itemDecoration"
+            type="com.soma.lof.community.PostItemDecoration" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -43,6 +47,7 @@
             android:paddingHorizontal="10dp"
             android:paddingVertical="7dp"
             android:translationZ="1dp"
+            android:onClick="@{() -> listener.navigatePostWriteFragment() }"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent">
@@ -78,6 +83,7 @@
             android:layout_marginHorizontal="16dp"
             android:layout_marginTop="20dp"
             android:adapter="@{adapter}"
+            itemDecoration="@{itemDecoration}"
             android:orientation="vertical"
             android:paddingBottom="10dp"
             app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"

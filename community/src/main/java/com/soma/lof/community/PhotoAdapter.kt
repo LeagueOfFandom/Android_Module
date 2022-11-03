@@ -7,14 +7,12 @@ import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.soma.lof.community.databinding.ItemPhotoBinding
 import com.soma.lof.core.model.entity.PhotoItem
-import timber.log.Timber
 
 class PhotoAdapter : ListAdapter<PhotoItem, PhotoAdapter.ViewHolder>(photoAdapterDiffUtil) {
 
     inner class ViewHolder(private val binding: ItemPhotoBinding) : RecyclerView.ViewHolder(binding.root) {
         fun bind(item: PhotoItem) {
             binding.item = item
-            Timber.d("photo item: ${item}")
         }
     }
 
