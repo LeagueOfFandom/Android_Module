@@ -10,8 +10,6 @@ import com.soma.lof.match.R
 import com.soma.lof.match.databinding.FragmentMatchBinding
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.flow.collectLatest
-import java.text.SimpleDateFormat
-import java.util.*
 
 @AndroidEntryPoint
 class MatchFragment : BaseFragment<FragmentMatchBinding>(R.layout.fragment_match) {
@@ -35,24 +33,6 @@ class MatchFragment : BaseFragment<FragmentMatchBinding>(R.layout.fragment_match
         }
 
         // API 상의 후 변경 예정
-        binding.matchMonth.text = convertTimestampToMonthDate()
-    }
-
-    private fun convertTimestampToMonthDate() : String{
-        val currentTime = System.currentTimeMillis()
-        val sdf = SimpleDateFormat("yyyy-MM-dd", Locale.KOREA)
-        return sdf.format(currentTime)
-    }
-
-    private fun convertTimestampToDate() : String{
-        val currentTime = System.currentTimeMillis()
-        val sdf = SimpleDateFormat("yyyy-MM-dd", Locale.KOREA)
-        return sdf.format(currentTime)
-    }
-
-    companion object {
-        const val TAG = "MatchFragment"
-
-        fun newInstance(): Fragment = MatchFragment()
+        binding.matchMonth.text = viewModel.todayDate.value
     }
 }

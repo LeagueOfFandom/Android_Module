@@ -22,22 +22,6 @@ class MatchPreviewFragment() : BaseFragment<FragmentMatchPreviewBinding>(R.layou
         }
     }
 
-//        matchInfoPreviewAdapter = MatchInfoPreviewAdapter(viewModel)
-//        binding.matchPreviewRv.apply {
-//            setHasFixedSize(true)
-//            layoutManager = LinearLayoutManager(requireContext())
-//            adapter = matchInfoPreviewAdapter
-//            addItemDecoration(DividerItemDecoration(requireContext(), DividerItemDecoration.VERTICAL))
-//        }
-
-//        viewModel.matchInfoSetData.observe(viewLifecycleOwner) {
-//            it?.let {
-//                Log.d("MatchPreviewFragment", "onViewCreated: 변경")
-//                matchInfoPreviewAdapter.notifyDataSetChanged()
-//            }
-//        }
-
-
     companion object {
         fun newInstance(): Fragment = MatchPreviewFragment()
 

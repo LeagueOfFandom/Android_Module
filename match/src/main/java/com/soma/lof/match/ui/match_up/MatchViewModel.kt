@@ -56,4 +56,10 @@ class MatchViewModel @Inject constructor(
 
         return sdf.format(currentTime)
     }
+
+    private fun convertTimestampToDate() : String{
+        val currentTime = System.currentTimeMillis()
+        val sdf = SimpleDateFormat("yyyy-MM-dd", Locale.KOREA)
+        return sdf.format(currentTime)
+    }
 }
