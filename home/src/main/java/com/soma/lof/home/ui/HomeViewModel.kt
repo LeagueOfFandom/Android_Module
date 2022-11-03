@@ -2,8 +2,8 @@ package com.soma.lof.home.ui
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.soma.lof.domain.model.HomeModel
 import com.soma.lof.core.result.UiState
+import com.soma.lof.domain.model.HomeModel
 import com.soma.lof.domain.usecase.DataStoreUseCase
 import com.soma.lof.domain.usecase.HomeUseCase
 import dagger.hilt.android.lifecycle.HiltViewModel

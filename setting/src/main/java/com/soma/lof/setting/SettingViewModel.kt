@@ -2,14 +2,11 @@ package com.soma.lof.setting
 
 import android.app.Activity
 import android.app.Application
-import android.content.Intent
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.viewModelScope
 import com.google.android.gms.auth.api.signin.GoogleSignIn
 import com.google.android.gms.auth.api.signin.GoogleSignInClient
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions
-import com.soma.common.ui.route.FeatureLoginRouteContract
-import com.soma.common.ui.route.FeatureSelectTeamRouteContract
 import com.soma.lof.core.result.UiState
 import com.soma.lof.domain.model.SettingModel
 import com.soma.lof.domain.usecase.DataStoreUseCase
@@ -22,15 +19,14 @@ import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
+import timber.log.Timber
 import javax.inject.Inject
 
 @HiltViewModel
 class SettingViewModel @Inject constructor(
     application: Application,
     private val settingUseCase: SettingUseCase,
-    private val featureLoginRouteContract: FeatureLoginRouteContract,
     private val dataStoreUseCase: DataStoreUseCase,
-    private val featureSelectTeamRouteContract: FeatureSelectTeamRouteContract
 ) : AndroidViewModel(application) {
 
     private var mGoogleSignInClient: GoogleSignInClient
@@ -38,6 +34,7 @@ class SettingViewModel @Inject constructor(
     private val _settingData = MutableStateFlow<UiState<SettingModel>>(UiState.Loading)
     val settingData: StateFlow<UiState<SettingModel>> get() = _settingData
 
+    val signOutFlow = MutableStateFlow(false)
 
     init {
         val gso = GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
@@ -67,18 +64,12 @@ class SettingViewModel @Inject constructor(
         }
     }
 
-    fun signOut(activity: Activity) {
+    fun signOut() {
         mGoogleSignInClient.signOut().addOnCompleteListener {
-            viewModelScope.launch {
-                withContext(Dispatchers.Default) {
-                    dataStoreUseCase.removeJwtToken()
-                    featureLoginRouteContract.present(activity, intArrayOf(Intent.FLAG_ACTIVITY_CLEAR_TASK, Intent.FLAG_ACTIVITY_NEW_TASK))
-                }
+            viewModelScope.launch(Dispatchers.IO) {
+                dataStoreUseCase.removeJwtToken()
+                signOutFlow.value = true
             }
         }
-    }
-
-    fun selectTeam(activity: Activity) {
-        featureSelectTeamRouteContract.present(activity,  intArrayOf(Intent.FLAG_ACTIVITY_NEW_TASK))
     }
 }

@@ -4,7 +4,6 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <data>
-
         <variable
             name="vm"
             type="com.soma.lof.home.ui.HomeViewModel" />
@@ -12,10 +11,6 @@
         <variable
             name="rvAdapter"
             type="com.soma.common.ui.presentation.CommonListAdapter2" />
-
-        <variable
-            name="fragment"
-            type="com.soma.lof.home.ui.HomeFragment" />
     </data>
 
     <androidx.core.widget.NestedScrollView

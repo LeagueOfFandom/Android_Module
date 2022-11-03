@@ -3,6 +3,13 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
 
+    <data>
+
+        <variable
+            name="listener"
+            type="com.soma.lof.login.ui.SetFirstNickFragment" />
+    </data>
+
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -18,25 +25,25 @@
             android:textSize="26sp"
             android:textStyle="bold"
             app:layout_constraintBottom_toTopOf="@id/nickname_complete_btn"
+            app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.3"
-            app:layout_constraintStart_toStartOf="parent"/>
+            app:layout_constraintVertical_bias="0.3" />
 
         <androidx.appcompat.widget.AppCompatEditText
             android:id="@+id/nick_input_field"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="30dp"
+            android:ellipsize="end"
+            android:ems="16"
             android:hint="@string/nick_first_hint"
+            android:inputType="text"
+            android:maxLength="16"
+            android:maxLines="1"
             android:paddingHorizontal="10dp"
             android:paddingBottom="20dp"
             android:textColor="@color/black"
             android:textSize="20sp"
-            android:maxLines="1"
-            android:ellipsize="end"
-            android:ems="16"
-            android:maxLength="16"
-            android:inputType="text"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/first_nick_title" />
@@ -45,10 +52,10 @@
             android:id="@+id/nick_input_text_cnt"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            tools:text="@{@string/nick_text_cnt(0, 16)}"
-            app:layout_constraintEnd_toEndOf="@id/nick_input_field"
+            android:layout_marginEnd="15dp"
             app:layout_constraintBaseline_toBaselineOf="@id/nick_input_field"
-            android:layout_marginEnd="15dp"/>
+            app:layout_constraintEnd_toEndOf="@id/nick_input_field"
+            tools:text="@{@string/nick_text_cnt(0, 16)}" />
 
         <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/nickname_complete_btn"
@@ -57,6 +64,7 @@
             android:background="@drawable/bg_select_btn"
             android:enabled="false"
             android:gravity="center"
+            android:onClick="@{() -> listener.checkInputNickname()}"
             android:text="@string/login_module_continue"
             android:textColor="@color/white"
             android:textSize="16sp"

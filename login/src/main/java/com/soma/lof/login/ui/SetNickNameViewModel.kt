@@ -1,9 +1,7 @@
 package com.soma.lof.login.ui
 
-import android.app.Activity
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.soma.common.ui.route.FeatureSelectTeamRouteContract
 import com.soma.lof.domain.usecase.DataStoreUseCase
 import com.soma.lof.domain.usecase.UserUseCase
 import dagger.hilt.android.lifecycle.HiltViewModel
@@ -16,7 +14,6 @@ import javax.inject.Inject
 
 @HiltViewModel
 class SetNickNameViewModel @Inject constructor(
-    private val featureSelectTeamRouteContract: FeatureSelectTeamRouteContract,
     private val userUseCase: UserUseCase,
     private val dataStoreUseCase: DataStoreUseCase
 ): ViewModel() {
@@ -34,9 +31,5 @@ class SetNickNameViewModel @Inject constructor(
                 }
             }
         }
-    }
-
-    fun navigateSelectTeam(activity: Activity, vararg flag: Int) {
-        featureSelectTeamRouteContract.present(activity, flag)
     }
 }

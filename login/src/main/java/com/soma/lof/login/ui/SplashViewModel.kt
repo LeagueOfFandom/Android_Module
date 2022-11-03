@@ -1,10 +1,8 @@
 package com.soma.lof.login.ui
 
-import android.app.Activity
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.google.firebase.messaging.FirebaseMessaging
-import com.soma.common.ui.route.FeatureHomeRouteContract
 import com.soma.lof.domain.usecase.DataStoreUseCase
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
@@ -16,7 +14,6 @@ import javax.inject.Inject
 
 @HiltViewModel
 class SplashViewModel @Inject constructor(
-    private val featureHomeRouteContract: FeatureHomeRouteContract,
     private val dataStoreUseCase: DataStoreUseCase,
 ) : ViewModel() {
 
@@ -44,10 +41,6 @@ class SplashViewModel @Inject constructor(
                 autoSignIn.value = true
             }
         }
-    }
-
-    fun navigateHome(activity: Activity, vararg flag: Int) {
-        featureHomeRouteContract.present(activity, flag)
     }
 
     companion object {

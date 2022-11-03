@@ -1,6 +1,5 @@
 package com.soma.lof.match.ui.match_info
 
-import android.util.Log
 import androidx.fragment.app.viewModels
 import com.soma.common.ui.base.BaseFragment
 import com.soma.lof.match.R
@@ -12,7 +11,6 @@ class MatchScheduleInfoFragment : BaseFragment<FragmentMatchScheduleInfoBinding>
 
     private val viewModel: MatchInfoViewModel by viewModels()
 
-
     override fun initView() {
         bind {
             data = viewModel.matchInfo.value.mainInfo
@@ -21,13 +19,11 @@ class MatchScheduleInfoFragment : BaseFragment<FragmentMatchScheduleInfoBinding>
                 lifecycle,
             )
         }
+
     }
 
     companion object {
-
         @JvmStatic
         fun newInstance() = MatchScheduleInfoFragment()
     }
-
-
 }

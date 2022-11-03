@@ -1,5 +1,6 @@
 package com.soma.lof.select_team.ui
 
+import android.content.Intent
 import android.os.Bundle
 import androidx.activity.viewModels
 import androidx.lifecycle.lifecycleScope
@@ -10,6 +11,8 @@ import com.soma.lof.select_team.R
 import com.soma.lof.select_team.databinding.ActivitySelectTeamBinding
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.flow.collectLatest
+import javax.inject.Inject
+import javax.inject.Named
 
 @AndroidEntryPoint
 class SelectTeamActivity : BaseActivity<ActivitySelectTeamBinding>(R.layout.activity_select_team) {
@@ -19,12 +22,15 @@ class SelectTeamActivity : BaseActivity<ActivitySelectTeamBinding>(R.layout.acti
         SelectTeamLeagueAdapter(this@SelectTeamActivity, viewModel)
     }
 
+    @Inject
+    @Named("Main")
+    lateinit var mainActivityClass: Class<*>
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         supportActionBar?.hide()
 
         bind {
-            activity = this@SelectTeamActivity
             vm = viewModel
         }
 
@@ -42,10 +48,19 @@ class SelectTeamActivity : BaseActivity<ActivitySelectTeamBinding>(R.layout.acti
                 }
             }
         }
+
+        lifecycleScope.launchWhenStarted {
+            viewModel.navigateHome.collectLatest { isNavigate ->
+                if (isNavigate) navigateHome()
+            }
+        }
     }
 
-    private fun navigateMain() {
-        viewModel.navigateHome(this@SelectTeamActivity)
+    private fun navigateHome() {
+        val intent = Intent(this@SelectTeamActivity, mainActivityClass).apply {
+            flags = Intent.FLAG_ACTIVITY_CLEAR_TASK or Intent.FLAG_ACTIVITY_NEW_TASK
+        }
+        startActivity(intent)
     }
 
     companion object {

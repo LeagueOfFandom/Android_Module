@@ -1,10 +1,7 @@
 package com.soma.lof.select_team.ui
 
-import android.app.Activity
-import android.content.Intent
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.soma.common.ui.route.FeatureHomeRouteContract
 import com.soma.lof.core.model.entity.TeamInfo
 import com.soma.lof.core.result.UiState
 import com.soma.lof.core.result.data
@@ -23,7 +20,6 @@ import javax.inject.Inject
 class SelectTeamViewModel @Inject constructor(
     private val teamUseCase: SelectTeamUseCase,
     private val dataStoreUseCase: DataStoreUseCase,
-    private val featureHomeRouteContract: FeatureHomeRouteContract,
 ) : ViewModel(){
 
     private val _tabItems: MutableStateFlow<List<String>> = MutableStateFlow(emptyList())
@@ -39,6 +35,8 @@ class SelectTeamViewModel @Inject constructor(
     private val _selectTeamData: MutableStateFlow<UiState<SelectTeamModel>> =
         MutableStateFlow(UiState.Loading)
     val selectTeamData: StateFlow<UiState<SelectTeamModel>> get() = _selectTeamData
+
+    val navigateHome = MutableStateFlow(false)
 
     init {
         viewModelScope.launch {
@@ -62,24 +60,15 @@ class SelectTeamViewModel @Inject constructor(
         _teamCnt.value -= 1
     }
 
-    fun submitUserTeamList(activity: Activity) {
+    fun submitUserTeamList() {
         val userTeamIdList = userTeamInfo.value.map { it.teamId }
         viewModelScope.launch {
             val jwtToken = dataStoreUseCase.jwtToken.first()
             if (jwtToken != null) {
                 teamUseCase.postSelectTeamData(jwtToken, userTeamIdList).collectLatest {
-                    navigateHome(activity)
+                    navigateHome.value = true
                 }
             }
         }
-    }
-
-    fun navigateHome(activity: Activity) {
-        featureHomeRouteContract.present(activity,
-            intArrayOf(Intent.FLAG_ACTIVITY_CLEAR_TASK, Intent.FLAG_ACTIVITY_NEW_TASK))
-    }
-
-    companion object {
-        private val TAG = "SelectTeamViewModel"
     }
 }

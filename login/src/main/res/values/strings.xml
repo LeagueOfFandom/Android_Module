@@ -10,4 +10,7 @@
     <string name="nick_first_hint">nickname</string>
 
     <string name="login_module_continue">Continue</string>
+
+    <string name="login_success">Login Success</string>
+    <string name="Language">Language</string>
 </resources>

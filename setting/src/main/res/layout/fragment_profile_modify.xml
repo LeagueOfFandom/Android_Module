@@ -7,6 +7,10 @@
         <variable
             name="vm"
             type="com.soma.lof.setting.ModifyProfileViewModel" />
+
+        <variable
+            name="listener"
+            type="com.soma.lof.setting.ModifyProfileFragmentListener" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -46,7 +50,8 @@
             android:textColor="@color/white"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent" />
+            app:layout_constraintStart_toStartOf="parent"
+            android:onClick="@{()-> listener.checkInputNickname()}"/>
 
         <androidx.appcompat.widget.AppCompatImageView
             android:id="@+id/modify_profile_image"

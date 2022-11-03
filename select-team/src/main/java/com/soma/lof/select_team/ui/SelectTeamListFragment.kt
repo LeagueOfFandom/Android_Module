@@ -15,9 +15,6 @@ class SelectTeamListFragment @Inject constructor() : BaseFragment<FragmentSelect
 
     private val viewModel by activityViewModels<SelectTeamViewModel>()
     private lateinit var selectTeamListAdapter: SelectTeamListAdapter
-    private val teamItemDecoration: TeamItemDecoration by lazy {
-        TeamItemDecoration()
-    }
 
     override fun initView() {
         val position = arguments?.getInt(POSITION_KEY) ?: 0
@@ -28,7 +25,7 @@ class SelectTeamListFragment @Inject constructor() : BaseFragment<FragmentSelect
             vm = viewModel
             pos = position
             adapter = selectTeamListAdapter
-            itemDecoration = teamItemDecoration
+            itemDecoration = TeamItemDecoration()
         }
     }
 

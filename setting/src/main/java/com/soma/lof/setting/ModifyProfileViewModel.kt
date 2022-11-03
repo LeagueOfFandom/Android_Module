@@ -2,8 +2,8 @@ package com.soma.lof.setting
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.soma.lof.domain.usecase.DataStoreUseCase
 import com.soma.lof.core.result.UiState
+import com.soma.lof.domain.usecase.DataStoreUseCase
 import com.soma.lof.domain.usecase.UserUseCase
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.Dispatchers
@@ -42,7 +42,7 @@ class ModifyProfileViewModel @Inject constructor(
     fun setNickName(nickName: String) {
         viewModelScope.launch(Dispatchers.IO) {
             val jwtToken = dataStoreUseCase.jwtToken.first()
-            Timber.tag("Modify").d("setNickName: %s", nickName)
+            Timber.tag("Modify").d("SetNickName: %s", nickName)
             if (jwtToken != null) {
                 userUseCase.setUserNickName(jwtToken, nickName).collectLatest {
                     _nickNameSetSuccess.value = true

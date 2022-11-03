@@ -4,9 +4,10 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <data>
+
         <variable
-            name="fragment"
-            type="com.soma.lof.login.ui.SelectLanguageFragment" />
+            name="listener"
+            type="com.soma.lof.login.ui.SelectLanguageFragmentListener" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -23,7 +24,8 @@
             app:layout_constraintBottom_toTopOf="@id/select_language_btn"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.3" />
+            app:layout_constraintVertical_bias="0.3"
+            android:contentDescription="@string/Language"/>
 
         <TextView
             android:id="@+id/select_language_title"
@@ -52,6 +54,7 @@
             android:background="@drawable/bg_select_btn"
             android:enabled="false"
             android:gravity="center"
+            android:onClick="@{() -> listener.navigateSetNickName()}"
             android:text="@string/login_module_continue"
             android:textColor="@color/white"
             android:textSize="16sp"
