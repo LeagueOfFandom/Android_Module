@@ -97,7 +97,7 @@ object Dependencies {
     }
 
     object Firebase {
-//        val bom by lazy { "com.google.firebase:firebase-bom:30.3.1" }
+        val bom by lazy { "com.google.firebase:firebase-bom:30.3.1" }
         val analytics by lazy { "com.google.firebase:firebase-analytics-ktx:21.1.0" }
         val cloudMessaging by lazy { "com.google.firebase:firebase-messaging-ktx:23.0.7" }
         val crashlytics by lazy { "com.google.firebase:firebase-crashlytics-ktx" }

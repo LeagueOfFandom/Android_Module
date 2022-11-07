@@ -7,6 +7,7 @@ plugins {
     id("org.jetbrains.kotlin.jvm") version "1.6.10" apply false
     id("com.google.gms.google-services") version Versions.googleService apply false
     id("androidx.navigation.safeargs.kotlin") version "2.4.1" apply false
+    id("com.google.firebase.crashlytics") version "2.9.2" apply false
 }
 
 tasks.register("clean",Delete::class){

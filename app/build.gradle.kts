@@ -4,6 +4,7 @@ plugins {
     id("com.google.gms.google-services")
     kotlin("kapt")
     id("dagger.hilt.android.plugin")
+    id("com.google.firebase.crashlytics")
 }
 
 android {
@@ -51,6 +52,8 @@ dependencies {
     implementation(project(":common-ui"))
 
     //Firebase
+    implementation(platform(Dependencies.firebase.bom))
+    implementation(Dependencies.firebase.crashlytics)
     implementation(Dependencies.firebase.analytics)
     implementation(Dependencies.firebase.cloudMessaging)
 
