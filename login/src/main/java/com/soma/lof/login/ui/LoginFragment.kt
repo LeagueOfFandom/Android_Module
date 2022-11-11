@@ -72,7 +72,7 @@ class LoginFragment : BaseFragment<FragmentLoginBinding>(R.layout.fragment_login
 
                         } catch (e: ApiException) {
                             Timber.tag(TAG).e("Google Result Error $result")
-                            shortShowToast("Google Result Code: ${result.resultCode}")
+                            shortShowToast("Data Google Result Code: ${result.resultCode}")
                         }
                     }
                 } else {

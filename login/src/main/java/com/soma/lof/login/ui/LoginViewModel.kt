@@ -11,7 +11,6 @@ import com.soma.lof.core.model.dto.CreateUserRequest
 import com.soma.lof.core.result.data
 import com.soma.lof.domain.usecase.DataStoreUseCase
 import com.soma.lof.domain.usecase.UserUseCase
-import com.soma.login.google_login_web_key
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.collectLatest
@@ -34,7 +33,6 @@ class LoginViewModel @Inject constructor(
 
     init {
         val gso = GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
-            .requestIdToken(google_login_web_key)
             .requestEmail()
             .build()
 
