@@ -2,6 +2,8 @@ package com.soma.lof
 
 import android.content.Intent
 import android.os.Bundle
+import androidx.core.os.bundleOf
+import androidx.navigation.findNavController
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.NavigationUI
 import com.soma.common.ui.util.NavigationFlow
@@ -49,5 +51,4 @@ class MainActivity : BaseActivity<ActivityMainBinding>(R.layout.activity_main), 
         }
         startActivity(intent)
     }
-
 }

@@ -28,9 +28,8 @@ fun NavController.deepLinkNavigateTo(
 
 sealed class DeepLinkDestination(val address: String) {
     object Match {
-        object Main : DeepLinkDestination("lof://home")
-        object Schedule : DeepLinkDestination("lof://match_schedule_info")
-        object Result : DeepLinkDestination("lof://match_result_info")
+        class Schedule(matchId: Long) : DeepLinkDestination("lof://match_schedule_info/${matchId}")
+        class Result(matchId: Long) : DeepLinkDestination("lof://match_result_info/${matchId}")
     }
     object Home : DeepLinkDestination("lof://home")
 }

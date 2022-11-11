@@ -14,10 +14,18 @@
             app:uri="lof://match"/>
         <action
             android:id="@+id/action_matchFragment_to_matchScheduleInfoFragment"
-            app:destination="@id/matchScheduleInfoFragment" />
+            app:destination="@id/matchScheduleInfoFragment" >
+            <argument
+                android:name="matchId"
+                app:argType="long" />
+        </action>
         <action
             android:id="@+id/action_matchFragment_to_matchResultInfoFragment"
-            app:destination="@id/matchResultInfoFragment" />
+            app:destination="@id/matchResultInfoFragment" >
+            <argument
+                android:name="matchId"
+                app:argType="long" />
+        </action>
     </fragment>
 
     <fragment
@@ -26,8 +34,12 @@
         android:label="MatchInfoFragment"
         tools:layout="@layout/fragment_match_schedule_info">
 
+        <argument
+            android:name="matchId"
+            app:argType="long" />
+
         <deepLink
-            app:uri="lof://match_schedule_info"/>
+            app:uri="lof://match_schedule_info/{matchId}"/>
     </fragment>
 
     <fragment
@@ -35,8 +47,12 @@
         android:name="com.soma.lof.match.ui.match_info.MatchResultInfoFragment"
         android:label="MatchResultInfoFragment" >
 
+        <argument
+            android:name="matchId"
+            app:argType="long" />
+
         <deepLink
-            app:uri="lof://match_result_info"/>
+            app:uri="lof://match_result_info/{matchId}"/>
     </fragment>
 
 </navigation>

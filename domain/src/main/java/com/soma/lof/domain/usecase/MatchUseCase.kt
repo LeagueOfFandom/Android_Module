@@ -5,10 +5,12 @@ import com.soma.lof.domain.util.CommonItemTranslator.toCommonItemList
 import com.soma.lof.core.data.repository.MatchRepository
 import com.soma.lof.core.model.dto.CommonItem
 import com.soma.lof.core.model.dto.CommonItemResponse
+import com.soma.lof.core.model.dto.MatchDetailResponse
 import com.soma.lof.core.model.dto.MatchInfoDummyResponse
 import com.soma.lof.core.result.UiState
 import com.soma.lof.core.result.data
 import kotlinx.coroutines.flow.Flow
+import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.flow.flow
 import javax.inject.Inject
 
@@ -34,5 +36,16 @@ class MatchUseCase @Inject constructor(
 
     fun getMatchInfoDataTest(): MatchInfoDummyResponse {
         return matchRepository.getMatchInfoDataTest()
+    }
+
+    suspend fun getMatchDetail(
+        jwtToken: String,
+        matchId: Long
+    ): Flow<UiState<MatchDetailResponse>> {
+        return flow {
+            matchRepository.getMatchDetail(jwtToken, matchId).collect {
+                emit(UiState.Success(it.data ?: MatchDetailResponse()))
+            }
+        }
     }
 }

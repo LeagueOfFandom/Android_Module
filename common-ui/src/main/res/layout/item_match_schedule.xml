@@ -20,7 +20,7 @@
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="16dp"
         android:background="@drawable/bg_layout_pressed"
-        android:onClick="@{() -> view.navigateMatchSchedule()}">
+        android:onClick="@{() -> view.navigateMatchSchedule(viewObject.matchId)}">
 
         <androidx.constraintlayout.widget.Guideline
             android:id="@+id/item_match_schedule_home_name_gl"

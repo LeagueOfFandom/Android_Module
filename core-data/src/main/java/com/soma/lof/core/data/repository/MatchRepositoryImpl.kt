@@ -2,6 +2,7 @@ package com.soma.lof.core.data.repository
 
 import com.soma.lof.core.model.dto.CommonItem
 import com.soma.lof.core.model.dto.CommonItemResponse
+import com.soma.lof.core.model.dto.MatchDetailResponse
 import com.soma.lof.core.model.dto.MatchInfoDummyResponse
 import com.soma.lof.core.model.entity.*
 import com.soma.lof.core.network.exception.NetworkFailureException
@@ -93,16 +94,16 @@ class MatchRepositoryImpl @Inject constructor(
                 "MATCH_PREVIEW_TEXT_VIEW",
                 MatchPreviewTextVO(
                     text = "KDA",
-                    blueData = "14/5/40",
-                    redData = "5/14/15"
+                    blueString = "14/5/40",
+                    redString = "5/14/15"
                 )
             ),
             CommonItem(
                 "MATCH_PREVIEW_TEXT_VIEW",
                 MatchPreviewTextVO(
                     text = "Text",
-                    blueData = "1230",
-                    redData = "555/15"
+                    blueString = "1230",
+                    redString = "555/15"
                 )
             ),
             CommonItem(
@@ -206,4 +207,17 @@ class MatchRepositoryImpl @Inject constructor(
     override fun getMatchInfoDataTest(): MatchInfoDummyResponse {
         return matchInfoDummy
     }
+
+    override suspend fun getMatchDetail(
+        jwtToken: String,
+        matchId: Long,
+    ): Flow<UiState<MatchDetailResponse>> {
+        return flow {
+            val matchDetailResponse = matchService.getMatchDetail(jwtToken, matchId)
+            emit(UiState.Success(matchDetailResponse))
+        }.catch {
+            throw NetworkFailureException("Network Error ${it.message}")
+        }
+    }
+
 }
