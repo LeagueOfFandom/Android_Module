@@ -15,8 +15,8 @@ import javax.inject.Singleton
 @Module
 @InstallIn(SingletonComponent::class)
 object NetworkModule {
-//        private val BASE_URL = "https://leagueoffandom.site" //실 서버
-    private val BASE_URL = "http://43.200.9.89" // 개발 서버
+        private val BASE_URL = "https://leagueoffandom.site" //실 서버
+//    private val BASE_URL = "http://43.200.9.89" // 개발 서버
 
     @Provides
     @Singleton
