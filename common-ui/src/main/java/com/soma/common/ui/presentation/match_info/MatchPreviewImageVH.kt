@@ -10,30 +10,41 @@ class MatchPreviewImageVH(
     private val binding: ItemMatchPreviewImageBinding,
 ) : CommonMatchInfoVH(binding) {
 
+    private lateinit var matchInfoPreviewBlueTeamImageAdapter: MatchInfoPreviewImageAdapter
+    private lateinit var matchInfoPreviewRedTeamImageAdapter: MatchInfoPreviewImageAdapter
+
     override fun bind(item: MatchPreviewCommonVO) {
         val data = item.viewImgObject as MatchPreviewImageVO
         binding.viewObject = data
 
         binding.itemMatchPreviewImageContent.text = data.text
+        matchInfoPreviewBlueTeamImageAdapter = MatchInfoPreviewImageAdapter(data.blueImgList)
+        matchInfoPreviewRedTeamImageAdapter = MatchInfoPreviewImageAdapter(data.redImgList)
+
+        binding.itemMatchPreviewImageBlueTeam.apply {
+            setHasFixedSize(true)
+            adapter = matchInfoPreviewBlueTeamImageAdapter
+        }
+
+        binding.itemMatchPreviewImageRedTeam.apply {
+            setHasFixedSize(true)
+            adapter = matchInfoPreviewRedTeamImageAdapter
+        }
 
         if (data.blueImgList.isEmpty()) {
             binding.itemMatchPreviewImageBlueSubstitute.visibility = View.VISIBLE
         } else {
             binding.itemMatchPreviewImageBlueSubstitute.visibility = View.GONE
-            binding.itemMatchPreviewImageBlueTeam.apply {
-                setHasFixedSize(true)
-                adapter = MatchInfoPreviewImageAdapter(data.blueImgList)
-            }
+            // Clear All Old Items and Input new items
+            matchInfoPreviewBlueTeamImageAdapter.notifyDataSetChanged()
         }
 
         if (data.redImgList.isEmpty()) {
             binding.itemMatchPreviewImageRedSubstitute.visibility = View.VISIBLE
         } else {
             binding.itemMatchPreviewImageRedSubstitute.visibility = View.GONE
-            binding.itemMatchPreviewImageRedTeam.apply {
-                setHasFixedSize(true)
-                adapter = MatchInfoPreviewImageAdapter(data.redImgList)
-            }
+            // Clear All Old Items and Input new items
+            matchInfoPreviewRedTeamImageAdapter.notifyDataSetChanged()
         }
     }
 }

@@ -43,7 +43,6 @@ class MatchInfoViewModel @Inject constructor(
                 matchUseCase.getMatchDetail(jwtToken, matchId).collectLatest {
                     _matchDetail.value = it
                     _matchDetailSetInfo.value = _matchDetail.value.data!!.body!!.setInfoList[currentSet]
-                    Timber.tag("check@@@").d("${_matchDetailSetInfo.value}")
                 }
             }
         }
