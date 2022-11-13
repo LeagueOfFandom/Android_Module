@@ -4,4 +4,4 @@ data class MatchPreviewCommonVO(
     val viewType: String,
     val viewStringObject: MatchPreviewTextVO?,
     val viewImgObject: MatchPreviewImageVO?,
-    )
+)

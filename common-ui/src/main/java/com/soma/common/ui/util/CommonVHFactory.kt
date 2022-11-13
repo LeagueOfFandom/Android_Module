@@ -31,9 +31,6 @@ object CommonVHFactory {
             ViewType.MATCH_RESULT_DATE_LINE.ordinal -> MatchResultDateLineVH(getViewDataBinding(parent, R.layout.item_match_result_date_line))
             ViewType.MATCH_TODAY_DATE_LINE.ordinal -> MatchTodayDateLineVH(getViewDataBinding(parent, R.layout.item_match_today_date_line))
 
-            ViewType.MATCH_PREVIEW_TEXT_VIEW.ordinal -> MatchPreviewTextVH(getViewDataBinding(parent, R.layout.item_match_preview_text))
-            ViewType.MATCH_PREVIEW_IMAGE_VIEW.ordinal -> MatchPreviewImageVH(getViewDataBinding(parent, R.layout.item_match_preview_image))
-
             ViewType.ONE_LINE_TEXT_VIEW.ordinal -> OneLineTextVH(getViewDataBinding(parent, R.layout.item_one_line_text))
 
             /* Info Fragment UI */

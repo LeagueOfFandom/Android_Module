@@ -21,19 +21,6 @@ class MatchFragment : BaseFragment<FragmentMatchBinding>(R.layout.fragment_match
 
     override fun initView() {
 
-        /*if (arguments?.getBoolean("detail") == true) {
-            requireView().findNavController().navigate(R.id.action_matchFragment_to_matchScheduleInfoFragment)
-        }*/
-
-        val matchId = arguments?.getLong("matchId")
-        if (arguments?.getBoolean("schedule") == true && matchId != null) {
-            val action = MatchFragmentDirections.actionMatchFragmentToMatchScheduleInfoFragment(matchId)
-            requireView().findNavController().navigate(action)
-        } else if (arguments?.getBoolean("result") == true && matchId != null) {
-            val action = MatchFragmentDirections.actionMatchFragmentToMatchResultInfoFragment(matchId)
-            requireView().findNavController().navigate(action)
-        }
-
         matchListAdapter = CommonListAdapter2()
 
         bind {

@@ -31,19 +31,18 @@ object ViewObjectFactory {
             ViewType.HIGHLIGHT_VIEW.ordinal -> HighLightVO(
                 data.videoList
             )
-            ViewType.MATCH_PREVIEW_TEXT_VIEW.ordinal -> MatchPreviewImageVO(
+            ViewType.MATCH_INFO_STRING_VIEW.ordinal -> MatchPreviewImageVO(
                 data.text,
                 data.blueImgList,
                 data.redImgList
             )
-            ViewType.MATCH_PREVIEW_IMAGE_VIEW.ordinal -> MatchPreviewTextVO(
+            ViewType.MATCH_INFO_IMAGE_VIEW.ordinal -> MatchPreviewTextVO(
                 data.text,
                 data.blueData,
                 data.redData
             )
 
             ViewType.ONE_LINE_TEXT_VIEW.ordinal, ViewType.TEXT_ARROW_VIEW.ordinal -> TextVO(
-
                 data.text
             )
 

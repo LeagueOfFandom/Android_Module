@@ -5,10 +5,17 @@
     tools:context=".feature.matchinfo.MatchPreviewFragment">
 
     <data>
+        <variable
+            name="vm"
+            type="com.soma.lof.match.ui.match_info.MatchInfoViewModel" />
 
         <variable
             name="adapter"
-            type="com.soma.common.ui.presentation.CommonListAdapter" />
+            type="com.soma.lof.match.ui.match_info.MatchInfoPreviewAdapter" />
+
+        <variable
+            name="itemDecoration"
+            type="com.soma.lof.match.ui.match_info.MatchInfoPreviewItemDecoration" />
     </data>
 
     <FrameLayout
@@ -22,6 +29,8 @@
             android:layout_height="wrap_content"
             android:overScrollMode="never"
             app:adapter="@{adapter}"
+            app:matchPreviewItems="@{vm.matchDetailSetInfo}"
+            app:itemDecoration="@{itemDecoration}"
             android:orientation="vertical"
             app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
             tools:listitem="@layout/item_match_preview_text" />

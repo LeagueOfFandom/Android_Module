@@ -26,12 +26,12 @@ class MatchPredictionFragment() :
 
     private fun updateChart() {
 
-        val mainData = viewModel.matchInfo.value.mainInfo
+        val mainData = viewModel.matchDetailSetInfo.value?.teamVsTeamMainInfo
         val predictionData = viewModel.matchInfo.value.prediction
         val entries = ArrayList<PieEntry>()
 
-        entries.add(PieEntry(predictionData.blueTeamWin.toFloat(), mainData.homeName))
-        entries.add(PieEntry(predictionData.redTeamWin.toFloat(), mainData.awayName))
+        entries.add(PieEntry(predictionData.blueTeamWin.toFloat(), mainData?.blueTeamAcronym))
+        entries.add(PieEntry(predictionData.redTeamWin.toFloat(), mainData?.redTeamAcronym))
 
         binding.matchPredictionChart.animateY(1000, Easing.EaseInOutQuad)
 
@@ -40,8 +40,8 @@ class MatchPredictionFragment() :
         pieDataSet.selectionShift = 5f
 
         val colors = ArrayList<Int>()
-        colors.add(Color.parseColor(Team.valueOf(mainData.homeName ?: "T1").colorRGB))
-        colors.add(Color.parseColor(Team.valueOf(mainData.awayName ?: "T1").colorRGB))
+        colors.add(Color.parseColor(Team.valueOf(mainData?.blueTeamAcronym ?: "T1").colorRGB))
+        colors.add(Color.parseColor(Team.valueOf(mainData?.redTeamAcronym ?: "T1").colorRGB))
         pieDataSet.colors = colors
 
         val pieData = PieData(pieDataSet).apply {

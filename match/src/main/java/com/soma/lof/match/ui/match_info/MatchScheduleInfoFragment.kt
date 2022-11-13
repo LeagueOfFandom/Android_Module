@@ -20,8 +20,6 @@ class MatchScheduleInfoFragment : BaseFragment<FragmentMatchScheduleInfoBinding>
             )
         }
 
-
-
     }
 
     companion object {
