@@ -3,6 +3,7 @@ package com.soma.lof.setting
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.soma.lof.core.result.UiState
+import com.soma.lof.core.result.data
 import com.soma.lof.domain.usecase.DataStoreUseCase
 import com.soma.lof.domain.usecase.UserUseCase
 import dagger.hilt.android.lifecycle.HiltViewModel

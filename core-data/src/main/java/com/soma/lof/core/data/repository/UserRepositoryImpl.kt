@@ -3,6 +3,7 @@ package com.soma.lof.core.data.repository
 import com.soma.lof.core.model.dto.CommonItemResponse
 import com.soma.lof.core.model.dto.CreateUserRequest
 import com.soma.lof.core.model.dto.CreateUserResponse
+import com.soma.lof.core.model.dto.GetUserNicknameResponse
 import com.soma.lof.core.model.entity.CommonVO
 import com.soma.lof.core.network.exception.NetworkFailureException
 import com.soma.lof.core.result.UiState
@@ -33,8 +34,8 @@ class UserRepositoryImpl @Inject constructor(
         }
     }
 
-    override suspend fun getUserNickName(jwtToken: String): Flow<UiState<String>> {
-        return flow<UiState<String>> {
+    override suspend fun getUserNickName(jwtToken: String): Flow<UiState<GetUserNicknameResponse>> {
+        return flow<UiState<GetUserNicknameResponse>> {
             emit(UiState.Success(userService.getUserNickName(jwtToken)))
         }.catch {
             throw NetworkFailureException("Network Error ${it.message}")

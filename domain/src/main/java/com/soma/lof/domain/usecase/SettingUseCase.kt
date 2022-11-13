@@ -20,7 +20,7 @@ class SettingUseCase @Inject constructor(
             emit(UiState.Loading)
             val data = SettingModel()
             userRepository.getUserNickName(jwtToken).collectLatest {
-                data.userNickName = it.data ?: ""
+                data.userNickName = it.data?.nickname ?: "Nickname Call Error"
             }
             userRepository.getUserAlarmSetting(jwtToken).collectLatest {
                 data.userAlarmSetting = it.data ?: true
