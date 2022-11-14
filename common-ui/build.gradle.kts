@@ -38,7 +38,7 @@ android {
 dependencies {
 
     api(project(":core-network"))
-    implementation(project(":core-model"))
+    api(project(":core-model"))
 
     api(Dependencies.androidX.core)
     api(Dependencies.androidX.appCompat)
@@ -59,6 +59,9 @@ dependencies {
 
     // Indicator
     api(Dependencies.library.indicator)
+
+    // EventBus
+    api(Dependencies.library.eventBus)
 
     // Test
     testImplementation(Dependencies.Test.junit)

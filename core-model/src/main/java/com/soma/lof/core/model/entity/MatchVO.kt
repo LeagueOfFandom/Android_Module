@@ -12,5 +12,6 @@ data class MatchVO(
     val isAlarm: Boolean?,
     val homeScore: Int?,
     val awayScore: Int?,
-    var isHide: Boolean = true
+    var isHide: Boolean = true,
+    var videoLink: String = ""
 ) : ViewObject()

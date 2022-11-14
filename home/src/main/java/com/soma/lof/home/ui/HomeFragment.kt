@@ -5,6 +5,8 @@ import androidx.lifecycle.lifecycleScope
 import androidx.viewpager2.widget.ViewPager2
 import com.soma.common.ui.base.BaseFragment
 import com.soma.common.ui.presentation.CommonListAdapter2
+import com.soma.lof.core.model.entity.LiveMatchScoreEvent
+import com.soma.lof.core.result.data
 import com.soma.lof.home.R
 import com.soma.lof.home.databinding.FragmentHomeBinding
 import dagger.hilt.android.AndroidEntryPoint
@@ -13,6 +15,9 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
+import org.greenrobot.eventbus.EventBus
+import org.greenrobot.eventbus.Subscribe
+import org.greenrobot.eventbus.ThreadMode
 
 @AndroidEntryPoint
 class HomeFragment : BaseFragment<FragmentHomeBinding>(R.layout.fragment_home) {
@@ -24,7 +29,7 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>(R.layout.fragment_home) {
 
     override fun initView() {
 
-        homeBannerAdapter = HomeBannerAdapter(this@HomeFragment)
+        homeBannerAdapter = HomeBannerAdapter(this@HomeFragment, viewModel.homeModelData.value.data?.bannerList?.size ?: 0)
         commonListAdapter = CommonListAdapter2(requireActivity())
 
         bind {
@@ -38,7 +43,7 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>(R.layout.fragment_home) {
 
     private fun subscribeUI() {
         lifecycleScope.launchWhenCreated {
-            viewModel.homeData.collectLatest {
+            viewModel.homeModelData.collectLatest {
                 binding.homeAdBanner.apply {
                     adapter = homeBannerAdapter
                     orientation = ViewPager2.ORIENTATION_HORIZONTAL
@@ -48,7 +53,6 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>(R.layout.fragment_home) {
             }
         }
     }
-
 
     private fun setAutoBannerPass() {
         // 홈 배너 자동 스크롤
@@ -63,6 +67,22 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>(R.layout.fragment_home) {
     private fun setPage() {
         binding.homeAdBanner.setCurrentItem(currentPage, true)
         currentPage = (currentPage + 1) % 6
+    }
+
+    /** Changes in LiveScore are detected by [EventBus] */
+    @Subscribe(threadMode = ThreadMode.MAIN)
+    fun updateLiveMatchScore(event: LiveMatchScoreEvent) {
+        viewModel.getHomeData()
+    }
+
+    override fun onStart() {
+        super.onStart()
+        EventBus.getDefault().register(this)
+    }
+
+    override fun onStop() {
+        super.onStop()
+        EventBus.getDefault().unregister(this)
     }
 
     companion object {

@@ -24,4 +24,17 @@ class HomeUseCase @Inject constructor(
         }
     }
 
+    suspend fun getFakeHomeData(
+        jwtToken: String,
+        onlyMyTeam: Boolean = false
+    ): Flow<UiState<HomeModel>> {
+        return flow {
+            emit(UiState.Loading)
+            homeRepository.getFakeMainPage(jwtToken, onlyMyTeam).collect {
+                emit(UiState.Success(HomeModel(it.data?.bannerList ?: emptyList(),
+                    it.data?.commonItemList?.toCommonItemList() ?: emptyList())))
+            }
+        }
+    }
+
 }

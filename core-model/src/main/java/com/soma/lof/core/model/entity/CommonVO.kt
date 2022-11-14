@@ -26,6 +26,8 @@ data class CommonVO(
     val homeScore: Int = 0,
     val awayScore: Int = 0,
     val status: String = "",
+    val isHide: Boolean = true,
+    val videoLink: String = "",
 
     // Highlight
     val videoList: List<String> = emptyList(),

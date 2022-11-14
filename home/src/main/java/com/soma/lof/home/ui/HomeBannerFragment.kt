@@ -15,7 +15,7 @@ class HomeBannerFragment() :
 
     override fun initView() {
         val position = arguments?.getInt(POSITION_KEY) ?: 0
-        val bannerData = viewModel.homeData.value.data?.bannerList
+        val bannerData = viewModel.homeModelData.value.data?.bannerList
         bind {
             imageUrl = bannerData?.get(position) ?: ""
         }

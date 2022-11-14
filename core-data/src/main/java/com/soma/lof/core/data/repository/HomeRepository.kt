@@ -6,4 +6,7 @@ import kotlinx.coroutines.flow.Flow
 
 interface HomeRepository {
     suspend fun getMainPage(jwtToken: String, onlyMyTeam: Boolean) : Flow<UiState<MainPageResponse>>
+
+    suspend fun getFakeMainPage(jwtToken: String, onlyMyTeam: Boolean) : Flow<UiState<MainPageResponse>>
+
 }

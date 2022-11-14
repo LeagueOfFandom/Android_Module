@@ -7,6 +7,9 @@ import androidx.core.app.NotificationCompat
 import androidx.core.app.NotificationManagerCompat
 import com.google.firebase.messaging.FirebaseMessagingService
 import com.google.firebase.messaging.RemoteMessage
+import com.soma.lof.core.model.entity.LiveMatchScoreEvent
+import com.soma.lof.home.ui.HomeFragment
+import org.greenrobot.eventbus.EventBus
 import timber.log.Timber
 
 /**
@@ -31,12 +34,15 @@ class LofFirebaseMessagingService: FirebaseMessagingService() {
             sendNotification(it.title, it.body)
         }
 
+        /**
+         * LiveScore is reflected in the [HomeFragment] in real-time
+         */
         if (message.data.isNotEmpty()) {
             val homeScore = message.data["homeScore"]
             val awayScore = message.data["awayScore"]
 
             if (homeScore != null && awayScore != null) {
-                // EventBus.getDefault().post(LiveMatchScoreEvent(homeScore.toInt(), awayScore.toInt()))
+                EventBus.getDefault().post(LiveMatchScoreEvent(homeScore.toInt(), awayScore.toInt()))
             }
         }
     }

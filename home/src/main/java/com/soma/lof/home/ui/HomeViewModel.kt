@@ -7,6 +7,7 @@ import com.soma.lof.domain.model.HomeModel
 import com.soma.lof.domain.usecase.DataStoreUseCase
 import com.soma.lof.domain.usecase.HomeUseCase
 import dagger.hilt.android.lifecycle.HiltViewModel
+import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.collectLatest
@@ -21,16 +22,35 @@ class HomeViewModel @Inject constructor(
     private val dataStoreUseCase: DataStoreUseCase
 ): ViewModel() {
 
-    private val _homeData = MutableStateFlow<UiState<HomeModel>>(UiState.Loading)
-    val homeData : StateFlow<UiState<HomeModel>> get() = _homeData
+    private val _homeModelData = MutableStateFlow<UiState<HomeModel>>(UiState.Loading)
+    val homeModelData : StateFlow<UiState<HomeModel>> get() = _homeModelData
 
     init {
+        getHomeData()
+    }
+
+    fun getHomeData() {
         viewModelScope.launch {
             val jwtToken = dataStoreUseCase.jwtToken.first()
             Timber.tag(TAG).d("jwtToken: $jwtToken")
             if (jwtToken != null) {
                 homeUseCase.getHomeData(jwtToken).collectLatest {
-                    _homeData.value = it
+                    _homeModelData.value = it
+                    Timber.tag("check@@@@").d("homeData: $it")
+                }
+            }
+        }
+    }
+
+    fun getFakeHomeData() {
+        viewModelScope.launch {
+            val jwtToken = dataStoreUseCase.jwtToken.first()
+            Timber.tag(TAG).d("jwtToken: $jwtToken")
+            if (jwtToken != null) {
+                delay(1000L)
+                homeUseCase.getFakeHomeData(jwtToken).collectLatest {
+                    _homeModelData.value = it
+                    Timber.tag("check@@@@").d("homeData: $it")
                 }
             }
         }

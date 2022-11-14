@@ -4,9 +4,10 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <data>
+
         <variable
             name="data"
-            type="com.soma.lof.core.model.entity.MatchVO" />
+            type="com.soma.lof.core.model.entity.TeamVsTeamSetInfo" />
 
         <variable
             name="vpAdapter"
@@ -120,9 +121,9 @@
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:gravity="center"
+                    android:text="@{data.teamVsTeamMainInfo.blueTeamAcronym}"
                     android:textColor="@color/black"
                     android:textStyle="bold"
-                    android:text="@{data.homeName}"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toStartOf="@id/match_schedule_top_blue_name_end_gl"
                     app:layout_constraintStart_toEndOf="@id/match_schedule_top_blue_name_start_gl"
@@ -134,9 +135,9 @@
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:gravity="center"
+                    android:text="@{data.teamVsTeamMainInfo.redTeamAcronym}"
                     android:textColor="@color/black"
                     android:textStyle="bold"
-                    android:text="@{data.awayName}"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toStartOf="@id/match_schedule_top_red_name_end_gl"
                     app:layout_constraintStart_toEndOf="@id/match_schedule_top_red_name_start_gl"
@@ -148,30 +149,30 @@
                     android:layout_width="0dp"
                     android:layout_height="0dp"
                     android:layout_margin="4dp"
-                    app:layout_constraintDimensionRatio="w, 1:1"
                     android:paddingHorizontal="10dp"
                     android:scaleType="centerInside"
+                    app:image="@{data.teamVsTeamMainInfo.blueTeamImageUrl}"
                     app:layout_constraintBottom_toTopOf="@id/match_schedule_top_logo_btm_gl"
+                    app:layout_constraintDimensionRatio="w, 1:1"
                     app:layout_constraintEnd_toStartOf="@id/match_schedule_top_blue_logo_end_gl"
                     app:layout_constraintStart_toEndOf="@id/match_schedule_top_blue_name_end_gl"
                     app:layout_constraintTop_toBottomOf="@id/match_schedule_top_logo_top_gl"
-                    tools:text="DWG"
-                    image="@{data.homeImg}"/>
+                    tools:text="DWG" />
 
                 <androidx.appcompat.widget.AppCompatImageView
                     android:id="@+id/match_schedule_red_logo"
                     android:layout_width="0dp"
                     android:layout_height="0dp"
                     android:layout_margin="4dp"
-                    app:layout_constraintDimensionRatio="w, 1:1"
                     android:paddingHorizontal="10dp"
                     android:scaleType="centerInside"
+                    app:image="@{data.teamVsTeamMainInfo.redTeamImageUrl}"
                     app:layout_constraintBottom_toTopOf="@id/match_schedule_top_logo_btm_gl"
+                    app:layout_constraintDimensionRatio="w, 1:1"
                     app:layout_constraintEnd_toStartOf="@id/match_schedule_top_red_name_start_gl"
                     app:layout_constraintStart_toEndOf="@id/match_schedule_top_red_logo_start_gl"
                     app:layout_constraintTop_toBottomOf="@id/match_schedule_top_logo_top_gl"
-                    tools:text="DWG"
-                    image="@{data.awayImg}"/>
+                    tools:text="DWG" />
 
                 <TextView
                     android:layout_width="0dp"
@@ -203,13 +204,13 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="4dp"
                 android:layout_marginBottom="2dp"
+                android:text="@{data.teamVsTeamMainInfo.date}"
                 android:textColor="@color/white"
                 android:textSize="12sp"
                 app:layout_constraintBottom_toBottomOf="@id/match_schedule_ic_date"
                 app:layout_constraintStart_toEndOf="@id/match_schedule_ic_date"
                 app:layout_constraintTop_toTopOf="@id/match_schedule_ic_date"
-                tools:text="2022년 8월 7일"
-                android:text="@{data.date}"/>
+                tools:text="2022년 8월 7일" />
 
             <ImageView
                 android:id="@+id/match_schedule_ic_time"
@@ -227,38 +228,37 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="4dp"
                 android:layout_marginBottom="2dp"
+                android:text="@{data.teamVsTeamMainInfo.time}"
                 android:textColor="@color/white"
                 android:textSize="12sp"
                 app:layout_constraintBottom_toBottomOf="@id/match_schedule_ic_time"
                 app:layout_constraintStart_toEndOf="@id/match_schedule_ic_time"
                 app:layout_constraintTop_toTopOf="@id/match_schedule_ic_time"
-                tools:text="18:00"
-                android:text="@{data.time}"/>
+                tools:text="18:00" />
 
             <com.google.android.material.tabs.TabLayout
                 android:id="@+id/match_schedule_tabLayout"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                app:layout_constraintTop_toBottomOf="@id/match_schedule_top_view"
+                android:layout_marginTop="30dp"
                 android:background="@color/bg_color"
-                app:tabMode="fixed"
-                app:tabIndicatorFullWidth="false"
+                app:layout_constraintTop_toBottomOf="@id/match_schedule_top_view"
                 app:tabIndicatorAnimationDuration="800"
                 app:tabIndicatorColor="@color/black"
-                app:tabSelectedTextColor="@color/black"
-                android:layout_marginTop="30dp"/>
+                app:tabIndicatorFullWidth="false"
+                app:tabMode="fixed"
+                app:tabSelectedTextColor="@color/black" />
 
             <androidx.viewpager2.widget.ViewPager2
                 android:id="@+id/match_schedule_vp2"
+                adapter="@{vpAdapter}"
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
+                android:background="@color/white"
                 android:overScrollMode="never"
                 android:paddingHorizontal="30dp"
                 app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/match_schedule_tabLayout"
-                android:background="@color/white"
-                adapter="@{vpAdapter}"
-                />
+                app:layout_constraintTop_toBottomOf="@id/match_schedule_tabLayout" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 

@@ -17,7 +17,9 @@ object ViewObjectFactory {
                     data.league,
                     data.isAlarm,
                     data.homeScore,
-                    data.awayScore
+                    data.awayScore,
+                    data.isHide,
+                    data.videoLink
                 )
             ViewType.TEXT_ARROW_VIEW.ordinal -> TextVO(
                 data.text
