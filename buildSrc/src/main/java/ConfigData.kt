@@ -3,7 +3,7 @@ object ConfigData {
     const val buildToolVersion = ""
     const val minSdkVersion = 23
     const val targetSdkVersion = 32
-    const val versionCode = 18
-    const val versionName = "1.1"
+    const val versionCode = 20
+    const val versionName = "2.0"
     const val applicationId = "com.soma.lof"
 }
