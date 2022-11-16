@@ -24,4 +24,7 @@ interface UserService {
 
     @POST("/v1/users/alarm")
     suspend fun updateUserAlarmSetting(@Header("Authorization") jwtToken: String, @Body alarm: Boolean) : Boolean
+
+    @POST("/v1/users/fcm")
+    suspend fun updateFCM(@Header("Authorization") jwtToken: String, @Body fcmToken: String)
 }

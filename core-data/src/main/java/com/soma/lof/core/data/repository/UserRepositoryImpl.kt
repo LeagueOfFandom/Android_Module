@@ -133,4 +133,8 @@ class UserRepositoryImpl @Inject constructor(
         )
         return data
     }
+
+    override suspend fun updateFCM(jwtToken: String, fcmToken: String) {
+        userService.updateFCM(jwtToken, fcmToken)
+    }
 }

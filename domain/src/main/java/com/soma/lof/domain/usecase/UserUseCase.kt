@@ -34,4 +34,8 @@ class UserUseCase @Inject constructor(
             throw NetworkErrorException("GetUserNickName Network Error ${it.message}")
         }
     }
+
+    suspend fun updateFCM(jwtToken: String, fcmToken: String) {
+        userRepository.updateFCM(jwtToken, fcmToken)
+    }
 }

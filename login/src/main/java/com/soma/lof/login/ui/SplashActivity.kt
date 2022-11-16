@@ -13,6 +13,7 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
+import timber.log.Timber
 import javax.inject.Inject
 import javax.inject.Named
 
@@ -48,9 +49,9 @@ class SplashActivity : BaseActivity<ActivitySplashBinding>(R.layout.activity_spl
 
     private fun subscribeUI() {
         lifecycleScope.launchWhenCreated {
-            viewModel.timeOut.collectLatest { timeOut ->
-                if (timeOut) {
-                    if (viewModel.autoSignIn.value) {
+            viewModel.fcmTask.collectLatest { isSuccess ->
+                if (isSuccess) {
+                    if (viewModel.timeOut.value) {
                         LoginUtil.startMainActivity(this@SplashActivity, mainActivityClass)
                     } else {
                         LoginUtil.startLoginActivity(this@SplashActivity, LoginActivity::class.java)
