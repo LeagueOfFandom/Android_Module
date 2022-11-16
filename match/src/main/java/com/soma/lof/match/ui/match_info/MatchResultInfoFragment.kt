@@ -18,22 +18,23 @@ class MatchResultInfoFragment :
     private val viewModel: MatchInfoViewModel by viewModels()
 
     override fun initView() {
-        bind {
-            setAdapter = MatchSetAdapter(requireContext(), viewModel)
-            vpAdapter = MatchInfoAdapter(
-                childFragmentManager,
-                lifecycle,
-            )
-        }
+
         val safeArgs: MatchScheduleInfoFragmentArgs by navArgs()
         val matchId = safeArgs.matchId
 
         viewModel.getMatchDetail(matchId)
 
+        bind {
+            vpAdapter = MatchInfoAdapter(
+                childFragmentManager,
+                lifecycle,
+            )
+        }
         lifecycleScope.launchWhenStarted {
             viewModel.matchDetailSetInfo.collectLatest {
                 bind {
                     data = viewModel.matchDetailSetInfo.value
+                    setAdapter = MatchSetAdapter(requireContext(), viewModel)
                 }
 
                 val blueDefaultTeamAreaColor = ResourcesCompat.getDrawable(resources, R.drawable.bg_match_info_blue_default_team_color, null)

@@ -1,13 +1,7 @@
 package com.soma.lof.domain.di
 
-import com.soma.lof.domain.usecase.HomeUseCase
-import com.soma.lof.domain.usecase.InfoUseCase
-import com.soma.lof.domain.usecase.MatchUseCase
-import com.soma.lof.domain.usecase.SelectTeamUseCase
-import com.soma.lof.core.data.repository.HomeRepository
-import com.soma.lof.core.data.repository.LeagueRepository
-import com.soma.lof.core.data.repository.MatchRepository
-import com.soma.lof.core.data.repository.UserRepository
+import com.soma.lof.core.data.repository.*
+import com.soma.lof.domain.usecase.*
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -40,5 +34,11 @@ object UseCaseModule {
     @Singleton
     fun providesSelectTeamUseCase(leagueRepository: LeagueRepository) : SelectTeamUseCase {
         return SelectTeamUseCase(leagueRepository)
+    }
+
+    @Provides
+    @Singleton
+    fun providesCommunityUseCase(communityRepository: CommunityRepository) : CommunityUseCase {
+        return CommunityUseCase(communityRepository)
     }
 }

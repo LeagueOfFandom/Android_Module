@@ -37,22 +37,48 @@ class HomeRepositoryImpl @Inject constructor(
     ): Flow<UiState<MainPageResponse>> {
         return flow<UiState.Success<MainPageResponse>> {
             val fakeMainPageData = MainPageResponse(
-                listOf("https://d654rq93y7j8z.cloudfront.net/lof_banner/1.jpg"),
+                listOf("https://event.img.afreecatv.com/esports/news/fomos/2021/08/29/2965612a5d855f259.jpg"),
                 listOf(
-                    CommonItemResponse(
-                        "HOME_MATCH_TITLE_VIEW",
-                        CommonVO(
-                            text = "check"
-                        )
-                    ),
                     CommonItemResponse(
                         "LIVE_VIEW",
                         CommonVO(
                             matchId = 651268L,
-                            homeName = "T1",
-                            homeImg = "https://cdn.pandascore.co/images/team/image/126061/t_oscq04.png",
-                            awayName = "DRX",
-                            awayImg = "https://cdn.pandascore.co/images/team/image/126370/220px_dr_xlogo_square.png",
+                            homeName = "BFO",
+                            homeImg = "https://cdn.pandascore.co/images/team/image/126073/220px_saigon_buffalologo_square.png",
+                            awayName = "IST",
+                            awayImg = "https://cdn.pandascore.co/images/team/image/126066/220px_istanbul_wildcatslogo_square.png",
+                            date = "2022-11-06",
+                            time = "09:52:58",
+                            league = "Playoffs",
+                            isAlarm = false,
+                            homeScore = 1,
+                            awayScore = 2,
+                            status = "finished",
+                            videoLink = "https://www.naver.com"
+                        )
+                    ),
+
+                    CommonItemResponse(
+                        "HOME_MATCH_TITLE_VIEW",
+                        CommonVO(
+                            text = "My Team 경기"
+                        )
+                    ),
+
+                    CommonItemResponse(
+                        "MATCH_RESULT_DATE_LINE",
+                        CommonVO(
+                            text = "2022년 11월 3일"
+                        )
+                    ),
+                    CommonItemResponse(
+                        "MATCH_RESULT_VIEW",
+                        CommonVO(
+                            matchId = 651268L,
+                            homeName = "DRX",
+                            homeImg = "https://cdn.pandascore.co/images/team/image/126370/220px_dr_xlogo_square.png",
+                            awayName = "LION",
+                            awayImg = "https://cdn.pandascore.co/images/team/image/126536/220px_mad_lions_e.c.__lec_team_logo_profile.png",
                             date = "2022-11-06",
                             time = "09:52:58",
                             league = "Playoffs",
@@ -61,6 +87,57 @@ class HomeRepositoryImpl @Inject constructor(
                             awayScore = 3,
                             status = "finished",
                             videoLink = "https://www.naver.com"
+                        )
+                    ),
+
+                    CommonItemResponse(
+                        "MATCH_TODAY_DATE_LINE",
+                        CommonVO(
+                            text = "2022년 11월 4일"
+                        )
+                    ),
+                    CommonItemResponse(
+                        "MATCH_RESULT_VIEW",
+                        CommonVO(
+                            matchId = 651268L,
+                            homeName = "DWG",
+                            homeImg = "https://cdn.pandascore.co/images/team/image/128409/dwg_ki_alogo_square.png",
+                            awayName = "LOUD",
+                            awayImg = "https://cdn.pandascore.co/images/team/image/128313/lou_dlogo_square.png",
+                            date = "2022-11-06",
+                            time = "09:52:58",
+                            league = "Playoffs",
+                            isAlarm = false,
+                            homeScore = 2,
+                            awayScore = 3,
+                            status = "finished",
+                            videoLink = "https://www.naver.com"
+                        )
+                    ),
+
+                    CommonItemResponse(
+                        "MATCH_SCHEDULE_VIEW",
+                        CommonVO(
+                            matchId = 651268L,
+                            homeName = "TBC",
+                            homeImg = "https://cdn.pandascore.co/images/team/image/130355/ctbc_flying_oysterlogo_square.png",
+                            awayName = "BYG",
+                            awayImg = "https://cdn.pandascore.co/images/team/image/128546/beyond_gaminglogo_square.png",
+                            date = "2022-11-06",
+                            time = "09:52:58",
+                            league = "Playoffs",
+                            isAlarm = false,
+                            homeScore = 2,
+                            awayScore = 3,
+                            status = "finished",
+                            videoLink = "https://www.naver.com"
+                        )
+                    ),
+
+                    CommonItemResponse(
+                        "MATCH_SCHEDULE_DATE_LINE",
+                        CommonVO(
+                            text = "2022년 11월 5일"
                         )
                     ),
                     CommonItemResponse(
@@ -80,7 +157,8 @@ class HomeRepositoryImpl @Inject constructor(
                             status = "finished",
                             videoLink = "https://www.naver.com"
                         )
-                    )
+                    ),
+
                 )
             )
 

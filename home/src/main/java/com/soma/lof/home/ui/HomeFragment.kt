@@ -29,7 +29,6 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>(R.layout.fragment_home) {
 
     override fun initView() {
 
-        homeBannerAdapter = HomeBannerAdapter(this@HomeFragment, viewModel.homeModelData.value.data?.bannerList?.size ?: 0)
         commonListAdapter = CommonListAdapter2(requireActivity())
 
         bind {
@@ -44,6 +43,8 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>(R.layout.fragment_home) {
     private fun subscribeUI() {
         lifecycleScope.launchWhenCreated {
             viewModel.homeModelData.collectLatest {
+                homeBannerAdapter = HomeBannerAdapter(this@HomeFragment, viewModel.homeModelData.value.data?.bannerList?.size ?: 0)
+
                 binding.homeAdBanner.apply {
                     adapter = homeBannerAdapter
                     orientation = ViewPager2.ORIENTATION_HORIZONTAL

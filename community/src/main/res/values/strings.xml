@@ -6,4 +6,5 @@
     <string name="write_post_content_title_hint">Please enter a title</string>
     <string name="write_post_content_hint">Please enter a content</string>
     <string name="write_post_title">Write Post</string>
+    <string name="post_report">report</string>
 </resources>

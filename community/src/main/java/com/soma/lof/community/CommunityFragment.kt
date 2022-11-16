@@ -1,10 +1,13 @@
 package com.soma.lof.community
 
 import androidx.fragment.app.viewModels
+import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
 import com.soma.common.ui.base.BaseFragment
 import com.soma.lof.community.databinding.FragmentCommunityBinding
+import com.soma.lof.core.result.data
 import dagger.hilt.android.AndroidEntryPoint
+import kotlinx.coroutines.flow.collectLatest
 
 @AndroidEntryPoint
 class CommunityFragment : BaseFragment<FragmentCommunityBinding>(R.layout.fragment_community), CommunityFragmentListener {
@@ -21,8 +24,11 @@ class CommunityFragment : BaseFragment<FragmentCommunityBinding>(R.layout.fragme
             itemDecoration = PostItemDecoration()
         }
 
-        // 서버 연결 시 삭제 예정
-        postAdapter.submitList(viewModel.dummy)
+        lifecycleScope.launchWhenStarted {
+            viewModel.communityData.collectLatest {
+                postAdapter.submitList(it.data)
+            }
+        }
     }
 
     /** [CommunityFragmentListener] */

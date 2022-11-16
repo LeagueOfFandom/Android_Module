@@ -43,4 +43,11 @@ object RepositoryModule {
     ) : MatchRepository {
         return MatchRepositoryImpl(matchService)
     }
+
+    @Provides
+    @Singleton
+    fun providesCommunityRepository(
+    ) : CommunityRepository {
+        return CommunityRepositoryImpl()
+    }
 }

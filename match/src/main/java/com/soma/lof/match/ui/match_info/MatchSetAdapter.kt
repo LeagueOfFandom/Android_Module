@@ -13,14 +13,14 @@ class MatchSetAdapter(private val context: Context, private val viewModel: Match
     RecyclerView.Adapter<MatchSetAdapter.ViewHolder>() {
 
     private val TAG = "MatchSetAdapter"
-    private var checkPosition = 0
 
     inner class ViewHolder(private val binding: ItemMatchSetBtnBinding) :
         RecyclerView.ViewHolder(binding.root) {
+
         fun bind(position: Int) {
             binding.itemMatchSetText.text = "${position + 1}Set"
 
-            if (position == checkPosition) {
+            if (position == viewModel.getCurrentSet()) {
                 binding.itemMatchSetLayout.background =
                     ResourcesCompat.getDrawable(context.resources,
                         R.drawable.bg_match_set_btn_selected,
@@ -35,11 +35,8 @@ class MatchSetAdapter(private val context: Context, private val viewModel: Match
             }
 
             binding.itemMatchSetLayout.setOnClickListener {
-                val prevPosition = checkPosition
-                checkPosition = position
                 viewModel.setMatchSetPos(position)
-                notifyItemChanged(prevPosition)
-                notifyItemChanged(checkPosition)
+                notifyItemChanged(position)
             }
         }
     }
@@ -57,5 +54,5 @@ class MatchSetAdapter(private val context: Context, private val viewModel: Match
         holder.bind(position)
     }
 
-    override fun getItemCount(): Int = 3
+    override fun getItemCount(): Int = viewModel.getSetSize()
 }

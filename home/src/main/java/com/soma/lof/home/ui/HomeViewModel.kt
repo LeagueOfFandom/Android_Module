@@ -26,7 +26,7 @@ class HomeViewModel @Inject constructor(
     val homeModelData : StateFlow<UiState<HomeModel>> get() = _homeModelData
 
     init {
-        getHomeData()
+        getFakeHomeData()
     }
 
     fun getHomeData() {
@@ -36,7 +36,6 @@ class HomeViewModel @Inject constructor(
             if (jwtToken != null) {
                 homeUseCase.getHomeData(jwtToken).collectLatest {
                     _homeModelData.value = it
-                    Timber.tag("check@@@@").d("homeData: $it")
                 }
             }
         }
@@ -50,7 +49,6 @@ class HomeViewModel @Inject constructor(
                 delay(1000L)
                 homeUseCase.getFakeHomeData(jwtToken).collectLatest {
                     _homeModelData.value = it
-                    Timber.tag("check@@@@").d("homeData: $it")
                 }
             }
         }

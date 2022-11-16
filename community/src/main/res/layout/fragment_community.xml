@@ -50,7 +50,8 @@
             android:onClick="@{() -> listener.navigatePostWriteFragment() }"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent">
+            app:layout_constraintStart_toStartOf="parent"
+            android:visibility="gone">
 
             <TextView
                 android:id="@+id/community_post_write_text"

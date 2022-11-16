@@ -31,7 +31,9 @@ class MatchInfoViewModel @Inject constructor(
     private val _matchDetail: MutableStateFlow<UiState<MatchDetailResponse>> = MutableStateFlow(UiState.Loading)
     val matchDetail: StateFlow<UiState<MatchDetailResponse>> get() = _matchDetail
 
+    private var prevSet = 0
     private var currentSet = 0
+    private var setSize = 0
     private val _matchDetailSetInfo: MutableStateFlow<TeamVsTeamSetInfo?> = MutableStateFlow(_matchDetail.value.data?.body?.setInfoList?.get(currentSet))
     val matchDetailSetInfo: StateFlow<TeamVsTeamSetInfo?> get() = _matchDetailSetInfo
 
@@ -43,13 +45,20 @@ class MatchInfoViewModel @Inject constructor(
                 matchUseCase.getMatchDetail(jwtToken, matchId).collectLatest {
                     _matchDetail.value = it
                     _matchDetailSetInfo.value = _matchDetail.value.data!!.body!!.setInfoList[currentSet]
+                    setSize = _matchDetail.value.data!!.body!!.setInfoList.size
                 }
             }
         }
     }
 
     fun setMatchSetPos(position: Int) {
+        prevSet = currentSet
         currentSet = position
         _matchDetailSetInfo.value = _matchDetail.value.data?.body?.setInfoList?.get(currentSet)
     }
+
+    fun setPrevSet(position: Int) { prevSet = position }
+    fun getCurrentSet() = currentSet
+    fun getPrevSet() = prevSet
+    fun getSetSize() = setSize
 }
