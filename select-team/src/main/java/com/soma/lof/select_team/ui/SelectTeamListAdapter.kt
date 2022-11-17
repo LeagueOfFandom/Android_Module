@@ -12,6 +12,7 @@ import com.soma.lof.core.model.entity.TeamInfo
 import com.soma.lof.core.result.data
 import com.soma.lof.select_team.R
 import com.soma.lof.select_team.databinding.ItemSelectTeamBinding
+import timber.log.Timber
 
 class SelectTeamListAdapter(
     private val viewModel: SelectTeamViewModel,
@@ -38,19 +39,19 @@ class SelectTeamListAdapter(
             item.teamCheck = when (item.teamCheck) {
                 true -> {
                     holder.binding.preferTeamCv.setUnchecked()
-                    if (viewModel.selectTeamData.value.data!!.teamInfo.contains(item)) {
+                    if (viewModel.userTeamInfoList.contains(item)) {
                         viewModel.selectTeamData.value.data!!.leagueInfo[pos].teamInfoList[position].teamCheck = false
-                        viewModel.selectTeamData.value.data!!.teamInfo.remove(item)
-                        viewModel.userTeamInfo.value.remove(item)
+                        Timber.tag("check@@@").d("remove ${item.teamId}")
+                        viewModel.removeTeam(item)
                         viewModel.minusTeamCnt()
                     }
                     false
                 }
                 else -> {
-                    if (!viewModel.selectTeamData.value.data!!.teamInfo.contains(item)) {
+                    if (!viewModel.userTeamInfoList.contains(item)) {
                         viewModel.selectTeamData.value.data!!.leagueInfo[pos].teamInfoList[position].teamCheck = true
-                        viewModel.selectTeamData.value.data!!.teamInfo.add(item)
-                        viewModel.userTeamInfo.value.add(item)
+                        Timber.tag("check@@@").d("add ${item.teamId}")
+                        viewModel.addTeam(item)
                         viewModel.plusTeamCnt()
                     }
                     holder.binding.preferTeamCv.setChecked()
@@ -71,7 +72,6 @@ class SelectTeamListAdapter(
         this.strokeColor = getColor(context, R.color.white)
         this.strokeWidth = 0
     }
-
 }
 
 class SelectTeamViewHolder(

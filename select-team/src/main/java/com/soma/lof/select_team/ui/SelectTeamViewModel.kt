@@ -23,17 +23,13 @@ class SelectTeamViewModel @Inject constructor(
 ) : ViewModel(){
 
     private val _tabItems: MutableStateFlow<List<String>> = MutableStateFlow(emptyList())
-    private val _userTeamInfo: MutableStateFlow<MutableList<TeamInfo>> = MutableStateFlow(
-        mutableListOf()
-    )
+    var userTeamInfoList = mutableSetOf<TeamInfo>()
     private val _teamCnt = MutableStateFlow(0)
 
     val teamCnt: StateFlow<Int> get() = _teamCnt
     val tabItems: StateFlow<List<String>> get() = _tabItems
-    val userTeamInfo: StateFlow<MutableList<TeamInfo>> get() = _userTeamInfo
 
-    private val _selectTeamData: MutableStateFlow<UiState<SelectTeamModel>> =
-        MutableStateFlow(UiState.Loading)
+    private val _selectTeamData: MutableStateFlow<UiState<SelectTeamModel>> = MutableStateFlow(UiState.Loading)
     val selectTeamData: StateFlow<UiState<SelectTeamModel>> get() = _selectTeamData
 
     val navigateHome = MutableStateFlow(false)
@@ -44,7 +40,9 @@ class SelectTeamViewModel @Inject constructor(
             if (jwtToken != null) {
                 teamUseCase.getSelectTeamData(jwtToken).collect { result ->
                     _tabItems.value = result.data?.leagueList ?: emptyList()
-                    _userTeamInfo.value = result.data?.teamInfo ?: mutableListOf()
+                    for (info in result.data?.teamInfo ?: emptyList()) {
+                        userTeamInfoList.add(info)
+                    }
                     _teamCnt.value = result.data?.teamInfo?.size ?: 0
                     _selectTeamData.value = result
                 }
@@ -60,8 +58,17 @@ class SelectTeamViewModel @Inject constructor(
         _teamCnt.value -= 1
     }
 
+    fun addTeam(team: TeamInfo) {
+        userTeamInfoList.add(team)
+    }
+
+    fun removeTeam(team: TeamInfo) {
+        userTeamInfoList =  userTeamInfoList.toList().filter { it.teamId != team.teamId }.toMutableSet()
+        userTeamInfoList.remove(team)
+    }
+
     fun submitUserTeamList() {
-        val userTeamIdList = userTeamInfo.value.map { it.teamId }
+        val userTeamIdList = userTeamInfoList.map { it.teamId }
         viewModelScope.launch {
             val jwtToken = dataStoreUseCase.jwtToken.first()
             if (jwtToken != null) {
