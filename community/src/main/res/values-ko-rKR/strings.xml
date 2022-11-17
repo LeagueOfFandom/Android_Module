@@ -8,4 +8,8 @@
     <string name="write_post_content_hint">내용을 입력하세요.</string>
     <string name="write_post_title">글쓰기</string>
     <string name="post_report">신고</string>
+    <string name="item_post_user_block_text">유저 차단하기</string>
+    <string name="item_post_report_text">게시글 신고하기</string>
+    <string name="user_block_tost">유저가 차단되었습니다</string>
+    <string name="post_report_toast">게시글이 신고되었습니다</string>
 </resources>

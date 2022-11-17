@@ -10,7 +10,7 @@ import com.soma.lof.community.databinding.ItemPostBinding
 import com.soma.lof.core.model.entity.PostItem
 import timber.log.Timber
 
-class PostAdapter : ListAdapter<PostItem, PostAdapter.ViewHolder>(postAdapterDiffUtil){
+class PostAdapter(private val onItemClicked: (position: Int) -> Unit) : ListAdapter<PostItem, PostAdapter.ViewHolder>(postAdapterDiffUtil){
 
     inner class ViewHolder(private val binding: ItemPostBinding) : RecyclerView.ViewHolder(binding.root) {
         private lateinit var photoAdapter: PhotoAdapter
@@ -28,6 +28,11 @@ class PostAdapter : ListAdapter<PostItem, PostAdapter.ViewHolder>(postAdapterDif
                 item.isBookMarked = !item.isBookMarked
                 val drawableInt = if (item.isBookMarked) R.drawable.ic_post_bookmark_checked else R.drawable.ic_post_bookmark
                 binding.itemPostBookmark.setImageDrawable(AppCompatResources.getDrawable(itemView.context, drawableInt))
+            }
+
+            binding.itemPostMoreIcon.setOnClickListener {
+                Timber.tag("check@@@").d("click")
+                onItemClicked(absoluteAdapterPosition)
             }
         }
     }
