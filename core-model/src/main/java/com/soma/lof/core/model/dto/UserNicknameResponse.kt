@@ -1,5 +1,5 @@
 package com.soma.lof.core.model.dto
 
-data class GetUserNicknameResponse(
+data class UserNicknameResponse(
     val nickname: String,
 )

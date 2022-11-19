@@ -2,7 +2,7 @@ package com.soma.lof.core.service
 
 import com.soma.lof.core.model.dto.CreateUserRequest
 import com.soma.lof.core.model.dto.CreateUserResponse
-import com.soma.lof.core.model.dto.GetUserNicknameResponse
+import com.soma.lof.core.model.dto.UserNicknameResponse
 import retrofit2.http.Body
 import retrofit2.http.GET
 import retrofit2.http.Header
@@ -14,10 +14,10 @@ interface UserService {
     suspend fun createUser(@Body createUserRequest: CreateUserRequest) : CreateUserResponse
 
     @POST("/v1/users/nickname")
-    suspend fun setUserNickName(@Header("Authorization") jwtToken: String, @Body nickname: String) : String
+    suspend fun setUserNickName(@Header("Authorization") jwtToken: String, @Body nickname: String) : UserNicknameResponse
 
     @GET("/v1/users/nickname")
-    suspend fun getUserNickName(@Header("Authorization") jwtToken: String) : GetUserNicknameResponse
+    suspend fun getUserNickName(@Header("Authorization") jwtToken: String) : UserNicknameResponse
 
     @GET("/v1/users/alarm")
     suspend fun getUserAlarmSetting(@Header("Authorization") jwtToken: String) : Boolean
