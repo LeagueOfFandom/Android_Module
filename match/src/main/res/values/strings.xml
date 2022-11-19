@@ -3,4 +3,7 @@
     <string name="match_title">Match</string>
     <string name="match_team_switch_text">Only My Team</string>
     <string name="match_no_selected_team_msg">No team is selected</string>
+    <string name="match_no_data_msg">No game schedule in month</string>
+    <string name="date_format_m_d">%s, %s</string>
+
 </resources>

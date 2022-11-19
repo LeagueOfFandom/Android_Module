@@ -9,6 +9,7 @@ import androidx.databinding.BindingAdapter
 import androidx.recyclerview.widget.RecyclerView
 import androidx.viewpager2.widget.ViewPager2
 import com.bumptech.glide.Glide
+import com.bumptech.glide.load.engine.DiskCacheStrategy
 import com.soma.common.ui.presentation.CommonListAdapter2
 import com.soma.lof.core.model.dto.CommonItem
 import com.soma.lof.core.result.UiState
@@ -43,11 +44,22 @@ fun View.bindToast(throwable: Throwable?) {
 //    this.adapter = adapter
 //}
 
+@BindingAdapter("logoImage")
+fun AppCompatImageView.bindLogoImage(uri: String?) {
+    if (uri != null) {
+        Glide.with(context)
+            .load(uri)
+            .diskCacheStrategy(DiskCacheStrategy.ALL)
+            .into(this)
+    }
+}
+
 @BindingAdapter("image")
 fun AppCompatImageView.bindImage(uri: String?) {
     if (uri != null) {
         Glide.with(context)
             .load(uri)
+            .diskCacheStrategy(DiskCacheStrategy.ALL)
             .into(this)
     }
 }

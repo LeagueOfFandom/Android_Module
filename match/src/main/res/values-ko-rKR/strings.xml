@@ -4,4 +4,7 @@
     <string name="match_title">전체 경기 일정</string>
     <string name="match_team_switch_text">My 경기만</string>
     <string name="match_no_selected_team_msg">현재 선택하신 팀이 없습니다</string>
+    <string name="match_no_data_msg">경기 일정이 없습니다</string>
+    <string name="date_format_m_d">%s-%s</string>
+
 </resources>

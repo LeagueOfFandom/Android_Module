@@ -1,5 +1,7 @@
 package com.soma.lof.match.ui.match_up
 
+import android.os.Build
+import android.util.Log
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.soma.lof.core.model.dto.CommonItem
@@ -12,6 +14,7 @@ import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.launch
+import timber.log.Timber
 import java.text.SimpleDateFormat
 import java.util.*
 import javax.inject.Inject
@@ -25,19 +28,24 @@ class MatchViewModel @Inject constructor(
 
     private val _matchData = MutableStateFlow<UiState<List<CommonItem>>>(UiState.Loading)
     val matchData: StateFlow<UiState<List<CommonItem>>> get()= _matchData
-    val todayDate = MutableStateFlow("")
+    var todayYear: String = "2022"
+    var todayMonth: String = "11"
+    var todayDay: String = "01"
+
+    val dateChangeFlow = MutableStateFlow(false)
 
     init {
-        todayDate.value = convertTimestampToMonthDate()
+        convertTimestampToMonthDate()
         getMatchList()
+        dateChangeFlow.value = true
     }
 
-    private fun getMatchList(onlyMyTeam: Boolean = true) {
+    fun getMatchList(onlyMyTeam: Boolean = true) {
         viewModelScope.launch {
             val jwtToken = dataStoreUseCase.jwtToken.first()
 
             if (jwtToken != null) {
-                matchUseCase.getMatchList(jwtToken, todayDate.value, onlyMyTeam).collectLatest {
+                matchUseCase.getMatchList(jwtToken, "${todayYear}-${todayMonth}-${todayDay}", onlyMyTeam).collectLatest {
                     _matchData.value = it
 
                 }
@@ -45,21 +53,39 @@ class MatchViewModel @Inject constructor(
         }
     }
 
+    fun monthPrevBtnClick() {
+        if(todayMonth.toInt() - 1 < 0) {
+            todayMonth = "12"
+            todayYear = (todayYear.toInt()-1).toString()
+        } else {
+            todayMonth = (todayMonth.toInt()-1).toString()
+        }
+        if (todayMonth.length < 2) todayMonth = "0$todayMonth"
+        dateChangeFlow.value = true
+    }
+
+    fun monthNextBtnClick() {
+        if(todayMonth.toInt() + 1 > 12) {
+            todayMonth = "1"
+            todayYear = (todayYear.toInt()+1).toString()
+        } else {
+            todayMonth = (todayMonth.toInt()+1).toString()
+        }
+        if (todayMonth.length < 2) todayMonth = "0$todayMonth"
+        dateChangeFlow.value = true
+    }
+
     fun setMyTeamSwitchEvent(isTurnOn: Boolean) {
         _matchData.value = UiState.Loading
         getMatchList(isTurnOn)
     }
 
-    private fun convertTimestampToMonthDate() : String{
+    private fun convertTimestampToMonthDate(){
         val currentTime = System.currentTimeMillis()
         val sdf = SimpleDateFormat("yyyy-MM-dd", Locale.KOREA)
-
-        return sdf.format(currentTime)
-    }
-
-    private fun convertTimestampToDate() : String{
-        val currentTime = System.currentTimeMillis()
-        val sdf = SimpleDateFormat("yyyy-MM-dd", Locale.KOREA)
-        return sdf.format(currentTime)
+        val date = sdf.format(currentTime).split("-")
+        todayYear = date[0]
+        todayMonth = date[1]
+        todayDay = date[2]
     }
 }

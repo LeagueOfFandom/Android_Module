@@ -1,17 +1,21 @@
 package com.soma.lof.match.ui.match_up
 
+import android.os.Build
+import android.util.Log
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.findNavController
 import com.soma.common.ui.base.BaseFragment
 import com.soma.common.ui.presentation.CommonListAdapter2
+import com.soma.lof.core.model.entity.Month
 import com.soma.lof.core.result.data
 import com.soma.lof.match.R
 import com.soma.lof.match.databinding.FragmentMatchBinding
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.flow.collectLatest
 import timber.log.Timber
+import java.util.*
 
 @AndroidEntryPoint
 class MatchFragment : BaseFragment<FragmentMatchBinding>(R.layout.fragment_match) {
@@ -28,13 +32,38 @@ class MatchFragment : BaseFragment<FragmentMatchBinding>(R.layout.fragment_match
             adapter = matchListAdapter
         }
 
-        lifecycleScope.launchWhenCreated {
+        lifecycleScope.launchWhenStarted {
             viewModel.matchData.collectLatest {
                 matchListAdapter.submitList(it.data)
+
+                if (binding.matchTeamSwitch.isChecked) {
+                    binding.matchMsg.text = getString(R.string.match_no_selected_team_msg)
+                } else {
+                    binding.matchMsg.text = getString(R.string.match_no_data_msg)
+                }
             }
         }
+        lifecycleScope.launchWhenStarted {
+            viewModel.dateChangeFlow.collectLatest { isChanged ->
+                Timber.tag("check@@@").d("collect")
+                if (isChanged) {
+                    val language = if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
+                        val primaryLocale: Locale = requireContext().resources.configuration.locales.get(0)
+                        primaryLocale.language
+                    } else {
+                        Locale.getDefault().language
+                    }
 
-        // API 상의 후 변경 예정
-        binding.matchMonth.text = viewModel.todayDate.value
+                    if (language == "ko") {
+                        binding.matchMonth.text = getString(R.string.date_format_m_d, viewModel.todayYear, viewModel.todayMonth)
+                    } else {
+                        binding.matchMonth.text = getString(R.string.date_format_m_d, Month.values()[viewModel.todayMonth.toInt()-1], viewModel.todayYear)
+                    }
+
+                    viewModel.getMatchList(binding.matchTeamSwitch.isChecked)
+                    viewModel.dateChangeFlow.value = false
+                }
+            }
+        }
     }
 }

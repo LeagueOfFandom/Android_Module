@@ -120,7 +120,7 @@
                     app:layout_constraintEnd_toStartOf="@id/item_prefer_team_logo_end_gl"
                     app:layout_constraintStart_toEndOf="@id/item_prefer_team_logo_start_gl"
                     app:layout_constraintTop_toBottomOf="@id/item_prefer_team_top_gl"
-                    image="@{team.teamImg}" />
+                    app:logoImage="@{team.teamImg}" />
 
             </androidx.constraintlayout.widget.ConstraintLayout>
 
