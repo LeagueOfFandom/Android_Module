@@ -47,6 +47,7 @@ class CommunityFragment : BaseFragment<FragmentCommunityBinding>(R.layout.fragme
 
         bind {
             listener = this@CommunityFragment
+            vm = viewModel
             adapter = postAdapter
             itemDecoration = PostItemDecoration()
         }
