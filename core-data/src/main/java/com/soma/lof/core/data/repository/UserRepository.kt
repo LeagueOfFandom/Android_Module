@@ -4,10 +4,13 @@ import com.soma.lof.core.model.dto.CommonItemResponse
 import com.soma.lof.core.model.dto.CreateUserRequest
 import com.soma.lof.core.model.dto.CreateUserResponse
 import com.soma.lof.core.model.dto.UserNicknameResponse
+import com.soma.lof.core.model.entity.NewUserResponse
 import com.soma.lof.core.result.UiState
 import kotlinx.coroutines.flow.Flow
 
 interface UserRepository {
+
+    suspend fun isNewUser(email: String) : Flow<UiState<NewUserResponse>>
 
     suspend fun createUser(createUserRequest: CreateUserRequest) : Flow<UiState<CreateUserResponse>>
 

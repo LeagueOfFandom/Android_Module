@@ -8,14 +8,18 @@ import com.google.android.gms.auth.api.signin.GoogleSignInAccount
 import com.google.android.gms.auth.api.signin.GoogleSignInClient
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions
 import com.soma.lof.core.model.dto.CreateUserRequest
+import com.soma.lof.core.model.entity.NewUserResponse
+import com.soma.lof.core.result.UiState
 import com.soma.lof.core.result.data
 import com.soma.lof.domain.usecase.DataStoreUseCase
 import com.soma.lof.domain.usecase.UserUseCase
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
+import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.launch
+import timber.log.Timber
 import javax.inject.Inject
 
 @HiltViewModel
@@ -28,7 +32,9 @@ class LoginViewModel @Inject constructor(
     private var mGoogleSignInClient: GoogleSignInClient //
     private var gsa: GoogleSignInAccount? // 기존에 로그인했던 계정
     val googleLoginFlow = MutableStateFlow(false)
-    val newUserFlow = MutableStateFlow(false)
+
+    private val _newUserFlow = MutableStateFlow<UiState<NewUserResponse>>(UiState.Loading)
+    val newUserFlow: StateFlow<UiState<NewUserResponse>> get() = _newUserFlow
     val userLanguage = MutableStateFlow("")
 
     init {
@@ -41,13 +47,20 @@ class LoginViewModel @Inject constructor(
         gsa = GoogleSignIn.getLastSignedInAccount(application.applicationContext)
     }
 
+    fun checkNewUser(email: String) {
+        viewModelScope.launch {
+            userUseCase.isNewUser(email).collectLatest {
+                _newUserFlow.value = it
+            }
+        }
+    }
+
     fun getGoogleSignInClient() = mGoogleSignInClient
 
     fun getUserTokenInfo(email: String?, displayName: String, photoUrl: String) {
         viewModelScope.launch {
             val fcmToken = dataStoreUseCase.fcmToken.first()
 
-            // email이 Null일 경우 toast msg 띄우기
             if (email != null) {
                 userUseCase.createUser(
                     CreateUserRequest(
@@ -55,7 +68,6 @@ class LoginViewModel @Inject constructor(
                     )
                 ).collectLatest {
                     dataStoreUseCase.editJwtToken(it.data!!.jwtToken)
-                    newUserFlow.value = it.data!!.isNewUser
                     googleLoginFlow.value = true
                 }
             }

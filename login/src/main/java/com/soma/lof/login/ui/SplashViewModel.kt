@@ -35,11 +35,10 @@ class SplashViewModel @Inject constructor(
                 val jwtToken = dataStoreUseCase.jwtToken.first()
 
                 dataStoreUseCase.fcmToken.collectLatest {
-                    Timber.tag(TAG).d("fcmToken: %s", it)
                     if (jwtToken != null) {
                         userUseCase.updateFCM(jwtToken, fcmToken)
                         autoSignIn.value = true
-                        Timber.tag(TAG).d("jwtToken 있어서 보냄")
+                        Timber.tag(TAG).d("jwtToken: $jwtToken")
                     }
                     fcmTask.value = true
                 }

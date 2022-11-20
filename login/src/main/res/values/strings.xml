@@ -6,11 +6,32 @@
     <string name="language_title">Select a language</string>
 
     <!-- SetNickNameFirstFragment -->
-    <string name="nick_first_title">Please enter a nickname</string>
+    <string name="nick_first_title">Please enter a nickname\n(Only English with Number)</string>
     <string name="nick_first_hint">nickname</string>
 
     <string name="login_module_continue">Continue</string>
 
     <string name="login_success">Login Success</string>
     <string name="Language">Language</string>
+    <string name="login_policy_accept_all">Accept All</string>
+    <string name="accept_and_continue">Accept and Continue</string>
+    <string name="accept_all_text">Accept All includes any and all consents to optional items. Therefore, even with refusal to optional items, you can use our services.</string>
+    <string name="login_policy_detail">Email and personal information will be provided to offer the Lof service. For specific personal information items to be provided, please refer to the agreed contents. The information provided shall be discarded immediately when you opt out of this service.</string>
+    <string name="login_policy_personal_required">[Required] Consent to Lof\'s provision of personal information</string>
+    <string name="login_policy_view_more">view more</string>
+
+    <string name="required_user_create_policy_msg">For user identification in Lof service, Member management and Service provision, we will provide your service User ID and personal information through Google Account (%s). The information provided shall be discarded immediately when you opt out of this service. You have the right to refuse the consent below and the use of the service will be restricted should you choose to refuse.</string>
+    <string name="required_user_create_policy_recipients">[Recipients]</string>
+    <string name="required_user_create_policy_provided_team">담쟁이</string>
+    <string name="required_user_create_policy_required_items">[Required] Items required to be provided</string>
+    <string name="required_user_create_policy_required_items_text">Email</string>
+    <string name="required_user_create_policy_optional_items">[Optional] Optional items to be provided</string>
+    <string name="required_user_create_policy_optional_items_text">Display Photo, Nickname</string>
+    <string name="required_user_create_policy_purpose">[Purpose of provision]</string>
+    <string name="required_user_create_policy_purpose_text">For user identification in LoF Service, Member management and Service provision</string>
+    <string name="required_user_create_policy_period">[Period of retainment]</string>
+    <string name="required_user_create_policy_period_text">Destroy without delay when you opt out of this service</string>
+    <string name="login_policy_optional_text">[Optional] Optional items to be provided</string>
+    <string name="login_policy_optional_optional_nickname_text">Nickname</string>
+    <string name="login_policy_optional_optional_photo_text">Profile Image</string>
 </resources>

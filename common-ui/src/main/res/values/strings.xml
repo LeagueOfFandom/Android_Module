@@ -1,4 +1,7 @@
 <resources>
+    <string name="app_name" translatable="false">LoF</string>
+    <string name="team_name" translatable="false">담쟁이</string>
+
     <string name="nick_text_cnt">(%d/%d)</string>
     <string name="home_match_title_my_team_btn_text">My Team</string>
     <string name="match_live_show_match">Watch Game</string>

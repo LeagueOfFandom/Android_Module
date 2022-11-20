@@ -3,12 +3,13 @@ package com.soma.lof.core.service
 import com.soma.lof.core.model.dto.CreateUserRequest
 import com.soma.lof.core.model.dto.CreateUserResponse
 import com.soma.lof.core.model.dto.UserNicknameResponse
-import retrofit2.http.Body
-import retrofit2.http.GET
-import retrofit2.http.Header
-import retrofit2.http.POST
+import com.soma.lof.core.model.entity.NewUserResponse
+import retrofit2.http.*
 
 interface UserService {
+
+    @GET("/v1/users/new")
+    suspend fun isNewUser(@Query("email") email: String) : NewUserResponse
 
     @POST("/v1/users")
     suspend fun createUser(@Body createUserRequest: CreateUserRequest) : CreateUserResponse

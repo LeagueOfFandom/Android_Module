@@ -52,9 +52,9 @@ class SplashActivity : BaseActivity<ActivitySplashBinding>(R.layout.activity_spl
             viewModel.fcmTask.collectLatest { isSuccess ->
                 if (isSuccess) {
                     if (viewModel.timeOut.value) {
-                        LoginUtil.startMainActivity(this@SplashActivity, mainActivityClass)
-                    } else {
                         LoginUtil.startLoginActivity(this@SplashActivity, LoginActivity::class.java)
+                    } else {
+                        LoginUtil.startMainActivity(this@SplashActivity, mainActivityClass)
                     }
                 }
             }

@@ -10,22 +10,40 @@
         android:name="com.soma.lof.login.ui.LoginFragment"
         android:label="fragment_login"
         tools:layout="@layout/fragment_login" >
+
+        <action
+            android:id="@+id/action_loginFragment_to_setFirstNickFragment"
+            app:destination="@id/setFirstNickFragment" />
         <action
             android:id="@+id/action_loginFragment_to_selectLanguageFragment"
             app:destination="@id/selectLanguageFragment" />
-    </fragment>
-    <fragment
-        android:id="@+id/selectLanguageFragment"
-        android:name="com.soma.lof.login.ui.SelectLanguageFragment"
-        android:label="SelectLanguageFragment"
-        tools:layout="@layout/fragment_language_select">
         <action
-            android:id="@+id/action_selectLanguageFragment_to_setFirstNickFragment"
-            app:destination="@id/setFirstNickFragment" />
+            android:id="@+id/action_loginFragment_to_requiredUserCreatePolicyFragment"
+            app:destination="@id/requiredUserCreatePolicyFragment" >
+        </action>
     </fragment>
+
     <fragment
         android:id="@+id/setFirstNickFragment"
         android:name="com.soma.lof.login.ui.SetFirstNickFragment"
         android:label="SetFirstNickFragment"
         tools:layout="@layout/fragment_nick_first_set"/>
+
+    <fragment
+        android:id="@+id/selectLanguageFragment"
+        android:name="com.soma.lof.login.ui.SelectLanguageFragment"
+        android:label="SelectLanguageFragment" >
+        <action
+            android:id="@+id/action_selectLanguageFragment_to_setFirstNickFragment"
+            app:destination="@id/setFirstNickFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/requiredUserCreatePolicyFragment"
+        android:name="com.soma.lof.login.ui.RequiredUserCreatePolicyFragment"
+        android:label="RequiredUserCreatePolicyFragment" >
+        <argument
+            android:name="email"
+            app:argType="string"
+            android:defaultValue=""/>
+    </fragment>
 </navigation>

@@ -5,6 +5,7 @@ import com.soma.lof.core.model.dto.CreateUserRequest
 import com.soma.lof.core.model.dto.CreateUserResponse
 import com.soma.lof.core.model.dto.UserNicknameResponse
 import com.soma.lof.core.model.entity.CommonVO
+import com.soma.lof.core.model.entity.NewUserResponse
 import com.soma.lof.core.network.exception.NetworkFailureException
 import com.soma.lof.core.result.UiState
 import com.soma.lof.core.service.UserService
@@ -16,6 +17,14 @@ import javax.inject.Inject
 class UserRepositoryImpl @Inject constructor(
     private val userService: UserService
 ) : UserRepository {
+
+    override suspend fun isNewUser(email: String): Flow<UiState<NewUserResponse>> {
+        return flow {
+            emit(UiState.Success(userService.isNewUser(email)))
+        }.catch {
+            throw NetworkFailureException("Network Error ${it.message}")
+        }
+    }
 
     override suspend fun createUser(createUserRequest: CreateUserRequest): Flow<UiState<CreateUserResponse>> {
         return flow {
