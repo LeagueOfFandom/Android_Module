@@ -26,7 +26,7 @@ class HomeViewModel @Inject constructor(
     val homeModelData : StateFlow<UiState<HomeModel>> get() = _homeModelData
 
     init {
-        getFakeHomeData()
+        getHomeData()
     }
 
     fun getHomeData() {
