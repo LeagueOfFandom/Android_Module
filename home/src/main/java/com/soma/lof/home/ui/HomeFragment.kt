@@ -79,6 +79,8 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>(R.layout.fragment_home) {
     override fun onStart() {
         super.onStart()
         EventBus.getDefault().register(this)
+
+        viewModel.getHomeData()
     }
 
     override fun onStop() {

@@ -51,7 +51,7 @@ class SplashActivity : BaseActivity<ActivitySplashBinding>(R.layout.activity_spl
         lifecycleScope.launchWhenCreated {
             viewModel.fcmTask.collectLatest { isSuccess ->
                 if (isSuccess) {
-                    if (viewModel.timeOut.value) {
+                    if (!viewModel.autoSignIn.value || viewModel.timeOut.value) {
                         LoginUtil.startLoginActivity(this@SplashActivity, LoginActivity::class.java)
                     } else {
                         LoginUtil.startMainActivity(this@SplashActivity, mainActivityClass)
