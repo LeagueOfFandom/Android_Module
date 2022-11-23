@@ -22,8 +22,8 @@ class CommunityRepositoryImpl : CommunityRepository {
                         PhotoItem(1L, "https://static.inven.co.kr/column/2022/10/31/news/i8222523861.jpg")
                     ),
                     "마포고 플랜카드 봄? ㅋㅋㅋㅋㅋㅋ",
-                    "99+",
-                    "99+",
+                    "10+",
+                    "6+",
                 ),
                 PostItem(
                     2L,
@@ -44,8 +44,8 @@ class CommunityRepositoryImpl : CommunityRepository {
                     "2022년 9월 20일",
                     listOf(),
                     "롤드컵 너무 아쉽고....",
-                    "99+",
-                    "99+",
+                    "3+",
+                    "2+",
                 ),
                 PostItem(
                     6L,

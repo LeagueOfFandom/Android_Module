@@ -23,7 +23,9 @@ interface UserRepository {
     suspend fun updateMatchAlarmSetting(jwtToken: String, alarm: Boolean) : Boolean
 
     // Info Fragment Dummy Data
-    suspend fun getUserInfo(jwtToken: String) : List<CommonItemResponse>
+    suspend fun getFakeUserInfoList(jwtToken: String) : List<CommonItemResponse>
+
+    suspend fun getUserInfoList(jwtToken: String) : Flow<UiState<List<CommonItemResponse>>>
 
     suspend fun updateFCM(jwtToken: String, fcmToken: String)
 }

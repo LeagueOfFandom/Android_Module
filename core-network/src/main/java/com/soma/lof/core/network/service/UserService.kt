@@ -1,5 +1,6 @@
 package com.soma.lof.core.service
 
+import com.soma.lof.core.model.dto.CommonItemResponse
 import com.soma.lof.core.model.dto.CreateUserRequest
 import com.soma.lof.core.model.dto.CreateUserResponse
 import com.soma.lof.core.model.dto.UserNicknameResponse
@@ -28,4 +29,7 @@ interface UserService {
 
     @POST("/v1/users/fcm")
     suspend fun updateFCM(@Header("Authorization") jwtToken: String, @Body fcmToken: String)
+
+    @GET("/v1/users/alarm/list")
+    suspend fun getUserInfoList(@Header("Authorization") jwtToken: String) : List<CommonItemResponse>
 }

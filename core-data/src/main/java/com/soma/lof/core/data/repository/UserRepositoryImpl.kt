@@ -63,7 +63,7 @@ class UserRepositoryImpl @Inject constructor(
         return userService.updateUserAlarmSetting(jwtToken, alarm)
     }
 
-    override suspend fun getUserInfo(jwtToken: String): List<CommonItemResponse> {
+    override suspend fun getFakeUserInfoList(jwtToken: String): List<CommonItemResponse> {
         val data = listOf(
             CommonItemResponse(
                 "ONE_LINE_TEXT_VIEW",
@@ -141,6 +141,14 @@ class UserRepositoryImpl @Inject constructor(
             ),
         )
         return data
+    }
+
+    override suspend fun getUserInfoList(jwtToken: String): Flow<UiState<List<CommonItemResponse>>> {
+        return flow {
+            emit(UiState.Success(userService.getUserInfoList(jwtToken)))
+        }.catch {
+            throw NetworkFailureException("Network Error ${it.message}")
+        }
     }
 
     override suspend fun updateFCM(jwtToken: String, fcmToken: String) {
