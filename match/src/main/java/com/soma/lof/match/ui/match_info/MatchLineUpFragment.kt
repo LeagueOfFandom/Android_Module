@@ -1,6 +1,7 @@
 package com.soma.lof.match.ui.match_info
 
 import android.graphics.Color
+import androidx.core.content.res.ResourcesCompat
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
 import com.bumptech.glide.Glide
@@ -31,7 +32,7 @@ class MatchLineUpFragment() : BaseFragment<FragmentMatchLineUpBinding>(
 //        val mainData = viewModel.matchDetailSetInfo.value?.teamVsTeamMainInfo
         val rosterObject = viewModel.matchDetailSetInfo.value?.teamVsTeamRosterInfo
 //        val blueTeamColor = Color.parseColor((mainData?.blueTeamAcronym?.let { Team.valueOf(it).colorRGB }))
-        val blueTeamColor = Color.BLUE
+        val blueTeamColor = ResourcesCompat.getColor(resources, com.soma.common.ui.R.color.sub_color, null)
 
         if (rosterObject != null) {
             for (roster in rosterObject.blueTeam) {
@@ -86,7 +87,7 @@ class MatchLineUpFragment() : BaseFragment<FragmentMatchLineUpBinding>(
         }
 
 //        val redTeamColor = Color.parseColor((mainData?.redTeamAcronym?.let { Team.valueOf(it).colorRGB }))
-        val redTeamColor = Color.RED
+        val redTeamColor = ResourcesCompat.getColor(resources, com.soma.common.ui.R.color.red_color, null)
         if (rosterObject != null) {
             for (roster in rosterObject.redTeam) {
                 when (roster.position) {

@@ -2,6 +2,7 @@ package com.soma.lof.match.ui.match_info
 
 import android.graphics.Color
 import android.graphics.Typeface
+import androidx.core.content.res.ResourcesCompat
 import androidx.fragment.app.viewModels
 import com.github.mikephil.charting.animation.Easing
 import com.github.mikephil.charting.data.PieData
@@ -40,8 +41,8 @@ class MatchPredictionFragment() :
         pieDataSet.selectionShift = 5f
 
         val colors = ArrayList<Int>()
-        colors.add(Color.parseColor(Team.valueOf(mainData?.blueTeamAcronym ?: "T1").colorRGB))
-        colors.add(Color.parseColor(Team.valueOf(mainData?.redTeamAcronym ?: "T1").colorRGB))
+        colors.add(Color.parseColor("#426BFF"))
+        colors.add(Color.parseColor("#FC7B7B"))
         pieDataSet.colors = colors
 
         val pieData = PieData(pieDataSet).apply {
