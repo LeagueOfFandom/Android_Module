@@ -11,9 +11,10 @@ import com.soma.lof.core.model.entity.LiveMatchScoreEvent
 import com.soma.lof.home.ui.HomeFragment
 import org.greenrobot.eventbus.EventBus
 import timber.log.Timber
+import com.soma.lof.login.ui.SplashActivity
 
 /**
- * Receives Firebase Cloud Messages and [TODO] will change Live Match Data
+ * Receives Firebase Cloud Messages
  */
 class LofFirebaseMessagingService: FirebaseMessagingService() {
 
@@ -21,11 +22,11 @@ class LofFirebaseMessagingService: FirebaseMessagingService() {
     override fun onNewToken(token: String) {
         super.onNewToken(token)
 
-        // TODO Token 갱신 Api 필요
+        /** [SplashActivity]가 실행될 때마다 fcm 초기화되도록 설정 */
         Timber.d("New firebase token: $token")
     }
 
-    /* 메세지 수신 메서드*/
+    /* 메세지 수신 메서드 */
     override fun onMessageReceived(message: RemoteMessage) {
         super.onMessageReceived(message)
         Timber.d("Message payload: $message.data")

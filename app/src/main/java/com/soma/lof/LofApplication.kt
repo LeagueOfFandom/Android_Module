@@ -12,7 +12,7 @@ import java.util.*
 /*
 * 대한민국 - country: KR, language: ko
 * 미국 - country: US, language: en
-* 영국 - country:GB, language: en
+* 영국 - country: GB, language: en
 */
 @HiltAndroidApp
 class LofApplication : Application() {
