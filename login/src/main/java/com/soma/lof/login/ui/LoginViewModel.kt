@@ -3,10 +3,7 @@ package com.soma.lof.login.ui
 import android.app.Application
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.viewModelScope
-import com.google.android.gms.auth.api.signin.GoogleSignIn
-import com.google.android.gms.auth.api.signin.GoogleSignInAccount
 import com.google.android.gms.auth.api.signin.GoogleSignInClient
-import com.google.android.gms.auth.api.signin.GoogleSignInOptions
 import com.soma.lof.core.model.dto.CreateUserRequest
 import com.soma.lof.core.model.entity.NewUserResponse
 import com.soma.lof.core.result.UiState
@@ -19,7 +16,6 @@ import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.launch
-import timber.log.Timber
 import javax.inject.Inject
 
 @HiltViewModel
@@ -27,26 +23,15 @@ class LoginViewModel @Inject constructor(
     application: Application,
     private val dataStoreUseCase: DataStoreUseCase,
     private val userUseCase: UserUseCase,
+    private val mGoogleSignInClient: GoogleSignInClient,
 ) : AndroidViewModel(application) {
 
-    private var mGoogleSignInClient: GoogleSignInClient //
-    private var gsa: GoogleSignInAccount? // 기존에 로그인했던 계정
     val googleLoginFlow = MutableStateFlow(false)
 
     private val _newUserFlow = MutableStateFlow<UiState<NewUserResponse>>(UiState.Loading)
     val newUserFlow: StateFlow<UiState<NewUserResponse>> get() = _newUserFlow
-    val userLanguage = MutableStateFlow("")
 
-    init {
-        val gso = GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
-            .requestEmail()
-            .build()
-
-        mGoogleSignInClient = GoogleSignIn.getClient(application, gso)
-
-        gsa = GoogleSignIn.getLastSignedInAccount(application.applicationContext)
-    }
-
+    /* 새로운 유저인지 판별 */
     fun checkNewUser(email: String) {
         viewModelScope.launch {
             userUseCase.isNewUser(email).collectLatest {
@@ -57,15 +42,14 @@ class LoginViewModel @Inject constructor(
 
     fun getGoogleSignInClient() = mGoogleSignInClient
 
-    fun getUserTokenInfo(email: String?, displayName: String, photoUrl: String) {
+    /* 유저 생성 또는 이미 유저라면 JwtToken 가져오기 */
+    fun getUserJwtToken(email: String?, displayName: String, photoUrl: String) {
         viewModelScope.launch {
             val fcmToken = dataStoreUseCase.fcmToken.first()
 
             if (email != null) {
-                userUseCase.createUser(
-                    CreateUserRequest(
-                        email, displayName, fcmToken, photoUrl
-                    )
+                userUseCase.getJwtToken(
+                    CreateUserRequest(email, displayName, fcmToken, photoUrl)
                 ).collectLatest {
                     dataStoreUseCase.editJwtToken(it.data!!.jwtToken)
                     googleLoginFlow.value = true

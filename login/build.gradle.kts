@@ -42,7 +42,7 @@ dependencies {
     implementation(project(":core-model"))
 
     // Google Social Login
-    implementation(Dependencies.google.auth)
+    api(Dependencies.google.auth)
 
     //Firebase
     implementation(Dependencies.firebase.analytics)

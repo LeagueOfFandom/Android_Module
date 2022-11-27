@@ -20,7 +20,8 @@ class UserUseCase @Inject constructor(
         return userRepository.isNewUser(email)
     }
 
-    suspend fun createUser(createUserRequest: CreateUserRequest): Flow<UiState<CreateUserResponse>> {
+    /* 새로운 유저라면 회원가입, 아니라면 jwtToken만 반환 */
+    suspend fun getJwtToken(createUserRequest: CreateUserRequest): Flow<UiState<CreateUserResponse>> {
         return userRepository.createUser(createUserRequest)
     }
 

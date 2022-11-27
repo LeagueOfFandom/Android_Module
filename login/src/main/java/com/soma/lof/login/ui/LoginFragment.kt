@@ -27,7 +27,6 @@ import com.soma.lof.login.databinding.FragmentLoginBinding
 import com.soma.lof.login.util.LoginUtil
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.flow.collectLatest
-import timber.log.Timber
 import javax.inject.Inject
 import javax.inject.Named
 
@@ -56,24 +55,25 @@ class LoginFragment : BaseFragment<FragmentLoginBinding>(R.layout.fragment_login
     }
 
     private fun subscribeUI() {
+
+        /* 새로운 유저라면 유저 정보 수집 정책 수락해야함 */
         lifecycleScope.launchWhenStarted {
             viewModel.newUserFlow.collectLatest { isNewUser ->
-                Timber.tag("check@@@").d("checkNewUser ${isNewUser} account: ${account}")
                 if (account != null) {
-                     if (isNewUser.data?.isNewUser != false) {
+                     if (isNewUser.data?.isNewUser == true) {
                         userLoginPolicyCheck(account!!.email ?: "", account!!.displayName ?: "", account!!.photoUrl?.toString() ?: "")
                     } else {
-                        viewModel.getUserTokenInfo(account!!.email ?: "", account!!.displayName ?: "", account!!.photoUrl?.toString() ?: "")
+                        viewModel.getUserJwtToken(account!!.email ?: "", account!!.displayName ?: "", account!!.photoUrl?.toString() ?: "")
                     }
                 }
             }
         }
 
+        /* 새로운 유저라면 첫 닉네임 저장해야함 */
         lifecycleScope.launchWhenStarted {
             viewModel.googleLoginFlow.collectLatest { success ->
-                Timber.tag("check@@@").d("googleLoginFlow ${success}")
                 if (success) {
-                    if (viewModel.newUserFlow.value.data?.isNewUser != false) {
+                    if (viewModel.newUserFlow.value.data?.isNewUser == true) {
                         navigateSetFirstNicknameFragment()
                     } else {
                         LoginUtil.startMainActivity(requireActivity(), homeActivityClass)
@@ -92,16 +92,15 @@ class LoginFragment : BaseFragment<FragmentLoginBinding>(R.layout.fragment_login
                         val task = GoogleSignIn.getSignedInAccountFromIntent(data)
                         try {
                             account = task.getResult(ApiException::class.java)
-                            Timber.tag("check@@@").d("Google Login Click Success")
+
+                            // 새로운 유저인지 아닌지 판별
                             viewModel.checkNewUser(account!!.email ?: "")
 
                         } catch (e: ApiException) {
-                            Timber.tag(TAG).e("Google Result Error $result")
                             shortShowToast("Data Google Result Code: ${result.resultCode}")
                         }
                     }
                 } else {
-                    Timber.tag(TAG).e("initGoogleLogin: ${result.resultCode} ${result.data?.data}")
                     shortShowToast("Google Result Code: ${result.resultCode}")
                 }
             }
@@ -121,9 +120,11 @@ class LoginFragment : BaseFragment<FragmentLoginBinding>(R.layout.fragment_login
         dialog.window?.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
         dialog.requestWindowFeature(Window.FEATURE_NO_TITLE)
         dialog.setContentView(R.layout.dialog_login_policy)
+
         val params = dialog.window?.attributes
         params?.width = WindowManager.LayoutParams.MATCH_PARENT
         params?.horizontalMargin = 30f
+
         dialog.show()
 
         val allCheckBox = dialog.findViewById<CheckBox>(R.id.login_policy_check_all)
@@ -131,21 +132,24 @@ class LoginFragment : BaseFragment<FragmentLoginBinding>(R.layout.fragment_login
         val optionalNicknameBox = dialog.findViewById<CheckBox>(R.id.login_policy_personal_optional_nickname_checkbox)
         val optionalPhotoBox = dialog.findViewById<CheckBox>(R.id.login_policy_personal_optional_photo_checkbox)
 
+        /* 유저정보수집정책 수락 시 유저 생성 및 jwtToken 가져옴 */
         dialog.findViewById<LinearLayout>(R.id.login_policy_accept_area).setOnClickListener {
             if (requiredBox.isChecked) {
                 val userDisplayName = if (optionalNicknameBox.isChecked) displayName else ""
                 val userPhotoUrl = if (optionalPhotoBox.isChecked) photoUrl else ""
-                viewModel.getUserTokenInfo(email, userDisplayName, userPhotoUrl)
+                viewModel.getUserJwtToken(email, userDisplayName, userPhotoUrl)
                 dialog.dismiss()
             }
         }
 
+        /* 전체 동의 */
         allCheckBox.setOnClickListener {
             requiredBox.isChecked = allCheckBox.isChecked
             optionalNicknameBox.isChecked = allCheckBox.isChecked
             optionalPhotoBox.isChecked = allCheckBox.isChecked
         }
 
+        /* 정책 더보기 항목 */
         dialog.findViewById<TextView>(R.id.login_policy_personal_required_view_more).setOnClickListener {
             dialog.dismiss()
             val action = LoginFragmentDirections.actionLoginFragmentToRequiredUserCreatePolicyFragment(email)

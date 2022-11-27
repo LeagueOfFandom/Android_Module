@@ -27,22 +27,13 @@ class SettingViewModel @Inject constructor(
     application: Application,
     private val settingUseCase: SettingUseCase,
     private val dataStoreUseCase: DataStoreUseCase,
+    private val mGoogleSignInClient: GoogleSignInClient
 ) : AndroidViewModel(application) {
-
-    private var mGoogleSignInClient: GoogleSignInClient
 
     private val _settingData = MutableStateFlow<UiState<SettingModel>>(UiState.Loading)
     val settingData: StateFlow<UiState<SettingModel>> get() = _settingData
 
     val signOutFlow = MutableStateFlow(false)
-
-    init {
-        val gso = GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
-            .requestEmail()
-            .build()
-
-        mGoogleSignInClient = GoogleSignIn.getClient(application, gso)
-    }
 
     fun getSettingData() {
         viewModelScope.launch(Dispatchers.IO) {

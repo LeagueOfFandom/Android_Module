@@ -24,6 +24,7 @@ class SplashViewModel @Inject constructor(
     val autoSignIn = MutableStateFlow(false)
 
     init {
+        /* FCM 토큰 가져오기 */
         FirebaseMessaging.getInstance().token.addOnCompleteListener { task ->
             if (!task.isSuccessful) {
                 return@addOnCompleteListener
