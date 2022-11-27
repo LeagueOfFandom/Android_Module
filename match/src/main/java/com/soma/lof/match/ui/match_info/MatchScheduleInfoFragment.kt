@@ -37,8 +37,6 @@ class MatchScheduleInfoFragment : BaseFragment<FragmentMatchScheduleInfoBinding>
                 }.attach()
             }
         }
-
-
     }
 
     companion object {

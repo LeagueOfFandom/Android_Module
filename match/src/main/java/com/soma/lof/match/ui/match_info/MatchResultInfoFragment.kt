@@ -37,8 +37,11 @@ class MatchResultInfoFragment :
                     setAdapter = MatchSetAdapter(requireContext(), viewModel)
                 }
 
+                // 좌측 블루팀 형태
                 val blueDefaultTeamAreaColor = ResourcesCompat.getDrawable(resources, R.drawable.bg_match_info_blue_default_team_color, null)
                 val blueTeamArea = ResourcesCompat.getDrawable(resources, R.drawable.bg_match_info_blue_team_color, null)
+
+                // 우측 레드팀 형태
                 val redDefaultTeamArea = ResourcesCompat.getDrawable(resources, R.drawable.bg_match_info_red_default_team_color, null)
                 val redTeamArea = ResourcesCompat.getDrawable(resources, R.drawable.bg_match_info_red_team_color, null)
 

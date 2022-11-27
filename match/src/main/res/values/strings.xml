@@ -6,4 +6,5 @@
     <string name="match_no_data_msg">No game schedule in month</string>
     <string name="date_format_m_d">%s, %s</string>
 
+    <string name="match_set_text" translatable="false">%d Set</string>
 </resources>

@@ -1,7 +1,5 @@
 package com.soma.lof.match.ui.match_up
 
-import android.os.Build
-import android.util.Log
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.soma.lof.core.model.dto.CommonItem
@@ -14,7 +12,6 @@ import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.launch
-import timber.log.Timber
 import java.text.SimpleDateFormat
 import java.util.*
 import javax.inject.Inject
@@ -47,7 +44,6 @@ class MatchViewModel @Inject constructor(
             if (jwtToken != null) {
                 matchUseCase.getMatchList(jwtToken, "${todayYear}-${todayMonth}-${todayDay}", onlyMyTeam).collectLatest {
                     _matchData.value = it
-
                 }
             }
         }

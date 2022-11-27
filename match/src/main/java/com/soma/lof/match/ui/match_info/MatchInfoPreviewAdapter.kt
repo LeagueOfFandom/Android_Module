@@ -3,10 +3,8 @@ package com.soma.lof.match.ui.match_info
 import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
-import androidx.recyclerview.widget.RecyclerView
 import com.soma.common.ui.presentation.CommonMatchInfoVH
 import com.soma.common.ui.util.MatchInfoVHFactory
-import com.soma.lof.core.model.dto.CommonItem
 import com.soma.lof.core.model.entity.MatchPreviewCommonVO
 import com.soma.lof.core.model.entity.ViewType
 

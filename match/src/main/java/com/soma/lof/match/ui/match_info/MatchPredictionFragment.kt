@@ -2,7 +2,6 @@ package com.soma.lof.match.ui.match_info
 
 import android.graphics.Color
 import android.graphics.Typeface
-import androidx.core.content.res.ResourcesCompat
 import androidx.fragment.app.viewModels
 import com.github.mikephil.charting.animation.Easing
 import com.github.mikephil.charting.data.PieData
@@ -10,7 +9,6 @@ import com.github.mikephil.charting.data.PieDataSet
 import com.github.mikephil.charting.data.PieEntry
 import com.github.mikephil.charting.formatter.PercentFormatter
 import com.soma.common.ui.base.BaseFragment
-import com.soma.lof.core.model.entity.Team
 import com.soma.lof.match.R
 import com.soma.lof.match.databinding.FragmentMatchPredictionBinding
 import dagger.hilt.android.AndroidEntryPoint
@@ -28,7 +26,7 @@ class MatchPredictionFragment() :
     private fun updateChart() {
 
         val mainData = viewModel.matchDetailSetInfo.value?.teamVsTeamMainInfo
-        val predictionData = viewModel.matchInfo.value.prediction
+        val predictionData = viewModel.matchDummyInfo.value.prediction
         val entries = ArrayList<PieEntry>()
 
         entries.add(PieEntry(predictionData.blueTeamWin.toFloat(), mainData?.blueTeamAcronym))

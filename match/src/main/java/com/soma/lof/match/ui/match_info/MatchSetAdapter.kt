@@ -12,13 +12,11 @@ import com.soma.lof.match.databinding.ItemMatchSetBtnBinding
 class MatchSetAdapter(private val context: Context, private val viewModel: MatchInfoViewModel) :
     RecyclerView.Adapter<MatchSetAdapter.ViewHolder>() {
 
-    private val TAG = "MatchSetAdapter"
-
     inner class ViewHolder(private val binding: ItemMatchSetBtnBinding) :
         RecyclerView.ViewHolder(binding.root) {
 
         fun bind(position: Int) {
-            binding.itemMatchSetText.text = "${position + 1}Set"
+            binding.itemMatchSetText.text = context.getString(R.string.match_set_text, (position+1))
 
             if (position == viewModel.getCurrentSet()) {
                 binding.itemMatchSetLayout.background =

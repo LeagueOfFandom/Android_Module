@@ -1,11 +1,8 @@
 package com.soma.lof.match.ui.match_up
 
 import android.os.Build
-import android.util.Log
-import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
-import androidx.navigation.findNavController
 import com.soma.common.ui.base.BaseFragment
 import com.soma.common.ui.presentation.CommonListAdapter2
 import com.soma.lof.core.model.entity.Month

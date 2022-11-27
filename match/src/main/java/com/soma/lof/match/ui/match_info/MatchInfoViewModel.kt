@@ -15,7 +15,6 @@ import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.launch
-import timber.log.Timber
 import javax.inject.Inject
 
 @HiltViewModel
@@ -24,17 +23,15 @@ class MatchInfoViewModel @Inject constructor(
     private val dataStoreUseCase: DataStoreUseCase
 ) : ViewModel() {
 
-//
-    private val _matchInfo: MutableStateFlow<MatchInfoDummyResponse> = MutableStateFlow(matchUseCase.getMatchInfoDataTest())
-    val matchInfo: StateFlow<MatchInfoDummyResponse> = _matchInfo
-
-    private val _matchDetail: MutableStateFlow<UiState<MatchDetailResponse>> = MutableStateFlow(UiState.Loading)
-    val matchDetail: StateFlow<UiState<MatchDetailResponse>> get() = _matchDetail
-
     private var prevSet = 0
     private var currentSet = 0
     private var setSize = 0
-    private val _matchDetailSetInfo: MutableStateFlow<TeamVsTeamSetInfo?> = MutableStateFlow(_matchDetail.value.data?.body?.setInfoList?.get(currentSet))
+
+    private val _matchDummyInfo: MutableStateFlow<MatchInfoDummyResponse> = MutableStateFlow(matchUseCase.getMatchInfoDataTest())
+    val matchDummyInfo: StateFlow<MatchInfoDummyResponse> = _matchDummyInfo
+
+    private val _matchDetail: MutableStateFlow<UiState<MatchDetailResponse>> = MutableStateFlow(UiState.Loading) // 전체 세트의 경기 세부정보
+    private val _matchDetailSetInfo: MutableStateFlow<TeamVsTeamSetInfo?> = MutableStateFlow(_matchDetail.value.data?.body?.setInfoList?.get(currentSet)) // 해당 세트의 경기 정보
     val matchDetailSetInfo: StateFlow<TeamVsTeamSetInfo?> get() = _matchDetailSetInfo
 
     fun getMatchDetail(matchId: Long) {
@@ -57,8 +54,6 @@ class MatchInfoViewModel @Inject constructor(
         _matchDetailSetInfo.value = _matchDetail.value.data?.body?.setInfoList?.get(currentSet)
     }
 
-    fun setPrevSet(position: Int) { prevSet = position }
     fun getCurrentSet() = currentSet
-    fun getPrevSet() = prevSet
     fun getSetSize() = setSize
 }
